@@ -27,6 +27,7 @@ public class AnimalLogic : MonoBehaviour
     private Animator anim;
     // 현재 반려동물의 상태 표시
     public AnimalState currentState = AnimalState.Idle;
+    public AnimalType type = AnimalType.Small;
     // Player의 위치를 이용하여 반려동물이 돌아오게 하도록 조정
     public Transform player;
 
@@ -42,12 +43,25 @@ public class AnimalLogic : MonoBehaviour
     [SerializeField] private bool isLeashed;
     public float leashFollowDistance = 2f;
 
+    [Header("Fetch System(공 잡아 오는 시스템)")]
+    public Transform mouthPos;
+
     //Dictionary를 통해 변경 상태를 관리
     private Dictionary<AnimalState, Action> UpdateState;
     private Dictionary<AnimalState, Action> EnterState;
+
+    //행동 시간
+    private float behaviourTimer = 0f;
+    private float behaviourIntervalTime = 2f;
+
+    //목줄 상태인 경우 시간
+    private float leashWalkTimer = 0f;
+    private float leashWalkInterval = 3f;
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         ChangeState(AnimalState.Idle);
         InitializeState();
         isLeashed = false;
@@ -75,11 +89,42 @@ public class AnimalLogic : MonoBehaviour
 
     void Update()
     {
+        UpdateMovement();
+    }
+
+    void UpdateMovement()
+    {
         if (isLeashed && currentState != AnimalState.LeashFollow)
         {
             ChangeState(AnimalState.LeashFollow);
         }
+        else if (!isLeashed && currentState == AnimalState.LeashFollow)
+        {
+            ChangeState(AnimalState.Idle);
+        }
 
+        if (!isLeashed)
+        {
+            behaviourTimer += Time.deltaTime;
+
+            if (behaviourTimer >= behaviourIntervalTime)
+            {
+                bool isArrived = !nav.pathPending && nav.remainingDistance <= 0.3f;
+
+                if (currentState == AnimalState.FreeWalk && isArrived)
+                {
+                    ChangeState(AnimalState.Idle);
+                    behaviourTimer = 0f;
+                    behaviourIntervalTime = UnityEngine.Random.Range(1f, 3f);
+                }
+                else if (currentState == AnimalState.Idle)
+                {
+                    ChangeState(AnimalState.FreeWalk);
+                    behaviourTimer = 0f;
+                    behaviourIntervalTime = UnityEngine.Random.Range(1f, 3f);
+                }
+            }
+        }
         UpdateState[currentState]?.Invoke();
     }
 
@@ -120,14 +165,19 @@ public class AnimalLogic : MonoBehaviour
 
     private void UpdateLeashFollow()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance > leashFollowDistance)
+        leashWalkTimer += Time.deltaTime;
+        float currentDistance = Vector3.Distance(transform.position, player.position);
+        if(currentDistance >= leashFollowDistance)
         {
             nav.SetDestination(player.position);
+            return;
         }
-        else
+        
+        if(!nav.pathPending && nav.remainingDistance <=0.3f && leashWalkTimer >= leashWalkInterval)
         {
-            nav.ResetPath();
+            MoveRandomPointInLeashArea();
+            leashWalkTimer = 0f;
+            leashWalkInterval = UnityEngine.Random.Range(1f, 2f);
         }
     }
 
@@ -158,6 +208,9 @@ public class AnimalLogic : MonoBehaviour
     private void EnterLeashFollow()
     {
         nav.isStopped = false;
+        leashWalkTimer = 0f;
+        leashWalkInterval = UnityEngine.Random.Range(1f, 2f);
+        MoveRandomPointInLeashArea();
         SetAnimation("Walk");
     }
     private void EnterEat()
@@ -198,14 +251,50 @@ public class AnimalLogic : MonoBehaviour
             }
         }
 
+
         if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, walkRadius, NavMesh.AllAreas))
         {
+            if((hit.position - transform.position).magnitude < 1f)
+            {
+                return;
+            }
+
+            Vector3 lookDir = (hit.position - player.position).normalized;
+            lookDir.y = 0f;
+            if(lookDir != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(lookDir);
+            }
             nav.SetDestination(hit.position);
         }
 
         else
         {
             nav.ResetPath();
+        }
+    }
+
+    private void MoveRandomPointInLeashArea()
+    {
+        int angle = UnityEngine.Random.Range(0, 360);
+        float radius = UnityEngine.Random.Range(leashFollowDistance * 0.5f, leashFollowDistance);
+        float x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
+        float z = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
+
+        Vector3 targetPos = player.position + new Vector3(x, 0f, z);
+
+        if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, leashFollowDistance, NavMesh.AllAreas))
+        {
+            float dis = Vector3.Distance(hit.position, player.position);
+            if (dis > leashFollowDistance) return;
+
+            Vector3 lookDir = (hit.position - player.position).normalized;
+            lookDir.y = 0f;
+            if (lookDir != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(lookDir);
+            }
+            nav.SetDestination(hit.position);
         }
     }
 }
