@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - Left_Hand
   - Right_Hand
   - Ball
+=======
+  - Hand
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
