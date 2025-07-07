@@ -45,6 +45,9 @@ public class AnimalLogic : MonoBehaviour
 
     [Header("Fetch System(공 잡아 오는 시스템)")]
     public Transform mouthPos;
+    private GameObject targetBall;
+    private bool isFetching = false;
+    private bool hasBall = false;
 
     //Dictionary를 통해 변경 상태를 관리
     private Dictionary<AnimalState, Action> UpdateState;
@@ -90,8 +93,25 @@ public class AnimalLogic : MonoBehaviour
     void Update()
     {
         UpdateMovement();
+
+        GetBall();
+
+        if (isFetching && !hasBall && targetBall != null)
+        {
+            nav.SetDestination(targetBall.transform.position);
+        }
     }
 
+    public void OnBallSpawned(GameObject ball)
+    {
+        targetBall = ball;
+        isFetching = true;
+        hasBall = false;
+
+        nav.isStopped = false;
+        nav.SetDestination(ball.transform.position);
+        SetAnimation("Walk");
+    }
     void UpdateMovement()
     {
         if (isLeashed && currentState != AnimalState.LeashFollow)
@@ -128,6 +148,40 @@ public class AnimalLogic : MonoBehaviour
         UpdateState[currentState]?.Invoke();
     }
 
+    void GetBall()
+    {
+        if (isFetching)
+        {
+            if(!hasBall && targetBall != null)
+            {
+                float dist = Vector3.Distance(transform.position, targetBall.transform.position);
+                if(dist < 1f)
+                {
+                    targetBall.transform.SetParent(mouthPos);
+                    targetBall.transform.localPosition = Vector3.zero;
+                    targetBall.transform.localRotation = Quaternion.identity;
+
+                    hasBall = true;
+                    nav.SetDestination(player.position);
+                    SetAnimation("Walk");
+                }
+            }
+            else if (hasBall)
+            {
+                float distToPlayer = Vector3.Distance(transform.position, player.position);
+                if(distToPlayer < 1f)
+                {
+                    Destroy(targetBall);
+                    targetBall = null;
+                    isFetching = false;
+                    hasBall = false;
+
+                    ChangeState(AnimalState.Idle);
+                    SetAnimation("Idle");
+                }
+            }
+        }
+    }
     public void ChangeState(AnimalState newState)
     {
         if (currentState == newState) return;
