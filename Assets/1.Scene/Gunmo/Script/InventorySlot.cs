@@ -3,6 +3,7 @@ using UnityEngine;
 public class InventorySlot : MonoBehaviour
 {
     public GameObject currentItem;
+    
     public bool IsEmpty => currentItem == null;
 
     public void StoreItem(GameObject item)
