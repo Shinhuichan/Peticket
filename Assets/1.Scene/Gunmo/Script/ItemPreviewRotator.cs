@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -50,5 +51,21 @@ public class ItemPreviewRotator : MonoBehaviour, IPointerEnterHandler, IPointerE
     private bool QuaternionApproximately(Quaternion a, Quaternion b, float tolerance = 0.01f)
     {
         return Quaternion.Angle(a, b) < tolerance;
+    }
+    public IEnumerator Shake(float intensity = 15f, float duration = 0.4f)
+    {
+        float elapsed = 0f;
+        float speed = 40f;
+        Quaternion originalRotation = transform.localRotation;
+
+        while (elapsed < duration)
+        {
+            float angle = Mathf.Sin(elapsed * speed) * intensity;
+            transform.localRotation = originalRotation * Quaternion.Euler(0f, angle, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localRotation = originalRotation;
     }
 }
