@@ -184,7 +184,11 @@ public class AnimalLogic : MonoBehaviour
                 }
 
                 hasBall = true;
-                nav.SetDestination(player.position);
+
+                Vector3 camForward = player.forward;
+                camForward.y = 0;
+                Vector3 stopPoint = player.position + camForward.normalized * 1.0f;
+                nav.SetDestination(stopPoint);
                 SetAnimation("Walk");
             }
         }
@@ -192,6 +196,17 @@ public class AnimalLogic : MonoBehaviour
         {
             if(!nav.pathPending && nav.remainingDistance < 0.3f)
             {
+                nav.isStopped = true;
+                nav.ResetPath();
+
+                Vector3 lookDir = (player.position - transform.position);
+                lookDir.y = 0;
+                if(lookDir != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(lookDir);
+                }
+                SetAnimation("Sit");
+
                 Destroy(targetBall);
                 targetBall = null;
                 isFetching = false;
@@ -343,6 +358,7 @@ public class AnimalLogic : MonoBehaviour
         anim.ResetTrigger("Idle");
         anim.ResetTrigger("Walk");
         anim.ResetTrigger("Eat");
+        anim.ResetTrigger("Sit");
 
         anim.SetTrigger(str);
     }
