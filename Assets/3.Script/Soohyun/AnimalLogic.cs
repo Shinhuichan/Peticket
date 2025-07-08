@@ -8,7 +8,7 @@ public enum AnimalType
     Small,
     Medium,
     Large
-}
+} // Animal 타입에 따른 Prefab 설정을 따로 해야함.
 
 public enum AnimalState
 {
@@ -43,8 +43,14 @@ public class AnimalLogic : MonoBehaviour
     [SerializeField] private bool isLeashed;
     public float leashFollowDistance = 2f;
 
+    //목줄 상태인 경우 시간
+    private float leashWalkTimer = 0f;
+    private float leashWalkInterval = 3f;
+
     [Header("Fetch System(공 잡아 오는 시스템)")]
     public Transform mouthPos;
+
+    // 공 Object 체크 및 
     private GameObject targetBall;
     private bool isFetching = false;
     private bool hasBall = false;
@@ -57,20 +63,6 @@ public class AnimalLogic : MonoBehaviour
     private float behaviourTimer = 0f;
     private float behaviourIntervalTime = 2f;
 
-    //목줄 상태인 경우 시간
-    private float leashWalkTimer = 0f;
-    private float leashWalkInterval = 3f;
-
-    void Start()
-    {
-        nav = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        ChangeState(AnimalState.Idle);
-        InitializeState();
-        isLeashed = false;
-
-        nav.updateRotation = false;
-    }
     private void InitializeState()
     {
         UpdateState = new Dictionary<AnimalState, Action>
@@ -92,26 +84,21 @@ public class AnimalLogic : MonoBehaviour
         };
     }
 
+    void Start()
+    {
+        nav = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        ChangeState(AnimalState.Idle);
+        InitializeState();
+
+        nav.updateRotation = false;
+    }
+
     void Update()
     {
         UpdateMovement();
-
-        GetBall();
-
-        if (isFetching && !hasBall && targetBall != null)
-        {
-            nav.SetDestination(targetBall.transform.position);
-        }
-
-        if(nav.velocity.sqrMagnitude > 0.1f)
-        {
-            Vector3 dir = nav.velocity.normalized;
-            dir.y = 0;
-            if(dir != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 8f);
-            }
-        }
+        UpdateFetch();
+        UpdateRotation();
     }
 
     public void OnBallSpawned(GameObject ball)
@@ -124,6 +111,7 @@ public class AnimalLogic : MonoBehaviour
         nav.SetDestination(ball.transform.position);
         SetAnimation("Walk");
     }
+
     void UpdateMovement()
     {
         if (isLeashed && currentState != AnimalState.LeashFollow)
@@ -146,54 +134,71 @@ public class AnimalLogic : MonoBehaviour
                 if (currentState == AnimalState.FreeWalk && isArrived)
                 {
                     ChangeState(AnimalState.Idle);
-                    behaviourTimer = 0f;
-                    behaviourIntervalTime = UnityEngine.Random.Range(1f, 3f);
                 }
                 else if (currentState == AnimalState.Idle)
                 {
                     ChangeState(AnimalState.FreeWalk);
-                    behaviourTimer = 0f;
-                    behaviourIntervalTime = UnityEngine.Random.Range(1f, 3f);
                 }
+                behaviourTimer = 0f;
+                behaviourIntervalTime = UnityEngine.Random.Range(1f, 3f);
             }
         }
         UpdateState[currentState]?.Invoke();
     }
-
-    void GetBall()
+    void UpdateFetch()
     {
-        if (isFetching)
+        if (!isFetching || targetBall == null) return;
+
+        if (!hasBall)
         {
-            if(!hasBall && targetBall != null)
-            {
-                float dist = Vector3.Distance(transform.position, targetBall.transform.position);
-                if(dist < 1f)
-                {
-                    targetBall.transform.SetParent(mouthPos);
-                    targetBall.transform.localPosition = Vector3.zero;
-                    targetBall.transform.localRotation = Quaternion.identity;
+            nav.isStopped = false;
+            nav.SetDestination(targetBall.transform.position);
 
-                    hasBall = true;
-                    nav.SetDestination(player.position);
-                    SetAnimation("Walk");
+            float dist = Vector3.Distance(transform.position, targetBall.transform.position);
+            if (dist < 1f)
+            {
+                targetBall.transform.SetParent(mouthPos);
+                targetBall.transform.localPosition = Vector3.zero;
+                targetBall.transform.localRotation = Quaternion.identity;
+
+                var rb = targetBall.GetComponent<Rigidbody>();
+                if(rb != null)
+                {
+                    rb.isKinematic = true;
                 }
+
+                hasBall = true;
+                nav.SetDestination(player.position);
+                SetAnimation("Walk");
             }
-            else if (hasBall)
+        }
+        else 
+        {
+            if(!nav.pathPending && nav.remainingDistance < 0.3f)
             {
-                float distToPlayer = Vector3.Distance(transform.position, player.position);
-                if(distToPlayer < 1f)
-                {
-                    Destroy(targetBall);
-                    targetBall = null;
-                    isFetching = false;
-                    hasBall = false;
+                Destroy(targetBall);
+                targetBall = null;
+                isFetching = false;
+                hasBall = false;
 
-                    ChangeState(AnimalState.Idle);
-                    SetAnimation("Idle");
-                }
+                ChangeState(AnimalState.Idle);
+                SetAnimation("Idle");
             }
         }
     }
+    void UpdateRotation()
+    {
+        if (nav.velocity.sqrMagnitude > 0.1f)
+        {
+            Vector3 dir = nav.velocity.normalized;
+            dir.y = 0;
+            if (dir != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 8f);
+            }
+        }
+    }
+
     public void ChangeState(AnimalState newState)
     {
         if (currentState == newState) return;
@@ -202,10 +207,8 @@ public class AnimalLogic : MonoBehaviour
         EnterState[newState]?.Invoke();
     }
 
-    private void UpdateIdle()
-    {
-
-    }
+    // State Update
+    private void UpdateIdle() { }
 
     private void UpdateWalk()
     {
@@ -213,14 +216,15 @@ public class AnimalLogic : MonoBehaviour
         if(!nav.pathPending && nav.remainingDistance <= 0.3f && walkTimer >=checkInterval)
         {
             MoveRandomPoint();
+            walkTimer = 0f;
         }
     }
 
     private void UpdateFollow()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance > callDistance)
+        if (Vector3.Distance(transform.position, player.position) > callDistance)
         {
+            nav.isStopped = false;
             nav.SetDestination(player.position);
         }
         else
@@ -232,9 +236,9 @@ public class AnimalLogic : MonoBehaviour
     private void UpdateLeashFollow()
     {
         leashWalkTimer += Time.deltaTime;
-        float currentDistance = Vector3.Distance(transform.position, player.position);
-        if(currentDistance >= leashFollowDistance)
+        if(Vector3.Distance(transform.position, player.position) >= leashFollowDistance)
         {
+            nav.isStopped = false;
             nav.SetDestination(player.position);
             return;
         }
@@ -252,6 +256,7 @@ public class AnimalLogic : MonoBehaviour
 
     }
 
+    //상태 진입 시 동작
     private void EnterIdle()
     {
         nav.isStopped = true;
@@ -299,21 +304,16 @@ public class AnimalLogic : MonoBehaviour
 
     private void MoveRandomPoint()
     {
-        int angle = UnityEngine.Random.Range(0, 360);
-        float x = Mathf.Cos(angle * Mathf.Deg2Rad);
-        float z = Mathf.Sin(angle * Mathf.Deg2Rad);
-        Vector3 dir = new Vector3(x, 0f, z);
-        Vector3 targetPos =  dir * walkRadius + transform.position;
+        Vector2 circle = UnityEngine.Random.insideUnitCircle.normalized * walkRadius;
+        Vector3 targetPos = transform.position + new Vector3(circle.x, 0f, circle.y);
 
         if (isLeashed)
         {
-            Vector3 leashCenter = player.position;
-            Vector3 offset = targetPos - leashCenter;
+            Vector3 offset = targetPos - player.position;
 
             if (offset.magnitude > leashFollowDistance)
             {
-                offset = offset.normalized * leashFollowDistance * 0.9f;
-                targetPos = leashCenter + offset;
+                targetPos = player.position + offset.normalized * leashFollowDistance * 0.9f;
             }
         }
 
@@ -324,42 +324,21 @@ public class AnimalLogic : MonoBehaviour
             {
                 return;
             }
-
-            Vector3 lookDir = (hit.position - player.position).normalized;
-            lookDir.y = 0f;
-            if(lookDir != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(lookDir);
-            }
             nav.SetDestination(hit.position);
-        }
-
-        else
-        {
-            nav.ResetPath();
         }
     }
 
     private void MoveRandomPointInLeashArea()
     {
-        int angle = UnityEngine.Random.Range(0, 360);
+        float angle = UnityEngine.Random.Range(0, 360);
         float radius = UnityEngine.Random.Range(leashFollowDistance * 0.5f, leashFollowDistance);
-        float x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
-        float z = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
 
-        Vector3 targetPos = player.position + new Vector3(x, 0f, z);
+        Vector3 offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+        Vector3 targetPos = player.position + offset;
 
         if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, leashFollowDistance, NavMesh.AllAreas))
         {
-            float dis = Vector3.Distance(hit.position, player.position);
-            if (dis > leashFollowDistance) return;
-
-            Vector3 lookDir = (hit.position - player.position).normalized;
-            lookDir.y = 0f;
-            if (lookDir != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(lookDir);
-            }
+            if (Vector3.Distance(hit.position, player.position) > leashFollowDistance) return;
             nav.SetDestination(hit.position);
         }
     }
