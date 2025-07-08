@@ -1517,9 +1517,33 @@ PrefabInstance:
       propertyPath: introduceUI
       value: 
       objectReference: {fileID: 1260857540}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: maxBounds.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: maxBounds.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: maxBounds.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: minBounds.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: minBounds.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
+      propertyPath: minBounds.z
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 310168016005192058, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3822546094175810055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
       propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.size
