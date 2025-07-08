@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hand
-  - Ball
   - Hand_Left
   - Hand_Right
+  - Poop
+  - Ball
   layers:
   - Default
   - TransparentFX

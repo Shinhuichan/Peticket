@@ -20,8 +20,6 @@ public class CameraSetting : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
         transform.position = new Vector3(currentPosition.x, playerStartYAxis, currentPosition.z);
-
-        // Debug.Log($"XR Origin Y: {transform.position.y}");
     }
 
     void RotationLock()
