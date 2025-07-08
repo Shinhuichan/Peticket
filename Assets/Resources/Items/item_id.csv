@@ -1,0 +1,10 @@
+id,name,category,description
+1,ball,toy,장난감용 공
+2,leash,gear,산책시 필수 목줄
+3,bottle,utility,물병
+4,muzzle,gear,입마개
+5,dog_tag,gear,인식표
+6,waste_bag,utility,배변봉투
+7,watering_pot,utility,물뿌리개
+8,garbage_tongs,utility,집게
+9,dog_snack,consumable,간식
