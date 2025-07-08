@@ -16,6 +16,7 @@ public enum AnimalState
     FreeWalk,
     FollowPlayer,
     LeashFollow,
+    GoToFeed,
     Eat
 }
 
@@ -50,10 +51,15 @@ public class AnimalLogic : MonoBehaviour
     [Header("Fetch System(공 잡아 오는 시스템)")]
     public Transform mouthPos;
 
-    // 공 Object 체크 및 
+    // 공 Object 체크  
     private GameObject targetBall;
     private bool isFetching = false;
     private bool hasBall = false;
+
+    // 먹이 Object 체크
+    private GameObject targetFeed;
+    private float eatTimer = 0f;
+    private float eatDuration = 2f;
 
     //Dictionary를 통해 변경 상태를 관리
     private Dictionary<AnimalState, Action> UpdateState;
@@ -71,6 +77,7 @@ public class AnimalLogic : MonoBehaviour
             {AnimalState.FreeWalk, UpdateWalk },
             {AnimalState.FollowPlayer, UpdateFollow },
             {AnimalState.LeashFollow, UpdateLeashFollow },
+            {AnimalState.GoToFeed, UpdateGoToFeed},
             {AnimalState.Eat,UpdateEat }
         };
 
@@ -80,6 +87,7 @@ public class AnimalLogic : MonoBehaviour
             {AnimalState.FreeWalk, EnterWalk},
             {AnimalState.FollowPlayer,EnterFollowPlayer },
             {AnimalState.LeashFollow, EnterLeashFollow },
+            {AnimalState.GoToFeed, EnterGoToFeed},
             {AnimalState.Eat, EnterEat }
         };
     }
@@ -112,6 +120,14 @@ public class AnimalLogic : MonoBehaviour
         SetAnimation("Walk");
     }
 
+    public void OnFeedSpawned(GameObject Feed)
+    {
+        if (isFetching) return;
+        targetFeed = Feed;
+        nav.isStopped = false;
+        nav.SetDestination(Feed.transform.position);
+        ChangeState(AnimalState.GoToFeed);
+    }
     void UpdateMovement()
     {
         if (isLeashed && currentState != AnimalState.LeashFollow)
@@ -250,10 +266,33 @@ public class AnimalLogic : MonoBehaviour
             leashWalkInterval = UnityEngine.Random.Range(1f, 2f);
         }
     }
+    
+    private void UpdateGoToFeed()
+    {
+        if (targetFeed == null)
+        {
+            ChangeState(AnimalState.Idle);
+            return;
+        }
 
+        if(!nav.pathPending && nav.remainingDistance < 0.3f)
+        {
+            nav.isStopped = true;
+            ChangeState(AnimalState.Eat);
+        }
+    }
     private void UpdateEat()
     {
-
+        eatTimer -= Time.deltaTime;
+        if(eatTimer <= 0f)
+        {
+            if(targetFeed != null)
+            {
+                Destroy(targetFeed);
+                targetFeed = null;
+            }
+            ChangeState(AnimalState.Idle);
+        }
     }
 
     //상태 진입 시 동작
@@ -284,11 +323,17 @@ public class AnimalLogic : MonoBehaviour
         MoveRandomPointInLeashArea();
         SetAnimation("Walk");
     }
+
+    private void EnterGoToFeed()
+    {
+        SetAnimation("Walk");
+    }
     private void EnterEat()
     {
         nav.isStopped = true;
         nav.ResetPath();
         SetAnimation("Eat");
+        eatTimer = eatDuration;
     }
 
     private void SetAnimation(string str)
