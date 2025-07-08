@@ -1,16 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SingletonBehaviour<InventoryManager>
 {
-    public static InventoryManager Instance;
+    protected override bool IsDontDestroy() => true;
 
     public InventorySlot[] slots;
-
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
 
     public bool AddItemToInventory(GameObject item)
     {
