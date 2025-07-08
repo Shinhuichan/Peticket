@@ -68,6 +68,8 @@ public class AnimalLogic : MonoBehaviour
         ChangeState(AnimalState.Idle);
         InitializeState();
         isLeashed = false;
+
+        nav.updateRotation = false;
     }
     private void InitializeState()
     {
@@ -99,6 +101,16 @@ public class AnimalLogic : MonoBehaviour
         if (isFetching && !hasBall && targetBall != null)
         {
             nav.SetDestination(targetBall.transform.position);
+        }
+
+        if(nav.velocity.sqrMagnitude > 0.1f)
+        {
+            Vector3 dir = nav.velocity.normalized;
+            dir.y = 0;
+            if(dir != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 8f);
+            }
         }
     }
 
