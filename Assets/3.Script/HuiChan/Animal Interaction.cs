@@ -5,8 +5,10 @@ using UnityEngine;
 public class AnimalInteraction : MonoBehaviour
 {
     [SerializeField, ReadOnly] Rigidbody rb;
-    [SerializeField, ReadOnly] Rigidbody otherRB;
+    [AsRange(0f, 20f)] public Vector2 interactionrange;
     [SerializeField, ReadOnly] Vector3 relativeVelocity;
+
+    HandController hand;
 
     void Start()
     {
@@ -14,21 +16,21 @@ public class AnimalInteraction : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Hand"))
+        if (other.tag.Contains("Hand"))
         {
-            otherRB = other.GetComponent<Rigidbody>();
+            hand = other.GetComponent<HandController>();
+            if (hand == null) return;
+
             Vector3 thisVelocity = (rb != null) ? rb.velocity : Vector3.zero;
-            Vector3 otherVelocity = (otherRB != null) ? otherRB.velocity : Vector3.zero;
+            Vector3 otherVelocity = hand.currentVelocity;
             relativeVelocity = otherVelocity - thisVelocity;
 
-            Debug.Log($"{otherVelocity} - {thisVelocity} = {relativeVelocity}");
-
-            if (relativeVelocity.magnitude > 1f) // 너무 빠른 속도로 들어왔을 경우
+            if (relativeVelocity.magnitude > interactionrange.y) // 너무 빠른 속도로 들어왔을 경우
             {
                 Debug.Log("당신은 너무 폭력적이에요!!!!!!");
                 // 반려 동물의 슬픔
             }
-            else if (relativeVelocity.magnitude >= 0.3f) // 적당한 속도로 들어왔을 경우
+            else if (relativeVelocity.magnitude >= interactionrange.x) // 적당한 속도로 들어왔을 경우
             {
                 Debug.Log("반려 동물과의 상호작용 인지");
                 // 반려 동물의 반응 시작 (추가 가능)
@@ -40,13 +42,14 @@ public class AnimalInteraction : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        otherRB = other.GetComponent<Rigidbody>();
-        Vector3 thisVelocity = (rb != null) ? rb.velocity : Vector3.zero;
-        Vector3 otherVelocity = (otherRB != null) ? otherRB.velocity : Vector3.zero;
-        relativeVelocity = otherVelocity - thisVelocity;
-        Debug.Log($"{otherVelocity} - {thisVelocity} = {relativeVelocity}");
+        hand = other.GetComponent<HandController>();
+        if (hand == null) return;
 
-        if (relativeVelocity.magnitude > 0.3f && relativeVelocity.magnitude < 1f) // 쓰다듬기
+        Vector3 thisVelocity = (rb != null) ? rb.velocity : Vector3.zero;
+        Vector3 otherVelocity = hand.currentVelocity;
+        relativeVelocity = otherVelocity - thisVelocity;
+
+        if (relativeVelocity.magnitude > interactionrange.x && relativeVelocity.magnitude < interactionrange.y) // 쓰다듬기
         {
             Debug.Log("부드럽게 쓰다듬고 있어요!");
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2595228262517932468}
   - component: {fileID: 7572379439986348412}
   - component: {fileID: 5627635237705327411}
+  - component: {fileID: 2067337407487611888}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Hand_Left
@@ -119,6 +120,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2067337407487611888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626699269273966345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c13610a6d409364797261c1e20acc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2943832092095061966
 PrefabInstance:
   m_ObjectHideFlags: 0

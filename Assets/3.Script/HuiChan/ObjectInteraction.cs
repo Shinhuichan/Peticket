@@ -15,7 +15,6 @@ public class ObjectInteraction : MonoBehaviour
     [SerializeField]
     private Vector3 maxBounds = new Vector3(5f, 5f, 5f);   // X, Y, Z 최대 좌표
 
-    // 만약 이 오브젝트가 Rigidbody를 가지고 있다면 참조
     private Rigidbody rb;
 
     void Awake()
@@ -75,24 +74,21 @@ public class ObjectInteraction : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
 
-        // 각 축별로 위치를 제한 (Clamp)
         currentPosition.x = Mathf.Clamp(currentPosition.x, minBounds.x, maxBounds.x);
         currentPosition.y = Mathf.Clamp(currentPosition.y, minBounds.y, maxBounds.y);
         currentPosition.z = Mathf.Clamp(currentPosition.z, minBounds.z, maxBounds.z);
 
-        // 제한된 위치를 오브젝트에 적용
         transform.position = currentPosition;
 
-        // 만약 Rigidbody가 있다면, 속도도 0으로 만들어줘서 계속 경계 밖으로 밀려나지 않도록 해.
-        // 강제로 위치를 옮겼기 때문에 물리 엔진이 이상하게 동작할 수 있거든.
-        if (rb != null)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero; // 회전 속도도 0으로
-        }
+        if (currentPosition.x >= maxBounds.x || currentPosition.y >= maxBounds.y || currentPosition.z >= maxBounds.z)
+            if (rb != null)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
     }
 
-    // 디버깅을 위해 에디터에서 제한 영역을 시각적으로 보여주기 (선택 사항)
+    //  에디터에서 제한 영역을 시각적으로 보여주기
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
