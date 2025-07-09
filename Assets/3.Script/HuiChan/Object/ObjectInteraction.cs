@@ -24,7 +24,7 @@ public class ObjectInteraction : MonoBehaviour
     }
     public void Select_Enter()
     {
-        ShowUI(getUI);
+        ShowUI(getUI);    
     }
     public void Select_Exit()
     {
