@@ -32,12 +32,7 @@ public class ObjectInteraction : MonoBehaviour
     {
         ShowUI(getUI);
         var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
-        if (pickupButton != null)
-        {
-            pickupButton.itemToPickup = this.gameObject;
-        }
-        // 여기까지
-    
+        if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
     }
     public void Select_Exit()
     {

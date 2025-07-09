@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FoodInteraction : ObjectInteraction
@@ -7,7 +8,7 @@ public class FoodInteraction : ObjectInteraction
     [SerializeField] GameObject foodObj;
     [SerializeField] GameObject bowlObj;
     [SerializeField] Transform spawnTrans;
-    float limitXZRotation = 90f;
+    [Range(45f, 135f), SerializeField] float limitXZRotation = 90f;
 
     void FixedUpdate()
     {
@@ -22,7 +23,7 @@ public class FoodInteraction : ObjectInteraction
             if (Physics.Raycast(transform.position, Vector3.down, out hit, 500f, targetLayer))
             {
                 // 밥이 나오는 내용
-                Instantiate(foodObj, spawnTrans.position, Quaternion.identity, hit.transform);
+                Instantiate(foodObj, spawnTrans.position, Quaternion.identity);
                 yield return new WaitForSeconds(0.25f);
             }
         }
