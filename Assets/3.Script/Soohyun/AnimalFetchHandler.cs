@@ -21,6 +21,8 @@ public class AnimalFetchHandler
         isGoingToBall = true;
         isReturning = false;
         hasBall = false;
+
+        animal.SetState(AnimalState.Fetch);
     }
 
     public void UpdateFetch()
@@ -47,10 +49,16 @@ public class AnimalFetchHandler
                 isGoingToBall = false;
                 isReturning = true;
 
+                var col = targetBall.GetComponent<SphereCollider>();
+                if(col != null){
+                    col.enabled = false;
+                }
+
                 Vector3 returnPoint = animal.Player.position + animal.Player.forward.normalized * 1.0f;
 
                 if(NavMesh.SamplePosition(returnPoint, out NavMeshHit resultHit, 1.0f, NavMesh.AllAreas))
                 {
+                    Debug.Log("SetDestination to: " + resultHit.position);
                     animal.Agent.SetDestination(resultHit.position);
                 }
 
@@ -62,6 +70,12 @@ public class AnimalFetchHandler
         {
             if (!animal.Agent.pathPending && animal.Agent.remainingDistance <= 0.5f)
             {
+                var col = targetBall.GetComponent<SphereCollider>();
+                if (col != null)
+                {
+                    col.enabled = true;
+                }
+
                 targetBall.transform.SetParent(null);
                 Object.Destroy(targetBall);
                 targetBall = null;

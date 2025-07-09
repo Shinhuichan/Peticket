@@ -1,52 +1,52 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum AnimalType { Small, Medium, Large }
-public enum AnimalState { Idle, FreeWalk, FollowPlayer, LeashFollow, GoToFeed, Eat }
+public enum AnimalState { Idle, FreeWalk, FollowPlayer, LeashFollow, GoToFeed, Eat, Fetch }
 public enum PetAnimation { Idle, Walk, Eat, Sit }
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class AnimalLogic : MonoBehaviour
 {
-    [Header("Animal Type & CurrentState")] // ÇöÀç ¹İ·Áµ¿¹°ÀÇ Å¸ÀÔ ¹× »óÅÂ Ç¥½Ã
+    [Header("Animal Type & CurrentState")] // í˜„ì¬ ë°˜ë ¤ë™ë¬¼ì˜ íƒ€ì… ë° ìƒíƒœ í‘œì‹œ
     public AnimalType type = AnimalType.Small;
     public AnimalState currentState = AnimalState.Idle;
 
-    [Header("Check Player")] // PlayerÀÇ À§Ä¡ Ã¼Å©
+    [Header("Check Player")] // Playerì˜ ìœ„ì¹˜ ì²´í¬
     public Transform player;
 
     [Header("Free Walk Setting")]
-    public float walkRadius = 5f; // °É¾î´Ù´Ï´Â ¹üÀ§
-    public float checkInterval = 5f; // ·£´ı À§Ä¡ ¼±Á¤ ½Ã°£
+    public float walkRadius = 5f; // ê±¸ì–´ë‹¤ë‹ˆëŠ” ë²”ìœ„
+    public float checkInterval = 5f; // ëœë¤ ìœ„ì¹˜ ì„ ì • ì‹œê°„
 
     [Header("FreeWalk Delay")]
     public float idleToWalkDelay = 3f;
     private float idleTimer = 0f;
 
-    [Header("Follow ¼³Á¤")]
-    public float callDistance = 1.5f; // ¹İ·Áµ¿¹°À» ºÒ·¶À» °æ¿ì ¾î´À ¹üÀ§±îÁö¸¸ ¿À°Ô ÇÒ °ÍÀÎÁö¿¡ ´ëÇÑ ¹üÀ§
+    [Header("Follow ì„¤ì •")]
+    public float callDistance = 1.5f; // ë°˜ë ¤ë™ë¬¼ì„ ë¶ˆë €ì„ ê²½ìš° ì–´ëŠ ë²”ìœ„ê¹Œì§€ë§Œ ì˜¤ê²Œ í•  ê²ƒì¸ì§€ì— ëŒ€í•œ ë²”ìœ„
 
-    [Header("Leash ¼³Á¤")]
+    [Header("Leash ì„¤ì •")]
     [SerializeField] private bool isLeashed;
     public float leashFollowDistance = 2f;
 
-    [Header("Fetch System(°ø Àâ¾Æ ¿À´Â ½Ã½ºÅÛ)")]
+    [Header("Fetch System(ê³µ ì¡ì•„ ì˜¤ëŠ” ì‹œìŠ¤í…œ)")]
     public Transform mouthPos;
 
     [Header("Feed Settings")]
     public float eatDuration = 2f;
 
-    // NavMeshAgent¸¦ ÅëÇØ ±æÀ» Ã£¾Æ °É¾î´Ù´Ñ´Ù. + ¹İ·Áµ¿¹°ÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç
+    // NavMeshAgentë¥¼ í†µí•´ ê¸¸ì„ ì°¾ì•„ ê±¸ì–´ë‹¤ë‹Œë‹¤. + ë°˜ë ¤ë™ë¬¼ì˜ ì• ë‹ˆë©”ì´ì…˜
     private NavMeshAgent nav;
     private Animator anim;
 
-    //Dictionary¸¦ ÅëÇØ º¯°æ »óÅÂ¸¦ °ü¸®
+    //Dictionaryë¥¼ í†µí•´ ë³€ê²½ ìƒíƒœë¥¼ ê´€ë¦¬
     private Dictionary<AnimalState, Action> UpdateState;
     private Dictionary<AnimalState, Action> EnterState;
 
-    //Çàµ¿ ½Ã°£
+    //í–‰ë™ ì‹œê°„
     private float behaviourTimer;
 
     private AnimalFetchHandler fetchHandler;
@@ -77,7 +77,6 @@ public class AnimalLogic : MonoBehaviour
         }
 
         UpdateState[currentState]?.Invoke();
-        fetchHandler.UpdateFetch();
         UpdateRotation();
     }
 
@@ -89,6 +88,10 @@ public class AnimalLogic : MonoBehaviour
             {AnimalState.FreeWalk, UpdateWalk },
             {AnimalState.FollowPlayer, UpdateFollow },
             {AnimalState.LeashFollow, UpdateLeashFollow },
+            {AnimalState.Fetch, () =>
+            {
+                fetchHandler.UpdateFetch();
+            } }
         };
 
         EnterState = new Dictionary<AnimalState, Action>
@@ -115,6 +118,11 @@ public class AnimalLogic : MonoBehaviour
             } },
             {AnimalState.GoToFeed, () => feedHandler.EnterFeed()},
             {AnimalState.Eat, () => feedHandler.EnterEat() },
+            {AnimalState.Fetch, () =>
+            {
+                nav.isStopped = false;
+                animationHandler.SetAnimation(PetAnimation.Walk);
+            } }
         };
     }
 
@@ -133,7 +141,7 @@ public class AnimalLogic : MonoBehaviour
     private void UpdateIdle()
     {
         idleTimer += Time.deltaTime;
-        if(idleTimer >= idleToWalkDelay)
+        if (idleTimer >= idleToWalkDelay)
         {
             idleTimer = 0f;
             ChangeState(AnimalState.FreeWalk);
@@ -166,8 +174,15 @@ public class AnimalLogic : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) >= leashFollowDistance)
         {
-            nav.isStopped = false;
-            nav.SetDestination(player.position);
+            Vector3 dir = (player.position - transform.position).normalized;
+            Vector3 chk = player.position - dir * (leashFollowDistance * 0.9f);
+
+            if(NavMesh.SamplePosition(chk,out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            {
+                nav.isStopped = false;
+                nav.SetDestination(hit.position);
+            }
+
             return;
         }
 
@@ -207,15 +222,43 @@ public class AnimalLogic : MonoBehaviour
 
     private void MoveRandomPointInLeashArea()
     {
-        float angle = UnityEngine.Random.Range(0, 360);
-        float radius = UnityEngine.Random.Range(leashFollowDistance * 0.5f, leashFollowDistance);
+        Vector3 rndDir = UnityEngine.Random.insideUnitSphere;
+        rndDir.y = 0;
+        rndDir.Normalize();
 
-        Vector3 offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-        Vector3 targetPos = player.position + offset;
+        float radius = UnityEngine.Random.Range(leashFollowDistance * 0.3f, leashFollowDistance * 0.95f);
+        Vector3 targetPos = player.position + rndDir * radius;
 
-        if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, leashFollowDistance, NavMesh.AllAreas))
+        if(NavMesh.SamplePosition(targetPos,out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
         {
-            nav.SetDestination(hit.position);
+            float distFromPlayer = Vector3.Distance(player.position, hit.position);
+
+            if (distFromPlayer <= leashFollowDistance)
+            {
+                nav.SetDestination(hit.position);
+            }
+            else
+            {
+                Vector3 clampedPos = player.position + (hit.position - player.position);
+                if(NavMesh.SamplePosition(clampedPos, out NavMeshHit clampedHit, 1.0f, NavMesh.AllAreas))
+                {
+                    nav.SetDestination(clampedHit.position);
+                }
+            }
+        }
+
+    }
+
+    public void SetLeashed(bool on)
+    {
+        isLeashed = on;
+        if (on)
+        {
+            ChangeState(AnimalState.LeashFollow);
+        }
+        else
+        {
+            ChangeState(AnimalState.Idle);
         }
     }
 
@@ -227,4 +270,5 @@ public class AnimalLogic : MonoBehaviour
     public float EatDuration => eatDuration;
     public AnimalState CurrentState => currentState;
     public void SetState(AnimalState state) => ChangeState(state);
+    public bool IsLeashed => isLeashed;
 }
