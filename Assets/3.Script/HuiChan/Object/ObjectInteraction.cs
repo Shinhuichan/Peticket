@@ -1,11 +1,10 @@
-using System.Collections;
+using System.Linq;
+using CustomInspector;
 using UnityEngine;
 
 public class ObjectInteraction : MonoBehaviour
 {
-    Canvas canvas;
-    MeshRenderer rend;
-
+    [SerializeField, ReadOnly] Canvas canvas;
     [SerializeField] GameObject introduceUI;
     [SerializeField] GameObject getUI;
 
@@ -19,12 +18,19 @@ public class ObjectInteraction : MonoBehaviour
 
     void Awake()
     {
+        introduceUI = Resources.FindObjectsOfTypeAll<GameObject>()
+                         .FirstOrDefault(obj => obj.name.Contains("Introduce"));
+        getUI = Resources.FindObjectsOfTypeAll<GameObject>()
+                         .FirstOrDefault(obj => obj.name.Contains("Get"));
+
+        if (getUI == null || introduceUI == null) return;
+
         canvas = introduceUI.GetComponentInParent<Canvas>();
         rb = GetComponent<Rigidbody>();
     }
     public void Select_Enter()
     {
-        ShowUI(getUI);    
+        ShowUI(getUI);
     }
     public void Select_Exit()
     {
