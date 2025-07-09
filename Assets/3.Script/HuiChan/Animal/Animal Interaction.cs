@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class AnimalInteraction : MonoBehaviour
 {
-    [SerializeField, ReadOnly] Rigidbody rb;
+    Rigidbody rb;
     [AsRange(0f, 20f)] public Vector2 interactionrange;
     [SerializeField, ReadOnly] Vector3 relativeVelocity;
 
     public Transform collarTransform;
+    public Transform mouseTransform;
 
     HandController hand;
 
