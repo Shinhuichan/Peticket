@@ -1,25 +1,25 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class PreviewClickForwarder : MonoBehaviour, IPointerClickHandler
+public class PreviewClickForwarder : MonoBehaviour
 {
     public InventorySlot parentSlot;
 
     private void Awake()
     {
-        // 자동으로 상위에서 InventorySlot 찾기
         if (parentSlot == null)
         {
             parentSlot = GetComponentInParent<InventorySlot>();
         }
 
-        if (parentSlot == null)
+        var interactable = GetComponent<XRBaseInteractable>();
+        if (interactable != null)
         {
-            Debug.LogWarning($"[PreviewClickForwarder] 부모 슬롯을 찾지 못했습니다: {gameObject.name}");
+            interactable.selectEntered.AddListener(OnSelected); // XR 클릭 대응
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnSelected(SelectEnterEventArgs args)
     {
         if (parentSlot != null)
         {

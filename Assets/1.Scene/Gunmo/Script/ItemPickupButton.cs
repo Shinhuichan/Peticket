@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ItemPickupButton : MonoBehaviour
 {
-    public GameObject itemToPickup;
+    public GameObject itemToPickup;  // ✅ 반드시 public 이어야 합니다
 
     public void OnPickupButtonClicked()
     {
         bool success = InventoryManager.Instance.AddItemToInventory(itemToPickup);
         if (success)
         {
-            gameObject.SetActive(false); // 아이템 오브젝트 숨기기 or 파괴
+           itemToPickup.SetActive(false); //Destroy(itemToPickup)  itemToPickup.SetActive(false)
         }
     }
 }

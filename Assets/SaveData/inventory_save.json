@@ -1,8 +1,8 @@
 {
     "items": [
         {
-            "itemName": "Item",
-            "slotIndex": 1
+            "itemName": "XR Interaction Object",
+            "slotIndex": 0
         }
     ]
 }
