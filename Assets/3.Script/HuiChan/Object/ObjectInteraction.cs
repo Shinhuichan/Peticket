@@ -31,6 +31,14 @@ public class ObjectInteraction : MonoBehaviour
     public void Select_Enter()
     {
         ShowUI(getUI);
+        // ✅ 버튼이 있다면 itemToPickup 연결 수정 정건모 삭제
+        var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
+        if (pickupButton != null)
+        {
+            pickupButton.itemToPickup = this.gameObject;
+        }
+        // 여기까지
+    
     }
     public void Select_Exit()
     {
