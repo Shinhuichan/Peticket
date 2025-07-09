@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3139553012008901381}
   m_Layer: 0
   m_Name: Leg (2)
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4743378335912214834}
   m_Layer: 0
   m_Name: Leg
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7802187874218572498}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 8767740917345441626}
   m_Layer: 0
   m_Name: Leg (3)
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,6 +302,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7121353464356408892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185023175518010723}
+  m_Layer: 0
+  m_Name: Neck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &185023175518010723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121353464356408892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642801810500803873}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &7168739235500742713
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +346,7 @@ GameObject:
   - component: {fileID: 8384946631479628676}
   m_Layer: 0
   m_Name: Leg (1)
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +433,7 @@ GameObject:
   - component: {fileID: 1189817228745526066}
   m_Layer: 0
   m_Name: XR Interaction Animal
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,6 +452,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3415070801096366025}
+  - {fileID: 185023175518010723}
   - {fileID: 509027622257490230}
   - {fileID: 4326280590744224420}
   - {fileID: 848279440512482535}
@@ -540,6 +572,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   interactionrange: {x: 1, y: 5}
   relativeVelocity: {x: 0, y: 0, z: 0}
+  collarTransform: {fileID: 185023175518010723}
 --- !u!114 &1189817228745526066
 MonoBehaviour:
   m_ObjectHideFlags: 0

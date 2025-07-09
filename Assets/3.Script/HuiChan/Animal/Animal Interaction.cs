@@ -1,12 +1,13 @@
 using CustomInspector;
 using UnityEngine;
 
-
 public class AnimalInteraction : MonoBehaviour
 {
     [SerializeField, ReadOnly] Rigidbody rb;
     [AsRange(0f, 20f)] public Vector2 interactionrange;
     [SerializeField, ReadOnly] Vector3 relativeVelocity;
+
+    public Transform collarTransform;
 
     HandController hand;
 
@@ -49,7 +50,12 @@ public class AnimalInteraction : MonoBehaviour
         Vector3 otherVelocity = hand.currentVelocity;
         relativeVelocity = otherVelocity - thisVelocity;
 
-        if (relativeVelocity.magnitude > interactionrange.x && relativeVelocity.magnitude < interactionrange.y) // 쓰다듬기
+        if (relativeVelocity.magnitude > interactionrange.y) // 너무 빠른 속도로 들어왔을 경우
+        {
+            Debug.Log("당신은 너무 폭력적이에요!!!!!!");
+            // 반려 동물의 슬픔
+        }
+        else if (relativeVelocity.magnitude > interactionrange.x && relativeVelocity.magnitude < interactionrange.y) // 쓰다듬기
         {
             Debug.Log("부드럽게 쓰다듬고 있어요!");
 
