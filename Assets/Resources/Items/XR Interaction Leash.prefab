@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 310168016005192058}
   - component: {fileID: 3822546094175810055}
   - component: {fileID: 2410920834087099972}
+  - component: {fileID: -7981159645382478652}
   m_Layer: 0
   m_Name: XR Interaction Leash
   m_TagString: Untagged
@@ -380,7 +381,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338b6e11510939f4788078d226b1c854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   introduceUI: {fileID: 0}
   getUI: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
+  type: 0
+--- !u!114 &-7981159645382478652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462299897257804746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1379dd4f61feb94ea848c07fa4b9eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewModelPrefab: {fileID: 3959561671749182327, guid: 58e75e0f2ef0b2f41a7df1ff1d4ce4e2, type: 3}
+  previewScale: 50
+  previewRotationEuler: {x: 25, y: -45, z: 0}
+  previewOffset: {x: 0, y: 0, z: -30}

@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee48b08199a0e642806453a2bb91f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   introduceUI: {fileID: 0}
   getUI: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
@@ -606,8 +607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379dd4f61feb94ea848c07fa4b9eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewModelPrefab: {fileID: 7990612705820761404, guid: 47796588f2f38134bac5abf8e639b844, type: 3}
-  previewScale: 50
+  previewModelPrefab: {fileID: 1142622413197976009, guid: 77274ab8aec887543884e09933bf6a83, type: 3}
+  previewScale: 80
   previewRotationEuler: {x: 25, y: -45, z: 0}
   previewOffset: {x: 0, y: 0, z: -30}
 --- !u!1 &6266072029600843072

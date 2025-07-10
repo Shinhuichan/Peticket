@@ -45,7 +45,9 @@ public class InventorySlot : MonoBehaviour
             currentPreview = Instantiate(previewData.previewModelPrefab, previewRoot);
             currentPreview.transform.localPosition = previewData.previewOffset;
             currentPreview.transform.localRotation = Quaternion.Euler(previewData.previewRotationEuler);
-            currentPreview.transform.localScale = Vector3.one * previewData.previewScale;
+            // ✅ 프리팹 원래 비율 유지하면서 크기만 확대
+currentPreview.transform.localScale =
+    Vector3.Scale(previewData.previewModelPrefab.transform.localScale, Vector3.one * previewData.previewScale);
 
             Debug.Log($"[InventorySlot] 미리보기 프리팹 생성 완료: {currentPreview.name}");
 

@@ -412,8 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379dd4f61feb94ea848c07fa4b9eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewModelPrefab: {fileID: 7990612705820761404, guid: 47796588f2f38134bac5abf8e639b844, type: 3}
-  previewScale: 50
+  previewModelPrefab: {fileID: 5245292595846805349, guid: 5f8436e586cada649b7ed616a69cdd05, type: 3}
+  previewScale: 80
   previewRotationEuler: {x: 25, y: -45, z: 0}
   previewOffset: {x: 0, y: 0, z: -30}
 --- !u!114 &7963966395622962051
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8217198d3a8ed2468f0f1a92be3221f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   introduceUI: {fileID: 0}
   getUI: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
@@ -438,3 +439,4 @@ MonoBehaviour:
   foodObj: {fileID: 5462299897257804746, guid: 834a6fff4fab232448ce35c3ee570ad9, type: 3}
   bowlObj: {fileID: 6142918788862709093, guid: b601322b971d47d419e503c867fe198a, type: 3}
   spawnTrans: {fileID: 5310193103101370749}
+  limitXZRotation: 90
