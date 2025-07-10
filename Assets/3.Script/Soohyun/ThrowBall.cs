@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,22 +26,28 @@ public class ThrowBall : MonoBehaviour
 
     public void BallThrow()
     {
-        if(ballPrefab == null || throwPoint == null || dog == null)
+        if (ballPrefab == null || throwPoint == null || dog == null)
         {
-            Debug.Log("ÇÊ¿äÇÑ °ª ¾øÀ½! ÀÎ½ºÆåÅÍ Ã¢ º¸¼¼¿ä");
+            Debug.Log("í•„ìš”í•œ ê°’ ì—†ìŒ! ì¸ìŠ¤í™í„° ì°½ ë³´ì„¸ìš”");
             return;
         }
 
         GameObject ball = Instantiate(ballPrefab, throwPoint.position, Quaternion.identity);
 
         Rigidbody rb = ball.GetComponent<Rigidbody>();
-
-        if(rb != null)
+        if (rb != null)
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
         }
-        dog.OnBallSpawned(ball);
+
+        // ğŸ”¥ BallThrowDetectorì— dog ì—°ê²°
+        BallThrowDetector detector = ball.GetComponent<BallThrowDetector>();
+        if (detector != null)
+        {
+            detector.dog = dog;
+        }
     }
+
 }

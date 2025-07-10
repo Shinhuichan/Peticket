@@ -151,6 +151,11 @@ public class AnimalLogic : MonoBehaviour
     public void OnBallSpawned(GameObject ball) => fetchHandler.OnBallSpawned(ball);
     public void OnFeedSpawned(GameObject feed) => feedHandler.OnFeedSpawned(feed);
 
+    public void OnBallThrown(GameObject ball)
+    {
+        fetchHandler.OnBallSpawned(ball);
+    }
+
     // State Update
     private void UpdateIdle()
     {
