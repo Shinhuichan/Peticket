@@ -1,52 +1,8 @@
 {
     "items": [
         {
-            "itemName": "XR Interaction Food",
-            "slotIndex": 0
-        },
-        {
-            "itemName": "XR Interaction Bowl",
-            "slotIndex": 1
-        },
-        {
-            "itemName": "XR Interaction Muzzle",
-            "slotIndex": 2
-        },
-        {
-            "itemName": "XR Interaction Toy",
-            "slotIndex": 3
-        },
-        {
-            "itemName": "XR Interaction Leash",
-            "slotIndex": 4
-        },
-        {
-            "itemName": "XR Interaction Muzzle",
-            "slotIndex": 5
-        },
-        {
-            "itemName": "XR Interaction Food",
-            "slotIndex": 6
-        },
-        {
-            "itemName": "XR Interaction Toy",
-            "slotIndex": 8
-        },
-        {
-            "itemName": "XR Poop",
-            "slotIndex": 9
-        },
-        {
             "itemName": "XR Interaction Toy",
             "slotIndex": 10
-        },
-        {
-            "itemName": "XR Interaction Food",
-            "slotIndex": 11
-        },
-        {
-            "itemName": "XR Interaction Bowl",
-            "slotIndex": 12
         },
         {
             "itemName": "XR Interaction Toy",

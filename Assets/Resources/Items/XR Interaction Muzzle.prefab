@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1208964581443204499}
   - component: {fileID: 2839732272792107574}
   - component: {fileID: 39466132543672060}
-  - component: {fileID: 3264668751987646057}
+  - component: {fileID: 1733819325083360976}
   m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3264668751987646057
-MeshCollider:
+--- !u!65 &1733819325083360976
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,10 +102,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5668984478841134232, guid: deade72f09cd41b4495b7f86973928fb, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.01355936, y: 0.014535449, z: 0.01892966}
+  m_Center: {x: 0.0000040496234, y: 0.007267724, z: -0.000013529789}
 --- !u!1 &5462299897257804746
 GameObject:
   m_ObjectHideFlags: 0

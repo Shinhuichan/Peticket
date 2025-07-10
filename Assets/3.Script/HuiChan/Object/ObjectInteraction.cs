@@ -31,12 +31,15 @@ public class ObjectInteraction : MonoBehaviour
         canvas = introduceUI.GetComponentInParent<Canvas>();
         rb = GetComponent<Rigidbody>();
     }
+
+    bool isSelect = false;
     public void Select_Enter()
     {
         ShowUI(getUI);
         var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
         if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
         introduceUI.SetActive(false);
+        isSelect = true;
     }
     public void Select_Exit()
     {
@@ -45,7 +48,8 @@ public class ObjectInteraction : MonoBehaviour
 
     public void Hover_Enter()
     {
-        ShowUI(introduceUI);
+        getUI.SetActive(false);
+        if (!isSelect) ShowUI(introduceUI);
     }
 
     public void Hover_Exit()

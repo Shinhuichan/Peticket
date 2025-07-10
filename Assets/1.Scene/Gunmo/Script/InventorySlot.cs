@@ -89,12 +89,12 @@ currentPreview.transform.localScale =
         Collider[] colliders = Physics.OverlapSphere(handTransform.position, checkRadius);
         Debug.Log($"🔍 손 주변 감지된 오브젝트 수: {colliders.Length}");
 
-        if (colliders.Length > 0)
-        {
-            Debug.LogWarning("손 위에 이미 아이템이 있습니다. 꺼낼 수 없습니다.");
-            ShowSlotBlockedFeedback();
-            return;
-        }
+        // if (colliders.Length > 0)
+        // {
+        //     Debug.LogWarning("손 위에 이미 아이템이 있습니다. 꺼낼 수 없습니다.");
+        //     ShowSlotBlockedFeedback();
+        //     return;
+        // }
 
         if (currentItem != null)
         {

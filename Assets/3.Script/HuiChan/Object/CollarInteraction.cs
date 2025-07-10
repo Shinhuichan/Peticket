@@ -13,6 +13,7 @@ public class CollarInteraction : ObjectInteraction
     [SerializeField, ReadOnly] bool isEquip = false;
     AnimalInteraction animal;
     Collider myCol;
+    Rigidbody rb;
     void Start()
     {
         myCol = transform.GetComponentInChildren<Collider>();
@@ -25,6 +26,7 @@ public class CollarInteraction : ObjectInteraction
             Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
             myCol.gameObject.transform.position = targetTrans.position;
             myCol.gameObject.transform.rotation = targetTrans.rotation;
+            if (rb != null) rb.isKinematic = true;
         }
     }
     void OnTriggerEnter(Collider col)
@@ -33,7 +35,7 @@ public class CollarInteraction : ObjectInteraction
         {
             // 필요한 Component들 정의
             
-            Rigidbody rb = transform.GetComponent<Rigidbody>();
+            rb = transform.GetComponent<Rigidbody>();
             animal = col.gameObject.GetComponentInParent<AnimalInteraction>();
 
             isEquip = true;
