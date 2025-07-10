@@ -55,7 +55,8 @@ public class ObjectInteraction : MonoBehaviour
 
     void ShowUI(GameObject ui)
     {
-        ui.SetActive(true);
+        if(ui.activeInHierarchy == false) ui.SetActive(true);
+
         Renderer currentRenderer = ui.GetComponent<MeshRenderer>();
         if (currentRenderer == null) return;
         Vector3 worldTopRight = currentRenderer.bounds.max * 2;

@@ -467,19 +467,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5203284698044559465}
-        m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
-        m_MethodName: Select_Exit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -593,6 +581,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   introduceUI: {fileID: 0}
   getUI: {fileID: 0}
+  dog: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
 --- !u!114 &4095611519270170046
