@@ -2410,6 +2410,7 @@ GameObject:
   - component: {fileID: 6605913918962158020}
   - component: {fileID: 6605913918962158021}
   - component: {fileID: 6605913918962158022}
+  - component: {fileID: 6605913918962158023}
   m_Layer: 0
   m_Name: XR Interaction Setup
   m_TagString: Untagged
@@ -4651,6 +4652,20 @@ MonoBehaviour:
   handTransform: {fileID: 1331334957923211866}
   dog: {fileID: 1065645357}
   feedSpawnKey: 282
+--- !u!114 &6605913918962158023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645856928869961867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d065395c1e5e3f348aa8cb974661c0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dog: {fileID: 1065645357}
+  throwVelocityThreshold: 1.5
 --- !u!114 &6607978547418466481
 MonoBehaviour:
   m_ObjectHideFlags: 0

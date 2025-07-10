@@ -15,9 +15,12 @@ public class AnimalFetchHandler
         animal = logic;
     }
 
+    private bool isBallThrown = false;
     public void OnBallSpawned(GameObject ball)
     {
+        if (isBallThrown || targetBall != null || isGoingToBall || isReturning) return;
         targetBall = ball;
+        isBallThrown = true;
         isGoingToBall = true;
         isReturning = false;
         hasBall = false;
@@ -27,6 +30,8 @@ public class AnimalFetchHandler
 
     public void UpdateFetch()
     {
+        if (targetBall == null) return;
+
         if (isGoingToBall && targetBall != null)
         {
             if (NavMesh.SamplePosition(targetBall.transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas))
@@ -66,7 +71,7 @@ public class AnimalFetchHandler
             }
         }
 
-        if (isReturning && targetBall != null)
+        if (isReturning)
         {
             if (!animal.Agent.pathPending && animal.Agent.remainingDistance <= 0.5f)
             {
@@ -89,10 +94,9 @@ public class AnimalFetchHandler
                 {
                     rb.isKinematic = false;
                 }
-                targetBall = null;
-
                 isReturning = false;
                 hasBall = false;
+                targetBall = null;
 
                 animal.Agent.isStopped = true;
                 animal.Agent.ResetPath();
