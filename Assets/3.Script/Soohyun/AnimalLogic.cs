@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -53,6 +54,7 @@ public class AnimalLogic : MonoBehaviour
     private AnimalFeedHandler feedHandler;
     private AnimalAnimation animationHandler;
 
+    private Coroutine leashCheckCoroutine;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -78,6 +80,19 @@ public class AnimalLogic : MonoBehaviour
 
         UpdateState[currentState]?.Invoke();
         UpdateRotation();
+
+        if(isLeashed && Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+        {
+            nav.isStopped = true;
+            nav.ResetPath();
+
+            Vector3 dir = (transform.position - player.position).normalized;
+            Vector3 clampedPos = player.position + dir * leashFollowDistance * 0.9f;
+            if (NavMesh.SamplePosition(clampedPos, out NavMeshHit clampedHit, 1.0f, NavMesh.AllAreas))
+            {
+                nav.SetDestination(clampedHit.position);
+            }
+        }
     }
 
     private void InitializeState()
@@ -87,7 +102,7 @@ public class AnimalLogic : MonoBehaviour
             {AnimalState.Idle, UpdateIdle},
             {AnimalState.FreeWalk, UpdateWalk },
             {AnimalState.FollowPlayer, UpdateFollow },
-            {AnimalState.LeashFollow, UpdateLeashFollow },
+            {AnimalState.LeashFollow, UpdateLeashFollow},
             {AnimalState.Fetch, () =>
             {
                 fetchHandler.UpdateFetch();
@@ -172,20 +187,6 @@ public class AnimalLogic : MonoBehaviour
 
     private void UpdateLeashFollow()
     {
-        if (Vector3.Distance(transform.position, player.position) >= leashFollowDistance)
-        {
-            Vector3 dir = (player.position - transform.position).normalized;
-            Vector3 chk = player.position - dir * (leashFollowDistance * 0.9f);
-
-            if(NavMesh.SamplePosition(chk,out NavMeshHit hit, 1f, NavMesh.AllAreas))
-            {
-                nav.isStopped = false;
-                nav.SetDestination(hit.position);
-            }
-
-            return;
-        }
-
         if (!nav.pathPending && nav.remainingDistance <= 0.3f)
         {
             MoveRandomPointInLeashArea();
@@ -231,19 +232,10 @@ public class AnimalLogic : MonoBehaviour
 
         if(NavMesh.SamplePosition(targetPos,out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
         {
-            float distFromPlayer = Vector3.Distance(player.position, hit.position);
-
-            if (distFromPlayer <= leashFollowDistance)
+            if (Vector3.Distance(player.position, hit.position) <= leashFollowDistance)
             {
                 nav.SetDestination(hit.position);
-            }
-            else
-            {
-                Vector3 clampedPos = player.position + (hit.position - player.position);
-                if(NavMesh.SamplePosition(clampedPos, out NavMeshHit clampedHit, 1.0f, NavMesh.AllAreas))
-                {
-                    nav.SetDestination(clampedHit.position);
-                }
+                return;
             }
         }
 
@@ -254,6 +246,16 @@ public class AnimalLogic : MonoBehaviour
         isLeashed = on;
         if (on)
         {
+            if(Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+            {
+                Vector3 dir = (transform.position - player.position).normalized;
+                Vector3 clamped = player.position + dir * leashFollowDistance * 0.9f;
+
+                if(NavMesh.SamplePosition(clamped, out NavMeshHit hit, 1f ,NavMesh.AllAreas))
+                {
+                    nav.SetDestination(hit.position);
+                }
+            }
             ChangeState(AnimalState.LeashFollow);
         }
         else
