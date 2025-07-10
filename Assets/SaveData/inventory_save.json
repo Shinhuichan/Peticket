@@ -51,6 +51,10 @@
         {
             "itemName": "XR Interaction Bowl",
             "slotIndex": 12
+        },
+        {
+            "itemName": "XR Interaction Toy",
+            "slotIndex": 13
         }
     ]
 }
