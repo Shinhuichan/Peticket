@@ -36,6 +36,7 @@ public class ObjectInteraction : MonoBehaviour
         ShowUI(getUI);
         var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
         if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
+        introduceUI.SetActive(false);
     }
     public void Select_Exit()
     {
