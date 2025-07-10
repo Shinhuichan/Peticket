@@ -49,12 +49,12 @@ public class AnimalFetchHandler
                 isGoingToBall = false;
                 isReturning = true;
 
-                var col = targetBall.GetComponent<SphereCollider>();
+                var col = targetBall.GetComponentInChildren<SphereCollider>();
                 if(col != null){
                     col.enabled = false;
                 }
 
-                Vector3 returnPoint = animal.Player.position + animal.Player.forward.normalized * 1.0f;
+                Vector3 returnPoint = animal.Player.position + animal.Player.forward.normalized * 1.5f;
 
                 if(NavMesh.SamplePosition(returnPoint, out NavMeshHit resultHit, 1.0f, NavMesh.AllAreas))
                 {
@@ -77,7 +77,18 @@ public class AnimalFetchHandler
                 }
 
                 targetBall.transform.SetParent(null);
-                Object.Destroy(targetBall);
+
+                Vector3 drop = animal.Player.position + animal.Player.forward * 0.9f;
+                drop.y = animal.transform.position.y;
+
+                targetBall.transform.position = drop;
+                targetBall.transform.rotation = Quaternion.identity;
+
+                var rb = targetBall.GetComponent<Rigidbody>();
+                if(rb!= null)
+                {
+                    rb.isKinematic = false;
+                }
                 targetBall = null;
 
                 isReturning = false;
@@ -86,6 +97,8 @@ public class AnimalFetchHandler
                 animal.Agent.isStopped = true;
                 animal.Agent.ResetPath();
                 animal.AnimationHandler.SetAnimation(PetAnimation.Sit);
+
+                animal.ChangeState(AnimalState.Idle);
             }
         }
     }

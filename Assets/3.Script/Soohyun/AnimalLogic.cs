@@ -54,7 +54,6 @@ public class AnimalLogic : MonoBehaviour
     private AnimalFeedHandler feedHandler;
     private AnimalAnimation animationHandler;
 
-    private Coroutine leashCheckCoroutine;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -81,7 +80,7 @@ public class AnimalLogic : MonoBehaviour
         UpdateState[currentState]?.Invoke();
         UpdateRotation();
 
-        if(isLeashed && Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+        if (isLeashed && Vector3.Distance(transform.position, player.position) > leashFollowDistance)
         {
             nav.isStopped = true;
             nav.ResetPath();
@@ -230,7 +229,7 @@ public class AnimalLogic : MonoBehaviour
         float radius = UnityEngine.Random.Range(leashFollowDistance * 0.3f, leashFollowDistance * 0.95f);
         Vector3 targetPos = player.position + rndDir * radius;
 
-        if(NavMesh.SamplePosition(targetPos,out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
         {
             if (Vector3.Distance(player.position, hit.position) <= leashFollowDistance)
             {
@@ -246,12 +245,12 @@ public class AnimalLogic : MonoBehaviour
         isLeashed = on;
         if (on)
         {
-            if(Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+            if (Vector3.Distance(transform.position, player.position) > leashFollowDistance)
             {
                 Vector3 dir = (transform.position - player.position).normalized;
                 Vector3 clamped = player.position + dir * leashFollowDistance * 0.9f;
 
-                if(NavMesh.SamplePosition(clamped, out NavMeshHit hit, 1f ,NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(clamped, out NavMeshHit hit, 1f, NavMesh.AllAreas))
                 {
                     nav.SetDestination(hit.position);
                 }
@@ -263,6 +262,7 @@ public class AnimalLogic : MonoBehaviour
             ChangeState(AnimalState.Idle);
         }
     }
+
 
     public NavMeshAgent Agent => nav;
     public Animator animator => anim;
