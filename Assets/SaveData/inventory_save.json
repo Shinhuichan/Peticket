@@ -39,6 +39,18 @@
         {
             "itemName": "XR Poop",
             "slotIndex": 9
+        },
+        {
+            "itemName": "XR Interaction Toy",
+            "slotIndex": 10
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 11
+        },
+        {
+            "itemName": "XR Interaction Bowl",
+            "slotIndex": 12
         }
     ]
 }

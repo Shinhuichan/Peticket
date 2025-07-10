@@ -431,12 +431,13 @@ MonoBehaviour:
   canvas: {fileID: 0}
   introduceUI: {fileID: 0}
   getUI: {fileID: 0}
+  dog: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   foodObj: {fileID: 5462299897257804746, guid: 834a6fff4fab232448ce35c3ee570ad9, type: 3}
-  bowlObj: {fileID: 6142918788862709093, guid: b601322b971d47d419e503c867fe198a, type: 3}
+  bowlObj: {fileID: 6142918788862709093, guid: 335bdf8115e855c4e8d7e8cefe6b79d1, type: 3}
   spawnTrans: {fileID: 5310193103101370749}
-  limitXZRotation: 90
+  limitXZRotation: 60

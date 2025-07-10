@@ -54,6 +54,15 @@
         "com.unity.testtools.codecoverage": "1.2.5"
       }
     },
+    "com.unity.feature.vr": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.xr.oculus": "4.2.0",
+        "com.unity.xr.openxr": "1.11.0"
+      }
+    },
     "com.unity.ide.rider": {
       "version": "3.0.28",
       "depth": 1,
@@ -267,7 +276,7 @@
     },
     "com.unity.xr.oculus": {
       "version": "4.2.0",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.4.0"
