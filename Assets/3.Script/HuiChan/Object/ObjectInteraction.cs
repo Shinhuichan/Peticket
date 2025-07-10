@@ -7,6 +7,8 @@ public class ObjectInteraction : MonoBehaviour
     [SerializeField, ReadOnly] Canvas canvas;
     [SerializeField] GameObject introduceUI;
     [SerializeField] GameObject getUI;
+    [SerializeField, ReadOnly] protected AnimalLogic dog;
+
 
     [Header("이동 제한 영역 설정")]
     [SerializeField]
@@ -18,6 +20,7 @@ public class ObjectInteraction : MonoBehaviour
 
     void Awake()
     {
+        dog = FindAnyObjectByType<AnimalLogic>();
         introduceUI = Resources.FindObjectsOfTypeAll<GameObject>()
                          .FirstOrDefault(obj => obj.name.Contains("Introduce"));
         getUI = Resources.FindObjectsOfTypeAll<GameObject>()
@@ -121,13 +124,6 @@ public class ObjectInteraction : MonoBehaviour
 
         // 제한된 위치를 오브젝트에 적용
         transform.position = clampedPosition;
-
-        // Rigidbody가 있다면 제한된 속도를 적용
-        if (rb != null)
-        {
-            rb.velocity = clampedVelocity;
-            // rb.angularVelocity = Vector3.zero;
-        }
     }
 
     void OnDrawGizmosSelected()

@@ -387,6 +387,7 @@ MonoBehaviour:
   minBounds: {x: -20, y: 0.1, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
   type: 0
+  isEquip: 0
 --- !u!114 &-7981159645382478652
 MonoBehaviour:
   m_ObjectHideFlags: 0
