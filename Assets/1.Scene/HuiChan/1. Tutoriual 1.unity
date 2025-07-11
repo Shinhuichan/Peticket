@@ -2197,6 +2197,10 @@ PrefabInstance:
       propertyPath: m_RightHandTurnAction.m_UseReference
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8138343170954822137, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -6553,7 +6557,7 @@ MonoBehaviour:
   idleToWalkDelay: 3
   callDistance: 1.5
   isLeashed: 0
-  leashFollowDistance: 2
+  leashFollowDistance: 10
   mouthPos: {fileID: 8896990381304127386}
   eatDuration: 2
 --- !u!222 &8325466167336469436

@@ -200,9 +200,10 @@ public class AnimalLogic : MonoBehaviour
                 nav.SetDestination(hit.position);
             }
         }
-        if (!nav.pathPending && nav.remainingDistance <= 0.3f)
+        else
         {
-            MoveRandomPointInLeashArea();
+            nav.isStopped = true;
+            nav.ResetPath();
         }
     }
 
