@@ -2138,6 +2138,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 294546593222342069, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: smoothing
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 294546593222342069, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
       propertyPath: neckAnchor
       value: 
       objectReference: {fileID: 1772813299766301730}
@@ -2199,7 +2203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8138343170954822137, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

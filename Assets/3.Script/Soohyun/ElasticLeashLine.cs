@@ -31,7 +31,7 @@ public class ElasticLeashLine : MonoBehaviour
         }
 
         line.positionCount = segmentCount;
-        line.widthMultiplier = 0.2f;
+        line.widthMultiplier = 0.05f;
         line.material.color = Color.black;
         line.startColor = Color.black;
         line.endColor = Color.black;

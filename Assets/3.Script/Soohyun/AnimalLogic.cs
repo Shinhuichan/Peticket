@@ -54,6 +54,18 @@ public class AnimalLogic : MonoBehaviour
     private AnimalFeedHandler feedHandler;
     private AnimalAnimation animationHandler;
 
+    [ContextMenu("Leash ON")]
+    private void Debug_LeashOn()
+    {
+        SetLeashed(true);
+    }
+
+    [ContextMenu("Leash OFF")]
+    private void Debug_LeashOff()
+    {
+        SetLeashed(false);
+    }
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -80,18 +92,7 @@ public class AnimalLogic : MonoBehaviour
         UpdateState[currentState]?.Invoke();
         UpdateRotation();
 
-        if (isLeashed && Vector3.Distance(transform.position, player.position) > leashFollowDistance)
-        {
-            nav.isStopped = true;
-            nav.ResetPath();
-
-            Vector3 dir = (transform.position - player.position).normalized;
-            Vector3 clampedPos = player.position + dir * leashFollowDistance * 0.9f;
-            if (NavMesh.SamplePosition(clampedPos, out NavMeshHit clampedHit, 1.0f, NavMesh.AllAreas))
-            {
-                nav.SetDestination(clampedHit.position);
-            }
-        }
+        //SetLeashed(isLeashed);
     }
 
     private void InitializeState()
@@ -127,7 +128,6 @@ public class AnimalLogic : MonoBehaviour
             } },
             {AnimalState.LeashFollow, ()=>{
                 nav.isStopped = false;
-                MoveRandomPointInLeashArea();
                 animationHandler.SetAnimation(PetAnimation.Walk);
             } },
             {AnimalState.GoToFeed, () => feedHandler.EnterFeed()},
@@ -143,7 +143,6 @@ public class AnimalLogic : MonoBehaviour
     public void ChangeState(AnimalState newState)
     {
         if (currentState == newState) return;
-
         currentState = newState;
         EnterState[newState]?.Invoke();
     }
@@ -234,7 +233,6 @@ public class AnimalLogic : MonoBehaviour
             nav.SetDestination(hit.position);
         }
     }
-
     private void MoveRandomPointInLeashArea()
     {
         Vector3 rndDir = UnityEngine.Random.insideUnitSphere;
@@ -254,7 +252,6 @@ public class AnimalLogic : MonoBehaviour
         }
 
     }
-
     public void SetLeashed(bool on)
     {
         isLeashed = on;
@@ -271,6 +268,7 @@ public class AnimalLogic : MonoBehaviour
                 }
             }
             ChangeState(AnimalState.LeashFollow);
+            MoveRandomPointInLeashArea();
         }
         else
         {
