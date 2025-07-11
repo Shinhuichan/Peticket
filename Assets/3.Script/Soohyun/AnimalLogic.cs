@@ -191,6 +191,15 @@ public class AnimalLogic : MonoBehaviour
 
     private void UpdateLeashFollow()
     {
+        if(Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+        {
+            Vector3 targetPos = player.position - (player.forward * 0.5f);
+            if(NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            {
+                nav.isStopped = false;
+                nav.SetDestination(hit.position);
+            }
+        }
         if (!nav.pathPending && nav.remainingDistance <= 0.3f)
         {
             MoveRandomPointInLeashArea();
