@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7fe0dc3fcd8d4fbd5929e15579d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 1495106753}
+  targetCamera: {fileID: 1399673390}
   followXZOnly: 1
   fixedOffset: {x: 0, y: 0, z: 7}
 --- !u!114 &747917057
@@ -2185,9 +2185,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2072700984112681698, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: m_RightHandSnapTurnAction.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4356723190418195749, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
       propertyPath: m_CameraYOffset
       value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542374360066678598, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: m_RightHandTurnAction.m_UseReference
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2571,11 +2579,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435475855}
   m_CullTransparentMesh: 1
---- !u!4 &1495106753 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3053210478702303720, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
-  m_PrefabInstance: {fileID: 1411165299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1636871703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1472860841262501218, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
@@ -6544,7 +6547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   currentState: 0
-  player: {fileID: 1636871703}
+  player: {fileID: 1399673390}
   walkRadius: 2
   checkInterval: 2
   idleToWalkDelay: 3
