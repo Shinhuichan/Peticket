@@ -891,6 +891,10 @@ PrefabInstance:
       propertyPath: introduceUI
       value: 
       objectReference: {fileID: 1260857540}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
       propertyPath: m_Name
       value: XR Interaction Muzzle
@@ -2193,9 +2197,17 @@ PrefabInstance:
       propertyPath: m_RightHandSnapTurnAction.m_UseReference
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2576214409456041244, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4356723190418195749, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
       propertyPath: m_CameraYOffset
       value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043036476875270946, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6542374360066678598, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
       propertyPath: m_RightHandTurnAction.m_UseReference
@@ -2735,6 +2747,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 272873387}
     - target: {fileID: 3822546094175810055, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 272873387}
@@ -2788,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: m_Name
-      value: XR Interaction Leash
+      value: XR Interaction Collar
       objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: m_IsActive
@@ -3203,7 +3219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7963966395622962051, guid: 107b170a3ca98954780ba95de7a24d13, type: 3}
       propertyPath: limitXZRotation
-      value: 60
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7963966395622962051, guid: 107b170a3ca98954780ba95de7a24d13, type: 3}
       propertyPath: targetLayer.m_Bits
@@ -3674,6 +3690,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3484808050198809497, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6926634891687312579, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.87

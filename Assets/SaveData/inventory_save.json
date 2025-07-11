@@ -1,3 +1,24 @@
 {
-    "items": []
+    "items": [
+        {
+            "itemName": "XR Interaction Muzzle",
+            "slotIndex": 0
+        },
+        {
+            "itemName": "XR Interaction Bowl",
+            "slotIndex": 1
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 2
+        },
+        {
+            "itemName": "XR Interaction Muzzle",
+            "slotIndex": 3
+        },
+        {
+            "itemName": "XR Interaction Shovel",
+            "slotIndex": 4
+        }
+    ]
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using CustomInspector;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ObjectInteraction : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ObjectInteraction : MonoBehaviour
     [SerializeField] GameObject introduceUI;
     [SerializeField] GameObject getUI;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
+    [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
 
 
     [Header("이동 제한 영역 설정")]
@@ -33,13 +35,30 @@ public class ObjectInteraction : MonoBehaviour
     }
 
     bool isSelect = false;
-    public void Select_Enter()
+    private XRInteractorLineVisual currentRayLineVisual;
+    public void Select_Enter(SelectEnterEventArgs args)
     {
-        ShowUI(getUI);
-        var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
-        if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
-        introduceUI.SetActive(false);
-        isSelect = true;
+        rayInteractor = args.interactorObject as XRRayInteractor;
+        if (rayInteractor != null)
+        {
+            currentRayLineVisual = rayInteractor.GetComponent<XRInteractorLineVisual>();
+            if (currentRayLineVisual != null) currentRayLineVisual.enabled = false;
+
+            
+            // transform.SetParent(rayInteractor.transform);
+            // transform.localPosition = Vector3.zero;
+            // transform.GetChild(0).localPosition = Vector3.zero;
+            // transform.localRotation = Quaternion.identity;
+
+            // Rigidbody rb = GetComponent<Rigidbody>();
+            // if (rb != null) rb.isKinematic = true;
+
+            ShowUI(getUI);
+            var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
+            if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
+            introduceUI.SetActive(false);
+            isSelect = true;
+        }
     }
     public void Select_Exit()
     {
@@ -59,7 +78,7 @@ public class ObjectInteraction : MonoBehaviour
 
     void ShowUI(GameObject ui)
     {
-        if(ui.activeInHierarchy == false) ui.SetActive(true);
+        if (ui.activeInHierarchy == false) ui.SetActive(true);
 
         Renderer currentRenderer = ui.GetComponent<MeshRenderer>();
         if (currentRenderer == null) return;

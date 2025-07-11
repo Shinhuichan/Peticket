@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 554862774580880147}
   - component: {fileID: 7628454499720815456}
   - component: {fileID: 7963966395622962051}
+  - component: {fileID: 2561931002531434030}
   m_Layer: 0
   m_Name: XR Interaction Food
   m_TagString: Untagged
@@ -428,4 +429,25 @@ MonoBehaviour:
   foodObj: {fileID: 5462299897257804746, guid: 834a6fff4fab232448ce35c3ee570ad9, type: 3}
   bowlObj: {fileID: 6142918788862709093, guid: 335bdf8115e855c4e8d7e8cefe6b79d1, type: 3}
   spawnTrans: {fileID: 5310193103101370749}
-  limitXZRotation: 60
+  limitXZRotation: 45
+--- !u!65 &2561931002531434030
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990612705820761404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
