@@ -19,6 +19,7 @@ public class ObjectInteraction : MonoBehaviour
     private Vector3 maxBounds = new Vector3(5f, 5f, 5f);   // X, Y, Z 최대 좌표
 
     private Rigidbody rb;
+    private XRGrabInteractable grabInteractable;
 
     void Awake()
     {
@@ -32,6 +33,18 @@ public class ObjectInteraction : MonoBehaviour
 
         canvas = introduceUI.GetComponentInParent<Canvas>();
         rb = GetComponent<Rigidbody>();
+
+        // XRGrabInteractable 받아오기
+        if (TryGetComponent(out grabInteractable)) Debug.LogWarning($"ObjectInteraction | grabInteractable이 Null입니다.");
+
+        // Event 추가
+        if (grabInteractable != null) grabInteractable.selectEntered.AddListener(OnObjectSelected);
+    }
+
+    void OnDestroy()
+    {
+        // Event 제거
+        if (grabInteractable != null) grabInteractable.selectEntered.RemoveListener(OnObjectSelected);
     }
 
     bool isSelect = false;
@@ -43,15 +56,6 @@ public class ObjectInteraction : MonoBehaviour
         {
             currentRayLineVisual = rayInteractor.GetComponent<XRInteractorLineVisual>();
             if (currentRayLineVisual != null) currentRayLineVisual.enabled = false;
-
-            
-            // transform.SetParent(rayInteractor.transform);
-            // transform.localPosition = Vector3.zero;
-            // transform.GetChild(0).localPosition = Vector3.zero;
-            // transform.localRotation = Quaternion.identity;
-
-            // Rigidbody rb = GetComponent<Rigidbody>();
-            // if (rb != null) rb.isKinematic = true;
 
             ShowUI(getUI);
             var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
@@ -159,5 +163,66 @@ public class ObjectInteraction : MonoBehaviour
         // 제한 영역의 크기 계산
         Vector3 size = maxBounds - minBounds;
         Gizmos.DrawWireCube(center, size);
+    }
+
+    private void OnObjectSelected(SelectEnterEventArgs args)
+    {
+        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
+
+        if (args.interactorObject is XRDirectInteractor directInteractor)
+        {
+            Debug.Log("Direct Grab");
+
+            // Direct Grab 시 발생할 이벤트 처리
+            HandleDirectGrabEvent();
+        }
+        else if (args.interactorObject is XRRayInteractor rayInteractor)
+        {
+            Debug.Log("Ray Grab");
+
+            // Ray Grab 시 발생할 이벤트 처리
+            HandleRayGrabEvent();
+        }
+    }
+    private void OnObjectExited(SelectExitEventArgs args)
+    {
+        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
+
+        if (args.interactorObject is XRDirectInteractor directInteractor)
+        {
+            Debug.Log("Direct Grab");
+
+            // Direct Grab 시 발생할 이벤트 처리
+            HandleDirectExitEvent();
+        }
+        else if (args.interactorObject is XRRayInteractor rayInteractor)
+        {
+            Debug.Log("Ray Grab");
+
+            // Ray Grab 시 발생할 이벤트 처리
+            HandleRayExitEvent();
+        }
+    }
+
+    // Direct Grab 시 실행될 Method
+    private void HandleDirectGrabEvent()
+    {
+
+    }
+
+    // Ray Grab 시 실행될 Method
+    private void HandleRayGrabEvent()
+    {
+        ShowUI(getUI);
+    }
+    private void HandleDirectExitEvent()
+    {
+
+    }
+
+    // Ray Grab 시 실행될 Method
+    private void HandleRayExitEvent()
+    {
+        getUI.SetActive(false);
     }
 }
