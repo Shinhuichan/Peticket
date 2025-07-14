@@ -66,6 +66,15 @@ public class AnimalLogic : MonoBehaviour
         SetLeashed(false);
     }
 
+    public void OnBallSoundDetected(GameObject ball)
+    {
+        var ballObj = ball.GetComponent<BallObject>();
+        if(ballObj != null && ballObj.isFromInventory)
+        {
+            fetchHandler.OnBallSpawned(ball);
+        }
+    }
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -149,11 +158,6 @@ public class AnimalLogic : MonoBehaviour
 
     public void OnBallSpawned(GameObject ball) => fetchHandler.OnBallSpawned(ball);
     public void OnFeedSpawned(GameObject feed) => feedHandler.OnFeedSpawned(feed);
-
-    public void OnBallThrown(GameObject ball)
-    {
-        fetchHandler.OnBallSpawned(ball);
-    }
 
     // State Update
     private void UpdateIdle()
