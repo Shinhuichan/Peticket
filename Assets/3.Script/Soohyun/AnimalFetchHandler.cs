@@ -91,9 +91,6 @@ public class AnimalFetchHandler
         Vector3 drop = animal.Player.position + animal.Player.forward * 0.9f;
         drop.y = animal.transform.position.y;
 
-        targetBall.transform.position = drop;
-        targetBall.transform.rotation = Quaternion.identity;
-
         if (targetBall.TryGetComponent(out Rigidbody rb))
         {
             rb.isKinematic = false;
@@ -107,6 +104,9 @@ public class AnimalFetchHandler
         animal.Agent.isStopped = true;
         animal.Agent.ResetPath();
         animal.AnimationHandler.SetAnimation(PetAnimation.Sit);
+
+        targetBall.transform.position = drop;
+        targetBall.transform.rotation = Quaternion.identity;
 
         isReturning = false;
         hasBall = false;
