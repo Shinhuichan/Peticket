@@ -1244,9 +1244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923f2d569409684a8edf4a71915c806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  otherRB: {fileID: 0}
+  interactionrange: {x: 0, y: 0}
   relativeVelocity: {x: 0, y: 0, z: 0}
+  collarTransform: {fileID: 0}
+  mouseTransform: {fileID: 0}
 --- !u!54 &909445566
 Rigidbody:
   m_ObjectHideFlags: 0

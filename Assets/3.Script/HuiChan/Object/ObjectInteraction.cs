@@ -39,12 +39,14 @@ public class ObjectInteraction : MonoBehaviour
 
         // Event 추가
         if (grabInteractable != null) grabInteractable.selectEntered.AddListener(OnObjectSelected);
+        if (grabInteractable != null) grabInteractable.selectExited.AddListener(OnObjectExited);
     }
 
     void OnDestroy()
     {
         // Event 제거
         if (grabInteractable != null) grabInteractable.selectEntered.RemoveListener(OnObjectSelected);
+        if (grabInteractable != null) grabInteractable.selectExited.AddListener(OnObjectExited);
     }
 
     bool isSelect = false;
@@ -207,7 +209,7 @@ public class ObjectInteraction : MonoBehaviour
     // Direct Grab 시 실행될 Method
     private void HandleDirectGrabEvent()
     {
-
+        ShowUI(getUI);
     }
 
     // Ray Grab 시 실행될 Method
