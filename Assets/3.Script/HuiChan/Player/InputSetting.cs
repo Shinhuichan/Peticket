@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class InputSetting : MonoBehaviour
 {
+    [Title("Input Setting", underlined: true, fontSize = 15, alignment = TextAlignment.Center)]
+    
     [Header("Inventory Setting")]
     public GameObject inventoryPanel;
     public InputActionReference toggleInventoryAction;

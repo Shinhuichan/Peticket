@@ -448,6 +448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewModelPrefab: {fileID: 975037981215341070, guid: bf832bbf7c6e5a4439cfdbab10c32ad8, type: 3}
-  previewScale: 50
+  previewScale: 100
   previewRotationEuler: {x: 25, y: -45, z: 0}
   previewOffset: {x: 0, y: 0, z: -30}
