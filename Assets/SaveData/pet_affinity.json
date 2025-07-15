@@ -1,0 +1,16 @@
+{
+    "pets": [
+        {
+            "petId": "small",
+            "affinity": 43.5
+        },
+        {
+            "petId": "middle",
+            "affinity": 75.0
+        },
+        {
+            "petId": "large",
+            "affinity": 18.0
+        }
+    ]
+}
