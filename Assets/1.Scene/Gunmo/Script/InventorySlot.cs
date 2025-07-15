@@ -18,7 +18,19 @@ public class InventorySlot : MonoBehaviour
     public AudioClip errorSound;
     public TextMeshProUGUI warningText;
 
+    [SerializeField] private Color originalColor = Color.white; // ✅ 수동 설정
+    private bool isColorInitialized = false;
+
     public bool IsEmpty => currentItem == null;
+
+    public void InitializeSlotColor()
+    {
+        if (!isColorInitialized && slotBackgroundImage != null)
+        {
+            originalColor = slotBackgroundImage.color;
+            isColorInitialized = true;
+        }
+    }
 
     public void StoreItem(GameObject item)
     {
@@ -45,13 +57,10 @@ public class InventorySlot : MonoBehaviour
             currentPreview = Instantiate(previewData.previewModelPrefab, previewRoot);
             currentPreview.transform.localPosition = previewData.previewOffset;
             currentPreview.transform.localRotation = Quaternion.Euler(previewData.previewRotationEuler);
-            // ✅ 프리팹 원래 비율 유지하면서 크기만 확대
-currentPreview.transform.localScale =
-    Vector3.Scale(previewData.previewModelPrefab.transform.localScale, Vector3.one * previewData.previewScale);
+            currentPreview.transform.localScale = Vector3.Scale(previewData.previewModelPrefab.transform.localScale, Vector3.one * previewData.previewScale);
 
             Debug.Log($"[InventorySlot] 미리보기 프리팹 생성 완료: {currentPreview.name}");
 
-            // 이벤트 연결
             var interactor = currentPreview.GetComponent<InventoryPreviewInteractor>();
             if (interactor != null)
             {
@@ -89,6 +98,7 @@ currentPreview.transform.localScale =
         Collider[] colliders = Physics.OverlapSphere(handTransform.position, checkRadius);
         Debug.Log($"🔍 손 주변 감지된 오브젝트 수: {colliders.Length}");
 
+        // 주석 처리된 손 검사 로직
         // if (colliders.Length > 0)
         // {
         //     Debug.LogWarning("손 위에 이미 아이템이 있습니다. 꺼낼 수 없습니다.");
@@ -144,16 +154,17 @@ currentPreview.transform.localScale =
     {
         isBlinking = true;
 
-        Color originalColor = slotBackgroundImage.color;
+        Color beforeBlinkColor = slotBackgroundImage.color;
+
         for (int i = 0; i < 2; i++)
         {
             slotBackgroundImage.color = Color.red;
             yield return new WaitForSeconds(0.15f);
-            slotBackgroundImage.color = originalColor;
+            slotBackgroundImage.color = beforeBlinkColor;
             yield return new WaitForSeconds(0.15f);
         }
 
-        slotBackgroundImage.color = originalColor;
+        slotBackgroundImage.color = beforeBlinkColor;
         isBlinking = false;
     }
 
@@ -186,5 +197,13 @@ currentPreview.transform.localScale =
         warningText.gameObject.SetActive(false);
         warningCoroutine = null;
         Debug.Log("[InventorySlot] 경고 메시지 숨김");
+    }
+
+    public void SetHighlight(bool isOn)
+    {
+        if (slotBackgroundImage != null)
+        {
+            slotBackgroundImage.color = isOn ? Color.white : originalColor;
+        }
     }
 }
