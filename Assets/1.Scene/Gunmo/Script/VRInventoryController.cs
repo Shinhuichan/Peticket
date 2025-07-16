@@ -9,6 +9,8 @@ public class VRInventoryController : MonoBehaviour
 
     public InputActionReference moveAction;   // 휠이나 스틱 좌우
     public InputActionReference selectAction; // 버튼 (예: 트리거)
+
+    [Header("Toggle Inventory Setting")]
     public InputActionAsset playerInputActions;
     private InputActionMap leftInteractionActionMap;
     private InputActionMap rightInteractionActionMap;
@@ -18,17 +20,17 @@ public class VRInventoryController : MonoBehaviour
     private InputActionMap inventoryActionMap;
     public GameObject inventoryPanel;
     public InputActionReference toggleInventoryAction;
-     DynamicMoveProvider moveProvider;
+    DynamicMoveProvider moveProvider;
 
-    private void OnEnable()
+    private void Awake()
     {
         moveAction.action.performed += OnMove;
         selectAction.action.performed += OnSelect;
         moveAction.action.Enable();
-
         selectAction.action.Enable();
+
         toggleInventoryAction.action.Enable();
-        toggleInventoryAction.action.performed += ToggleInventory;
+        toggleInventoryAction.action.started += ToggleInventory;
 
         leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
         rightInteractionActionMap = playerInputActions.FindActionMap("XRI RightHand Interaction");
@@ -38,15 +40,15 @@ public class VRInventoryController : MonoBehaviour
         moveProvider = FindFirstObjectByType<DynamicMoveProvider>();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         moveAction.action.performed -= OnMove;
         selectAction.action.performed -= OnSelect;
         moveAction.action.Disable();
         selectAction.action.Disable();
-        selectAction.action.Disable();
+
         toggleInventoryAction.action.Disable();
-        toggleInventoryAction.action.performed -= ToggleInventory;
+        toggleInventoryAction.action.started -= ToggleInventory;
     }
 
     private void OnMove(InputAction.CallbackContext context)
