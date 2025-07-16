@@ -1105,8 +1105,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1260857540}
     - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnObjectHoverSelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822546094175810055, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
       propertyPath: m_Name
@@ -1547,8 +1567,8 @@ MonoBehaviour:
   toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectedItem: {fileID: 0}
-  dashIncrease: 1.5
   baseMoveSpeed: 0
+  dashIncrease: 1.5
   dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftDirect: {fileID: 946509846}
   rightDirect: {fileID: 1116763315}

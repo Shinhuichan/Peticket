@@ -11,9 +11,11 @@ public class CollarInteraction : ObjectInteraction
 {
     [SerializeField] ObjectType type;
     [SerializeField, ReadOnly] bool isEquip = false;
+
     AnimalInteraction animal;
     Collider myCol;
     Rigidbody rb;
+    
     void Start()
     {
         myCol = transform.GetComponentInChildren<Collider>();

@@ -187,7 +187,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -210,8 +210,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2410920834087099972}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
-        m_MethodName: Hover_Enter
-        m_Mode: 1
+        m_MethodName: OnObjectHoverSelected
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -225,7 +225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2410920834087099972}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
-        m_MethodName: Hover_Exit
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2410920834087099972}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
-        m_MethodName: Select_Enter
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -371,9 +371,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   introduceUI: {fileID: 0}
-  getUI: {fileID: 0}
   dog: {fileID: 0}
   rayInteractor: {fileID: 0}
+  input: {fileID: 0}
   minBounds: {x: -20, y: 0.1, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
   type: 1
