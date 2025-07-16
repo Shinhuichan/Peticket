@@ -4,11 +4,17 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
-public class InputSetting : MonoBehaviour
+public class InputSetting : SingletonBehaviour<InputSetting>
 {
+    protected override bool IsDontDestroy() => true;
     [Title("Input Setting", underlined: true, fontSize = 18, alignment = TextAlignment.Center)]
+    
     public InputActionAsset playerInputActions;
-    private InputActionMap interactionActionMap;
+    private InputActionMap leftInteractionActionMap;
+    private InputActionMap rightInteractionActionMap;
+    private InputActionMap leftLocomotionActionMap;
+    private InputActionMap rightLocomotionActionMap;
+    [SerializeField] InputActionReference leftHandMoveAction;
     private InputActionMap inventoryActionMap;
 
 
@@ -31,9 +37,11 @@ public class InputSetting : MonoBehaviour
 
     void Start()
     {
-        // leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
-        // rightInteractionActionMap = playerInputActions.FindActionMap("XRI RightHand Interaction");
-        // inventoryActionMap = playerInputActions.FindActionMap("XRI Inventory");
+        leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
+        rightInteractionActionMap = playerInputActions.FindActionMap("XRI RightHand Interaction");
+        leftLocomotionActionMap = playerInputActions.FindActionMap("XRI LeftHand Locomotion");
+        rightLocomotionActionMap = playerInputActions.FindActionMap("XRI RightHand Locomotion");
+        inventoryActionMap = playerInputActions.FindActionMap("XRI Inventory");
         if (leftDirect == null || rightDirect == null)
         {
             Debug.LogWarning($"Input Setting | XRDirectInteractor가 Null입니다.");
@@ -43,13 +51,14 @@ public class InputSetting : MonoBehaviour
         InitializeMoveProvider();
         InitializeInputActions();
         InitialGrabEvents();
-        
+
         InputSystem.onDeviceChange += OnDeviceChange;
 
         getItemAction.action.Disable();
+        inventoryActionMap.Disable();
     }
 
-    void OnDestroy()
+    protected override void OnDestroy()
     {
         // 모든 액션 비활성화 및 이벤트 구독 해제
         toggleInventoryAction.action.Disable();
@@ -60,13 +69,11 @@ public class InputSetting : MonoBehaviour
         dashAction.action.performed -= Dash;
         dashAction.action.canceled -= DashStop;
 
-        // 굳건희! Grab/Ungrab 이벤트도 해제해줘.
         leftDirect.selectEntered.RemoveListener(OnGrabStart);
         leftDirect.selectExited.RemoveListener(OnGrabEnd);
         rightDirect.selectEntered.RemoveListener(OnGrabStart);
         rightDirect.selectExited.RemoveListener(OnGrabEnd);
 
-        // GetItem 액션 이벤트도 해제
         getItemAction.action.performed -= GetItem;
         
         InputSystem.onDeviceChange -= OnDeviceChange;
@@ -120,7 +127,39 @@ public class InputSetting : MonoBehaviour
     #region OpenInventory
     private void ToggleInventory(InputAction.CallbackContext context)
     {
-        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        bool isActive = !inventoryPanel.activeSelf;
+        inventoryPanel.SetActive(isActive);
+
+        if (isActive)
+        {
+            // 인벤토리 열림: 이동과 상호작용 모두 비활성화, 인벤토리만 활성화
+            leftInteractionActionMap?.Disable();
+            rightInteractionActionMap?.Disable();
+            leftLocomotionActionMap?.Disable();
+            rightLocomotionActionMap?.Disable();
+            inventoryActionMap?.Enable();
+
+            // 이동 InputAction 자체를 Disable
+            leftHandMoveAction?.action.Disable();
+            if (moveProvider != null) moveProvider.enabled = false;
+
+            Debug.Log("인벤토리 열림: 이동/상호작용 비활성화, 인벤토리 액션맵 활성화");
+        }
+        else
+        {
+            // 인벤토리 닫힘: 다시 이동/상호작용 활성화
+            inventoryActionMap?.Disable();
+            leftInteractionActionMap?.Enable();
+            rightInteractionActionMap?.Enable();
+            leftLocomotionActionMap?.Enable();
+            rightLocomotionActionMap?.Enable();
+
+            // 이동 InputAction 자체를 Enable
+            leftHandMoveAction?.action.Enable();
+            if (moveProvider != null) moveProvider.enabled = true;
+
+            Debug.Log("인벤토리 닫힘: 인벤토리 액션맵 비활성화, 이동/상호작용 활성화");
+        }
     }
     #endregion
 
