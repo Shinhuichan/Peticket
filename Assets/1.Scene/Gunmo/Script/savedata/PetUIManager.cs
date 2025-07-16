@@ -67,20 +67,25 @@ public class PetUIManager : MonoBehaviour
         }
     }
     private void OnPetSelected(string petId)
+{
+    Debug.Log($"선택된 반려동물: {petId}");
+
+    // ✅ 선택된 펫 ID 저장
+    GameSaveManager.Instance.currentSaveData.selectedPetId = petId;
+
+    foreach (var ui in GetComponentsInChildren<PetAffinityUI>())
     {
-        Debug.Log($"선택된 반려동물: {petId}");
-        
+        bool isSelected = ui.GetPetId() == petId;
+        ui.gameObject.SetActive(isSelected);
 
-        foreach (var ui in GetComponentsInChildren<PetAffinityUI>())
-        {
-            bool isSelected = ui.GetPetId() == petId;
-            ui.gameObject.SetActive(isSelected);
-
-            if (isSelected) selectedUI = ui;
-            if (backButton != null)
-                backButton.SetActive(true); // 선택되었을 때만 보임
-        }
+        if (isSelected) selectedUI = ui;
+        if (backButton != null)
+            backButton.SetActive(true);
     }
+
+    // ✅ 선택 시 즉시 저장 (선택 기억)
+    GameSaveManager.Instance.SaveGame(Vector3.zero); // 또는 현재 플레이어 위치
+}
 public void OnClick_BackToSelection()
 {
     selectedUI = null;

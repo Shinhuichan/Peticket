@@ -75,4 +75,21 @@ public class PetAffinityManager : MonoBehaviour
     {
         SaveAffinity(); // 종료 시 자동 저장
     }
+    // ✅ PetAffinityManager.cs에 추가할 함수
+    public AllPetData GetCurrentData()
+    {
+        return currentData;
+    }
+
+    public void SetFromData(AllPetData data)
+    {
+        currentData = data;
+    }
+    //  이벤트용: 변화량 적용 후 자동 저장
+    public void ChangeAffinityAndSave(string petId, float amount)
+    {
+        UpdateAffinity(petId, amount);  // 수치 변경
+        SaveAffinity();                // 즉시 저장
+    }
+
 }

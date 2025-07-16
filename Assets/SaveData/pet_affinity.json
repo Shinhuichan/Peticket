@@ -2,15 +2,39 @@
     "pets": [
         {
             "petId": "small",
-            "affinity": 43.5
+            "affinity": 53.5
         },
         {
             "petId": "middle",
-            "affinity": 75.0
+            "affinity": 80.0
         },
         {
             "petId": "large",
-            "affinity": 18.0
+            "affinity": 28.0
+        },
+        {
+            "petId": "",
+            "affinity": 30.0
+        },
+        {
+            "petId": "",
+            "affinity": 10.0
+        },
+        {
+            "petId": "",
+            "affinity": 0.0
+        },
+        {
+            "petId": "",
+            "affinity": 30.0
+        },
+        {
+            "petId": "",
+            "affinity": 40.0
+        },
+        {
+            "petId": "",
+            "affinity": 20.0
         }
     ]
 }
