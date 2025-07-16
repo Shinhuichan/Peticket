@@ -432,7 +432,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 368971742}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 145883202}
   audioSource: {fileID: 0}
@@ -789,7 +789,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 490329225}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 384523358}
   audioSource: {fileID: 0}
@@ -888,7 +888,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1543300736}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 423155810}
   audioSource: {fileID: 0}
@@ -987,7 +987,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 71242600}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 463151286}
   audioSource: {fileID: 0}
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 517410917}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 644396500}
   audioSource: {fileID: 0}
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 970021467}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 740148095}
   audioSource: {fileID: 0}
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1231657985}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 748544022}
   audioSource: {fileID: 0}
@@ -2284,7 +2284,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 679536080}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 816556827}
   audioSource: {fileID: 0}
@@ -2690,7 +2690,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1769692107}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 938820756}
   audioSource: {fileID: 0}
@@ -3005,7 +3005,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1404180639}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1051495070}
   audioSource: {fileID: 0}
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 120503200}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1165135220}
   audioSource: {fileID: 0}
@@ -3539,7 +3539,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 775972222}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1298500444}
   audioSource: {fileID: 0}
@@ -3790,7 +3790,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 522197421}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1430348329}
   audioSource: {fileID: 0}
@@ -4305,7 +4305,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1178307913}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1712786031}
   audioSource: {fileID: 0}
@@ -4617,7 +4617,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 911628923}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1758229177}
   audioSource: {fileID: 0}
@@ -4751,7 +4751,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 653477729}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1790369380}
   audioSource: {fileID: 0}
@@ -4975,7 +4975,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 706252776}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1966952670}
   audioSource: {fileID: 0}
@@ -5223,7 +5223,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 658622803}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1988743633}
   audioSource: {fileID: 0}
@@ -5322,7 +5322,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 661630184}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2071346112}
   audioSource: {fileID: 0}
@@ -5421,7 +5421,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 493706238}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 2121167968}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2083726413}
   audioSource: {fileID: 0}
