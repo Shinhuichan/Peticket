@@ -437,8 +437,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 145883202}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &145883202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,8 +794,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 384523358}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &384523358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,8 +893,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 423155810}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &423155810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,8 +992,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 463151286}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &463151286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,8 +1231,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 644396500}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &644396500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1586,153 +1586,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &690458571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 690458572}
-  - component: {fileID: 690458576}
-  - component: {fileID: 690458575}
-  - component: {fileID: 690458574}
-  - component: {fileID: 690458573}
-  m_Layer: 5
-  m_Name: Inventory_Exit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &690458572
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690458571}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 805756904}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 268, y: 137}
-  m_SizeDelta: {x: 50, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &690458573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690458571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 690458575}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 690458574}
-        m_TargetAssemblyTypeName: InventoryToggle, Assembly-CSharp
-        m_MethodName: CloseInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &690458574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690458571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff941bb4c9b79e45b70050d9fafd7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 805756903}
-  warningText: {fileID: 0}
---- !u!114 &690458575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690458571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 61e6de506d211ae45b24c1e60c8b3155, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &690458576
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690458571}
-  m_CullTransparentMesh: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,8 +1798,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 740148095}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &740148095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,8 +2061,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 748544022}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.37647063, b: 0.13333334, a: 1}
 --- !u!114 &748544022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2166,6 @@ RectTransform:
   m_Children:
   - {fileID: 889900251}
   - {fileID: 1864924151}
-  - {fileID: 690458572}
   m_Father: {fileID: 434153744862081529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2437,8 +2289,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 816556827}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &816556827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,8 +2695,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 938820756}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &938820756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3158,8 +3010,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1051495070}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1051495070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3378,8 +3230,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1165135220}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1165135220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3692,8 +3544,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1298500444}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1298500444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,8 +3795,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1430348329}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1430348329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4458,8 +4310,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1712786031}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1712786031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4770,8 +4622,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1758229177}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1758229177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4904,8 +4756,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1790369380}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1790369380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,8 +4980,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1966952670}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1966952670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5376,8 +5228,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 1988743633}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &1988743633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5475,8 +5327,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 2071346112}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &2071346112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5574,8 +5426,8 @@ MonoBehaviour:
   slotBackgroundImage: {fileID: 2083726413}
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
-  warningText: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  warningText: {fileID: 11544538076296963}
+  originalColor: {r: 0.63529414, g: 0.3803922, b: 0.12941177, a: 1}
 --- !u!114 &2083726413
 MonoBehaviour:
   m_ObjectHideFlags: 0

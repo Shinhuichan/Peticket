@@ -9,6 +9,20 @@ public class PetUIManager : MonoBehaviour
     public GameObject backButton;
 
     private List<string> petIds = new List<string> { "small", "middle", "large" };
+// 씬변경시 유지
+    private static PetUIManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject); // 이미 존재하면 중복 제거
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); // 씬 변경 시 파괴되지 않도록 유지
+    }
+// 씬변경시 유지
 
     private void Start()
     {
