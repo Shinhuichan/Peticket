@@ -1993,7 +1993,7 @@ MonoBehaviour:
   playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   inventoryPanel: {fileID: 805756903}
-  toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  toggleInventoryAction: {fileID: -198247193352664509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectedItem: {fileID: 0}
   baseMoveSpeed: 0
@@ -4383,10 +4383,6 @@ MonoBehaviour:
   highlighter: {fileID: 1723221841}
   moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectAction: {fileID: 8715885878753901518, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  inventoryPanel: {fileID: 805756903}
-  toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &1723221841
 MonoBehaviour:
   m_ObjectHideFlags: 0

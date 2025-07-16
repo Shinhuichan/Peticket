@@ -9,8 +9,6 @@ public class ObjectInteraction : MonoBehaviour
     [SerializeField] GameObject introduceUI;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
     [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
-    [SerializeField, ReadOnly] protected InputSetting input;
-
 
     [Header("이동 제한 영역 설정")]
     [SerializeField]
@@ -23,7 +21,6 @@ public class ObjectInteraction : MonoBehaviour
 
     void Awake()
     {
-        input = FindAnyObjectByType<InputSetting>();
         dog = FindAnyObjectByType<AnimalLogic>();
 
         introduceUI = Resources.FindObjectsOfTypeAll<GameObject>()

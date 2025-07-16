@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
-public class InputSetting : SingletonBehaviour<InputSetting>
+public class InputManager : SingletonBehaviour<InputManager>
 {
     protected override bool IsDontDestroy() => true;
     [Title("Input Setting", underlined: true, fontSize = 18, alignment = TextAlignment.Center)]
@@ -52,7 +52,7 @@ public class InputSetting : SingletonBehaviour<InputSetting>
         InitializeInputActions();
         InitialGrabEvents();
 
-        InputSystem.onDeviceChange += OnDeviceChange;
+        // InputSystem.onDeviceChange += OnDeviceChange;
 
         getItemAction.action.Disable();
         inventoryActionMap.Disable();
@@ -76,7 +76,7 @@ public class InputSetting : SingletonBehaviour<InputSetting>
 
         getItemAction.action.performed -= GetItem;
         
-        InputSystem.onDeviceChange -= OnDeviceChange;
+        // InputSystem.onDeviceChange -= OnDeviceChange;
     }
     #region Initial Setting
     void InitializeMoveProvider()
@@ -187,22 +187,22 @@ public class InputSetting : SingletonBehaviour<InputSetting>
     }
     #endregion
 
-    void OnDeviceChange(InputDevice device, InputDeviceChange change)
-    {
-        switch (change)
-        {
-            case InputDeviceChange.Disconnected:
-                toggleInventoryAction.action.Disable();
+    // void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    // {
+    //     switch (change)
+    //     {
+    //         case InputDeviceChange.Disconnected:
+    //             toggleInventoryAction.action.Disable();
 
-                // toggleInventoryAction에 ToggleInventory Event가 이미 제거되어있는 지 방어 코드가 필요함.
-                toggleInventoryAction.action.performed -= ToggleInventory;
-                break;
-            case InputDeviceChange.Reconnected:
-                toggleInventoryAction.action.Enable();
+    //             // toggleInventoryAction에 ToggleInventory Event가 이미 제거되어있는 지 방어 코드가 필요함.
+    //             toggleInventoryAction.action.performed -= ToggleInventory;
+    //             break;
+    //         case InputDeviceChange.Reconnected:
+    //             toggleInventoryAction.action.Enable();
 
-                // toggleInventoryAction에 ToggleInventory Event가 이미 추가되어있는 지 방어 코드가 필요함.
-                toggleInventoryAction.action.performed += ToggleInventory;
-                break;
-        }
-    }
+    //             // toggleInventoryAction에 ToggleInventory Event가 이미 추가되어있는 지 방어 코드가 필요함.
+    //             toggleInventoryAction.action.performed += ToggleInventory;
+    //             break;
+    //     }
+    // }
 }
