@@ -1403,6 +1403,7 @@ GameObject:
   - component: {fileID: 747917052}
   - component: {fileID: 747917056}
   - component: {fileID: 747917057}
+  - component: {fileID: 747917058}
   m_Layer: 5
   m_Name: --- UI
   m_TagString: Untagged
@@ -1529,6 +1530,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &747917058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747917051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97abce2fb34125b47b41ead4bc87fabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputActions: {fileID: 0}
+  inventoryPanel: {fileID: 6001265274390583991}
+  toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  selectedItem: {fileID: 0}
+  dashIncrease: 1.5
+  baseMoveSpeed: 0
+  dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftDirect: {fileID: 946509846}
+  rightDirect: {fileID: 1116763315}
+  moveProvider: {fileID: 0}
 --- !u!1001 &810412851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1836,6 +1860,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96fc47bc27807ba4ea82b9179d98984b, type: 3}
+--- !u!114 &946509846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5446423654058746443, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+  m_PrefabInstance: {fileID: 1411165299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026446603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2151,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8292701545276210079, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
   m_PrefabInstance: {fileID: 1411165299}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116763315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2056109032857517330, guid: 42d1c622a57d37a40991837cc75d76f2, type: 3}
+  m_PrefabInstance: {fileID: 1411165299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1204640642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3672,6 +3718,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &487148817369037763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,6 +4114,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &824307542441746903
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4115,6 +4163,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1070114512481852762
 GameObject:
   m_ObjectHideFlags: 0
@@ -4214,6 +4263,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1312239668652654252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4368,6 +4418,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1629326762656953154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,6 +4582,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &2419820890622104959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4928,6 +4980,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4064369609630603860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,6 +5045,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4268412835356824637
 GameObject:
   m_ObjectHideFlags: 0
@@ -5250,6 +5304,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4894954052509938388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5489,6 +5544,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5811592795143225395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,6 +5694,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6427836006172970918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5705,6 +5762,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &6707599569037665791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5849,6 +5907,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6844992257382784522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6619,6 +6678,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8519418344818177642
 GameObject:
   m_ObjectHideFlags: 0
@@ -6667,6 +6727,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 11544538076296963}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8806634739709147069
 GameObject:
   m_ObjectHideFlags: 0

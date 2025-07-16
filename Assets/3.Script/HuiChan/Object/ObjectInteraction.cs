@@ -7,9 +7,9 @@ public class ObjectInteraction : MonoBehaviour
 {
     [SerializeField, ReadOnly] Canvas canvas;
     [SerializeField] GameObject introduceUI;
-    [SerializeField] GameObject getUI;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
     [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
+    [SerializeField, ReadOnly] protected InputSetting input;
 
 
     [Header("이동 제한 영역 설정")]
@@ -23,13 +23,11 @@ public class ObjectInteraction : MonoBehaviour
 
     void Awake()
     {
+        input = FindAnyObjectByType<InputSetting>();
         dog = FindAnyObjectByType<AnimalLogic>();
+
         introduceUI = Resources.FindObjectsOfTypeAll<GameObject>()
                          .FirstOrDefault(obj => obj.name.Contains("Introduce"));
-        getUI = Resources.FindObjectsOfTypeAll<GameObject>()
-                         .FirstOrDefault(obj => obj.name.Contains("Get"));
-
-        if (getUI == null || introduceUI == null) return;
 
         canvas = introduceUI.GetComponentInParent<Canvas>();
         rb = GetComponent<Rigidbody>();
@@ -40,47 +38,53 @@ public class ObjectInteraction : MonoBehaviour
         // Event 추가
         if (grabInteractable != null) grabInteractable.selectEntered.AddListener(OnObjectSelected);
         if (grabInteractable != null) grabInteractable.selectExited.AddListener(OnObjectExited);
+        
+        // Event 추가
+        if (grabInteractable != null) grabInteractable.hoverEntered.AddListener(OnObjectHoverSelected);
+        if (grabInteractable != null) grabInteractable.hoverExited.AddListener(OnObjectHoverExited);
     }
 
     void OnDestroy()
     {
         // Event 제거
         if (grabInteractable != null) grabInteractable.selectEntered.RemoveListener(OnObjectSelected);
-        if (grabInteractable != null) grabInteractable.selectExited.AddListener(OnObjectExited);
+        if (grabInteractable != null) grabInteractable.selectExited.RemoveListener(OnObjectExited);
+
+        // Event 추가
+        if (grabInteractable != null) grabInteractable.hoverEntered.RemoveListener(OnObjectHoverSelected);
+        if (grabInteractable != null) grabInteractable.hoverExited.RemoveListener(OnObjectHoverExited);
     }
 
-    bool isSelect = false;
-    private XRInteractorLineVisual currentRayLineVisual;
-    public void Select_Enter(SelectEnterEventArgs args)
-    {
-        rayInteractor = args.interactorObject as XRRayInteractor;
-        if (rayInteractor != null)
-        {
-            currentRayLineVisual = rayInteractor.GetComponent<XRInteractorLineVisual>();
-            if (currentRayLineVisual != null) currentRayLineVisual.enabled = false;
+    // public void Select_Enter(SelectEnterEventArgs args)
+    // {
+    //     rayInteractor = args.interactorObject as XRRayInteractor;
+    //     if (rayInteractor != null)
+    //     {
+    //         currentRayLineVisual = rayInteractor.GetComponent<XRInteractorLineVisual>();
+    //         if (currentRayLineVisual != null) currentRayLineVisual.enabled = false;
 
-            ShowUI(getUI);
-            var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
-            if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
-            introduceUI.SetActive(false);
-            isSelect = true;
-        }
-    }
-    public void Select_Exit()
-    {
-        getUI.SetActive(false);
-    }
+    //         ShowUI(getUI);
+    //         var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
+    //         if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
+    //         introduceUI.SetActive(false);
+    //         isSelect = true;
+    //     }
+    // }
+    // public void Select_Exit()
+    // {
+    //     getUI.SetActive(false);
+    // }
 
-    public void Hover_Enter()
-    {
-        getUI.SetActive(false);
-        if (!isSelect) ShowUI(introduceUI);
-    }
+    // public void Hover_Enter()
+    // {
+    //     getUI.SetActive(false);
+    //     if (!isSelect) ShowUI(introduceUI);
+    // }
 
-    public void Hover_Exit()
-    {
-        introduceUI.SetActive(false);
-    }
+    // public void Hover_Exit()
+    // {
+    //     introduceUI.SetActive(false);
+    // }
 
     void ShowUI(GameObject ui)
     {
@@ -166,7 +170,7 @@ public class ObjectInteraction : MonoBehaviour
         Vector3 size = maxBounds - minBounds;
         Gizmos.DrawWireCube(center, size);
     }
-
+    #region Selected
     private void OnObjectSelected(SelectEnterEventArgs args)
     {
         // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
@@ -205,26 +209,68 @@ public class ObjectInteraction : MonoBehaviour
             HandleRayExitEvent();
         }
     }
+    #endregion
 
-    // Direct Grab 시 실행될 Method
-    private void HandleDirectGrabEvent()
+    #region Hover
+    public void OnObjectHoverSelected(HoverEnterEventArgs args)
     {
-        ShowUI(getUI);
+        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
+
+        if (args.interactorObject is XRDirectInteractor directInteractor)
+        {
+            Debug.Log("Direct Grab");
+
+            // Direct Grab 시 발생할 이벤트 처리
+            HandleDirectGrabEvent();
+        }
+        else if (args.interactorObject is XRRayInteractor rayInteractor)
+        {
+            Debug.Log("Ray Grab");
+
+            // Ray Grab 시 발생할 이벤트 처리
+            HandleRayGrabEvent();
+        }
+    }
+    public void OnObjectHoverExited(HoverExitEventArgs args)
+    {
+        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
+
+        if (args.interactorObject is XRDirectInteractor directInteractor)
+        {
+            Debug.Log("Direct Grab");
+
+            // Direct Grab 시 발생할 이벤트 처리
+            HandleDirectExitEvent();
+        }
+        else if (args.interactorObject is XRRayInteractor rayInteractor)
+        {
+            Debug.Log("Ray Grab");
+
+            // Ray Grab 시 발생할 이벤트 처리
+            HandleRayExitEvent();
+        }
+    }
+    #endregion
+    // Direct Grab 시 실행될 Method
+    public void HandleDirectGrabEvent()
+    {
+        ShowUI(introduceUI);
+        // if (input.selectedItem != null) input.selectedItem = this.gameObject;
     }
 
     // Ray Grab 시 실행될 Method
-    private void HandleRayGrabEvent()
+    public void HandleRayGrabEvent()
     {
-        ShowUI(getUI);
+        ShowUI(introduceUI);
     }
     private void HandleDirectExitEvent()
     {
-
+        introduceUI.SetActive(false);
     }
 
     // Ray Grab 시 실행될 Method
-    private void HandleRayExitEvent()
+    public void HandleRayExitEvent()
     {
-        getUI.SetActive(false);
+        introduceUI.SetActive(false);
     }
 }

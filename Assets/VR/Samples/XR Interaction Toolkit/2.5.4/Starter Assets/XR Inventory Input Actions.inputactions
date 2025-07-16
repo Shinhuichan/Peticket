@@ -1,0 +1,34 @@
+{
+    "name": "XR Inventory Input Actions",
+    "maps": [
+        {
+            "name": "XRI LeftHand Interaction",
+            "id": "d3f62bd8-17b4-4407-96da-f71ddce9cbf1",
+            "actions": [
+                {
+                    "name": "Slot Move",
+                    "type": "Value",
+                    "id": "99e87013-cad0-4768-8075-455cdfc255bc",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "775c766c-d8c2-4c03-9431-471d2987b014",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "Slot Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
