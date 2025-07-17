@@ -8,49 +8,34 @@ public class AffinityDebugButton : MonoBehaviour
     public Button decreaseButton;
 
     [Header("변화량 설정")]
-    public float amount = 10f; // 기본 변화량
+    public float amount = 10f; // 기본 변화량 (진행도 % 기준)
 
     private void Start()
     {
         if (increaseButton != null)
-            increaseButton.onClick.AddListener(() => ChangeAffinity(+amount));
+            increaseButton.onClick.AddListener(() => ChangeProgress(+amount));
 
         if (decreaseButton != null)
-            decreaseButton.onClick.AddListener(() => ChangeAffinity(-amount));
+            decreaseButton.onClick.AddListener(() => ChangeProgress(-amount));
     }
 
-    private void ChangeAffinity(float value)
+    private void ChangeProgress(float value)
+{
+    if (string.IsNullOrEmpty(GameSaveManager.Instance.currentSaveData.selectedPetId))
     {
-        // 선택된 펫 ID 불러오기
-        string selectedId = GameSaveManager.Instance.currentSaveData.selectedPetId;
-
-        if (string.IsNullOrEmpty(selectedId))
-        {
-            Debug.LogWarning("❌ 선택된 반려동물이 없습니다. 먼저 펫을 선택하세요.");
-            return;
-        }
-
-        // PetAffinityManager 존재 여부 확인
-        var manager = FindObjectOfType<PetAffinityManager>();
-        if (manager == null)
-        {
-            Debug.LogWarning("❌ PetAffinityManager를 찾을 수 없습니다. 씬에 배치되어 있는지 확인하세요.");
-            return;
-        }
-
-        // 친밀도 반영 및 저장
-        manager.ChangeAffinityAndSave(selectedId, value);
-        Debug.Log($"✅ {selectedId} 친밀도 {(value > 0 ? "+" : "")}{value} 변화됨");
-
-        // UI 갱신
-        var uiManager = FindObjectOfType<PetUIManager>();
-        if (uiManager != null)
-        {
-            uiManager.RefreshAllPetUIs();
-        }
-        else
-        {
-            Debug.Log("ℹ PetUIManager를 찾을 수 없어 UI는 수동으로 갱신되지 않았습니다.");
-        }
+        Debug.LogWarning("❌ 선택된 펫 ID가 없습니다.");
+        return;
     }
+
+    // ✅ 진행도 변경 + 자동 저장
+    GameSaveManager.Instance.SetPlayerProgress(value);
+
+    // UI 갱신
+    var progressUI = FindObjectOfType<PetProgressUI>();
+    if (progressUI != null)
+    {
+        float progress = GameSaveManager.Instance.currentSaveData.playerProgress;
+        progressUI.UpdateProgressUI(progress);
+    }
+}
 }

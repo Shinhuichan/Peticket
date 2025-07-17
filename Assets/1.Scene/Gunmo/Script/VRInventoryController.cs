@@ -43,6 +43,6 @@ public class VRInventoryController : MonoBehaviour
 
     private void OnSelect(InputAction.CallbackContext context)
     {
-        highlighter.SelectCurrentSlot();
+        highlighter.SelectCurrent();
     }
 }
