@@ -4,8 +4,9 @@ using System.IO;
 public class GameSaveManager : MonoBehaviour
 {
     public static GameSaveManager Instance { get; private set; }
-
     public GameSaveData currentSaveData;
+
+    private string filePath;
 
     private void Awake()
     {
@@ -13,7 +14,8 @@ public class GameSaveManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            // 선택된 펫 로드: 선택 씬에서 petId 설정 후 LoadGame(petId) 호출 필요
+            filePath = Path.Combine(Application.dataPath, "SaveData/savelocation.json"); // 변경됨
+            LoadGame(); // 게임 실행 시 자동 로드
         }
         else
         {
@@ -21,64 +23,65 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    private string GetFilePathForPet(string petId)
+    /// <summary>
+    /// 게임 저장: Player 위치, 선택 펫 ID, 진행도 저장
+    /// </summary>
+    public void SaveGame(Vector3 playerPosition)
     {
-        return Path.Combine(Application.dataPath, $"SaveData/pet_{petId}_save.json");
-    }
+        Debug.Log($"💾 저장 시도 위치: {playerPosition}");
 
-    public void SaveGame(Vector3 playerPosition, string petId)
-    {
         currentSaveData.playerPosX = playerPosition.x;
         currentSaveData.playerPosY = playerPosition.y;
         currentSaveData.playerPosZ = playerPosition.z;
-        currentSaveData.petData = FindObjectOfType<PetAffinityManager>()?.GetCurrentData();
 
         string json = JsonUtility.ToJson(currentSaveData, true);
-        File.WriteAllText(GetFilePathForPet(petId), json);
-        Debug.Log($"💾 저장 완료: {petId}");
+
+        // 저장 경로 폴더 없으면 생성
+        string folder = Path.GetDirectoryName(filePath);
+        if (!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+
+        File.WriteAllText(filePath, json);
+        Debug.Log($"💾 게임 저장 완료: {filePath}");
     }
 
-    public void LoadGame(string petId)
+    public void LoadGame()
     {
-        string path = GetFilePathForPet(petId);
-
-        if (!File.Exists(path))
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            currentSaveData = JsonUtility.FromJson<GameSaveData>(json);
+            Debug.Log("📂 게임 불러오기 완료");
+        }
+        else
         {
             currentSaveData = new GameSaveData();
-            Debug.LogWarning($"저장 파일 없음: {petId} → 새로 생성");
-            return;
+            Debug.LogWarning("⚠ 저장 파일 없음 → 새 데이터 생성");
         }
-
-        string json = File.ReadAllText(path);
-        currentSaveData = JsonUtility.FromJson<GameSaveData>(json);
-        Debug.Log($"📂 로드 완료: {petId}");
     }
 
     public Vector3 GetPlayerPosition()
     {
-        return new Vector3(currentSaveData.playerPosX, currentSaveData.playerPosY, currentSaveData.playerPosZ);
+        return new Vector3(
+            currentSaveData.playerPosX,
+            currentSaveData.playerPosY,
+            currentSaveData.playerPosZ
+        );
     }
 
-    public void AddCompletedEvent(string eventId)
+    public void SetSelectedPet(string petId)
     {
-        if (!currentSaveData.completedEventIds.Contains(eventId))
-        {
-            currentSaveData.completedEventIds.Add(eventId);
-        }
+        currentSaveData.selectedPetId = petId;
+        SaveGame(GetPlayerPosition());
     }
 
-    public bool IsEventCompleted(string eventId)
+    public void SetPlayerProgress(float delta)
     {
-        return currentSaveData.completedEventIds.Contains(eventId);
-    }
-
-    public void SetCurrentEvent(string eventId)
-    {
-        currentSaveData.currentEventId = eventId;
-    }
-
-    public string GetCurrentEvent()
-    {
-        return currentSaveData.currentEventId;
+        currentSaveData.playerProgress = Mathf.Clamp(
+            currentSaveData.playerProgress + delta,
+            0f, 100f
+        );
+        SaveGame(GetPlayerPosition());
+        Debug.Log($"📈 진행도 저장됨: {currentSaveData.playerProgress}%");
     }
 }
