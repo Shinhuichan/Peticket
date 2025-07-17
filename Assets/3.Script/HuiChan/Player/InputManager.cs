@@ -8,7 +8,7 @@ public class InputManager : SingletonBehaviour<InputManager>
 {
     protected override bool IsDontDestroy() => true;
     [Title("Input Setting", underlined: true, fontSize = 18, alignment = TextAlignment.Center)]
-    
+
     public InputActionAsset playerInputActions;
     private InputActionMap leftInteractionActionMap;
     private InputActionMap rightInteractionActionMap;
@@ -29,7 +29,10 @@ public class InputManager : SingletonBehaviour<InputManager>
     [Header("Dash Setting")]
     [SerializeField, ReadOnly] float baseMoveSpeed;
     [SerializeField] float dashIncrease = 1.5f;
-    
+
+    [Header("UseItem Setting")]
+    [SerializeField] InputActionReference useItemAction;
+
     public InputActionReference dashAction;
     [SerializeField] XRDirectInteractor leftDirect;
     [SerializeField] XRDirectInteractor rightDirect;
@@ -42,6 +45,7 @@ public class InputManager : SingletonBehaviour<InputManager>
         leftLocomotionActionMap = playerInputActions.FindActionMap("XRI LeftHand Locomotion");
         rightLocomotionActionMap = playerInputActions.FindActionMap("XRI RightHand Locomotion");
         inventoryActionMap = playerInputActions.FindActionMap("XRI Inventory");
+
         if (leftDirect == null || rightDirect == null)
         {
             Debug.LogWarning($"Input Setting | XRDirectInteractor가 Null입니다.");
@@ -68,6 +72,7 @@ public class InputManager : SingletonBehaviour<InputManager>
         toggleInventoryAction.action.performed -= ToggleInventory;
         dashAction.action.performed -= Dash;
         dashAction.action.canceled -= DashStop;
+        useItemAction.action.started -= UseItem;
 
         leftDirect.selectEntered.RemoveListener(OnGrabStart);
         leftDirect.selectExited.RemoveListener(OnGrabEnd);
@@ -75,7 +80,7 @@ public class InputManager : SingletonBehaviour<InputManager>
         rightDirect.selectExited.RemoveListener(OnGrabEnd);
 
         getItemAction.action.performed -= GetItem;
-        
+
         // InputSystem.onDeviceChange -= OnDeviceChange;
     }
     #region Initial Setting
@@ -91,13 +96,14 @@ public class InputManager : SingletonBehaviour<InputManager>
     }
     void InitializeInputActions()
     {
-        // Inventory Toggle Event 및 Dash Event 활성화
+        // 모든 Event 활성화
         toggleInventoryAction.action.Enable();
         dashAction.action.Enable();
 
-        // Inventory Toggle Event 및 Dash Event 삽입
+        // Inventory Toggle Event 삽입
         toggleInventoryAction.action.performed += ToggleInventory;
 
+        // Dash Event 삽입
         dashAction.action.performed += Dash;
         dashAction.action.canceled += DashStop;
     }
@@ -162,14 +168,15 @@ public class InputManager : SingletonBehaviour<InputManager>
         }
     }
     #endregion
-
-    #region GetInventory
+    #region GrabItem
     private void OnGrabStart(SelectEnterEventArgs args)
     {
         Debug.Log($"'{args.interactableObject}'을(를) 잡기 시작함. GetItem 액션 활성화!");
         selectedItem = args.interactableObject.transform.gameObject;
         getItemAction.action.Enable();
         getItemAction.action.performed += GetItem;
+        useItemAction.action.Enable();
+        useItemAction.action.started += UseItem;
     }
 
     private void OnGrabEnd(SelectExitEventArgs args)
@@ -178,8 +185,11 @@ public class InputManager : SingletonBehaviour<InputManager>
         selectedItem = null;
         getItemAction.action.Disable();
         getItemAction.action.performed -= GetItem;
+        useItemAction.action.Disable();
+        useItemAction.action.started -= UseItem;
     }
-
+    #endregion
+    #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
         InventoryManager.Instance.AddItemToInventory(selectedItem);
@@ -187,6 +197,13 @@ public class InputManager : SingletonBehaviour<InputManager>
     }
     #endregion
 
+    #region UseItem
+    private void UseItem(InputAction.CallbackContext context)
+    {
+        ObjectInteraction objInteract = selectedItem.GetComponent<ObjectInteraction>();
+        objInteract.UseObject();
+    }
+    #endregion
     // void OnDeviceChange(InputDevice device, InputDeviceChange change)
     // {
     //     switch (change)

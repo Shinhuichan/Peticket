@@ -1997,7 +1997,8 @@ MonoBehaviour:
   getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectedItem: {fileID: 0}
   baseMoveSpeed: 0
-  dashIncrease: 1.5
+  dashIncrease: 2
+  useItemAction: {fileID: 4576993956907356099, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftDirect: {fileID: 946509846}
   rightDirect: {fileID: 1116763315}
