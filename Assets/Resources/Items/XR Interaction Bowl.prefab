@@ -326,9 +326,9 @@ GameObject:
   - component: {fileID: 5071715418596101323}
   - component: {fileID: 152971227637351558}
   - component: {fileID: 3479745930254033962}
-  - component: {fileID: 5203284698044559465}
   - component: {fileID: 4095611519270170046}
   - component: {fileID: 3197434465014323743}
+  - component: {fileID: 2892064047026164925}
   m_Layer: 0
   m_Name: XR Interaction Bowl
   m_TagString: Untagged
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5203284698044559465}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
         m_MethodName: Hover_Enter
         m_Mode: 1
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_HoverExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5203284698044559465}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
         m_MethodName: Hover_Exit
         m_Mode: 1
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5203284698044559465}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ObjectInteraction, Assembly-CSharp
         m_MethodName: Select_Enter
         m_Mode: 1
@@ -567,25 +567,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &5203284698044559465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6142918788862709093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee48b08199a0e642806453a2bb91f55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  introduceUI: {fileID: 0}
-  dog: {fileID: 0}
-  rayInteractor: {fileID: 0}
-  input: {fileID: 0}
-  minBounds: {x: -20, y: 0.1, z: -20}
-  maxBounds: {x: 20, y: 20, z: 20}
 --- !u!114 &4095611519270170046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +604,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2892064047026164925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142918788862709093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  introduceUI: {fileID: 0}
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  minBounds: {x: -20, y: 0, z: -20}
+  maxBounds: {x: 20, y: 20, z: 20}
 --- !u!1 &6266072029600843072
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +634,7 @@ GameObject:
   - component: {fileID: 6248208619098334129}
   - component: {fileID: 3769937413464985335}
   - component: {fileID: 7321838402788850773}
+  - component: {fileID: 6560625734896315452}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -732,6 +732,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.05, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6560625734896315452
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266072029600843072}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7931639883393128618
 GameObject:
   m_ObjectHideFlags: 0
