@@ -5,7 +5,6 @@ public class GameSaveManager : MonoBehaviour
 {
     public static GameSaveManager Instance { get; private set; }
 
-    private string filePath;
     public GameSaveData currentSaveData;
 
     private void Awake()
@@ -14,8 +13,7 @@ public class GameSaveManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            filePath = Path.Combine(Application.dataPath, "SaveData/game_save.json");
-            LoadGame();
+            // 선택된 펫 로드: 선택 씬에서 petId 설정 후 LoadGame(petId) 호출 필요
         }
         else
         {
@@ -23,31 +21,37 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    public void SaveGame(Vector3 playerPosition)
+    private string GetFilePathForPet(string petId)
+    {
+        return Path.Combine(Application.dataPath, $"SaveData/pet_{petId}_save.json");
+    }
+
+    public void SaveGame(Vector3 playerPosition, string petId)
     {
         currentSaveData.playerPosX = playerPosition.x;
         currentSaveData.playerPosY = playerPosition.y;
         currentSaveData.playerPosZ = playerPosition.z;
-
         currentSaveData.petData = FindObjectOfType<PetAffinityManager>()?.GetCurrentData();
 
         string json = JsonUtility.ToJson(currentSaveData, true);
-        File.WriteAllText(filePath, json);
-        Debug.Log("💾 게임 저장 완료");
+        File.WriteAllText(GetFilePathForPet(petId), json);
+        Debug.Log($"💾 저장 완료: {petId}");
     }
 
-    public void LoadGame()
+    public void LoadGame(string petId)
     {
-        if (!File.Exists(filePath))
+        string path = GetFilePathForPet(petId);
+
+        if (!File.Exists(path))
         {
             currentSaveData = new GameSaveData();
-            Debug.LogWarning("저장 데이터 없음 → 새로 생성");
+            Debug.LogWarning($"저장 파일 없음: {petId} → 새로 생성");
             return;
         }
 
-        string json = File.ReadAllText(filePath);
+        string json = File.ReadAllText(path);
         currentSaveData = JsonUtility.FromJson<GameSaveData>(json);
-        Debug.Log("📂 게임 불러오기 완료");
+        Debug.Log($"📂 로드 완료: {petId}");
     }
 
     public Vector3 GetPlayerPosition()
@@ -78,4 +82,3 @@ public class GameSaveManager : MonoBehaviour
         return currentSaveData.currentEventId;
     }
 }
-

@@ -1,12 +1,15 @@
-using System;
 using System.Collections.Generic;
 
-[Serializable]
+[System.Serializable]
 public class GameSaveData
 {
+    public float playerPosX;
+    public float playerPosY;
+    public float playerPosZ;
+
     public string selectedPetId;
-    public float playerPosX, playerPosY, playerPosZ;
-    public List<string> completedEventIds = new();
     public string currentEventId;
+    public List<string> completedEventIds = new List<string>();
+
     public AllPetData petData;
 }

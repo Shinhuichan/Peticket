@@ -98,7 +98,7 @@ public class PetUIManager : MonoBehaviour
     }
 
     // ✅ 선택 시 즉시 저장 (선택 기억)
-    GameSaveManager.Instance.SaveGame(Vector3.zero); // 또는 현재 플레이어 위치
+    GameSaveManager.Instance.SaveGame(Vector3.zero, petId); // ← petId 추가
 }
 public void OnClick_BackToSelection()
 {
