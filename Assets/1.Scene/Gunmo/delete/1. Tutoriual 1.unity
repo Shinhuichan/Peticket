@@ -1391,10 +1391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0923f2d569409684a8edf4a71915c806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   interactionrange: {x: 1, y: 5}
   relativeVelocity: {x: 0, y: 0, z: 0}
   collarTransform: {fileID: 0}
+  mouseTransform: {fileID: 0}
 --- !u!54 &909445566
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1834,7 +1834,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 269540445938128055, guid: b18869f88cd72464d960efa28a5e27b3, type: 3}
   m_PrefabInstance: {fileID: 1060536744}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853923377}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee48b08199a0e642806453a2bb91f55, type: 3}

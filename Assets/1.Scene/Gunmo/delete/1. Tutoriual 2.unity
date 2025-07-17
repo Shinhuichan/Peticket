@@ -3099,6 +3099,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &232261779639500284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,6 +3301,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &545960110087483410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,6 +3733,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1715194819156916371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3844,7 +3847,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -4042,6 +4046,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &1909434478494884487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4174,6 +4179,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!224 &2150889425489509978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4399,6 +4405,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &2886823425933225234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4428,6 +4435,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2983812312610412804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4706,6 +4714,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &3780000829466682681
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4965,6 +4974,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4731531712880903011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5116,6 +5126,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &5298646977608380530
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5246,6 +5257,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!224 &5625383108739837826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5325,6 +5337,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &5760499662228413786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5538,6 +5551,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!224 &6214371001856665574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5909,6 +5923,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7436610691096458554
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +5961,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1235719605827826771}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!222 &7676199828008035427
 CanvasRenderer:
   m_ObjectHideFlags: 0

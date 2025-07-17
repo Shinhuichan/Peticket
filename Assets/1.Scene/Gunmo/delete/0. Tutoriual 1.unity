@@ -4383,10 +4383,6 @@ MonoBehaviour:
   highlighter: {fileID: 1723221841}
   moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectAction: {fileID: 8715885878753901518, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  playerInputActions: {fileID: 0}
-  leftHandMoveAction: {fileID: 0}
-  inventoryPanel: {fileID: 0}
-  toggleInventoryAction: {fileID: 0}
 --- !u!114 &1723221841
 MonoBehaviour:
   m_ObjectHideFlags: 0

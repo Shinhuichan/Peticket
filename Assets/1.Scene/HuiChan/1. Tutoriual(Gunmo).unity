@@ -2170,6 +2170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputActions: {fileID: 0}
+  leftHandMoveAction: {fileID: 0}
   inventoryPanel: {fileID: 6001265274390583991}
   toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}

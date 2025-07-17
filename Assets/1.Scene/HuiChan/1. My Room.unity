@@ -504,6 +504,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &45679539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1256,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &319692341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1514,6 +1516,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &385179126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,6 +1808,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &477805446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,6 +1957,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &530936101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +2543,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &631023257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3065,6 +3071,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &755549006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4347,6 +4354,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &996701669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4490,11 +4498,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97abce2fb34125b47b41ead4bc87fabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputActions: {fileID: 0}
+  leftHandMoveAction: {fileID: 0}
   inventoryPanel: {fileID: 619794021}
   toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  dashIncrease: 1.5
+  getItemAction: {fileID: 0}
+  selectedItem: {fileID: 0}
   baseMoveSpeed: 0
+  dashIncrease: 1.5
   dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftDirect: {fileID: 0}
+  rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
 --- !u!114 &1023736931
 MonoBehaviour:
@@ -5249,6 +5263,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1174566819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5382,6 +5397,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1186782382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5842,6 +5858,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1259511051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6056,6 +6073,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1283479072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7083,6 +7101,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1526855197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8210,6 +8229,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1810429870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8684,6 +8704,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 1846036459}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1924920697
 MonoBehaviour:
   m_ObjectHideFlags: 0

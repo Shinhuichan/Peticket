@@ -5439,12 +5439,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputActions: {fileID: 0}
+  leftHandMoveAction: {fileID: 0}
   inventoryPanel: {fileID: 619794021}
   toggleInventoryAction: {fileID: -1413268450283781952, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   getItemAction: {fileID: 0}
   selectedItem: {fileID: 0}
-  dashIncrease: 1.5
   baseMoveSpeed: 0
+  dashIncrease: 1.5
   dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}

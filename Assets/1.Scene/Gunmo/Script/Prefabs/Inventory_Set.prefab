@@ -98,6 +98,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &512937053525373780
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +446,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2141305828228636824
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +832,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3482693771921967127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1033,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3664077330831843765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1202,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4431665895049035881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1301,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4758754668276815892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1400,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4764798750824827930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,6 +1499,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5028286464108276837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1633,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5212096492542999683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,6 +2224,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7150928098935508350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2358,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7405795187291218034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2591,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8211500966906650013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2690,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8449030347354473041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,6 +2901,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8834865278535532062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,3 +3000,4 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   errorSound: {fileID: 0}
   warningText: {fileID: 5889342215691569751}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
