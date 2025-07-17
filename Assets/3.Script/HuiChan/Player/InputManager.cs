@@ -30,9 +30,6 @@ public class InputManager : SingletonBehaviour<InputManager>
     [SerializeField, ReadOnly] float baseMoveSpeed;
     [SerializeField] float dashIncrease = 1.5f;
 
-    [Header("UseItem Setting")]
-    [SerializeField] InputActionReference useItemAction;
-
     public InputActionReference dashAction;
     [SerializeField] XRDirectInteractor leftDirect;
     [SerializeField] XRDirectInteractor rightDirect;
@@ -61,7 +58,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         getItemAction.action.Disable();
         inventoryActionMap.Disable();
     }
-
     protected override void OnDestroy()
     {
         // 모든 액션 비활성화 및 이벤트 구독 해제
@@ -72,7 +68,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         toggleInventoryAction.action.performed -= ToggleInventory;
         dashAction.action.performed -= Dash;
         dashAction.action.canceled -= DashStop;
-        useItemAction.action.started -= UseItem;
 
         leftDirect.selectEntered.RemoveListener(OnGrabStart);
         leftDirect.selectExited.RemoveListener(OnGrabEnd);
@@ -116,7 +111,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         rightDirect.selectExited.AddListener(OnGrabEnd);
     }
     #endregion
-
     #region Dash
     private void Dash(InputAction.CallbackContext context)
     {
@@ -129,7 +123,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         moveProvider.moveSpeed = baseMoveSpeed;
     }
     #endregion
-
     #region OpenInventory
     private void ToggleInventory(InputAction.CallbackContext context)
     {
@@ -175,8 +168,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         selectedItem = args.interactableObject.transform.gameObject;
         getItemAction.action.Enable();
         getItemAction.action.performed += GetItem;
-        useItemAction.action.Enable();
-        useItemAction.action.started += UseItem;
     }
 
     private void OnGrabEnd(SelectExitEventArgs args)
@@ -185,8 +176,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         selectedItem = null;
         getItemAction.action.Disable();
         getItemAction.action.performed -= GetItem;
-        useItemAction.action.Disable();
-        useItemAction.action.started -= UseItem;
     }
     #endregion
     #region GetInventory
@@ -196,30 +185,4 @@ public class InputManager : SingletonBehaviour<InputManager>
         Debug.Log("Inventory로 진입 성공!");
     }
     #endregion
-
-    #region UseItem
-    private void UseItem(InputAction.CallbackContext context)
-    {
-        ObjectInteraction objInteract = selectedItem.GetComponent<ObjectInteraction>();
-        objInteract.UseObject();
-    }
-    #endregion
-    // void OnDeviceChange(InputDevice device, InputDeviceChange change)
-    // {
-    //     switch (change)
-    //     {
-    //         case InputDeviceChange.Disconnected:
-    //             toggleInventoryAction.action.Disable();
-
-    //             // toggleInventoryAction에 ToggleInventory Event가 이미 제거되어있는 지 방어 코드가 필요함.
-    //             toggleInventoryAction.action.performed -= ToggleInventory;
-    //             break;
-    //         case InputDeviceChange.Reconnected:
-    //             toggleInventoryAction.action.Enable();
-
-    //             // toggleInventoryAction에 ToggleInventory Event가 이미 추가되어있는 지 방어 코드가 필요함.
-    //             toggleInventoryAction.action.performed += ToggleInventory;
-    //             break;
-    //     }
-    // }
 }

@@ -328,7 +328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508588392704570680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869ade9715528a949bad9877d809ea44, type: 3}
   m_Name: 
@@ -854,7 +854,6 @@ GameObject:
   - component: {fileID: 9182060089860773828}
   - component: {fileID: 4395916000650898468}
   - component: {fileID: 8638816919248214136}
-  - component: {fileID: 7450750921569117382}
   m_Layer: 2
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -917,7 +916,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.1
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -993,19 +992,6 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
---- !u!114 &7450750921569117382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118992358378699077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf553c511202924a85c6d69c5177266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStartYAxis: 0
 --- !u!1 &1290449442768919561
 GameObject:
   m_ObjectHideFlags: 0

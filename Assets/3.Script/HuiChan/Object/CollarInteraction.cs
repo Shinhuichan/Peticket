@@ -20,6 +20,17 @@ public class CollarInteraction : ObjectInteraction
     {
         myCol = transform.GetComponentInChildren<Collider>();
     }
+    void LateUpdate()
+    {
+        if (isEquip)
+        {
+            // 어떤 target으로 부착되는 지 판단
+            Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
+            myCol.gameObject.transform.position = targetTrans.position;
+            myCol.gameObject.transform.rotation = targetTrans.rotation;
+            if (rb != null) rb.isKinematic = true;
+        }
+    }
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Dog")
@@ -30,18 +41,6 @@ public class CollarInteraction : ObjectInteraction
             animal = col.gameObject.GetComponentInParent<AnimalInteraction>();
 
             isEquip = true;
-        }
-    }
-
-    public override void UseObject()
-    {
-        if (isEquip)
-        {
-            // 어떤 target으로 부착되는 지 판단
-            Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
-            myCol.gameObject.transform.position = targetTrans.position;
-            myCol.gameObject.transform.rotation = targetTrans.rotation;
-            if (rb != null) rb.isKinematic = true;
         }
     }
 }

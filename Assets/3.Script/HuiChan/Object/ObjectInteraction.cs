@@ -52,7 +52,6 @@ public abstract class ObjectInteraction : MonoBehaviour
         if (grabInteractable != null) grabInteractable.hoverExited.RemoveListener(OnObjectHoverExited);
     }
 
-    public abstract void UseObject();
 
     void OnDrawGizmosSelected()
     {
