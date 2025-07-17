@@ -2730,6 +2730,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "HelpUI",
+            "id": "239a4934-5d9e-4ac5-85f8-47888e0e8cde",
+            "actions": [
+                {
+                    "name": "NextHelp",
+                    "type": "Button",
+                    "id": "0683ebeb-a624-4699-8907-39f466ba893b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrevHelp",
+                    "type": "Button",
+                    "id": "77e9fd92-94c2-4ac2-82ec-2b88fd96d838",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0d29c45d-2c76-4411-9517-2e2ad5c3c6f6",
+                    "path": "<XRController>{RightHand}/{trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextHelp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90003b4a-6930-4be2-a0f8-99127e35de69",
+                    "path": "<XRController>{LeftHand}/{trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevHelp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
