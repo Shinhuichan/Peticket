@@ -7,6 +7,7 @@ public class GameSaveManager : MonoBehaviour
     public GameSaveData currentSaveData;
 
     private string filePath;
+    public event System.Action<float> OnProgressChanged;
 
     private void Awake()
     {
@@ -76,12 +77,16 @@ public class GameSaveManager : MonoBehaviour
     }
 
     public void SetPlayerProgress(float delta)
-    {
-        currentSaveData.playerProgress = Mathf.Clamp(
-            currentSaveData.playerProgress + delta,
-            0f, 100f
-        );
-        SaveGame(GetPlayerPosition());
-        Debug.Log($"📈 진행도 저장됨: {currentSaveData.playerProgress}%");
-    }
+{
+    currentSaveData.playerProgress = Mathf.Clamp(
+        currentSaveData.playerProgress + delta,
+        0f, 100f
+    );
+
+    SaveGame(GetPlayerPosition());
+
+    Debug.Log($"📈 진행도 저장됨: {currentSaveData.playerProgress}%");
+
+    OnProgressChanged?.Invoke(currentSaveData.playerProgress); // 🔔 이벤트 발생
+}
 }
