@@ -1010,6 +1010,9 @@ MonoBehaviour:
   settingsPanel: {fileID: 0}
   helpPanel: {fileID: 0}
   homeSceneName: Savedatatest 1
+  objectsToDestroyOnReturnHome:
+  - --- UI
+  - Canvas
 --- !u!4 &421280974
 Transform:
   m_ObjectHideFlags: 0
@@ -2769,10 +2772,6 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5554,7 +5553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32328df7ef4d9a841ae9d7ac05e556bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2082410228}
+  player: {fileID: 1968285432}
 --- !u!4 &1832807636
 Transform:
   m_ObjectHideFlags: 0
@@ -5875,7 +5874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!4 &1968285432 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8262596607418896395, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2523258933327414022, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
   m_PrefabInstance: {fileID: 1968285429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1988586216

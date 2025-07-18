@@ -11,6 +11,8 @@ public class SaveButtonHandler : MonoBehaviour
 
     [Header("홈 버튼 이동 설정")]
     public string homeSceneName = "StartScene";
+    [Header("파괴할 오브젝트 이름들")]
+    public string[] objectsToDestroyOnReturnHome;
 
     public void OnClick_SaveManually()
     {
@@ -39,6 +41,22 @@ public class SaveButtonHandler : MonoBehaviour
 
     public void ReturnToHome()
     {
+        // ✅ 입력한 이름을 가진 오브젝트 모두 제거
+        foreach (string name in objectsToDestroyOnReturnHome)
+        {
+            GameObject obj = GameObject.Find(name);
+            if (obj != null)
+            {
+                Destroy(obj);
+                Debug.Log($"🧹 오브젝트 제거됨: {name}");
+            }
+            else
+            {
+                Debug.LogWarning($"⚠ 제거할 오브젝트를 찾을 수 없음: {name}");
+            }
+        }
+
+        // ✅ 씬 이동
         if (!string.IsNullOrEmpty(homeSceneName))
         {
             SceneManager.LoadScene(homeSceneName);
