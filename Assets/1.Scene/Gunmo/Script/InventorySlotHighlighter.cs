@@ -3,34 +3,59 @@ using UnityEngine.UI;
 
 public class InventorySlotHighlighter : MonoBehaviour
 {
-    public InventorySlot[] slots;             // 기존 슬롯
-    public Button[] buttons;                  // 새로 추가할 버튼
-    
-    public GameObject highlightEffect;
+    [Header("하이라이트 대상")]
+    public InventorySlot[] slots;       // 인벤토리 슬롯들
+    public Button[] buttons;            // 버튼들 (설정, 홈, 종료 등)
+    public GameObject highlightEffect;  // 하이라이트 이펙트
+
+    [Header("입력 쿨타임 설정")]
+    public float inputCooldown = 0.3f;  // VR 입력 간격 제한
 
     private int currentIndex = 0;
+    private float lastInputTime = 0f;
     private Color[] defaultButtonColors;
+
+    // 총 선택 가능 수: 슬롯 + 버튼
     private int totalSelectableCount => slots.Length + buttons.Length;
 
     private void Start()
     {
-        // 각 버튼의 원래 색상을 저장
+        // 버튼 원래 색상 저장
         defaultButtonColors = new Color[buttons.Length];
         for (int i = 0; i < buttons.Length; i++)
         {
-            defaultButtonColors[i] = buttons[i].GetComponent<Image>().color;
+            if (buttons[i].TryGetComponent(out Image img))
+                defaultButtonColors[i] = img.color;
         }
+
         UpdateHighlight();
     }
 
+    /// <summary>
+    /// VR 입력 시 호출: 방향 입력 (예: +1, -1)
+    /// </summary>
+    public void TryMoveHighlight(int direction)
+    {
+        if (Time.time - lastInputTime < inputCooldown)
+            return;
+
+        MoveHighlight(direction);
+        lastInputTime = Time.time;
+    }
+
+    /// <summary>
+    /// 하이라이트 커서 이동
+    /// </summary>
     public void MoveHighlight(int direction)
     {
         currentIndex += direction;
-        currentIndex = Mathf.Clamp(currentIndex, 0, slots.Length + buttons.Length - 1); // 버튼까지 포함
-
+        currentIndex = Mathf.Clamp(currentIndex, 0, totalSelectableCount - 1);
         UpdateHighlight();
     }
 
+    /// <summary>
+    /// 하이라이트 UI 상태 갱신
+    /// </summary>
     private void UpdateHighlight()
     {
         // 슬롯 하이라이트
@@ -39,17 +64,16 @@ public class InventorySlotHighlighter : MonoBehaviour
             slots[i].SetHighlight(i == currentIndex);
         }
 
-        // 버튼 하이라이트 색상
+        // 버튼 하이라이트 (색상 변경)
         for (int i = 0; i < buttons.Length; i++)
         {
-            Image img = buttons[i].GetComponent<Image>();
-            if (img != null)
+            if (buttons[i].TryGetComponent(out Image img))
             {
                 img.color = (slots.Length + i == currentIndex) ? Color.white : defaultButtonColors[i];
             }
         }
 
-        // 슬롯용 이펙트 위치 갱신
+        // 하이라이트 이펙트 위치 설정
         if (highlightEffect != null && currentIndex < slots.Length)
         {
             highlightEffect.transform.SetParent(slots[currentIndex].transform, false);
@@ -57,10 +81,13 @@ public class InventorySlotHighlighter : MonoBehaviour
         }
         else if (highlightEffect != null)
         {
-            highlightEffect.transform.SetParent(null); // 버튼 쪽일 때는 이펙트 숨기기
+            highlightEffect.transform.SetParent(null); // 버튼이면 숨기기
         }
     }
 
+    /// <summary>
+    /// 현재 선택된 슬롯 or 버튼 실행
+    /// </summary>
     public void SelectCurrent()
     {
         if (currentIndex < slots.Length)
@@ -70,7 +97,7 @@ public class InventorySlotHighlighter : MonoBehaviour
         else
         {
             int buttonIndex = currentIndex - slots.Length;
-            buttons[buttonIndex].onClick.Invoke(); // 버튼 클릭 처리
+            buttons[buttonIndex].onClick.Invoke(); // 버튼 작동
         }
     }
 }
