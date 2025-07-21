@@ -1,15 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 public class SceneMove : MonoBehaviour
 {
-    public Button StartButton;
-    void Start()
+    [SerializeField] private InputActionReference aButton;
+
+    private void OnEnable()
     {
-        StartButton.onClick.AddListener(StartScene);
+        aButton.action.Enable();
+        aButton.action.performed += OnAButtonPressed;
     }
 
-    public void StartScene()
+    private void OnDisable()
+    {
+        aButton.action.Disable();
+        aButton.action.performed -= OnAButtonPressed;
+    }
+
+    public void OnAButtonPressed(InputAction.CallbackContext ctx)
     {
         SceneManager.LoadScene("0. Tutoriual");
     }
