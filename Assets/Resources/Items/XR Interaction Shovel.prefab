@@ -264,7 +264,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -462,12 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc17f35637ec6db43b56c9d1f51adee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  introduceUI: {fileID: 0}
-  getUI: {fileID: 0}
   dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
   minBounds: {x: -20, y: 0, z: -20}
   maxBounds: {x: 20, y: 20, z: 20}
+  grabInteractable: {fileID: 0}
 --- !u!65 &7511804806643596946
 BoxCollider:
   m_ObjectHideFlags: 0

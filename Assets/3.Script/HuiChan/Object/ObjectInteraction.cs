@@ -1,12 +1,9 @@
-using System.Linq;
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class ObjectInteraction : MonoBehaviour
 {
-    [SerializeField, ReadOnly] Canvas canvas;
-    [SerializeField] GameObject introduceUI;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
     [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
 
@@ -17,16 +14,11 @@ public abstract class ObjectInteraction : MonoBehaviour
     private Vector3 maxBounds = new Vector3(5f, 5f, 5f);   // X, Y, Z 최대 좌표
 
     private Rigidbody rb;
-    private XRGrabInteractable grabInteractable;
+    [SerializeField, ReadOnly] private XRGrabInteractable grabInteractable;
 
     void Awake()
     {
         dog = FindAnyObjectByType<AnimalLogic>();
-
-        introduceUI = Resources.FindObjectsOfTypeAll<GameObject>()
-                         .FirstOrDefault(obj => obj.name.Contains("Introduce"));
-
-        canvas = introduceUI.GetComponentInParent<Canvas>();
         rb = GetComponent<Rigidbody>();
 
         // XRGrabInteractable 받아오기
@@ -157,13 +149,13 @@ public abstract class ObjectInteraction : MonoBehaviour
     }
     private void HandleDirectExitEvent()
     {
-        introduceUI.SetActive(false);
+        // introduceUI.SetActive(false);
     }
 
     // Ray Grab 시 실행될 Method
     public void HandleRayExitEvent()
     {
-        introduceUI.SetActive(false);
+        // introduceUI.SetActive(false);
     }
 }
 
