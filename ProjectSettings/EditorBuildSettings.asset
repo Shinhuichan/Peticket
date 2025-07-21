@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1.Scene/Gunmo/Savedatatest.unity
-    guid: 2e3d4d40e00014843bd275ac6cc8d114
-  - enabled: 1
     path: Assets/1.Scene/Gunmo/0. Tutoriual Save.unity
-    guid: a8af8ed49027d8343a6f2fd7093e2bf6
+    guid: b0114c4a2e260b042a7289b2aa0e884a
+  - enabled: 1
+    path: Assets/1.Scene/HuiChan/1. My Room.unity
+    guid: c68cfd30fe0314569a93fc344982880a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4dd285a5e5674024f8f84db7a94792bb, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 10c1966da5c1ced42a763c474416132f, type: 2}
