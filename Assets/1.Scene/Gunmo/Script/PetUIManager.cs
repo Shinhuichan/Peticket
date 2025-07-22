@@ -4,11 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class PetUIManager : MonoBehaviour
 {
-    public GameObject petUIPrefab;    // 각 펫 카드 프리팹
-    public Transform uiParent;        // UI가 배치될 부모
-    public GameObject backButton;     // 뒤로가기 버튼
-    public GameObject confirmButton; // ← 인스펙터 연결
-    public string gameSceneName = "GameScene"; // 인게임 씬 이름 (인스펙터에서 설정)
+    public GameObject petUIPrefab;
+    public Transform uiParent;
+    public GameObject backButton;
+    public GameObject confirmButton;
+
+    [Header("펫 프리팹 목록")]
+    public GameObject smallDogPrefab;
+    public GameObject middleDogPrefab;
+    public GameObject largeDogPrefab;
+
+    [Header("펫 생성 위치")]
+    public Transform spawnPoint;
+    [Header("확정 후 닫을 패널")]
+    public GameObject panelToClose; // ✅ 이 패널을 비활성화할 예정
 
     private PetUI selectedUI;
     private static PetUIManager instance;
@@ -19,12 +28,12 @@ public class PetUIManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Destroy(gameObject); // 중복 방지
+            Destroy(gameObject);
             return;
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject); // 씬 변경 시 유지
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -50,9 +59,7 @@ public class PetUIManager : MonoBehaviour
 
     private void OnPetSelected(string petId)
     {
-        Debug.Log($"✅ 선택된 펫: {petId}");
-
-        GameSaveManager.Instance.SetSelectedPet(petId); // 선택 저장
+        GameSaveManager.Instance.SetSelectedPet(petId);
 
         foreach (var ui in GetComponentsInChildren<PetUI>(true))
         {
@@ -64,7 +71,7 @@ public class PetUIManager : MonoBehaviour
         }
 
         backButton?.SetActive(true);
-        confirmButton?.SetActive(true); // 선택된 경우에만 확정 버튼 보이기
+        confirmButton?.SetActive(true);
     }
 
     public void OnClick_BackToSelection()
@@ -73,33 +80,57 @@ public class PetUIManager : MonoBehaviour
 
         foreach (var ui in GetComponentsInChildren<PetUI>(true))
         {
-            ui.ResetSelection(); // 다시 보이게
+            ui.ResetSelection();
         }
 
         backButton?.SetActive(false);
         confirmButton?.SetActive(false);
-        Debug.Log("🔙 선택 초기화 완료");
     }
 
     public void OnClick_ConfirmSelection()
-{
-    string selectedPetId = GameSaveManager.Instance?.currentSaveData?.selectedPetId;
-
-    if (!string.IsNullOrEmpty(selectedPetId))
     {
-        if (!string.IsNullOrEmpty(gameSceneName))
+        string selectedPetId = GameSaveManager.Instance?.currentSaveData?.selectedPetId;
+
+        if (string.IsNullOrEmpty(selectedPetId))
         {
-            Debug.Log($"🚀 선택된 펫({selectedPetId})으로 게임 씬 이동");
-            SceneManager.LoadScene(gameSceneName);
+            Debug.LogWarning("❌ 펫이 선택되지 않았습니다.");
+            return;
+        }
+
+        GameObject prefabToSpawn = null;
+
+        switch (selectedPetId)
+        {
+            case "small":
+                prefabToSpawn = smallDogPrefab;
+                break;
+            case "middle":
+                prefabToSpawn = middleDogPrefab;
+                break;
+            case "large":
+                prefabToSpawn = largeDogPrefab;
+                break;
+        }
+
+        if (prefabToSpawn != null && spawnPoint != null)
+        {
+            Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+            Debug.Log($"🐶 펫 생성 완료: {selectedPetId}");
         }
         else
         {
-            Debug.LogError("⚠ 게임 씬 이름이 설정되어 있지 않습니다. 인스펙터에서 확인하세요.");
+            Debug.LogError("❌ 펫 생성 실패: 프리팹 또는 위치 누락");
+        }
+
+        // ✅ 버튼 비활성화
+        backButton?.SetActive(false);
+        confirmButton?.SetActive(false);
+        // ✅ 지정된 패널 비활성화
+        if (panelToClose != null)
+        {
+            panelToClose.SetActive(false);
+            Debug.Log($"📦 패널 비활성화됨: {panelToClose.name}");
         }
     }
-    else
-    {
-        Debug.LogWarning("❌ 펫이 선택되지 않았습니다. 선택 후 계속 진행할 수 있습니다.");
-    }
 }
-}
+
