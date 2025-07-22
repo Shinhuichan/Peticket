@@ -1,20 +1,35 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class InventorySlotHighlighter : MonoBehaviour
 {
+    [Header("UI 연결")]
     public InventorySlot[] slots;
     public Button[] buttons;
 
-    private int currentIndex = 0;
-    private Color[] defaultButtonColors;
+    [Header("조이스틱 입력 액션")]
+    public InputActionReference moveAction; // Vector2 타입 액션
 
-    [Header("하이라이트 이동 딜레이")]
-    public float moveCooldown = 0.3f; // 0.3초마다 1칸 이동 가능
+    [Header("하이라이트 이동 설정")]
+    public float moveCooldown = 0.3f;
+
+    private int currentIndex = 0;
     private float lastMoveTime = 0f;
+    private Color[] defaultButtonColors;
 
     private bool canMoveRight = true;
     private bool canMoveLeft = true;
+
+    private void OnEnable()
+    {
+        if (moveAction != null) moveAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (moveAction != null) moveAction.action.Disable();
+    }
 
     private void Start()
     {
@@ -26,11 +41,12 @@ public class InventorySlotHighlighter : MonoBehaviour
 
         UpdateHighlight();
     }
+
     private void Update()
     {
-        float axis = Input.GetAxis("Horizontal");
+        Vector2 input = moveAction.action.ReadValue<Vector2>();
 
-        if (axis > 0.5f)
+        if (input.x > 0.5f)
         {
             if (canMoveRight && Time.time - lastMoveTime >= moveCooldown)
             {
@@ -44,7 +60,7 @@ public class InventorySlotHighlighter : MonoBehaviour
             canMoveRight = true;
         }
 
-        if (axis < -0.5f)
+        if (input.x < -0.5f)
         {
             if (canMoveLeft && Time.time - lastMoveTime >= moveCooldown)
             {
@@ -58,18 +74,16 @@ public class InventorySlotHighlighter : MonoBehaviour
             canMoveLeft = true;
         }
     }
-
-    /*public void TryMoveHighlight(int direction)
+    public void TryMoveHighlight(int direction)
     {
-        // 쿨타임 확인
         if (Time.time - lastMoveTime >= moveCooldown)
         {
             MoveHighlight(direction);
             lastMoveTime = Time.time;
         }
-    }*/
+    }
 
-    public void MoveHighlight(int direction)
+    private void MoveHighlight(int direction)
     {
         currentIndex += direction;
         currentIndex = Mathf.Clamp(currentIndex, 0, slots.Length + buttons.Length - 1);

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class VRInventoryController : MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class VRInventoryController : MonoBehaviour
         selectAction.action.performed -= OnSelect;
         moveAction.action.Disable();
         selectAction.action.Disable();
-
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -33,11 +31,11 @@ public class VRInventoryController : MonoBehaviour
 
         if (value > 0.5f)
         {
-            highlighter.MoveHighlight(1);
+            highlighter.TryMoveHighlight(1); // ✅ 딜레이 적용
         }
         else if (value < -0.5f)
         {
-            highlighter.MoveHighlight(-1);
+            highlighter.TryMoveHighlight(-1); // ✅ 딜레이 적용
         }
     }
 
