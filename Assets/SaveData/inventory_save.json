@@ -9,32 +9,20 @@
             "slotIndex": 1
         },
         {
-            "itemName": "XR Interaction Food",
+            "itemName": "XR Interaction Bowl",
             "slotIndex": 2
         },
         {
-            "itemName": "XR Interaction Food",
+            "itemName": "XR Interaction Ball",
             "slotIndex": 3
         },
         {
-            "itemName": "XR Interaction Shovel",
+            "itemName": "XR Interaction Muzzle",
             "slotIndex": 4
         },
         {
-            "itemName": "XR Interaction Food",
+            "itemName": "XR Interaction Collar",
             "slotIndex": 5
-        },
-        {
-            "itemName": "XR Interaction Shovel",
-            "slotIndex": 6
-        },
-        {
-            "itemName": "XR Interaction Ball",
-            "slotIndex": 7
-        },
-        {
-            "itemName": "XR Interaction Food",
-            "slotIndex": 9
         }
     ]
 }

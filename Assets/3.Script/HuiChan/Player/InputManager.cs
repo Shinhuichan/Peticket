@@ -182,10 +182,11 @@ public class InputManager : SingletonBehaviour<InputManager>
     #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
-        currentHasItem.Add(selectedItem.name);
+        if (!currentHasItem.Contains(selectedItem.name)) currentHasItem.Add(selectedItem.name);
+        
         string combinedString = string.Join(", ", currentHasItem);
         Debug.Log($"currentHasItem : [{combinedString}]");
-        
+
         InventoryManager.Instance.AddItemToInventory(selectedItem);
         Debug.Log("Inventory로 진입 성공!");
     }

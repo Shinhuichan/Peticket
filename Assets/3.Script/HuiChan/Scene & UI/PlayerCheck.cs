@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerCheck : MonoBehaviour
 {
     [SerializeField] GameObject sceneChangeUI;
+    [SerializeField] CheckItem checkItem;
 
     void OnTriggerEnter(Collider other)
     {
@@ -15,7 +16,7 @@ public class PlayerCheck : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             Debug.Log("Player 진입");
-            sceneChangeUI.SetActive(true);
+            if (checkItem.HasAllitem()) sceneChangeUI.SetActive(true);
         }
     }
     void OnTriggerExit(Collider other)
