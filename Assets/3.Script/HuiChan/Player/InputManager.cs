@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +8,7 @@ public class InputManager : SingletonBehaviour<InputManager>
 {
     protected override bool IsDontDestroy() => true;
     [Title("Input Setting", underlined: true, fontSize = 18, alignment = TextAlignment.Center)]
+
     public InputActionAsset playerInputActions;
     private InputActionMap leftInteractionActionMap;
     private InputActionMap rightInteractionActionMap;
@@ -34,9 +34,6 @@ public class InputManager : SingletonBehaviour<InputManager>
     [SerializeField] XRDirectInteractor leftDirect;
     [SerializeField] XRDirectInteractor rightDirect;
     [SerializeField, ReadOnly] DynamicMoveProvider moveProvider;
-
-    [Header("Item Setting")]
-    [ReadOnly] public List<string> currentHasItem;
 
     void Start()
     {
@@ -184,12 +181,8 @@ public class InputManager : SingletonBehaviour<InputManager>
     #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
-        // Item 획득 시, List에 삽입.
-        currentHasItem.Add(selectedItem.name);
-        string combinedString = string.Join(", ", currentHasItem);
-        Debug.Log($"현재 Inventory : [{combinedString}]");
-
         InventoryManager.Instance.AddItemToInventory(selectedItem);
+        Debug.Log("Inventory로 진입 성공!");
     }
     #endregion
 }
