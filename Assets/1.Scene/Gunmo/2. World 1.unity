@@ -2187,7 +2187,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 861873828}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 232857693}
   audioSource: {fileID: 0}
@@ -2819,7 +2819,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1402175932}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 288100350}
   audioSource: {fileID: 0}
@@ -4154,7 +4154,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1810270671}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 410725839}
   audioSource: {fileID: 0}
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1083462816}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 434704031}
   audioSource: {fileID: 0}
@@ -5738,8 +5738,6 @@ MonoBehaviour:
   leftDirect: {fileID: 679389870}
   rightDirect: {fileID: 464251653}
   moveProvider: {fileID: 0}
-  needHasItem: []
-  currentHasItem: []
 --- !u!114 &514792594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,7 +6003,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 623286906}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 538988586}
   audioSource: {fileID: 0}
@@ -8544,7 +8542,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 495860237}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 773274578}
   audioSource: {fileID: 0}
@@ -8704,7 +8702,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1737723575}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 786508852}
   audioSource: {fileID: 0}
@@ -9462,7 +9460,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 256219236}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 863492224}
   audioSource: {fileID: 0}
@@ -10063,7 +10061,7 @@ GameObject:
   - component: {fileID: 923289585}
   - component: {fileID: 923289584}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: SlideCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11684,7 +11682,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 477119427}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1129484326}
   audioSource: {fileID: 0}
@@ -11783,7 +11781,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 158106597}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1129547207}
   audioSource: {fileID: 0}
@@ -12792,7 +12790,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 406094082}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1241049470}
   audioSource: {fileID: 0}
@@ -14498,7 +14496,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1586857810}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1395396823}
   audioSource: {fileID: 0}
@@ -15211,7 +15209,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2016454627}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1513294302}
   audioSource: {fileID: 0}
@@ -15533,6 +15531,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39aabac3d9863d946b2bcab832a82b42, type: 3}
+--- !u!4 &1559164471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5906306924000778174, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+  m_PrefabInstance: {fileID: 292857484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1559446236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3466950876407638983, guid: 6cd1b0c4ad240844e807b203ef080535, type: 3}
@@ -16198,6 +16201,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1453096021062189904, guid: 93725bea51b73be4383ba8fdaa4dc6da, type: 3}
   m_PrefabInstance: {fileID: 1659715844}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1661228902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661228904}
+  - component: {fileID: 1661228903}
+  m_Layer: 0
+  m_Name: PetSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661228903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661228902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b10cdb14b9cdf34c817e4133ab563ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  middleDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  spawnPoint: {fileID: 1849715863}
+--- !u!4 &1661228904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661228902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1662469734
 GameObject:
   m_ObjectHideFlags: 0
@@ -16290,7 +16341,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1959340693}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1662469736}
   audioSource: {fileID: 0}
@@ -16455,7 +16506,8 @@ MonoBehaviour:
   - {fileID: 396021478}
   - {fileID: 1936037510}
   - {fileID: 1378599873}
-  moveCooldown: 0.3
+  moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveCooldown: 0.1
 --- !u!4 &1684816837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5233833684349372486, guid: ecd8b48efcdf7694a9e71e0f23d785c1, type: 3}
@@ -17588,7 +17640,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1053850046}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1775508981}
   audioSource: {fileID: 0}
@@ -18572,6 +18624,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd1b0c4ad240844e807b203ef080535, type: 3}
+--- !u!4 &1849715863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8406775605213525523, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+  m_PrefabInstance: {fileID: 292857484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1850813332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18810,7 +18867,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 384461776}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1876137898}
   audioSource: {fileID: 0}
@@ -19423,7 +19480,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2136156200}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1911459258}
   audioSource: {fileID: 0}
@@ -20798,7 +20855,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 636266241}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2061898352}
   audioSource: {fileID: 0}
@@ -21359,7 +21416,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2035784334}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2108726790}
   audioSource: {fileID: 0}
@@ -21458,7 +21515,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1012927284}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1559164471}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2108972089}
   audioSource: {fileID: 0}
@@ -22422,3 +22479,4 @@ SceneRoots:
   - {fileID: 1971455447}
   - {fileID: 923289588}
   - {fileID: 1744152094}
+  - {fileID: 1661228904}

@@ -33,14 +33,36 @@ public class InventorySlotHighlighter : MonoBehaviour
 
     private void Start()
     {
+        // null 체크 추가
+        if (buttons == null || buttons.Length == 0)
+        {
+            Debug.LogWarning("⚠ buttons 배열이 비어 있습니다.");
+            return;
+        }
+
         defaultButtonColors = new Color[buttons.Length];
+
         for (int i = 0; i < buttons.Length; i++)
         {
-            defaultButtonColors[i] = buttons[i].GetComponent<Image>().color;
+            if (buttons[i] == null)
+            {
+                Debug.LogError($"❌ 버튼 {i}이 null입니다.");
+                continue;
+            }
+
+            Image img = buttons[i].GetComponent<Image>();
+            if (img == null)
+            {
+                Debug.LogError($"❌ 버튼 {i}에 Image 컴포넌트가 없습니다.");
+                continue;
+            }
+
+            defaultButtonColors[i] = img.color;
         }
 
         UpdateHighlight();
     }
+
 
     private void Update()
     {
@@ -94,16 +116,20 @@ public class InventorySlotHighlighter : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i].SetHighlight(i == currentIndex);
+            if (slots[i] != null)
+                slots[i].SetHighlight(i == currentIndex);
         }
 
         for (int i = 0; i < buttons.Length; i++)
         {
+            if (buttons[i] == null) continue;
+
             Image img = buttons[i].GetComponent<Image>();
-            if (img != null)
-            {
-                img.color = (slots.Length + i == currentIndex) ? Color.white : defaultButtonColors[i];
-            }
+            if (img == null) continue;
+
+            bool isHighlighted = (slots.Length + i == currentIndex);
+            if (defaultButtonColors != null && i < defaultButtonColors.Length)
+                img.color = isHighlighted ? Color.white : defaultButtonColors[i];
         }
     }
 
@@ -111,12 +137,14 @@ public class InventorySlotHighlighter : MonoBehaviour
     {
         if (currentIndex < slots.Length)
         {
-            slots[currentIndex].RemoveItemToHand();
+            if (slots[currentIndex] != null)
+                slots[currentIndex].RemoveItemToHand();
         }
         else
         {
             int buttonIndex = currentIndex - slots.Length;
-            buttons[buttonIndex].onClick.Invoke();
+            if (buttonIndex >= 0 && buttonIndex < buttons.Length && buttons[buttonIndex] != null)
+                buttons[buttonIndex].onClick.Invoke();
         }
     }
 }

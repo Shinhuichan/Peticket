@@ -481,6 +481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4636489713556179687, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8262596607418896395, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -1138,7 +1142,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 266648539}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 200860040}
   audioSource: {fileID: 0}
@@ -1897,7 +1901,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1974898556}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 300247948}
   audioSource: {fileID: 0}
@@ -2095,8 +2099,6 @@ MonoBehaviour:
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
-  needHasItem: []
-  currentHasItem: []
 --- !u!114 &342544070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2504,7 +2506,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1932250552}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 417303836}
   audioSource: {fileID: 0}
@@ -2648,7 +2650,8 @@ MonoBehaviour:
   - {fileID: 1470498377}
   - {fileID: 25950236}
   - {fileID: 1709513238}
-  moveCooldown: 0.3
+  moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveCooldown: 0.1
 --- !u!1001 &458150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2981,7 +2984,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 133653479}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 516115317}
   audioSource: {fileID: 0}
@@ -3452,7 +3455,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2064681321}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 648971644}
   audioSource: {fileID: 0}
@@ -4352,7 +4355,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1441698500}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 772203904}
   audioSource: {fileID: 0}
@@ -5173,7 +5176,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1634191883}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 858789387}
   audioSource: {fileID: 0}
@@ -5817,7 +5820,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1089745182}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 927180776}
   audioSource: {fileID: 0}
@@ -6654,7 +6657,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 135920459}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1036795214}
   audioSource: {fileID: 0}
@@ -6753,7 +6756,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 394750846}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1037144830}
   audioSource: {fileID: 0}
@@ -7266,7 +7269,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1930742525}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1113841682}
   audioSource: {fileID: 0}
@@ -7537,8 +7540,6 @@ MonoBehaviour:
   leftDirect: {fileID: 41734343}
   rightDirect: {fileID: 41734342}
   moveProvider: {fileID: 0}
-  needHasItem: []
-  currentHasItem: []
 --- !u!114 &1183990818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7728,7 +7729,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2093002970}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1187200498}
   audioSource: {fileID: 0}
@@ -9054,7 +9055,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1287135377}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1398216987}
   audioSource: {fileID: 0}
@@ -9808,7 +9809,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1889353500}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1490925476}
   audioSource: {fileID: 0}
@@ -10632,7 +10633,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 29838794}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1564292834}
   audioSource: {fileID: 0}
@@ -10962,7 +10963,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2136803568}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1600429808}
   audioSource: {fileID: 0}
@@ -13566,7 +13567,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1080243610}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1960673605}
   audioSource: {fileID: 0}
@@ -13939,7 +13940,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1859490667}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1989857388}
   audioSource: {fileID: 0}
@@ -14039,7 +14040,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2000478688
 Canvas:
   m_ObjectHideFlags: 0
@@ -14524,7 +14525,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 604115943}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2079430189}
   audioSource: {fileID: 0}
@@ -15005,7 +15006,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1555469186}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 1655873491}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2115685958}
   audioSource: {fileID: 0}
