@@ -22,7 +22,20 @@ public class InventorySlot : MonoBehaviour
     private bool isColorInitialized = false;
 
     public bool IsEmpty => currentItem == null;
+    
 
+    [SerializeField] InputManager input;
+
+    void Start()
+    {
+        // 현재 Inventory에 들어온 Item 
+        input = FindAnyObjectByType<InputManager>();
+        if (input.Equals(null))
+        {
+            Debug.Log("VRInventoryController | InputManager가 null입니다.");
+            return;
+        }
+    }
     public void InitializeSlotColor()
     {
         if (!isColorInitialized && slotBackgroundImage != null)
@@ -108,6 +121,12 @@ public class InventorySlot : MonoBehaviour
 
         if (currentItem != null)
         {
+            // 가지고 있는 Item 관리
+            input.currentHasItem.Remove(currentItem.name);
+            string combinedString = string.Join(", ", input.currentHasItem);
+            Debug.Log($"현재 Inventory : [{combinedString}]");
+            //
+            
             Debug.Log($"✅ 아이템 꺼내기 성공: {currentItem.name}");
             currentItem.SetActive(true);
             currentItem.transform.position = handTransform.position;

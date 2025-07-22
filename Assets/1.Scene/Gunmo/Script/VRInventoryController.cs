@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class VRInventoryController : MonoBehaviour
 {
@@ -24,7 +22,6 @@ public class VRInventoryController : MonoBehaviour
         selectAction.action.performed -= OnSelect;
         moveAction.action.Disable();
         selectAction.action.Disable();
-
     }
 
     private void OnMove(InputAction.CallbackContext context)
