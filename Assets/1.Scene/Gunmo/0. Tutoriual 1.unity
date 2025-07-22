@@ -238,7 +238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &13148217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8868,8 +8868,13 @@ MonoBehaviour:
   - {fileID: 2136831247}
   - {fileID: 1611363867}
   - {fileID: 2085385733}
-  buttons: []
-  moveCooldown: 0.3
+  buttons:
+  - {fileID: 2014553020}
+  - {fileID: 1749921241}
+  - {fileID: 621209103}
+  - {fileID: 1156550696}
+  - {fileID: 216237483}
+  moveCooldown: 1
 --- !u!4 &1723221842
 Transform:
   m_ObjectHideFlags: 0

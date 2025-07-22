@@ -13,6 +13,9 @@ public class InventorySlotHighlighter : MonoBehaviour
     public float moveCooldown = 0.3f; // 0.3초마다 1칸 이동 가능
     private float lastMoveTime = 0f;
 
+    private bool canMoveRight = true;
+    private bool canMoveLeft = true;
+
     private void Start()
     {
         defaultButtonColors = new Color[buttons.Length];
@@ -23,8 +26,40 @@ public class InventorySlotHighlighter : MonoBehaviour
 
         UpdateHighlight();
     }
+    private void Update()
+    {
+        float axis = Input.GetAxis("Horizontal");
 
-    public void TryMoveHighlight(int direction)
+        if (axis > 0.5f)
+        {
+            if (canMoveRight && Time.time - lastMoveTime >= moveCooldown)
+            {
+                MoveHighlight(1);
+                lastMoveTime = Time.time;
+                canMoveRight = false;
+            }
+        }
+        else
+        {
+            canMoveRight = true;
+        }
+
+        if (axis < -0.5f)
+        {
+            if (canMoveLeft && Time.time - lastMoveTime >= moveCooldown)
+            {
+                MoveHighlight(-1);
+                lastMoveTime = Time.time;
+                canMoveLeft = false;
+            }
+        }
+        else
+        {
+            canMoveLeft = true;
+        }
+    }
+
+    /*public void TryMoveHighlight(int direction)
     {
         // 쿨타임 확인
         if (Time.time - lastMoveTime >= moveCooldown)
@@ -32,7 +67,7 @@ public class InventorySlotHighlighter : MonoBehaviour
             MoveHighlight(direction);
             lastMoveTime = Time.time;
         }
-    }
+    }*/
 
     public void MoveHighlight(int direction)
     {

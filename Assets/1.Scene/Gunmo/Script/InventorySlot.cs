@@ -110,7 +110,7 @@ public class InventorySlot : MonoBehaviour
         {
             // Inventory에서 Item 꺼낼 때, Data 최신화(추가된 부분)
             string objName = currentItem.name.Replace("(Preview)", "").Trim();
-            InputManager.Instance.currentHasItem.Add(objName);
+            InputManager.Instance.currentHasItem.Remove(objName);
             string combinedString = string.Join(", ", InputManager.Instance.currentHasItem);
             Debug.Log($"currentHasItem : [{combinedString}]");
             //
