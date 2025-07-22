@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379dd4f61feb94ea848c07fa4b9eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewModelPrefab: {fileID: 6142918788862709093, guid: 97e39387be87b2f4b8c1e6ddffd660e0, type: 3}
+  previewModelPrefab: {fileID: 629519548675259387, guid: add5568cb30f69b4b8223869b47526e3, type: 3}
   previewScale: 80
   previewRotationEuler: {x: 25, y: -45, z: 0}
   previewOffset: {x: 0, y: 0, z: -30}
