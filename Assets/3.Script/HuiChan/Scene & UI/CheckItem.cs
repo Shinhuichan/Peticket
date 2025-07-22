@@ -23,8 +23,13 @@ public class CheckItem : MonoBehaviour
         List<string> itemNames = new List<string>();
         foreach (var item in GameManager.Instance.needHasItem)
             itemNames.Add(item.itemName);
-
-        bool allIncluded = GameManager.Instance.currentHasItem.All(item => itemNames.Contains(item));
+        
+        // 필요한 모든 Item을 획득하였는가?
+        bool itemAllIncluded = GameManager.Instance.currentHasItem.All(item => itemNames.Contains(item)); 
+        // 필요한 모든 Item을 장착시켜줬는가?
+        bool itemAllEquiped = GameManager.Instance.isCollarEquip && GameManager.Instance.isMuzzleEquip;
+        
+        bool allIncluded = itemAllIncluded && itemAllEquiped;
         return allIncluded;
     }
 }

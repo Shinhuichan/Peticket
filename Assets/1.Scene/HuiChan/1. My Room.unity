@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER
       objectReference: {fileID: 0}
+    - target: {fileID: 8587366660972688673, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1691,7 +1695,7 @@ RectTransform:
   m_GameObject: {fileID: 290393729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 354990754}
@@ -2110,8 +2114,6 @@ MonoBehaviour:
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
-  needHasItem: []
-  currentHasItem: []
 --- !u!114 &342544070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3094,8 +3096,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 114272, guid: 62a7d5dd45994494182ff5c1d8da0d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642462020}
   m_SourcePrefab: {fileID: 100100000, guid: 62a7d5dd45994494182ff5c1d8da0d3c, type: 3}
+--- !u!1 &541968555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 114272, guid: 62a7d5dd45994494182ff5c1d8da0d3c, type: 3}
+  m_PrefabInstance: {fileID: 541968554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &552835671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3159,7 +3169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3580980778263186169, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
       propertyPath: player
@@ -3407,6 +3417,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 417252, guid: 62a7d5dd45994494182ff5c1d8da0d3c, type: 3}
   m_PrefabInstance: {fileID: 541968554}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &642462020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541968555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &648971642
 GameObject:
   m_ObjectHideFlags: 0
@@ -6530,8 +6559,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 133438, guid: 6f95ff39b42c3414d9a7ced2eea58274, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1105054553}
   m_SourcePrefab: {fileID: 100100000, guid: 6f95ff39b42c3414d9a7ced2eea58274, type: 3}
+--- !u!1 &1105054552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 133438, guid: 6f95ff39b42c3414d9a7ced2eea58274, type: 3}
+  m_PrefabInstance: {fileID: 1105054551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1105054553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105054552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1113841680
 GameObject:
   m_ObjectHideFlags: 0
@@ -6882,20 +6938,6 @@ MonoBehaviour:
   leftDirect: {fileID: 41734343}
   rightDirect: {fileID: 41734342}
   moveProvider: {fileID: 0}
-  needHasItem:
-  - itemName: XR Interaction Ball
-    itemSprite: {fileID: 21300000, guid: 8077a19c26195aa4f826c2d74b0d6f5e, type: 3}
-  - itemName: XR Interaction Shovel
-    itemSprite: {fileID: 21300000, guid: 782fb76233cc7ec45b07750e9987d731, type: 3}
-  - itemName: XR Interaction Muzzle
-    itemSprite: {fileID: 21300000, guid: 7b2495f7d445a5349a3ca3eb3d3d07e8, type: 3}
-  - itemName: XR Interaction Collar
-    itemSprite: {fileID: 21300000, guid: 7b2495f7d445a5349a3ca3eb3d3d07e8, type: 3}
-  - itemName: XR Interaction Bowl
-    itemSprite: {fileID: 21300000, guid: c871fc52621160040a1d57f550002c98, type: 3}
-  - itemName: XR Interaction Food
-    itemSprite: {fileID: 21300000, guid: 2824486ee1b9d414fa4c77492c5e9854, type: 3}
-  currentHasItem: []
 --- !u!114 &1183990818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7260,6 +7302,62 @@ Transform:
   m_Children:
   - {fileID: 1652581315}
   - {fileID: 914358894}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213479994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213479996}
+  - component: {fileID: 1213479995}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1213479995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213479994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed51418b20f3567428b19cf6d1dbafeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needHasItem:
+  - itemName: XR Interaction Food
+    itemSprite: {fileID: 21300000, guid: 2824486ee1b9d414fa4c77492c5e9854, type: 3}
+  - itemName: XR Interaction Shovel
+    itemSprite: {fileID: 21300000, guid: 782fb76233cc7ec45b07750e9987d731, type: 3}
+  - itemName: XR Interaction Ball
+    itemSprite: {fileID: 21300000, guid: 8077a19c26195aa4f826c2d74b0d6f5e, type: 3}
+  - itemName: XR Interaction Bowl
+    itemSprite: {fileID: 21300000, guid: c871fc52621160040a1d57f550002c98, type: 3}
+  currentHasItem: []
+  isCollarEquip: 0
+  isMuzzleEquip: 0
+--- !u!4 &1213479996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213479994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1216677964
@@ -7693,7 +7791,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: fd9a38ef4692d4b4da56ad6e82eca469, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 59786f9075e0b774bb8e5fcefb56507b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1253637528
 Transform:
@@ -14311,5 +14409,6 @@ SceneRoots:
   - {fileID: 1063849798}
   - {fileID: 669526500}
   - {fileID: 1208823175}
+  - {fileID: 1213479996}
   - {fileID: 1655873491}
   - {fileID: 1966500939}

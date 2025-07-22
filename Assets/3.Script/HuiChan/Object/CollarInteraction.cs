@@ -22,7 +22,7 @@ public class CollarInteraction : ObjectInteraction
     }
     void LateUpdate()
     {
-        if (GameManager.Instance.isCollarEquip)
+        if ((type == ObjectType.Collar) ? GameManager.Instance.isCollarEquip : GameManager.Instance.isMuzzleEquip)
         {
             // 어떤 target으로 부착되는 지 판단
             Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
@@ -39,7 +39,8 @@ public class CollarInteraction : ObjectInteraction
             rb = transform.GetComponent<Rigidbody>();
             animal = col.gameObject.GetComponentInParent<AnimalInteraction>();
 
-            GameManager.Instance.isCollarEquip = true;
+            if (type == ObjectType.Collar) GameManager.Instance.isCollarEquip = true;
+            else GameManager.Instance.isMuzzleEquip = true;
         }
     }
 }
