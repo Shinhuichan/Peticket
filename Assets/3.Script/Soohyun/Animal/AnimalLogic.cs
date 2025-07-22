@@ -173,7 +173,13 @@ public class AnimalLogic : MonoBehaviour
     private void UpdateWalk()
     {
         behaviourTimer += Time.deltaTime;
-        if (!nav.pathPending && nav.remainingDistance <= 0.3f && behaviourTimer >= checkInterval)
+        if (!nav.pathPending && nav.remainingDistance <= 0.3f)
+        {
+            ChangeState(AnimalState.Idle);
+            animationHandler.SetAnimation(PetAnimation.Idle);
+        }
+
+        if(behaviourTimer >= checkInterval)
         {
             MoveRandomPoint();
             behaviourTimer = 0f;

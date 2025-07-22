@@ -27,6 +27,10 @@
         {
             "itemName": "XR Interaction Muzzle",
             "slotIndex": 6
+        },
+        {
+            "itemName": "XR Interaction Ball",
+            "slotIndex": 7
         }
     ]
 }

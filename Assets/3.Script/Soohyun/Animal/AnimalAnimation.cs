@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalAnimation : MonoBehaviour
+public class AnimalAnimation
 {
     private Animator animator;
     public AnimalAnimation (Animator anim)
@@ -16,8 +16,10 @@ public class AnimalAnimation : MonoBehaviour
 
         animator.ResetTrigger("Idle");
         animator.ResetTrigger("Walk");
-        animator.ResetTrigger("Eat");
-        animator.ResetTrigger("Sit");
+        animator.ResetTrigger("EatStart");
+        animator.ResetTrigger("EatEnd");
+        animator.ResetTrigger("SitStart");
+        animator.ResetTrigger("SitEnd");
 
         animator.SetTrigger(animType.ToString());
     }
