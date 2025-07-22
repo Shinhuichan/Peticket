@@ -6795,7 +6795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7fe0dc3fcd8d4fbd5929e15579d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
+  targetCamera: {fileID: 334649086}
   followXZOnly: 1
   fixedOffset: {x: 0, y: 0, z: 1}
 --- !u!224 &1081179043 stripped
@@ -12183,7 +12183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1652581317}
         m_TargetAssemblyTypeName: SaveButtonHandler, Assembly-CSharp
         m_MethodName: CloseHelp
         m_Mode: 1
