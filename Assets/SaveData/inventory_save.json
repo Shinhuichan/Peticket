@@ -25,12 +25,16 @@
             "slotIndex": 5
         },
         {
-            "itemName": "XR Interaction Muzzle",
+            "itemName": "XR Interaction Shovel",
             "slotIndex": 6
         },
         {
             "itemName": "XR Interaction Ball",
             "slotIndex": 7
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 9
         }
     ]
 }
