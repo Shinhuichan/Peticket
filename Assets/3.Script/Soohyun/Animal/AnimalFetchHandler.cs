@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// ✅ AnimalFetchHandler.cs 수정본
+using UnityEngine;
 using UnityEngine.AI;
 
 public class AnimalFetchHandler
@@ -9,11 +10,13 @@ public class AnimalFetchHandler
     private bool isGoingToBall = false;
     private bool isReturning = false;
     private bool hasBall = false;
+    private bool hasTriggeredFetchAnim = false;
 
     public AnimalFetchHandler(AnimalLogic logic)
     {
         animal = logic;
     }
+
     public void OnBallSpawned(GameObject ball)
     {
         if (targetBall != null || isGoingToBall || isReturning)
@@ -32,7 +35,6 @@ public class AnimalFetchHandler
         animal.SetState(AnimalState.Fetch);
     }
 
-    private bool hasTriggeredFetchAnim = false;
     public void UpdateFetch()
     {
         if (targetBall == null) return;
@@ -44,7 +46,6 @@ public class AnimalFetchHandler
                 animal.Agent.isStopped = false;
                 animal.Agent.SetDestination(hit.position);
 
-                // ✅ 단 한 번만 Trigger
                 if (!hasTriggeredFetchAnim)
                 {
                     animal.AnimationHandler.SetAnimation(PetAnimation.Fetch);
@@ -55,7 +56,7 @@ public class AnimalFetchHandler
             if (CloseEnoughToGrab() && !hasBall)
             {
                 GrabBall();
-                hasTriggeredFetchAnim = false; // Reset for next use
+                hasTriggeredFetchAnim = false;
             }
         }
 
@@ -64,7 +65,6 @@ public class AnimalFetchHandler
             if (!animal.Agent.pathPending && animal.Agent.remainingDistance <= 0.5f)
             {
                 DropBall();
-                animal.ChangeState(AnimalState.Idle);
             }
         }
     }
@@ -75,21 +75,14 @@ public class AnimalFetchHandler
         targetBall.transform.localPosition = Vector3.zero;
         targetBall.transform.localRotation = Quaternion.identity;
 
-        if(targetBall.TryGetComponent(out Rigidbody rb))
-        {
-            rb.isKinematic = true;
-        }
+        if (targetBall.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
+        if (targetBall.TryGetComponent(out Collider col)) col.enabled = false;
 
-        if(targetBall.TryGetComponent(out Collider col))
-        {
-            col.enabled = false;
-        }
         hasBall = true;
         isGoingToBall = false;
         isReturning = true;
 
         Vector3 returnPoint = animal.Player.position + animal.Player.forward.normalized * 1.5f;
-
         if (NavMesh.SamplePosition(returnPoint, out NavMeshHit resultHit, 1.0f, NavMesh.AllAreas))
         {
             animal.Agent.SetDestination(resultHit.position);
@@ -101,24 +94,21 @@ public class AnimalFetchHandler
     private void DropBall()
     {
         if (targetBall == null) return;
+
         targetBall.transform.SetParent(null);
 
         Vector3 drop = animal.Player.position + animal.Player.forward * 0.9f;
         drop.y = animal.transform.position.y;
 
-        if (targetBall.TryGetComponent(out Rigidbody rb))
-        {
-            rb.isKinematic = false;
-        }
-
-        if (targetBall.TryGetComponent(out Collider col))
-        {
-            col.enabled = true;
-        }
+        if (targetBall.TryGetComponent(out Rigidbody rb)) rb.isKinematic = false;
+        if (targetBall.TryGetComponent(out Collider col)) col.enabled = true;
 
         animal.Agent.isStopped = true;
         animal.Agent.ResetPath();
-        animal.AnimationHandler.SetAnimation(PetAnimation.SitStart);
+
+        // ✅ Fetch 트리거 초기화 (중복 애니메이션 방지)
+        animal.AnimationHandler.ResetFetchAnimation();
+        animal.AnimationHandler.SetSitPhase(1); // SitStart
 
         targetBall.transform.position = drop;
         targetBall.transform.rotation = Quaternion.identity;
@@ -126,12 +116,13 @@ public class AnimalFetchHandler
         isReturning = false;
         hasBall = false;
         targetBall = null;
+
+        Debug.Log("[DropBall] SitSatisfied 상태로 전환합니다");
+        animal.ChangeState(AnimalState.SitSatisfied);
     }
 
     private bool CloseEnoughToGrab()
     {
-        float dis = Vector3.Distance(animal.transform.position, targetBall.transform.position);
-        return dis <= 1.0f;
+        return Vector3.Distance(animal.transform.position, targetBall.transform.position) <= 1.0f;
     }
-
 }
