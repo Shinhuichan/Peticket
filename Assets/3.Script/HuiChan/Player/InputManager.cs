@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,10 @@ public class InputManager : SingletonBehaviour<InputManager>
     [SerializeField] XRDirectInteractor rightDirect;
     [SerializeField, ReadOnly] DynamicMoveProvider moveProvider;
 
+    [Header("HasItem Setting")]
+    public List<CollectableData> needHasItem = new List<CollectableData>(); 
+    [ReadOnly] public List<string> currentHasItem = new List<string>();
+
     void Start()
     {
         leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
@@ -52,8 +57,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         InitializeMoveProvider();
         InitializeInputActions();
         InitialGrabEvents();
-
-        // InputSystem.onDeviceChange += OnDeviceChange;
 
         getItemAction.action.Disable();
         inventoryActionMap.Disable();
@@ -75,8 +78,6 @@ public class InputManager : SingletonBehaviour<InputManager>
         rightDirect.selectExited.RemoveListener(OnGrabEnd);
 
         getItemAction.action.performed -= GetItem;
-
-        // InputSystem.onDeviceChange -= OnDeviceChange;
     }
     #region Initial Setting
     void InitializeMoveProvider()
@@ -181,6 +182,10 @@ public class InputManager : SingletonBehaviour<InputManager>
     #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
+        currentHasItem.Add(selectedItem.name);
+        string combinedString = string.Join(", ", currentHasItem);
+        Debug.Log($"currentHasItem : [{combinedString}]");
+        
         InventoryManager.Instance.AddItemToInventory(selectedItem);
         Debug.Log("Inventory로 진입 성공!");
     }

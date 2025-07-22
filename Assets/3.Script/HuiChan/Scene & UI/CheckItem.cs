@@ -8,5 +8,5 @@ public struct CollectableData
 }
 public class CheckItem : MonoBehaviour
 {
-
+    
 }

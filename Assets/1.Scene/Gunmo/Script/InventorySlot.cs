@@ -108,6 +108,12 @@ public class InventorySlot : MonoBehaviour
 
         if (currentItem != null)
         {
+            // Inventory에서 Item 꺼낼 때, Data 최신화(추가된 부분)
+            InputManager.Instance.currentHasItem.Add(currentItem.name);
+            string combinedString = string.Join(", ", InputManager.Instance.currentHasItem);
+            Debug.Log($"currentHasItem : [{combinedString}]");
+            //
+
             Debug.Log($"✅ 아이템 꺼내기 성공: {currentItem.name}");
             currentItem.SetActive(true);
             currentItem.transform.position = handTransform.position;
