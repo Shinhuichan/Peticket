@@ -1,7 +1,14 @@
 {
-    "playerPosX": -3.0715227127075197,
-    "playerPosY": -0.10801678895950318,
-    "playerPosZ": 2.822239637374878,
-    "selectedPetId": "middle",
-    "playerProgress": 40.0
+    "selectedPetId": "small",
+    "playerProgress": 40.0,
+    "roomScenePosition": {
+        "x": -3.948540687561035,
+        "y": -0.10000002384185791,
+        "z": 2.767591714859009
+    },
+    "parkScenePosition": {
+        "x": 12.963781356811524,
+        "y": -0.10000002384185791,
+        "z": 126.72344970703125
+    }
 }

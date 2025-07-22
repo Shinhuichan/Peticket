@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameSaveManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameSaveManager : MonoBehaviour
 
     private string filePath;
     public event System.Action<float> OnProgressChanged;
+
+    [Header("씬 이름 설정")]
+    public string roomSceneName = "RoomScene";
+    public string parkSceneName = "ParkScene";
 
     private void Awake()
     {
@@ -29,18 +34,20 @@ public class GameSaveManager : MonoBehaviour
     /// </summary>
     public void SaveGame(Vector3 playerPosition)
     {
-        Debug.Log($"💾 저장 시도 위치: {playerPosition}");
+        string currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log($"💾 저장 시도 위치: {playerPosition} (씬: {currentScene})");
 
-        currentSaveData.playerPosX = playerPosition.x;
-        currentSaveData.playerPosY = playerPosition.y;
-        currentSaveData.playerPosZ = playerPosition.z;
+        if (currentScene == roomSceneName)
+            currentSaveData.roomScenePosition = new SerializableVector3(playerPosition);
+        else if (currentScene == parkSceneName)
+            currentSaveData.parkScenePosition = new SerializableVector3(playerPosition);
+        else
+            Debug.LogWarning($"⚠ 저장되지 않은 씬: {currentScene}");
 
         string json = JsonUtility.ToJson(currentSaveData, true);
 
-        // 저장 경로 폴더 없으면 생성
         string folder = Path.GetDirectoryName(filePath);
-        if (!Directory.Exists(folder))
-            Directory.CreateDirectory(folder);
+        if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
         File.WriteAllText(filePath, json);
         Debug.Log($"💾 게임 저장 완료: {filePath}");
@@ -63,11 +70,14 @@ public class GameSaveManager : MonoBehaviour
 
     public Vector3 GetPlayerPosition()
     {
-        return new Vector3(
-            currentSaveData.playerPosX,
-            currentSaveData.playerPosY,
-            currentSaveData.playerPosZ
-        );
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == roomSceneName)
+            return currentSaveData.roomScenePosition.ToVector3();
+        else if (currentScene == parkSceneName)
+            return currentSaveData.parkScenePosition.ToVector3();
+        else
+            return Vector3.zero;
     }
 
     public void SetSelectedPet(string petId)
