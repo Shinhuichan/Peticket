@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum AnimalType { Small, Medium, Large }
 public enum AnimalState { Idle, FreeWalk, FollowPlayer, LeashFollow, GoToFeed, Eat, Fetch }
-public enum PetAnimation { Idle, Walk, Eat, Sit }
+public enum PetAnimation { Walk, EatStart, EatEnd, SitStart, SitEnd, Fetch }
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class AnimalLogic : MonoBehaviour
@@ -68,12 +67,15 @@ public class AnimalLogic : MonoBehaviour
 
     public void OnBallSoundDetected(GameObject ball)
     {
+        Debug.Log($"[AnimalLogic] OnBallSoundDetected 실행됨: {ball.name}");
+
         var ballObj = ball.GetComponent<BallObject>();
-        if(ballObj != null && ballObj.isFromInventory)
+        if (ballObj != null && ballObj.isFromInventory)
         {
             fetchHandler.OnBallSpawned(ball);
         }
     }
+
 
     void Start()
     {
@@ -98,11 +100,10 @@ public class AnimalLogic : MonoBehaviour
             return;
         }
 
-        UpdateState[currentState]?.Invoke();
+        UpdateState[currentState]?.Invoke(); // 👈 여기서 Fetch 상태도 업데이트됨
         UpdateRotation();
-
-        //SetLeashed(isLeashed);
     }
+
 
     private void InitializeState()
     {
@@ -124,7 +125,6 @@ public class AnimalLogic : MonoBehaviour
                 nav.isStopped = true;
                 nav.ResetPath();
                 idleTimer= 0f;
-                animationHandler.SetAnimation(PetAnimation.Idle);
             } },
             {AnimalState.FreeWalk, () =>{
                 nav.isStopped = false;
@@ -133,18 +133,18 @@ public class AnimalLogic : MonoBehaviour
             } },
             {AnimalState.FollowPlayer,()=>{
                 nav.isStopped = false;
-                animationHandler.SetAnimation(PetAnimation.Walk);
+                //animationHandler.SetAnimation(PetAnimation.Walk);
             } },
             {AnimalState.LeashFollow, ()=>{
                 nav.isStopped = false;
-                animationHandler.SetAnimation(PetAnimation.Walk);
+                //animationHandler.SetAnimation(PetAnimation.Walk);
             } },
             {AnimalState.GoToFeed, () => feedHandler.EnterFeed()},
             {AnimalState.Eat, () => feedHandler.EnterEat() },
             {AnimalState.Fetch, () =>
             {
                 nav.isStopped = false;
-                animationHandler.SetAnimation(PetAnimation.Walk);
+                animationHandler.SetAnimation(PetAnimation.Fetch);
             } }
         };
     }
@@ -176,10 +176,9 @@ public class AnimalLogic : MonoBehaviour
         if (!nav.pathPending && nav.remainingDistance <= 0.3f)
         {
             ChangeState(AnimalState.Idle);
-            animationHandler.SetAnimation(PetAnimation.Idle);
         }
 
-        if(behaviourTimer >= checkInterval)
+        if (behaviourTimer >= checkInterval)
         {
             MoveRandomPoint();
             behaviourTimer = 0f;
@@ -200,10 +199,10 @@ public class AnimalLogic : MonoBehaviour
 
     private void UpdateLeashFollow()
     {
-        if(Vector3.Distance(transform.position, player.position) > leashFollowDistance)
+        if (Vector3.Distance(transform.position, player.position) > leashFollowDistance)
         {
             Vector3 targetPos = player.position - (player.forward * 0.5f);
-            if(NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
             {
                 nav.isStopped = false;
                 nav.SetDestination(hit.position);

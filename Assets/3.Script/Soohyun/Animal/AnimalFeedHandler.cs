@@ -35,7 +35,7 @@ public class AnimalFeedHandler : MonoBehaviour
     {
         animal.Agent.isStopped = true;
         animal.Agent.ResetPath();
-        animal.AnimationHandler.SetAnimation(PetAnimation.Eat);
+        animal.AnimationHandler.SetAnimation(PetAnimation.EatStart);
 
         eatTimer = animal.EatDuration;
         isEating = true;

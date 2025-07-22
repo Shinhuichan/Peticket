@@ -16,7 +16,14 @@ public class AnimalFetchHandler
     }
     public void OnBallSpawned(GameObject ball)
     {
-        if (targetBall != null || isGoingToBall || isReturning) return;
+        if (targetBall != null || isGoingToBall || isReturning)
+        {
+            Debug.Log("[FetchHandler] 이미 처리 중인 공 있음 → 무시");
+            return;
+        }
+
+        Debug.Log($"[FetchHandler] 공 감지됨 → Fetch 상태 진입: {ball.name}");
+
         targetBall = ball;
         isGoingToBall = true;
         isReturning = false;
@@ -25,6 +32,7 @@ public class AnimalFetchHandler
         animal.SetState(AnimalState.Fetch);
     }
 
+    private bool hasTriggeredFetchAnim = false;
     public void UpdateFetch()
     {
         if (targetBall == null) return;
@@ -35,12 +43,19 @@ public class AnimalFetchHandler
             {
                 animal.Agent.isStopped = false;
                 animal.Agent.SetDestination(hit.position);
-                animal.AnimationHandler.SetAnimation(PetAnimation.Walk);
+
+                // ✅ 단 한 번만 Trigger
+                if (!hasTriggeredFetchAnim)
+                {
+                    animal.AnimationHandler.SetAnimation(PetAnimation.Fetch);
+                    hasTriggeredFetchAnim = true;
+                }
             }
 
-            if(CloseEnoughToGrab() && !hasBall)
+            if (CloseEnoughToGrab() && !hasBall)
             {
                 GrabBall();
+                hasTriggeredFetchAnim = false; // Reset for next use
             }
         }
 
@@ -103,7 +118,7 @@ public class AnimalFetchHandler
 
         animal.Agent.isStopped = true;
         animal.Agent.ResetPath();
-        animal.AnimationHandler.SetAnimation(PetAnimation.Sit);
+        animal.AnimationHandler.SetAnimation(PetAnimation.SitStart);
 
         targetBall.transform.position = drop;
         targetBall.transform.rotation = Quaternion.identity;

@@ -14,7 +14,6 @@ public class AnimalAnimation
     {
         if (animator == null) return;
 
-        animator.ResetTrigger("Idle");
         animator.ResetTrigger("Walk");
         animator.ResetTrigger("EatStart");
         animator.ResetTrigger("EatEnd");
