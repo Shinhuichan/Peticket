@@ -10,7 +10,7 @@ public enum ObjectType
 public class CollarInteraction : ObjectInteraction
 {
     [SerializeField] ObjectType type;
-    [SerializeField, ReadOnly] bool isEquip = false;
+    
 
     AnimalInteraction animal;
     Collider myCol;
@@ -22,7 +22,7 @@ public class CollarInteraction : ObjectInteraction
     }
     void LateUpdate()
     {
-        if (isEquip)
+        if (GameManager.Instance.isCollarEquip)
         {
             // 어떤 target으로 부착되는 지 판단
             Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
@@ -36,11 +36,10 @@ public class CollarInteraction : ObjectInteraction
         if (col.gameObject.tag == "Dog")
         {
             // 필요한 Component들 정의
-
             rb = transform.GetComponent<Rigidbody>();
             animal = col.gameObject.GetComponentInParent<AnimalInteraction>();
 
-            isEquip = true;
+            GameManager.Instance.isCollarEquip = true;
         }
     }
 }

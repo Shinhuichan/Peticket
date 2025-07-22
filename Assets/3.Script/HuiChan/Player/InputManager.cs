@@ -36,10 +36,6 @@ public class InputManager : SingletonBehaviour<InputManager>
     [SerializeField] XRDirectInteractor rightDirect;
     [SerializeField, ReadOnly] DynamicMoveProvider moveProvider;
 
-    [Header("HasItem Setting")]
-    public List<CollectableData> needHasItem = new List<CollectableData>(); 
-    [ReadOnly] public List<string> currentHasItem = new List<string>();
-
     void Start()
     {
         leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
@@ -182,9 +178,9 @@ public class InputManager : SingletonBehaviour<InputManager>
     #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
-        if (!currentHasItem.Contains(selectedItem.name)) currentHasItem.Add(selectedItem.name);
+        if (!GameManager.Instance.currentHasItem.Contains(selectedItem.name)) GameManager.Instance.currentHasItem.Add(selectedItem.name);
         
-        string combinedString = string.Join(", ", currentHasItem);
+        string combinedString = string.Join(", ", GameManager.Instance.currentHasItem);
         Debug.Log($"currentHasItem : [{combinedString}]");
 
         InventoryManager.Instance.AddItemToInventory(selectedItem);

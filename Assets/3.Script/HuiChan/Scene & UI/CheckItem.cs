@@ -21,10 +21,10 @@ public class CheckItem : MonoBehaviour
     public bool HasAllitem()
     {
         List<string> itemNames = new List<string>();
-        foreach (var item in InputManager.Instance.needHasItem)
+        foreach (var item in GameManager.Instance.needHasItem)
             itemNames.Add(item.itemName);
 
-        bool allIncluded = InputManager.Instance.currentHasItem.All(item => itemNames.Contains(item));
+        bool allIncluded = GameManager.Instance.currentHasItem.All(item => itemNames.Contains(item));
         return allIncluded;
     }
 }
