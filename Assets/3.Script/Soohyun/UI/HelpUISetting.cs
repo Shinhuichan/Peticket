@@ -14,11 +14,11 @@ public class HelpUISetting : MonoBehaviour
     [Header("UI Text Setting")]
     public TextMeshProUGUI textSetting;
 
-    private string[] texts; // °¢ ÀÌ¹ÌÁö¿¡ ´ëÀÀÇÏ´Â ÅØ½ºÆ®
+    private string[] texts; // ê° ì´ë¯¸ì§€ì— ëŒ€ì‘í•˜ëŠ” í…ìŠ¤íŠ¸
 
     [Header("Input Actions")]
-    public InputActionReference nextHelpAction;  // ¿À¸¥¼Õ Æ®¸®°Å
-    public InputActionReference prevHelpAction;  // ¿Þ¼Õ Æ®¸®°Å
+    public InputActionReference nextHelpAction;  // ì˜¤ë¥¸ì† íŠ¸ë¦¬ê±°
+    public InputActionReference prevHelpAction;  // ì™¼ì† íŠ¸ë¦¬ê±°
 
     private int currentIndex = 0;
 
@@ -43,13 +43,13 @@ public class HelpUISetting : MonoBehaviour
         texts = new string[]
            {
             // Snack
-            "¸ÔÀÌ\n°­¾ÆÁö°¡ ¹è°íÇÃ ¶§\nÁÖ´Â ¸ÀÀÖ´Â °£½ÄÀÌ¿¡¿ä!\n\n¾î¶»°Ô ÁÖ³ª¿ä?\n1. ¸ÔÀÌ¸¦ ¼Õ(ÄÁÆ®·Ñ·¯)À¸·Î µé¾î¿ä.\n2. ¹ä±×¸© À§¿¡ ¿Ã¸®°í ¹öÆ°À» ²Ú ´­·¯¿ä!",
+            "ë¨¹ì´\nê°•ì•„ì§€ê°€ ë°°ê³ í”Œ ë•Œ\nì£¼ëŠ” ë§›ìžˆëŠ” ê°„ì‹ì´ì—ìš”!\n\nì–´ë–»ê²Œ ì£¼ë‚˜ìš”?\n1. ë¨¹ì´ë¥¼ ì†(ì»¨íŠ¸ë¡¤ëŸ¬)ìœ¼ë¡œ ë“¤ì–´ìš”.\n2. ë°¥ê·¸ë¦‡ ìœ„ì— ì˜¬ë¦¬ê³  ë²„íŠ¼ì„ ê¾¹ ëˆŒëŸ¬ìš”!",
             
             // Shovel
-            "»ð\n°­¾ÆÁö°¡ ¹èº¯À» ÇÏ¸é\nÀÌ »ðÀ¸·Î ±ú²ýÇÏ°Ô Á¤¸®ÇÒ ¼ö ÀÖ¾î¿ä!\n\n¾î¶»°Ô Ä¡¿ï±î¿ä?\n1. »ðÀ» ¼Õ(ÄÁÆ®·Ñ·¯)À¸·Î µé¾î¿ä.\n2. ¹èº¯¹° À§¿¡ »ìÂ¦ °®´Ù ´ë¸é,\nÀÚµ¿À¸·Î ¸»²ûÈ÷ Ä¡¿öÁ®¿ä!",
+            "ì‚½\nê°•ì•„ì§€ê°€ ë°°ë³€ì„ í•˜ë©´\nì´ ì‚½ìœ¼ë¡œ ê¹¨ë—í•˜ê²Œ ì •ë¦¬í•  ìˆ˜ ìžˆì–´ìš”!\n\nì–´ë–»ê²Œ ì¹˜ìš¸ê¹Œìš”?\n1. ì‚½ì„ ì†(ì»¨íŠ¸ë¡¤ëŸ¬)ìœ¼ë¡œ ë“¤ì–´ìš”.\n2. ë°°ë³€ë¬¼ ìœ„ì— ì‚´ì§ ê°–ë‹¤ ëŒ€ë©´,\nìžë™ìœ¼ë¡œ ë§ë”ížˆ ì¹˜ì›Œì ¸ìš”!",
 
             // Muzzle
-            "ÀÔ¸¶°³\n°­¾ÆÁö°¡ ³î¶ó°Å³ª ÈïºÐÇßÀ» ¶§,\n´Ù¸¥ »ç¶÷ÀÌ³ª µ¿¹°À» º¸È£ÇÏ±â À§ÇØ\nÀÌ ÀÔ¸¶°³¸¦ Âø¿ëÇØ¿ä!\n\n¾î¶»°Ô Âø¿ëÇÏ³ª¿ä?\n1. ÀÔ¸¶°³¸¦ ¼Õ(ÄÁÆ®·Ñ·¯)À¸·Î µé¾î¿ä.\n2. °­¾ÆÁö ¾ó±¼¿¡ »ìÂ¦ °®´Ù ´ë¸é,\nÀÚµ¿À¸·Î Âø¿ëµÅ¿ä!"
+            "ìž…ë§ˆê°œ\nê°•ì•„ì§€ê°€ ë†€ë¼ê±°ë‚˜ í¥ë¶„í–ˆì„ ë•Œ,\në‹¤ë¥¸ ì‚¬ëžŒì´ë‚˜ ë™ë¬¼ì„ ë³´í˜¸í•˜ê¸° ìœ„í•´\nì´ ìž…ë§ˆê°œë¥¼ ì°©ìš©í•´ìš”!\n\nì–´ë–»ê²Œ ì°©ìš©í•˜ë‚˜ìš”?\n1. ìž…ë§ˆê°œë¥¼ ì†(ì»¨íŠ¸ë¡¤ëŸ¬)ìœ¼ë¡œ ë“¤ì–´ìš”.\n2. ê°•ì•„ì§€ ì–¼êµ´ì— ì‚´ì§ ê°–ë‹¤ ëŒ€ë©´,\nìžë™ìœ¼ë¡œ ì°©ìš©ë¼ìš”!"
            };
         UpdateHelpUI();
     }
