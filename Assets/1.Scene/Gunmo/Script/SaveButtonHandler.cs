@@ -8,6 +8,8 @@ public class SaveButtonHandler : MonoBehaviour
     [Header("패널 연결")]
     public GameObject settingsPanel;
     public GameObject helpPanel;
+    [Header("인벤토리 연결")]
+    public GameObject inventoryPanel;
 
     [Header("홈 버튼 이동 설정")]
     public string homeSceneName = "StartScene";
@@ -31,12 +33,23 @@ public class SaveButtonHandler : MonoBehaviour
     {
         if (settingsPanel != null)
             settingsPanel.SetActive(true);
+
+             if (inventoryPanel != null)
+            inventoryPanel.SetActive(false); // ✅ 인벤토리 닫기
     }
 
     public void OpenHelp()
     {
         if (helpPanel != null)
             helpPanel.SetActive(true);
+
+            if (inventoryPanel != null)
+            inventoryPanel.SetActive(false); // ✅ 인벤토리 닫기
+    }
+    public void CloseHelp()
+    {
+        if (helpPanel != null)
+            helpPanel.SetActive(false);
     }
 
     public void ReturnToHome()
