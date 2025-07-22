@@ -9606,8 +9606,8 @@ MonoBehaviour:
   - {fileID: 291170085}
   - {fileID: 1113220142}
   - {fileID: 1189853327}
-  currentIndex: 0
-  highlightEffect: {fileID: 0}
+  buttons: []
+  moveCooldown: 0.3
 --- !u!4 &1940163129
 Transform:
   m_ObjectHideFlags: 0
