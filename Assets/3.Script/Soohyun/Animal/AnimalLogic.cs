@@ -115,12 +115,13 @@ public class AnimalLogic : MonoBehaviour
                 nav.isStopped = true;
                 nav.ResetPath();
                 idleTimer = 0f;
+                animationHandler.SetAnimation(PetAnimation.Idle);
                 break;
 
             case AnimalState.FreeWalk:
                 nav.isStopped = false;
-                MoveRandomPoint();
                 animationHandler.SetAnimation(PetAnimation.Walk);
+                MoveRandomPoint();
                 break;
 
             case AnimalState.FollowPlayer:
@@ -229,7 +230,7 @@ public class AnimalLogic : MonoBehaviour
 
         if (sitWaitTimer > 2f && sitWaitTimer < 2.1f)
         {
-            animationHandler.SetSitPhase(2); // SitLoop로 전환
+            animationHandler.SetSitPhase(2); // SitLoop
         }
 
         if (sitWaitTimer > 10f)
@@ -238,16 +239,17 @@ public class AnimalLogic : MonoBehaviour
             nav.ResetPath();
             animationHandler.SetSitPhase(3); // SitEnd
 
-            // SitEnd 길이만큼 대기 후 상태 전환 (코루틴 or Invoke 사용 가능)
-            StartCoroutine(WaitAndFreeWalk(1.2f)); // SitEnd 애니메이션 길이만큼
+            StartCoroutine(WaitAndFreeWalk(1.2f));
         }
     }
 
     private IEnumerator WaitAndFreeWalk(float delay)
     {
         yield return new WaitForSeconds(delay);
+
         ChangeState(AnimalState.FreeWalk);
     }
+
 
     private void UpdateRotation()
     {
@@ -264,13 +266,19 @@ public class AnimalLogic : MonoBehaviour
 
     private void MoveRandomPoint()
     {
-        Vector2 circle = UnityEngine.Random.insideUnitCircle.normalized * walkRadius;
-        Vector3 targetPos = transform.position + new Vector3(circle.x, 0f, circle.y);
-
-        if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, walkRadius, NavMesh.AllAreas))
+        for (int i = 0; i < 10; i++) // 최대 10회 시도
         {
-            if ((hit.position - transform.position).magnitude < 1f) return;
-            nav.SetDestination(hit.position);
+            Vector2 circle = UnityEngine.Random.insideUnitCircle.normalized * walkRadius;
+            Vector3 targetPos = transform.position + new Vector3(circle.x, 0f, circle.y);
+
+            if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, walkRadius, NavMesh.AllAreas))
+            {
+                if ((hit.position - transform.position).magnitude >= 1f)
+                {
+                    nav.SetDestination(hit.position);
+                    return;
+                }
+            }
         }
     }
 
