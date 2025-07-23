@@ -15,7 +15,7 @@ public class PetProgressUI : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad 제거됨
         }
         else
         {
