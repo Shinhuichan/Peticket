@@ -267,6 +267,10 @@ MonoBehaviour:
   leashFollowDistance: 2
   mouthPos: {fileID: 6023229309626637142}
   eatDuration: 2
+  barkDistance: 3
+  barkTargetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!54 &2418009221100861201
 Rigidbody:
   m_ObjectHideFlags: 0

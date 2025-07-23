@@ -108,6 +108,8 @@ public class AnimalLogic : MonoBehaviour
 
         if (hits.Length > 0)
         {
+            Transform target = hits[0].transform;
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z)); // 수평만 회전
             ChangeState(AnimalState.Bark);
             hasBarkedRecently = true;
         }

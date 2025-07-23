@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4989723071675511720}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1405,6 +1405,10 @@ MonoBehaviour:
   leashFollowDistance: 2
   mouthPos: {fileID: 6416007628665016279}
   eatDuration: 2
+  barkDistance: 3
+  barkTargetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!54 &1182523143675996626
 Rigidbody:
   m_ObjectHideFlags: 0
