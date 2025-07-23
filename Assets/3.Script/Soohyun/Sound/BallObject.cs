@@ -25,7 +25,7 @@ public class BallObject : MonoBehaviour
 
             PlaySound();
 
-            // ✅ 시각화용 디버그
+            // 시각화용 디버그
             Debug.DrawRay(transform.position, Vector3.up * 3f, Color.yellow, 2f);
             Collider[] nearby = Physics.OverlapSphere(transform.position, 5f);
 
