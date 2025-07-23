@@ -47,6 +47,8 @@ public class AnimalLogic : MonoBehaviour
 
     private NavMeshAgent nav;
     private Animator anim;
+    private AudioClipInventory audios;
+    private AudioSource audioSource;
 
     private float behaviourTimer;
     private float leashWalkTimer;
@@ -56,10 +58,13 @@ public class AnimalLogic : MonoBehaviour
     private AnimalFeedHandler feedHandler;
     private AnimalAnimation animationHandler;
 
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        audios = GetComponent<AudioClipInventory>();
+        audioSource = GetComponent<AudioSource>();
 
         fetchHandler = new AnimalFetchHandler(this);
         feedHandler = new AnimalFeedHandler(this);
@@ -77,11 +82,7 @@ public class AnimalLogic : MonoBehaviour
             return;
         }
 
-        // 짖기 상태 감지
-        if (!hasBarkedRecently && currentState != AnimalState.Bark)
-        {
-            CheckBarkTarget();
-        }
+        CheckBarkTarget();
 
         // 짖고 나서 일정 시간 지나야 다시 짖을 수 있음
         if (hasBarkedRecently)
@@ -98,23 +99,56 @@ public class AnimalLogic : MonoBehaviour
         UpdateRotation();
     }
 
+    private float barkSoundCooldown = 2f;
+    private float barkSoundTimer = 0f;
+    private Transform currentBarkTarget = null;
+
     private void CheckBarkTarget()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, barkDistance, barkTargetLayer);
-        foreach (var hit in hits)
-        {
-            Debug.Log($"[Bark] 발견한 대상: {hit.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
-        }
 
         if (hits.Length > 0)
         {
-            Transform target = hits[0].transform;
-            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z)); // 수평만 회전
-            ChangeState(AnimalState.Bark);
-            hasBarkedRecently = true;
+            currentBarkTarget = hits[0].transform;
+
+            // 바라보기
+            Vector3 lookPos = currentBarkTarget.position;
+            lookPos.y = transform.position.y;
+            transform.LookAt(lookPos);
+
+            // 상태 전환
+            if (currentState != AnimalState.Bark)
+            {
+                ChangeState(AnimalState.Bark);
+            }
+
+            // 짖는 소리 반복 타이머
+            barkSoundTimer += Time.deltaTime;
+            if (barkSoundTimer >= barkSoundCooldown)
+            {
+                PlayBarkSound();
+                barkSoundTimer = 0f;
+            }
+        }
+        else
+        {
+            // Stranger 없음 → Idle로 복귀
+            if (currentState == AnimalState.Bark)
+                ChangeState(AnimalState.Idle);
+
+            barkSoundTimer = 0f;
+            currentBarkTarget = null;
         }
     }
-
+    private void PlayBarkSound()
+    {
+        if (audios != null && audios.BarkSound.Length > 0 && audioSource != null)
+        {
+            int i = Random.Range(0, audios.BarkSound.Length);
+            audioSource.PlayOneShot(audios.BarkSound[i]);
+            Debug.Log("[BarkSound] 재생됨");
+        }
+    }
     private void UpdateStateSwitch()
     {
         switch (currentState)
@@ -183,6 +217,10 @@ public class AnimalLogic : MonoBehaviour
 
             case AnimalState.Eat:
                 feedHandler.EnterEat();
+                if (audios != null && audios.EatSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(audios.EatSound);
+                }
                 break;
 
             case AnimalState.Fetch:
@@ -201,7 +239,12 @@ public class AnimalLogic : MonoBehaviour
                 nav.isStopped = true;
                 nav.ResetPath();
                 animationHandler.SetAnimation(PetAnimation.Bark);
-                StartCoroutine(WaitAndReturnToIdle(2.5f)); // 2.5초간 짖고 Idle 상태로 전환
+
+                if (audios != null && audios.BarkSound.Length > 0 && audioSource != null)
+                {
+                    int i = Random.Range(0, audios.BarkSound.Length);
+                    audioSource.PlayOneShot(audios.BarkSound[i]);
+                }
                 break;
         }
     }
@@ -296,12 +339,6 @@ public class AnimalLogic : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         ChangeState(AnimalState.FreeWalk);
-    }
-
-    private IEnumerator WaitAndReturnToIdle(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ChangeState(AnimalState.Idle);
     }
 
     private void UpdateRotation()

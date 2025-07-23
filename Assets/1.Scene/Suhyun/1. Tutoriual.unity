@@ -5188,7 +5188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8820838007030989814, guid: a143a462ac50f8045bfa8ce1acd623c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -11.58
       objectReference: {fileID: 0}
     - target: {fileID: 8820838007030989814, guid: a143a462ac50f8045bfa8ce1acd623c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7558,10 +7558,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 6094417650742798014}
-    - target: {fileID: 7601108238923005842, guid: e314c167b0e59b9459f4be5fae9f74f4, type: 3}
-      propertyPath: barkTargetLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     - target: {fileID: 8781555434551925976, guid: e314c167b0e59b9459f4be5fae9f74f4, type: 3}
       propertyPath: m_Name
       value: Small_Animal
