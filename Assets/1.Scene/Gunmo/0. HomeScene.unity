@@ -833,8 +833,6 @@ MonoBehaviour:
   leftDirect: {fileID: 1968285431}
   rightDirect: {fileID: 1968285430}
   moveProvider: {fileID: 0}
-  needHasItem: []
-  currentHasItem: []
 --- !u!114 &363913392
 MonoBehaviour:
   m_ObjectHideFlags: 0

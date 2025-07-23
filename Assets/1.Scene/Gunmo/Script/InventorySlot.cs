@@ -92,70 +92,58 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void RemoveItemToHand()
+{
+    Debug.Log("📤 RemoveItemToHand 호출됨");
+
+    if (currentItem == null)
     {
-        Debug.Log("📤 RemoveItemToHand 호출됨");
-
-        Collider[] colliders = Physics.OverlapSphere(handTransform.position, checkRadius);
-        Debug.Log($"🔍 손 주변 감지된 오브젝트 수: {colliders.Length}");
-
-        // 주석 처리된 손 검사 로직
-        // if (colliders.Length > 0)
-        // {
-        //     Debug.LogWarning("손 위에 이미 아이템이 있습니다. 꺼낼 수 없습니다.");
-        //     ShowSlotBlockedFeedback();
-        //     return;
-        // }
-
-        if (currentItem != null)
-        {
-            // Inventory에서 Item 꺼낼 때, Data 최신화(추가된 부분)
-            string objName = currentItem.name.Replace("(Preview)", "").Trim();
-            GameManager.Instance.currentHasItem.Remove(objName);
-            string combinedString = string.Join(", ", GameManager.Instance.currentHasItem);
-            Debug.Log($"currentHasItem : [{combinedString}]");
-            //
-
-            Debug.Log($"✅ 아이템 꺼내기 성공: {currentItem.name}");
-            currentItem.SetActive(true);
-            currentItem.transform.position = handTransform.position;
-            currentItem.transform.rotation = handTransform.rotation;
-
-            currentItem = null;
-
-            if (currentPreview != null)
-            {
-                Destroy(currentPreview);
-                Debug.Log("[InventorySlot] 프리뷰 제거됨 (꺼내기 후)");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("❌ currentItem이 null입니다. 슬롯이 비어 있음");
-        }
+        Debug.LogWarning("❌ currentItem이 null입니다. 슬롯이 비어 있음");
+        return;
     }
+
+    // ✅ 위치 제한 검사
+    if (!ItemUseZoneManager.Instance.IsInsideAnyZone(handTransform.position))
+    {
+        ShowSlotBlockedFeedback("이 영역에서는 아이템을 꺼낼 수 없습니다.");
+        return;
+    }
+
+    // 정상 아이템 꺼내기 로직
+    string objName = currentItem.name.Replace("(Preview)", "").Trim();
+    GameManager.Instance.currentHasItem.Remove(objName);
+    Debug.Log($"currentHasItem : [{string.Join(", ", GameManager.Instance.currentHasItem)}]");
+
+    currentItem.SetActive(true);
+    currentItem.transform.position = handTransform.position;
+    currentItem.transform.rotation = handTransform.rotation;
+
+    currentItem = null;
+
+    if (currentPreview != null)
+    {
+        Destroy(currentPreview);
+        Debug.Log("[InventorySlot] 프리뷰 제거됨 (꺼내기 후)");
+    }
+}
 
     private bool isBlinking = false;
 
-    private void ShowSlotBlockedFeedback()
+    private void ShowSlotBlockedFeedback(string message)
+{
+    if (!isBlinking) StartCoroutine(BlinkSlot());
+    PlayErrorSound();
+    ShowWarningMessage(message);
+
+    if (currentPreview != null)
     {
-        Debug.Log("[InventorySlot] 슬롯 차단 피드백 실행");
-
-        if (!isBlinking)
-            StartCoroutine(BlinkSlot());
-
-        PlayErrorSound();
-        ShowWarningMessage("손이 비어 있어야 아이템을 꺼낼 수 있습니다.");
-
-        if (currentPreview != null)
+        var shaker = currentPreview.GetComponent<ItemPreviewRotator>();
+        if (shaker != null)
         {
-            var shaker = currentPreview.GetComponent<ItemPreviewRotator>();
-            if (shaker != null)
-            {
-                StartCoroutine(shaker.Shake());
-                Debug.Log("[InventorySlot] 프리뷰 흔들림 실행");
-            }
+            StartCoroutine(shaker.Shake());
+            Debug.Log("[InventorySlot] 프리뷰 흔들림 실행");
         }
     }
+}
 
     private IEnumerator BlinkSlot()
     {
