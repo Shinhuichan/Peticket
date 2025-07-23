@@ -9,9 +9,11 @@ public abstract class ObjectInteraction : MonoBehaviour
 
     [Header("이동 제한 영역 설정")]
     [SerializeField]
-    private Vector3 minBounds = new Vector3(-5f, 0f, -5f); // X, Y, Z 최소 좌표
+    private Rect movementArea = new Rect(-5f, -5f, 10f, 10f); // X, Z 평면 (x, y, width, height) -> xMin, zMin, width, height
     [SerializeField]
-    private Vector3 maxBounds = new Vector3(5f, 5f, 5f);   // X, Y, Z 최대 좌표
+    private float minY = 0f; // Y축 최소 좌표
+    [SerializeField]
+    private float maxY = 5f;   // Y축 최대 좌표
 
     private Rigidbody rb;
     [SerializeField, ReadOnly] private XRGrabInteractable grabInteractable;
@@ -21,75 +23,93 @@ public abstract class ObjectInteraction : MonoBehaviour
         dog = FindAnyObjectByType<AnimalLogic>();
         rb = GetComponent<Rigidbody>();
 
-        // XRGrabInteractable 받아오기
-        if (TryGetComponent(out grabInteractable)) Debug.LogWarning($"ObjectInteraction | grabInteractable이 Null입니다.");
+        if (!TryGetComponent(out grabInteractable)) Debug.LogWarning($"ObjectInteraction | {gameObject.name}에 XRGrabInteractable 컴포넌트가 없습니다.");
 
         // Event 추가
-        if (grabInteractable != null) grabInteractable.selectEntered.AddListener(OnObjectSelected);
-        if (grabInteractable != null) grabInteractable.selectExited.AddListener(OnObjectExited);
-
-        // Event 추가
-        if (grabInteractable != null) grabInteractable.hoverEntered.AddListener(OnObjectHoverSelected);
-        if (grabInteractable != null) grabInteractable.hoverExited.AddListener(OnObjectHoverExited);
+        if (grabInteractable != null)
+        {
+            grabInteractable.selectEntered.AddListener(OnObjectSelected);
+            grabInteractable.selectExited.AddListener(OnObjectExited);
+            grabInteractable.hoverEntered.AddListener(OnObjectHoverSelected);
+            grabInteractable.hoverExited.AddListener(OnObjectHoverExited);
+        }
+        else Debug.LogWarning($"ObjectInteraction | {gameObject.name}의 grabInteractable이 할당되지 않아 XR Interaction 이벤트를 등록할 수 없습니다.");
     }
 
     void OnDestroy()
     {
-        // Event 제거
-        if (grabInteractable != null) grabInteractable.selectEntered.RemoveListener(OnObjectSelected);
-        if (grabInteractable != null) grabInteractable.selectExited.RemoveListener(OnObjectExited);
-
-        // Event 추가
-        if (grabInteractable != null) grabInteractable.hoverEntered.RemoveListener(OnObjectHoverSelected);
-        if (grabInteractable != null) grabInteractable.hoverExited.RemoveListener(OnObjectHoverExited);
+        // Event 제거 (AddListener에 해당하는 RemoveListener는 모두 작성하는 것이 중요)
+        if (grabInteractable != null) // null 체크는 중요해!
+        {
+            grabInteractable.selectEntered.RemoveListener(OnObjectSelected);
+            grabInteractable.selectExited.RemoveListener(OnObjectExited);
+            // hover 이벤트도 OnDestroy에서 RemoveListener를 해줘야 해!
+            grabInteractable.hoverEntered.RemoveListener(OnObjectHoverSelected);
+            grabInteractable.hoverExited.RemoveListener(OnObjectHoverExited);
+        }
     }
+    void FixedUpdate()
+    {
+        Vector3 currentPosition = transform.position;
 
+        float clampedX = Mathf.Clamp(currentPosition.x, movementArea.xMin, movementArea.xMax);
+        float clampedY = Mathf.Clamp(currentPosition.y, minY, maxY);
+        float clampedZ = Mathf.Clamp(currentPosition.z, movementArea.yMin, movementArea.yMax);
+
+        Vector3 clampedPosition = new Vector3(clampedX, clampedY, clampedZ);
+        if (currentPosition != clampedPosition)
+        {
+            if (rb != null) rb.position = clampedPosition;
+            else transform.position = clampedPosition;
+        }
+    }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        // 제한 영역의 중심 계산
-        Vector3 center = (minBounds + maxBounds) / 2f;
-        // 제한 영역의 크기 계산
-        Vector3 size = maxBounds - minBounds;
+        Vector3 center = new Vector3(
+            movementArea.center.x,
+            (minY + maxY) / 2f,
+            movementArea.center.y
+        );
+        Vector3 size = new Vector3(
+            movementArea.width,
+            maxY - minY,
+            movementArea.height
+        );
         Gizmos.DrawWireCube(center, size);
     }
+
     #region Selected
     private void OnObjectSelected(SelectEnterEventArgs args)
     {
-        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
-
         if (args.interactorObject is XRDirectInteractor directInteractor)
         {
-            Debug.Log("Direct Grab");
+            Debug.Log($"ObjectInteraction | {gameObject.name} : Direct Grab");
 
             // Direct Grab 시 발생할 이벤트 처리
             HandleDirectGrabEvent();
         }
         else if (args.interactorObject is XRRayInteractor rayInteractor)
         {
-            Debug.Log("Ray Grab");
-
+            Debug.Log($"ObjectInteraction | {gameObject.name} : Ray Grab");
+            this.rayInteractor = rayInteractor; // Ray Grab 시 rayInteractor 참조 저장 (필요하다면)
             // Ray Grab 시 발생할 이벤트 처리
             HandleRayGrabEvent();
         }
     }
     private void OnObjectExited(SelectExitEventArgs args)
     {
-        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
-
         if (args.interactorObject is XRDirectInteractor directInteractor)
         {
-            Debug.Log("Direct Grab");
+            Debug.Log($"ObjectInteraction | {gameObject.name} : Direct Exit");
 
-            // Direct Grab 시 발생할 이벤트 처리
             HandleDirectExitEvent();
         }
         else if (args.interactorObject is XRRayInteractor rayInteractor)
         {
-            Debug.Log("Ray Grab");
-
-            // Ray Grab 시 발생할 이벤트 처리
+            Debug.Log($"ObjectInteraction | {gameObject.name} : Ray Exit");
+            this.rayInteractor = null; // Ray Exit 시 참조 해제 (필요하다면)
             HandleRayExitEvent();
         }
     }
@@ -98,113 +118,23 @@ public abstract class ObjectInteraction : MonoBehaviour
     #region Hover
     public void OnObjectHoverSelected(HoverEnterEventArgs args)
     {
-        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
-
-        if (args.interactorObject is XRDirectInteractor directInteractor)
-        {
-            Debug.Log("Direct Grab");
-
-            // Direct Grab 시 발생할 이벤트 처리
-            HandleDirectGrabEvent();
-        }
-        else if (args.interactorObject is XRRayInteractor rayInteractor)
-        {
-            Debug.Log("Ray Grab");
-
-            // Ray Grab 시 발생할 이벤트 처리
-            HandleRayGrabEvent();
-        }
+        if (args.interactorObject is XRDirectInteractor directInteractor) Debug.Log($"ObjectInteraction | {gameObject.name} : Direct Hover Enter");
+        else if (args.interactorObject is XRRayInteractor rayInteractor) Debug.Log($"ObjectInteraction | {gameObject.name} : Ray Hover Enter");
     }
     public void OnObjectHoverExited(HoverExitEventArgs args)
     {
-        // args.interactorObject를 활용해 어떤 Interactor가 이 오브젝트를 선택했는지 판단 가능
-
-        if (args.interactorObject is XRDirectInteractor directInteractor)
-        {
-            Debug.Log("Direct Grab");
-
-            // Direct Grab 시 발생할 이벤트 처리
-            HandleDirectExitEvent();
-        }
-        else if (args.interactorObject is XRRayInteractor rayInteractor)
-        {
-            Debug.Log("Ray Grab");
-
-            // Ray Grab 시 발생할 이벤트 처리
-            HandleRayExitEvent();
-        }
+        if (args.interactorObject is XRDirectInteractor directInteractor) Debug.Log($"ObjectInteraction | {gameObject.name} : Direct Hover Exit");
+        else if (args.interactorObject is XRRayInteractor rayInteractor) Debug.Log($"ObjectInteraction | {gameObject.name} : Ray Hover Exit");
     }
     #endregion
-    // Direct Grab 시 실행될 Method
-    public void HandleDirectGrabEvent()
-    {
-        // ShowUI(introduceUI);
-        // if (input.selectedItem != null) input.selectedItem = this.gameObject;
-    }
 
-    // Ray Grab 시 실행될 Method
-    public void HandleRayGrabEvent()
-    {
-        // ShowUI(introduceUI);
-    }
-    private void HandleDirectExitEvent()
-    {
-        // introduceUI.SetActive(false);
-    }
+    public virtual void HandleDirectGrabEvent() {}
 
-    // Ray Grab 시 실행될 Method
-    public void HandleRayExitEvent()
-    {
-        // introduceUI.SetActive(false);
-    }
+    public virtual void HandleRayGrabEvent() {}
+
+    public virtual void HandleDirectExitEvent() {}
+
+    public virtual void HandleRayExitEvent() {}
+
+    public virtual void UseObject() {}
 }
-
-
-
-    // public void Select_Enter(SelectEnterEventArgs args)
-    // {
-    //     rayInteractor = args.interactorObject as XRRayInteractor;
-    //     if (rayInteractor != null)
-    //     {
-    //         currentRayLineVisual = rayInteractor.GetComponent<XRInteractorLineVisual>();
-    //         if (currentRayLineVisual != null) currentRayLineVisual.enabled = false;
-
-    //         ShowUI(getUI);
-    //         var pickupButton = getUI.GetComponentInChildren<ItemPickupButton>();
-    //         if (pickupButton != null) pickupButton.itemToPickup = this.gameObject;
-    //         introduceUI.SetActive(false);
-    //         isSelect = true;
-    //     }
-    // }
-    // public void Select_Exit()
-    // {
-    //     getUI.SetActive(false);
-    // }
-
-    // public void Hover_Enter()
-    // {
-    //     getUI.SetActive(false);
-    //     if (!isSelect) ShowUI(introduceUI);
-    // }
-
-    // public void Hover_Exit()
-    // {
-    //     introduceUI.SetActive(false);
-    // }
-        // void ShowUI(GameObject ui)
-    // {
-    //     if (ui.activeInHierarchy == false) ui.SetActive(true);
-
-    //     Renderer currentRenderer = ui.GetComponent<MeshRenderer>();
-    //     if (currentRenderer == null) return;
-    //     Vector3 worldTopRight = currentRenderer.bounds.max * 2;
-    //     Vector2 screenPosition = Camera.main.WorldToScreenPoint(worldTopRight);
-    //     Vector2 localPoint;
-    //     RectTransformUtility.ScreenPointToLocalPointInRectangle(
-    //         canvas.GetComponent<RectTransform>(),
-    //         screenPosition,
-    //         canvas.worldCamera,
-    //         out localPoint
-    //     );
-    //     ui.GetComponent<RectTransform>().anchoredPosition = localPoint;
-    // }

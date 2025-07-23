@@ -8183,7 +8183,7 @@ MonoBehaviour:
   - {fileID: 1611363867}
   - {fileID: 2085385733}
   buttons: []
-  moveAction: {fileID: 0}
+  moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   moveCooldown: 0.3
 --- !u!4 &1723221842
 Transform:
