@@ -2313,7 +2313,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 861873828}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 232857693}
   audioSource: {fileID: 0}
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1402175932}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 288100350}
   audioSource: {fileID: 0}
@@ -3006,7 +3006,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2523258933327414022, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 464791105}
+    - targetCorrespondingSourceObject: {fileID: 2523258933327414022, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1174019930}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
 --- !u!4 &292857485 stripped
@@ -4414,7 +4420,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1810270671}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 410725839}
   audioSource: {fileID: 0}
@@ -4660,7 +4666,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1083462816}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 434704031}
   audioSource: {fileID: 0}
@@ -5081,6 +5087,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &464791104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464791105}
+  m_Layer: 0
+  m_Name: ItemPosition (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &464791105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464791104}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.059999943, z: 1.4969985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 626762230}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &465590699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6251,7 +6288,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 623286906}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 538988586}
   audioSource: {fileID: 0}
@@ -6878,6 +6915,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &626762230 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2523258933327414022, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+  m_PrefabInstance: {fileID: 292857484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &627626368
 GameObject:
   m_ObjectHideFlags: 0
@@ -8641,7 +8683,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 495860237}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 773274578}
   audioSource: {fileID: 0}
@@ -8801,7 +8843,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1737723575}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 786508852}
   audioSource: {fileID: 0}
@@ -9559,7 +9601,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 256219236}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 863492224}
   audioSource: {fileID: 0}
@@ -11850,7 +11892,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 477119427}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1129484326}
   audioSource: {fileID: 0}
@@ -11949,7 +11991,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 158106597}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1129547207}
   audioSource: {fileID: 0}
@@ -12446,6 +12488,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1174019929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1174019930}
+  m_Layer: 0
+  m_Name: PetPosition (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1174019930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174019929}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6100006, y: -0.95, z: 2.2370002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 626762230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1183758535 stripped
 Transform:
@@ -13092,7 +13165,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 406094082}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1241049470}
   audioSource: {fileID: 0}
@@ -14762,7 +14835,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1586857810}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1395396823}
   audioSource: {fileID: 0}
@@ -15475,7 +15548,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2016454627}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1513294302}
   audioSource: {fileID: 0}
@@ -15797,11 +15870,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39aabac3d9863d946b2bcab832a82b42, type: 3}
---- !u!4 &1559164471 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5906306924000778174, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
-  m_PrefabInstance: {fileID: 292857484}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1559446236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3466950876407638983, guid: 6cd1b0c4ad240844e807b203ef080535, type: 3}
@@ -16473,7 +16541,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1959340693}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1662469736}
   audioSource: {fileID: 0}
@@ -17902,7 +17970,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1053850046}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1775508981}
   audioSource: {fileID: 0}
@@ -19168,7 +19236,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 384461776}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1876137898}
   audioSource: {fileID: 0}
@@ -19827,7 +19895,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2136156200}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1911459258}
   audioSource: {fileID: 0}
@@ -21202,7 +21270,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 636266241}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2061898352}
   audioSource: {fileID: 0}
@@ -21844,7 +21912,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2035784334}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2108726790}
   audioSource: {fileID: 0}
@@ -21943,7 +22011,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1012927284}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 1559164471}
+  handTransform: {fileID: 464791105}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2108972089}
   audioSource: {fileID: 0}
