@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum AnimalType { Small, Medium, Large }
-public enum AnimalState { Idle, FreeWalk, FollowPlayer, LeashFollow, GoToFeed, Eat, Fetch, SitSatisfied }
-public enum PetAnimation { Idle, Walk, EatStart, EatEnd, SitStart, SitEnd, Fetch }
+public enum AnimalState { Idle, FreeWalk, FollowPlayer, LeashFollow, GoToFeed, Eat, Fetch, SitSatisfied, Bark }
+public enum PetAnimation { Idle, Walk, EatStart, EatEnd, SitStart, SitEnd, Fetch, Bark }
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class AnimalLogic : MonoBehaviour
@@ -37,6 +36,14 @@ public class AnimalLogic : MonoBehaviour
 
     [Header("Feed Settings")]
     public float eatDuration = 2f;
+
+    [Header("Bark Settings")]
+    public float barkDistance = 3f;  // 짖기 감지 거리
+    public LayerMask barkTargetLayer;
+
+    private bool hasBarkedRecently = false;
+    private float barkCooldown = 5f;
+    private float barkTimer = 0f;
 
     private NavMeshAgent nav;
     private Animator anim;
@@ -70,8 +77,40 @@ public class AnimalLogic : MonoBehaviour
             return;
         }
 
+        // 짖기 상태 감지
+        if (!hasBarkedRecently && currentState != AnimalState.Bark)
+        {
+            CheckBarkTarget();
+        }
+
+        // 짖고 나서 일정 시간 지나야 다시 짖을 수 있음
+        if (hasBarkedRecently)
+        {
+            barkTimer += Time.deltaTime;
+            if (barkTimer >= barkCooldown)
+            {
+                hasBarkedRecently = false;
+                barkTimer = 0f;
+            }
+        }
+
         UpdateStateSwitch();
         UpdateRotation();
+    }
+
+    private void CheckBarkTarget()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, barkDistance, barkTargetLayer);
+        foreach (var hit in hits)
+        {
+            Debug.Log($"[Bark] 발견한 대상: {hit.name}, Layer: {LayerMask.LayerToName(hit.gameObject.layer)}");
+        }
+
+        if (hits.Length > 0)
+        {
+            ChangeState(AnimalState.Bark);
+            hasBarkedRecently = true;
+        }
     }
 
     private void UpdateStateSwitch()
@@ -154,6 +193,13 @@ public class AnimalLogic : MonoBehaviour
                 nav.ResetPath();
                 sitWaitTimer = 0f;
                 animationHandler.SetSitPhase(1); // SitStart
+                break;
+
+            case AnimalState.Bark:
+                nav.isStopped = true;
+                nav.ResetPath();
+                animationHandler.SetAnimation(PetAnimation.Bark);
+                StartCoroutine(WaitAndReturnToIdle(2.5f)); // 2.5초간 짖고 Idle 상태로 전환
                 break;
         }
     }
@@ -250,6 +296,11 @@ public class AnimalLogic : MonoBehaviour
         ChangeState(AnimalState.FreeWalk);
     }
 
+    private IEnumerator WaitAndReturnToIdle(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeState(AnimalState.Idle);
+    }
 
     private void UpdateRotation()
     {

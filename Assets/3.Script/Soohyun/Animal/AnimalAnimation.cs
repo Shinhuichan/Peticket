@@ -30,6 +30,7 @@ public class AnimalAnimation
         animator.ResetTrigger("SitEnd");
         animator.ResetTrigger("EatStart");
         animator.ResetTrigger("EatEnd");
+        animator.ResetTrigger("Bark");
     }
 
 
