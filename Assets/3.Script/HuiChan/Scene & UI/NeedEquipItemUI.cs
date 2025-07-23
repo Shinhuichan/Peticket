@@ -26,7 +26,7 @@ public class NeedEquipItemUI : MonoBehaviour
         if (bowlSlot != null) bowlSlot.SetActive(true);
 
         List<string> itemNames = new List<string>();
-        foreach (var item in GameManager.Instance.needHasItem)
+        foreach (var item in GameManager.Instance.currentHasItem)
             itemNames.Add(item.ToString());
 
         foreach (string item in itemNames)

@@ -23,6 +23,10 @@
         {
             "itemName": "XR Interaction Collar",
             "slotIndex": 5
+        },
+        {
+            "itemName": "XR Interaction Ball",
+            "slotIndex": 6
         }
     ]
 }
