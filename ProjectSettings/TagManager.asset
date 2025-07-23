@@ -11,6 +11,7 @@ TagManager:
   - Dog
   - Wall
   - Stranger
+  - Food
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,6 @@ public class FoodInteraction : ObjectInteraction
     [SerializeField] Transform spawnTrans;
     [Range(45f, 135f), SerializeField] float limitXZRotation = 90f;
 
-    private bool isDroppingFoodRoutineRunning = false;
     void Update()
     {
         StartCoroutine(DropFood());

@@ -4,12 +4,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class ObjectInteraction : MonoBehaviour
 {
+    CollectableData objType = CollectableData.None;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
     [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
 
     [Header("이동 제한 영역 설정")]
     [SerializeField]
-    private Rect movementArea = new Rect(-5f, -5f, 10f, 10f); // X, Z 평면 (x, y, width, height) -> xMin, zMin, width, height
+    private Rect rectXZ = new Rect(-5f, -5f, 10f, 10f); // X, Z 평면 (x, y, width, height) -> xMin, zMin, width, height
     [SerializeField]
     private float minY = 0f; // Y축 최소 좌표
     [SerializeField]
@@ -36,6 +37,19 @@ public abstract class ObjectInteraction : MonoBehaviour
         else Debug.LogWarning($"ObjectInteraction | {gameObject.name}의 grabInteractable이 할당되지 않아 XR Interaction 이벤트를 등록할 수 없습니다.");
     }
 
+    void Start()
+    {
+        if (ItemUseZoneManager.Instance != null) 
+            foreach (var zone in ItemUseZoneManager.Instance.zones)
+            {
+                if (objType.ToString().Contains(zone.zoneName))
+                {
+                    rectXZ = zone.rectXZ;
+                    minY = zone.minY;
+                    maxY = zone.maxY;
+                }
+            }
+    }
     void OnDestroy()
     {
         // Event 제거 (AddListener에 해당하는 RemoveListener는 모두 작성하는 것이 중요)
@@ -52,9 +66,9 @@ public abstract class ObjectInteraction : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
 
-        float clampedX = Mathf.Clamp(currentPosition.x, movementArea.xMin, movementArea.xMax);
+        float clampedX = Mathf.Clamp(currentPosition.x, rectXZ.xMin, rectXZ.xMax);
         float clampedY = Mathf.Clamp(currentPosition.y, minY, maxY);
-        float clampedZ = Mathf.Clamp(currentPosition.z, movementArea.yMin, movementArea.yMax);
+        float clampedZ = Mathf.Clamp(currentPosition.z, rectXZ.yMin, rectXZ.yMax);
 
         Vector3 clampedPosition = new Vector3(clampedX, clampedY, clampedZ);
         if (currentPosition != clampedPosition)
@@ -68,14 +82,14 @@ public abstract class ObjectInteraction : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Vector3 center = new Vector3(
-            movementArea.center.x,
+            rectXZ.center.x,
             (minY + maxY) / 2f,
-            movementArea.center.y
+            rectXZ.center.y
         );
         Vector3 size = new Vector3(
-            movementArea.width,
+            rectXZ.width,
             maxY - minY,
-            movementArea.height
+            rectXZ.height
         );
         Gizmos.DrawWireCube(center, size);
     }
@@ -128,13 +142,13 @@ public abstract class ObjectInteraction : MonoBehaviour
     }
     #endregion
 
-    public virtual void HandleDirectGrabEvent() {}
+    public virtual void HandleDirectGrabEvent() { }
 
-    public virtual void HandleRayGrabEvent() {}
+    public virtual void HandleRayGrabEvent() { }
 
-    public virtual void HandleDirectExitEvent() {}
+    public virtual void HandleDirectExitEvent() { }
 
-    public virtual void HandleRayExitEvent() {}
+    public virtual void HandleRayExitEvent() { }
 
-    public virtual void UseObject() {}
+    public virtual void UseObject() { }
 }
