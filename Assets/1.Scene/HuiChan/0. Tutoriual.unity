@@ -5181,6 +5181,26 @@ PrefabInstance:
       propertyPath: soundSensor
       value: 
       objectReference: {fileID: 735394782}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: movementArea.width
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: movementArea.height
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
       propertyPath: m_Name
       value: XR Interaction Ball
@@ -5947,6 +5967,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: movementArea.width
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: movementArea.height
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2984324108471619710, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6800,6 +6840,26 @@ PrefabInstance:
       propertyPath: m_ImplicitCom
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: movementArea.width
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+      propertyPath: movementArea.height
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6926634891687312579, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -6862,6 +6922,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: movementArea.width
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: movementArea.height
+      value: 22.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
       propertyPath: m_Name
       value: XR Interaction Food
@@ -8418,6 +8498,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: movementArea.width
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: movementArea.height
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: m_Name
       value: XR Interaction Collar
@@ -8825,6 +8925,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: maxY
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: movementArea.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: movementArea.y
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: movementArea.width
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: movementArea.height
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
       propertyPath: m_Name
       value: XR Interaction Muzzle
