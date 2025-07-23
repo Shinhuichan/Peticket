@@ -11,11 +11,19 @@ public class AudioManager : MonoBehaviour
     public AudioSource bgmSource_bgm;
     public Slider volumeSlider_bgm;
 
-    [Header("Button")]
-    public Button BackButton;
+    [Header("SFX")]
+    public AudioSource sfxSourcePrefab;
+    public Slider volumeSlider_sfx;
+
+    [Header("Buttons")]
+    public Button applyButton;
+    public Button backButton;
+
+    private float currentBgmVolume;
+    private float currentSfxVolume;
+
     void Awake()
     {
-        // 싱글톤 처리
         if (Instance == null)
         {
             Instance = this;
@@ -23,39 +31,84 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // 중복 방지: 기존 인스턴스 유지
+            Destroy(gameObject);
             return;
         }
     }
 
     void Start()
     {
-        // 볼륨 로딩
-        float savedBgm = PlayerPrefs.GetFloat("BGM", 1.0f);
-        bgmSource_bgm.volume = savedBgm;
-        if (volumeSlider_bgm != null) volumeSlider_bgm.value = savedBgm;
+        // 저장된 볼륨 값 불러오기
+        currentBgmVolume = PlayerPrefs.GetFloat("BGM", 1.0f);
+        currentSfxVolume = PlayerPrefs.GetFloat("SFX", 1.0f);
 
+        // 오디오 반영
+        bgmSource_bgm.volume = currentBgmVolume;
 
-        // 슬라이더 이벤트 연결
+        // UI에 슬라이더 반영
         if (volumeSlider_bgm != null)
-            volumeSlider_bgm.onValueChanged.AddListener(OnBgmVolumeChange);
+        {
+            volumeSlider_bgm.value = currentBgmVolume;
+            volumeSlider_bgm.onValueChanged.AddListener((v) =>
+            {
+                bgmSource_bgm.volume = v;
+            });
+        }
 
-        // BGM 재생 (중복 방지)
+        if (volumeSlider_sfx != null)
+        {
+            volumeSlider_sfx.value = currentSfxVolume;
+            volumeSlider_sfx.onValueChanged.AddListener((v) =>
+            {
+                currentSfxVolume = v; // SFX는 현재 AudioSource 생성 시 반영
+            });
+        }
+
+        // BGM 시작
         if (!bgmSource_bgm.isPlaying)
             bgmSource_bgm.Play();
 
-        BackButton.onClick.AddListener(Back);
+        // 버튼 연결
+        if (applyButton != null)
+            applyButton.onClick.AddListener(Apply);
+
+        if (backButton != null)
+            backButton.onClick.AddListener(CloseUI);
     }
 
-    void OnBgmVolumeChange(float value)
+    /// <summary>
+    /// 적용 버튼: 현재 슬라이더 값을 저장하고 UI 닫기
+    /// </summary>
+    public void Apply()
     {
-        bgmSource_bgm.volume = value;
-        PlayerPrefs.SetFloat("BGM", value);
+        float bgm = volumeSlider_bgm.value;
+        float sfx = volumeSlider_sfx.value;
+
+        PlayerPrefs.SetFloat("BGM", bgm);
+        PlayerPrefs.SetFloat("SFX", sfx);
         PlayerPrefs.Save();
+
+        currentBgmVolume = bgm;
+        currentSfxVolume = sfx;
+
+        CloseUI();
     }
 
-    public void Back()
-    {
 
+    /// 뒤로가기 또는 적용 후: 설정창 닫기
+    public void CloseUI()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+       public void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || sfxSourcePrefab == null) return;
+
+        AudioSource sfx = Instantiate(sfxSourcePrefab, transform);
+        sfx.volume = currentSfxVolume;
+        sfx.clip = clip;
+        sfx.Play();
+        Destroy(sfx.gameObject, clip.length + 0.1f);
     }
 }
