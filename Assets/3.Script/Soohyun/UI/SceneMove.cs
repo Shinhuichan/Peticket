@@ -19,6 +19,6 @@ public class SceneMove : MonoBehaviour
 
     public void OnAButtonPressed(InputAction.CallbackContext ctx)
     {
-        SceneManager.LoadScene("0. Tutoriual");
+        SceneManager.LoadScene("1. Tutoriual");
     }
 }
