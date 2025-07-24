@@ -15,4 +15,5 @@ public class GameManager : SingletonBehaviour<GameManager>
     [Header("Dog Setting")]
     [ReadOnly] public bool isCollarEquip = false;
     [ReadOnly] public bool isMuzzleEquip = false;
+    
 }

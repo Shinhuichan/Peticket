@@ -211,7 +211,6 @@ public class InputManager : SingletonBehaviour<InputManager>
     }
     #endregion
     #region FindDirectController
-
     public XRDirectInteractor[] allDirects;
     void FindDirectInteractorsByHierarchy()
     {

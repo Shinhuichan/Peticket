@@ -86,7 +86,7 @@ public class FoodInteraction : ObjectInteraction // ObjectInteraction 상속 유
             {
                 // ... (기존 로직)
                 currentPourRayHitTime += rayCheckInterval;
-                // Debug.Log($"FoodInteraction: Ray 그릇에 닿음! 시간 누적: {currentPourRayHitTime:F2}초");
+                Debug.Log($"FoodInteraction: Ray 그릇에 닿음! 시간 누적: {currentPourRayHitTime:F2}초");
 
                 if (currentPourRayHitTime >= requiredContinuousPourTime && targetBowl != null && targetBowl.foodObj != null && !targetBowl.foodObj.activeSelf)
                 {
