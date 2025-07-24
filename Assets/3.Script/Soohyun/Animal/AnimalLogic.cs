@@ -29,6 +29,7 @@ public class AnimalLogic : MonoBehaviour
 
     [Header("Leash 설정")]
     [SerializeField] private bool isLeashed;
+    public Transform NeckPos;
     public float leashFollowDistance = 2f;
 
     [Header("Leash 연결 대상")]
@@ -70,6 +71,15 @@ public class AnimalLogic : MonoBehaviour
         fetchHandler = new AnimalFetchHandler(this);
         feedHandler = new AnimalFeedHandler(this);
         animationHandler = new AnimalAnimation(anim);
+
+        if (player == null)
+        {
+            var xrCam = Camera.main;
+            if (xrCam != null)
+                player = xrCam.transform;
+            else
+                Debug.LogWarning("[AnimalLogic] XR Main Camera를 찾을 수 없습니다.");
+        }
     }
 
     private void Start()

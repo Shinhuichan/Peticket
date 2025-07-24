@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 1415073925}
   - component: {fileID: 1415073924}
   - component: {fileID: 1415073927}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,11 +802,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1563752887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7340797535303406388, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
-  m_PrefabInstance: {fileID: 279746764023857766}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1748176920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,22 +1345,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3641087296817855412, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 6094417650742798014}
-    - target: {fileID: 3641087296817855412, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
-      propertyPath: leashLine
-      value: 
-      objectReference: {fileID: 6136128014691524568}
-    - target: {fileID: 3641087296817855412, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
-      propertyPath: leashTarget
-      value: 
-      objectReference: {fileID: 6886621547620364071}
-    - target: {fileID: 3641087296817855412, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
-      propertyPath: barkDistance
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4989723071675511720, guid: 9390562fb635a1345b353a7d47367c8f, type: 3}
       propertyPath: m_Name
       value: Large_Animal
@@ -2181,11 +2160,11 @@ Transform:
   m_GameObject: {fileID: 2745482849098093629}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8929825, y: 0.5540415, z: 51.676674}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6886621547620364071}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1242212392435070760
 MonoBehaviour:
@@ -2462,7 +2441,7 @@ GameObject:
   - component: {fileID: 7925678399458334081}
   m_Layer: 0
   m_Name: Right Controller
-  m_TagString: Untagged
+  m_TagString: Hand_Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4834,7 +4813,7 @@ GameObject:
   - component: {fileID: 3354575081326660880}
   m_Layer: 0
   m_Name: Left Controller
-  m_TagString: Untagged
+  m_TagString: Hand_Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5473,6 +5452,10 @@ PrefabInstance:
     - target: {fileID: 382750587433357205, guid: a143a462ac50f8045bfa8ce1acd623c9, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238914440585468082, guid: a143a462ac50f8045bfa8ce1acd623c9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3019132072893770569, guid: a143a462ac50f8045bfa8ce1acd623c9, type: 3}
       propertyPath: player
@@ -6115,8 +6098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869ade9715528a949bad9877d809ea44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neckAnchor: {fileID: 1563752887}
-  handAnchor: {fileID: 6886621547620364071}
+  neckAnchor: {fileID: 0}
+  handAnchor: {fileID: 0}
   line: {fileID: 706327746894854295}
   segmentCount: 10
   minElasticity: 0.1
@@ -6474,7 +6457,6 @@ Transform:
   - {fileID: 468653846565650143}
   - {fileID: 1120896225596786717}
   - {fileID: 9090179241058563124}
-  - {fileID: 1169415556734672290}
   - {fileID: 356460675195112647}
   m_Father: {fileID: 2513312719663788581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7855,6 +7837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3401191363850631234, guid: e314c167b0e59b9459f4be5fae9f74f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7601108238923005842, guid: e314c167b0e59b9459f4be5fae9f74f4, type: 3}
       propertyPath: player
       value: 
@@ -7933,3 +7919,4 @@ SceneRoots:
   - {fileID: 1748176921}
   - {fileID: 1973415459}
   - {fileID: 76750631}
+  - {fileID: 1169415556734672290}

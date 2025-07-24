@@ -18,6 +18,8 @@ public class BallObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
+
         if (!hasPlayedSound && collision.relativeVelocity.magnitude > 1f)
         {
             hasPlayedSound = true;

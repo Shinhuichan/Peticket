@@ -1404,10 +1404,12 @@ MonoBehaviour:
   idleToWalkDelay: 3
   callDistance: 1.5
   isLeashed: 0
+  NeckPos: {fileID: 7340797535303406388}
   leashFollowDistance: 2
+  leashTargetTransform: {fileID: 0}
   mouthPos: {fileID: 6416007628665016279}
   eatDuration: 2
-  barkDistance: 3
+  barkDistance: 10
   barkTargetLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -1482,7 +1484,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

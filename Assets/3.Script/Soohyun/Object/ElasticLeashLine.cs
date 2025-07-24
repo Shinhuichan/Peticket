@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ElasticLeashLine : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class ElasticLeashLine : MonoBehaviour
     private Vector3 lastHandPos;
 
     private AnimalLogic animal;
-    private void Start()
+    private IEnumerator Start()
     {
         if (line == null)
         {
@@ -37,13 +38,39 @@ public class ElasticLeashLine : MonoBehaviour
         line.endColor = Color.black;
 
         currentPoints = new Vector3[segmentCount];
+
+        yield return null; // ✅ XR 오브젝트 초기화를 기다림
+
+        // 강아지 자동 참조
+        animal = FindObjectOfType<AnimalLogic>();
+        if (animal != null && neckAnchor == null)
+        {
+            neckAnchor = animal.mouthPos != null ? animal.mouthPos : animal.transform;
+        }
+
+        // 오른손 자동 탐색
+        if (handAnchor == null)
+        {
+            GameObject rightHandObj = GameObject.FindWithTag("Hand_Right");
+            if (rightHandObj != null)
+            {
+                handAnchor = rightHandObj.transform;
+                Debug.Log("[ElasticLeashLine] 오른손 컨트롤러 자동 연결됨");
+            }
+            else
+            {
+                Debug.LogError("[ElasticLeashLine] 태그 'Hand_Right'를 가진 오브젝트를 찾을 수 없습니다.");
+                yield break;
+            }
+        }
+
         lastNeckPos = neckAnchor.position;
         lastHandPos = handAnchor.position;
 
-        animal = FindObjectOfType<AnimalLogic>();
         line.enabled = false;
 
-        animal.leashTargetTransform = handAnchor;
+        if (animal != null && handAnchor != null)
+            animal.leashTargetTransform = handAnchor;
     }
 
     private void Update()

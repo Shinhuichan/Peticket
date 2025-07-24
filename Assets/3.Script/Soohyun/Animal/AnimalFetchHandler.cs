@@ -1,5 +1,4 @@
-﻿// ✅ AnimalFetchHandler.cs 수정본
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class AnimalFetchHandler
@@ -75,6 +74,11 @@ public class AnimalFetchHandler
         targetBall.transform.localPosition = Vector3.zero;
         targetBall.transform.localRotation = Quaternion.identity;
 
+        // 위치 안정화
+        Vector3 fixedPos = targetBall.transform.position;
+        fixedPos.y = Mathf.Max(fixedPos.y, animal.transform.position.y + 0.2f);
+        targetBall.transform.position = fixedPos;
+
         if (targetBall.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
         if (targetBall.TryGetComponent(out Collider col)) col.enabled = false;
 
@@ -82,7 +86,11 @@ public class AnimalFetchHandler
         isGoingToBall = false;
         isReturning = true;
 
-        Vector3 returnPoint = animal.Player.position + animal.Player.forward.normalized * 1.5f;
+        // ✅ 카메라(시야) 기준 복귀 위치 계산
+        Transform cam = animal.Player;
+        Vector3 returnPoint = cam.position + cam.forward * 1.2f;
+        returnPoint.y = animal.transform.position.y; // y는 강아지와 같은 높이
+
         if (NavMesh.SamplePosition(returnPoint, out NavMeshHit resultHit, 1.0f, NavMesh.AllAreas))
         {
             animal.Agent.SetDestination(resultHit.position);
@@ -97,8 +105,10 @@ public class AnimalFetchHandler
 
         targetBall.transform.SetParent(null);
 
-        Vector3 drop = animal.Player.position + animal.Player.forward * 0.9f;
-        drop.y = animal.transform.position.y;
+        // ✅ 카메라 시야 앞에 공 내려놓기
+        Transform cam = animal.Player;
+        Vector3 drop = cam.position + cam.forward * 0.9f;
+        drop.y = animal.transform.position.y + 0.05f;
 
         if (targetBall.TryGetComponent(out Rigidbody rb)) rb.isKinematic = false;
         if (targetBall.TryGetComponent(out Collider col)) col.enabled = true;
@@ -106,7 +116,6 @@ public class AnimalFetchHandler
         animal.Agent.isStopped = true;
         animal.Agent.ResetPath();
 
-        // ✅ Fetch 트리거 초기화 (중복 애니메이션 방지)
         animal.AnimationHandler.ResetFetchAnimation();
         animal.AnimationHandler.SetSitPhase(1); // SitStart
 
