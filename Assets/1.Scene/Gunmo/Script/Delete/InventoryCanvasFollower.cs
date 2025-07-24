@@ -1,11 +1,16 @@
+using CustomInspector;
 using UnityEngine;
 
 public class InventoryCanvasFollower : MonoBehaviour
 {
-    [SerializeField] private Transform targetCamera; // 플레이어 카메라 (VR 헤드)
+    [SerializeField, ReadOnly] private Transform targetCamera; // 플레이어 카메라 (VR 헤드)
     [SerializeField] private bool followXZOnly = true;
     [SerializeField] private Vector3 fixedOffset = new Vector3(0, 1.5f, 2f); // 플레이어 기준 위치
 
+    void Start()
+    {
+        targetCamera = Camera.main.transform;   
+    }
     void LateUpdate()
     {
         if (targetCamera == null) return;

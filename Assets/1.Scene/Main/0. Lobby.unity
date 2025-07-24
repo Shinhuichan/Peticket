@@ -5422,26 +5422,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: -------------BGM
       objectReference: {fileID: 0}
-    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
-      propertyPath: bgmList.Array.data[0].bgmClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f7fc8bceadaec1f42b1534bc8f261fd4, type: 3}
-    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
-      propertyPath: bgmList.Array.data[0].sceneName
-      value: 0. Lobby
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
-      propertyPath: bgmList.Array.data[1].sceneName
-      value: 1. Tutoriual
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
-      propertyPath: bgmList.Array.data[2].sceneName
-      value: 2. My Room
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
-      propertyPath: bgmList.Array.data[3].sceneName
-      value: 3. World (Cherin)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

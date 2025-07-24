@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using CustomInspector;
 using UnityEngine;
 
 [System.Serializable]
@@ -20,7 +19,7 @@ public class CheckItem : MonoBehaviour
 
     void Start()
     {
-        sceneChange = FindAnyObjectByType<SceneChange>();
+        // sceneChange = FindAnyObjectByType<SceneChange>();
     }
     public bool HasAllitem()
     {

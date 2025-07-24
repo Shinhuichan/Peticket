@@ -1,5 +1,5 @@
-using CustomInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCheck : MonoBehaviour
 {
@@ -16,10 +16,10 @@ public class PlayerCheck : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             Debug.Log("Player 진입");
-            if (checkItem == null)
-                sceneChangeUI.SetActive(true);
-            if (checkItem != null && checkItem.HasAllitem())
-                sceneChangeUI.SetActive(true);
+            // Room Scene이면서 모든 Item
+            if (SceneManager.GetActiveScene().buildIndex == 2 && !checkItem.HasAllitem())
+                sceneChangeUI.SetActive(false);
+            else sceneChangeUI.SetActive(true);
         }
     }
     void OnTriggerExit(Collider other)

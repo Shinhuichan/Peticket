@@ -36,8 +36,15 @@ public class InputManager : SingletonBehaviour<InputManager>
     [SerializeField] XRDirectInteractor rightDirect;
     [SerializeField, ReadOnly] DynamicMoveProvider moveProvider;
 
+    [Header("Canvas Setting")]
+    public Canvas canvas;
     void Start()
     {
+        /////
+        // Canvas의 EventCamera 초기 Setting
+        canvas = GetComponent<Canvas>();
+        canvas.worldCamera = Camera.main;
+        /////
         leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
         rightInteractionActionMap = playerInputActions.FindActionMap("XRI RightHand Interaction");
         leftLocomotionActionMap = playerInputActions.FindActionMap("XRI LeftHand Locomotion");
@@ -56,6 +63,16 @@ public class InputManager : SingletonBehaviour<InputManager>
 
         getItemAction.action.Disable();
         inventoryActionMap.Disable();
+    }
+
+    void Update()
+    {
+        if (leftDirect == null || rightDirect == null)
+        {
+            FindDirectInteractorsByHierarchy();
+        }
+        if (moveProvider == null)
+            moveProvider = FindFirstObjectByType<DynamicMoveProvider>();
     }
     protected override void OnDestroy()
     {
@@ -121,48 +138,48 @@ public class InputManager : SingletonBehaviour<InputManager>
     }
     #endregion
     #region OpenInventory
-   private void ToggleInventory(InputAction.CallbackContext context)
-{
-    bool isActive = !inventoryPanel.activeSelf;
-    inventoryPanel.SetActive(isActive);
-
-    if (isActive)
+    private void ToggleInventory(InputAction.CallbackContext context)
     {
-        // 인벤토리 열림: 이동과 상호작용 모두 비활성화, 인벤토리만 활성화
-        leftInteractionActionMap?.Disable();
-        rightInteractionActionMap?.Disable();
-        leftLocomotionActionMap?.Disable();
-        rightLocomotionActionMap?.Disable();
-        inventoryActionMap?.Enable();
+        bool isActive = !inventoryPanel.activeSelf;
+        inventoryPanel.SetActive(isActive);
 
-        // 이동 InputAction 자체를 Disable
-        leftHandMoveAction?.action.Disable();
-        if (moveProvider != null) moveProvider.enabled = false;
+        if (isActive)
+        {
+            // 인벤토리 열림: 이동과 상호작용 모두 비활성화, 인벤토리만 활성화
+            leftInteractionActionMap?.Disable();
+            rightInteractionActionMap?.Disable();
+            leftLocomotionActionMap?.Disable();
+            rightLocomotionActionMap?.Disable();
+            inventoryActionMap?.Enable();
 
-        // 🔊 인벤토리 열기 사운드 재생
-        AudioManager.Instance?.PlaySFXByKey("Inventory_open");
+            // 이동 InputAction 자체를 Disable
+            leftHandMoveAction?.action.Disable();
+            if (moveProvider != null) moveProvider.enabled = false;
 
-        Debug.Log("인벤토리 열림: 이동/상호작용 비활성화, 인벤토리 액션맵 활성화");
+            // 🔊 인벤토리 열기 사운드 재생
+            AudioManager.Instance?.PlaySFXByKey("Inventory_open");
+
+            Debug.Log("인벤토리 열림: 이동/상호작용 비활성화, 인벤토리 액션맵 활성화");
+        }
+        else
+        {
+            // 인벤토리 닫힘: 다시 이동/상호작용 활성화
+            inventoryActionMap?.Disable();
+            leftInteractionActionMap?.Enable();
+            rightInteractionActionMap?.Enable();
+            leftLocomotionActionMap?.Enable();
+            rightLocomotionActionMap?.Enable();
+
+            // 이동 InputAction 자체를 Enable
+            leftHandMoveAction?.action.Enable();
+            if (moveProvider != null) moveProvider.enabled = true;
+
+            // 🔊 인벤토리 닫기 사운드 재생 (같은 소리 재사용)
+            AudioManager.Instance?.PlaySFXByKey("Inventory_open");
+
+            Debug.Log("인벤토리 닫힘: 인벤토리 액션맵 비활성화, 이동/상호작용 활성화");
+        }
     }
-    else
-    {
-        // 인벤토리 닫힘: 다시 이동/상호작용 활성화
-        inventoryActionMap?.Disable();
-        leftInteractionActionMap?.Enable();
-        rightInteractionActionMap?.Enable();
-        leftLocomotionActionMap?.Enable();
-        rightLocomotionActionMap?.Enable();
-
-        // 이동 InputAction 자체를 Enable
-        leftHandMoveAction?.action.Enable();
-        if (moveProvider != null) moveProvider.enabled = true;
-
-        // 🔊 인벤토리 닫기 사운드 재생 (같은 소리 재사용)
-        AudioManager.Instance?.PlaySFXByKey("Inventory_open");
-
-        Debug.Log("인벤토리 닫힘: 인벤토리 액션맵 비활성화, 이동/상호작용 활성화");
-    }
-}
 
     #endregion
     #region GrabItem
@@ -186,12 +203,36 @@ public class InputManager : SingletonBehaviour<InputManager>
     private void GetItem(InputAction.CallbackContext context)
     {
         if (!GameManager.Instance.currentHasItem.Contains(selectedItem.name)) GameManager.Instance.currentHasItem.Add(selectedItem.name);
-        
+
         string combinedString = string.Join(", ", GameManager.Instance.currentHasItem);
         Debug.Log($"currentHasItem : [{combinedString}]");
 
         InventoryManager.Instance.AddItemToInventory(selectedItem);
         Debug.Log("Inventory로 진입 성공!");
+    }
+    #endregion
+    #region FindDirectController
+
+    public XRDirectInteractor[] allDirects;
+    void FindDirectInteractorsByHierarchy()
+    {
+        allDirects = FindObjectsByType<XRDirectInteractor>(FindObjectsSortMode.None);
+
+        foreach (var direct in allDirects)
+        {
+            if (direct.name == "Direct Interactor" && direct.transform.parent != null)
+            {
+                string parentName = direct.transform.parent.name;
+
+                if (parentName == "Left Controller")
+                    leftDirect = direct;
+                else if (parentName == "Right Controller")
+                    rightDirect = direct;
+            }
+        }
+
+        if (leftDirect == null) Debug.LogWarning("LeftDirect를 찾지 못했습니다!");
+        if (rightDirect == null) Debug.LogWarning("RightDirect를 찾지 못했습니다!");
     }
     #endregion
 }

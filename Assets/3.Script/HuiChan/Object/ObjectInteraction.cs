@@ -16,7 +16,7 @@ public abstract class ObjectInteraction : MonoBehaviour
     [SerializeField]
     private float maxY = 5f;   // Y축 최대 좌표
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
     [SerializeField, ReadOnly] private XRGrabInteractable grabInteractable;
 
     void Awake()

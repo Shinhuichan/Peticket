@@ -12,8 +12,7 @@ public class CollarInteraction : ObjectInteraction
     [SerializeField] ObjectType type;
 
     AnimalInteraction animal;
-    Collider myCol;
-    Rigidbody rb; 
+    Collider myCol; 
 
     void Start()
     {
