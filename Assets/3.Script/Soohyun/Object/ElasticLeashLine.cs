@@ -42,6 +42,8 @@ public class ElasticLeashLine : MonoBehaviour
 
         animal = FindObjectOfType<AnimalLogic>();
         line.enabled = false;
+
+        animal.leashTargetTransform = handAnchor;
     }
 
     private void Update()
@@ -88,5 +90,11 @@ public class ElasticLeashLine : MonoBehaviour
         }
 
         line.SetPositions(currentPoints);
+
+        float dist = Vector3.Distance(neckAnchor.position, handAnchor.position);
+        if (dist > animal.leashFollowDistance * 1.2f)
+        {
+            animal.SetState(AnimalState.LeashFollow);
+        }
     }
 }

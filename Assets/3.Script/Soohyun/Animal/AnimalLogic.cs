@@ -31,6 +31,9 @@ public class AnimalLogic : MonoBehaviour
     [SerializeField] private bool isLeashed;
     public float leashFollowDistance = 2f;
 
+    [Header("Leash 연결 대상")]
+    public Transform leashTargetTransform;
+
     [Header("Fetch System")]
     public Transform mouthPos;
 
@@ -41,9 +44,7 @@ public class AnimalLogic : MonoBehaviour
     public float barkDistance = 3f;  // 짖기 감지 거리
     public LayerMask barkTargetLayer;
 
-    private bool hasBarkedRecently = false;
-    private float barkCooldown = 5f;
-    private float barkTimer = 0f;
+
 
     private NavMeshAgent nav;
     private Animator anim;
@@ -59,7 +60,7 @@ public class AnimalLogic : MonoBehaviour
     private AnimalAnimation animationHandler;
 
 
-    void Start()
+    void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -69,11 +70,13 @@ public class AnimalLogic : MonoBehaviour
         fetchHandler = new AnimalFetchHandler(this);
         feedHandler = new AnimalFeedHandler(this);
         animationHandler = new AnimalAnimation(anim);
+    }
 
+    private void Start()
+    {
         ChangeState(AnimalState.Idle);
         nav.updateRotation = false;
     }
-
     private void Update()
     {
         if (currentState == AnimalState.GoToFeed || currentState == AnimalState.Eat)
@@ -132,13 +135,12 @@ public class AnimalLogic : MonoBehaviour
         }
         else
         {
-            // 🎯 강아지가 정말 범위를 벗어났을 때만 해제
             if (currentBarkTarget != null)
             {
                 var surprise = currentBarkTarget.GetComponent<AISurpriseHandler>();
                 if (surprise != null && surprise.IsSurprised)
                 {
-                    surprise.EndSurpriseImmediately(); // 🔥 여기서 너무 일찍 호출되면 Idle로 복귀함
+                    surprise.EndSurpriseImmediately(); 
                 }
 
                 currentBarkTarget = null;
@@ -311,12 +313,17 @@ public class AnimalLogic : MonoBehaviour
 
     private void UpdateLeashFollow()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
+        // 손 위치 기준으로 이동하도록 수정
+        Transform leashTarget = leashTargetTransform != null ? leashTargetTransform : player;
+
+        float distance = Vector3.Distance(transform.position, leashTarget.position);
 
         if (distance > leashFollowDistance)
         {
-            Vector3 targetPos = player.position - (player.forward * 0.5f);
-            if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            Vector3 dir = (transform.position - leashTarget.position).normalized;
+            Vector3 clamped = leashTarget.position + dir * leashFollowDistance * 0.9f;
+
+            if (NavMesh.SamplePosition(clamped, out NavMeshHit hit, 1f, NavMesh.AllAreas))
             {
                 nav.isStopped = false;
                 nav.SetDestination(hit.position);
@@ -330,12 +337,14 @@ public class AnimalLogic : MonoBehaviour
             {
                 if (leashWalkTimer >= checkInterval)
                 {
-                    MoveRandomPointInLeashArea();
+                    MoveRandomPointInLeashArea(); // hand 기준
                     leashWalkTimer = 0f;
                 }
             }
         }
     }
+
+
 
     private void WaitForPatting()
     {
@@ -396,21 +405,25 @@ public class AnimalLogic : MonoBehaviour
 
     private void MoveRandomPointInLeashArea()
     {
+        Transform leashCenter = leashTargetTransform != null ? leashTargetTransform : player;
+
         Vector3 rndDir = UnityEngine.Random.insideUnitSphere;
         rndDir.y = 0;
         rndDir.Normalize();
 
         float radius = UnityEngine.Random.Range(leashFollowDistance * 0.3f, leashFollowDistance * 0.95f);
-        Vector3 targetPos = player.position + rndDir * radius;
+        Vector3 targetPos = leashCenter.position + rndDir * radius;
 
         if (NavMesh.SamplePosition(targetPos, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
         {
-            if (Vector3.Distance(player.position, hit.position) <= leashFollowDistance)
+            if (Vector3.Distance(leashCenter.position, hit.position) <= leashFollowDistance)
             {
                 nav.SetDestination(hit.position);
             }
         }
     }
+
+
 
     public void SetLeashed(bool on)
     {
@@ -459,10 +472,4 @@ public class AnimalLogic : MonoBehaviour
     public AnimalState CurrentState => currentState;
     public void SetState(AnimalState state) => ChangeState(state);
     public bool IsLeashed => isLeashed;
-
-    [ContextMenu("Leash ON")]
-    private void Debug_LeashOn() => SetLeashed(true);
-
-    [ContextMenu("Leash OFF")]
-    private void Debug_LeashOff() => SetLeashed(false);
 }
