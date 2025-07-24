@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemUseZoneManager : MonoBehaviour
@@ -8,8 +9,8 @@ public class ItemUseZoneManager : MonoBehaviour
     [Header("플레이어 오브젝트")]
     [SerializeField] public GameObject player;
 
-    [Header("영역 진입 시 표시할 UI")]
-    [SerializeField] private GameObject uiToDisplay;
+    [Header("영역 진입 시 표시할 TextUI")]
+    [SerializeField] private TextMeshProUGUI areaUI;
 
     [System.Serializable]
     public class UseZone
@@ -38,35 +39,70 @@ public class ItemUseZoneManager : MonoBehaviour
         }
         Instance = this;
 
-        if (uiToDisplay != null) uiToDisplay.SetActive(false);
+        if (areaUI != null) areaUI.transform.parent.gameObject.SetActive(false);
         else Debug.LogWarning("ItemUseZoneManager: 'UI To Display' GameObject가 할당되지 않았습니다.");
     }
 
     private void Update()
     {
-        if (player == null || uiToDisplay == null) return;
+        if (player == null || areaUI == null) return;
 
         Vector3 playerPosition = player.transform.position;
         bool isPlayerNowInZone = IsInsideAnyZone(playerPosition);
 
         if (isPlayerNowInZone != isPlayerCurrentlyInZone)
         {
-            uiToDisplay.SetActive(isPlayerNowInZone);
+            
             isPlayerCurrentlyInZone = isPlayerNowInZone;
 
             Debug.Log($"ItemUseZoneManager: 플레이어가 영역 {(isPlayerNowInZone ? "안" : "밖")}에 있습니다.");
         }
     }
 
-    public bool IsInsideAnyZone(Vector3 playerWorldPosition)
+    public bool IsInsideAnyZone(Vector3 playerWorldPosition) // 매개변수 이름을 명확히 변경
     {
         foreach (var zone in zones)
         {
-            if (IsPositionInZone(playerWorldPosition, zone))
-                return true;
+            float zoneXMin = zone.rectXZ.xMin;
+            float zoneXMax = zone.rectXZ.xMax;
+            float zoneZMin = zone.rectXZ.yMin; // Rect의 yMin은 3D의 ZMin에 해당
+            float zoneZMax = zone.rectXZ.yMax; // Rect의 yMax는 3D의 ZMax에 해당
+
+            // Y축(높이) 범위 먼저 확인
+            bool isYInside = (playerWorldPosition.y >= zone.minY && playerWorldPosition.y <= zone.maxY);
+            
+            // XZ 평면(Rect) 범위 확인
+            bool isXZInside = (playerWorldPosition.x >= zoneXMin && playerWorldPosition.x <= zoneXMax &&
+                               playerWorldPosition.z >= zoneZMin && playerWorldPosition.z <= zoneZMax);
+
+            if (isYInside && isXZInside) // isXZInsideUsingContains로 바꿔도 결과는 같아야 함
+            {
+                Debug.Log($"ItemUseZoneManager: 플레이어가 '{zone.zoneName}' 영역 안에 있습니다.");
+                areaUI.transform.parent.gameObject.SetActive(true);
+
+                switch (zone.zoneName)
+                {
+                    case "Food":
+                        areaUI.text = "간식 주기";
+                        break;
+                    case "Ball":
+                        areaUI.text = "공놀이";
+                        break;
+                    case "Bowl":
+                        areaUI.text = "간식 주기";
+                        break;
+                    case "Shovel":
+                        areaUI.text = "배변 청소";
+                        break;
+                }
+                return true; // 어떤 한 Zone이라도 만족하면 true 반환
+            }
         }
-        return false;
+        areaUI.transform.parent.gameObject.SetActive(false);
+        Debug.Log($"ItemUseZoneManager: 플레이어가 영역 밖에 있습니다.");
+        return false; // 어떤 Zone에도 속하지 않으면 false 반환
     }
+
 
     public bool IsPrefabAllowedInZone(Vector3 position, GameObject itemInstance)
     {

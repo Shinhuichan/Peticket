@@ -15,5 +15,17 @@ public class GameManager : SingletonBehaviour<GameManager>
     [Header("Dog Setting")]
     [ReadOnly] public bool isCollarEquip = false;
     [ReadOnly] public bool isMuzzleEquip = false;
-    
+
+    [Header("Player Setting")]
+    [ReadOnly] public Player player;
+
+    void Start()
+    {
+        FindPlayer();
+    }
+
+    void FindPlayer()
+    {
+        player = FindAnyObjectByType<Player>();
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,10 @@ public class SaveButtonHandler : MonoBehaviour
     [Header("파괴할 오브젝트 이름들")]
     public string[] objectsToDestroyOnReturnHome;
 
+    void Start()
+    {
+        movingTargetTransform = GameManager.Instance.player.playerPosition.transform;
+    }
     public void OnClick_SaveManually()
     {
         if (GameSaveManager.Instance == null || movingTargetTransform == null)

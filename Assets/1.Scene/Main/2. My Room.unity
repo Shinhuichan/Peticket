@@ -2444,6 +2444,8 @@ MonoBehaviour:
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &342544070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8062,6 +8064,8 @@ MonoBehaviour:
   leftDirect: {fileID: 41734343}
   rightDirect: {fileID: 41734342}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &1183990818
 MonoBehaviour:
   m_ObjectHideFlags: 0
