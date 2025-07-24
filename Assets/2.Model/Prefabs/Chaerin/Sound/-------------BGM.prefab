@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: sfxSourcePrefab
       value: 
       objectReference: {fileID: 3827490552297010101}
+    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
+      propertyPath: bgmList.Array.data[0].bgmClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f7fc8bceadaec1f42b1534bc8f261fd4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

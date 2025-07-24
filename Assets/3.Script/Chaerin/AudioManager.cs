@@ -139,6 +139,11 @@ public class AudioManager : MonoBehaviour
         PlaySFX(data.clip);
     }
 
+    public void PlayButtonClick()
+    {
+        PlaySFXByKey("ButtonClick");
+    }
+
     public void SaveVolumes()
     {
         PlayerPrefs.SetFloat("BgmVolume", BgmVolume);

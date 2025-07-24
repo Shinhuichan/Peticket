@@ -1,46 +1,50 @@
 using CustomInspector;
 using UnityEngine;
 
-
 public enum ObjectType
 {
     Collar = 0,
     Muzzle
 }
+
 public class CollarInteraction : ObjectInteraction
 {
     [SerializeField] ObjectType type;
-    
 
     AnimalInteraction animal;
     Collider myCol;
-    Rigidbody rb;
+    Rigidbody rb; 
 
     void Start()
     {
         myCol = transform.GetComponentInChildren<Collider>();
     }
+
     void LateUpdate()
     {
-        if ((type == ObjectType.Collar) ? GameManager.Instance.isCollarEquip : GameManager.Instance.isMuzzleEquip)
+        bool isEquipped = (type == ObjectType.Collar) ? GameManager.Instance.isCollarEquip : GameManager.Instance.isMuzzleEquip;
+
+        if (isEquipped)
         {
-            // 어떤 target으로 부착되는 지 판단
-            Transform targetTrans = type == ObjectType.Collar ? animal.collarTransform : animal.mouseTransform;
-            myCol.gameObject.transform.position = targetTrans.position;
-            myCol.gameObject.transform.rotation = targetTrans.rotation;
+            Transform targetTrans = (type == ObjectType.Collar) ? animal.collarTransform : animal.mouseTransform;
+            myCol.transform.position = targetTrans.position;
+            myCol.transform.rotation = targetTrans.rotation;
+
             if (rb != null) rb.isKinematic = true;
         }
     }
+
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Dog")
+        if (col.CompareTag("Dog"))
         {
-            // 필요한 Component들 정의
-            rb = transform.GetComponent<Rigidbody>();
-            animal = col.gameObject.GetComponentInParent<AnimalInteraction>();
+            rb = GetComponent<Rigidbody>(); // 
+            animal = col.GetComponentInParent<AnimalInteraction>();
 
-            if (type == ObjectType.Collar) GameManager.Instance.isCollarEquip = true;
-            else GameManager.Instance.isMuzzleEquip = true;
+            if (type == ObjectType.Collar)
+                GameManager.Instance.isCollarEquip = true;
+            else
+                GameManager.Instance.isMuzzleEquip = true;
         }
     }
 }
