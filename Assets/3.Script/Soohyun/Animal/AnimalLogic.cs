@@ -74,7 +74,7 @@ public class AnimalLogic : MonoBehaviour
         nav.updateRotation = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (currentState == AnimalState.GoToFeed || currentState == AnimalState.Eat)
         {
@@ -82,22 +82,18 @@ public class AnimalLogic : MonoBehaviour
             return;
         }
 
-        CheckBarkTarget();
-
-        // 짖고 나서 일정 시간 지나야 다시 짖을 수 있음
-        if (hasBarkedRecently)
+        if (currentState == AnimalState.Bark)
         {
-            barkTimer += Time.deltaTime;
-            if (barkTimer >= barkCooldown)
-            {
-                hasBarkedRecently = false;
-                barkTimer = 0f;
-            }
+            CheckBarkTarget(); // 타겟이 사라지면 여기서만 상태 해제
+            return;
         }
 
+        // Bark가 아닐 때만 나머지 동작 실행
+        CheckBarkTarget();
         UpdateStateSwitch();
         UpdateRotation();
     }
+
 
     private float barkSoundCooldown = 2f;
     private float barkSoundTimer = 0f;
@@ -109,37 +105,46 @@ public class AnimalLogic : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            currentBarkTarget = hits[0].transform;
+            if (currentBarkTarget == null || currentBarkTarget != hits[0].transform)
+            {
+                currentBarkTarget = hits[0].transform;
+            }
 
-            // 바라보기
             Vector3 lookPos = currentBarkTarget.position;
             lookPos.y = transform.position.y;
             transform.LookAt(lookPos);
 
-            // 상태 전환
             if (currentState != AnimalState.Bark)
             {
                 ChangeState(AnimalState.Bark);
             }
 
-            // 짖는 소리 반복 타이머
             barkSoundTimer += Time.deltaTime;
             if (barkSoundTimer >= barkSoundCooldown)
             {
                 PlayBarkSound();
                 barkSoundTimer = 0f;
+
+                var surprise = currentBarkTarget.GetComponent<AISurpriseHandler>();
+                if (surprise != null)
+                {
+                    surprise.TriggerSurprise();
+                }
             }
         }
         else
         {
-            // Stranger 없음 → Idle로 복귀
             if (currentState == AnimalState.Bark)
-                ChangeState(AnimalState.Idle);
+            {
+                currentBarkTarget = null;
+                ChangeState(AnimalState.FreeWalk);
+            }
 
             barkSoundTimer = 0f;
-            currentBarkTarget = null;
         }
     }
+
+
     private void PlayBarkSound()
     {
         if (audios != null && audios.BarkSound.Length > 0 && audioSource != null)
@@ -240,10 +245,18 @@ public class AnimalLogic : MonoBehaviour
                 nav.ResetPath();
                 animationHandler.SetAnimation(PetAnimation.Bark);
 
-                if (audios != null && audios.BarkSound.Length > 0 && audioSource != null)
+                // ★ 진입 즉시 BarkSound 재생
+                PlayBarkSound();
+                barkSoundTimer = 0f; // 타이머도 초기화해서 반복 주기 유지
+
+                // ★ 사람 반응도 즉시
+                if (currentBarkTarget != null)
                 {
-                    int i = Random.Range(0, audios.BarkSound.Length);
-                    audioSource.PlayOneShot(audios.BarkSound[i]);
+                    AISurpriseHandler surprise = currentBarkTarget.GetComponent<AISurpriseHandler>();
+                    if (surprise != null)
+                    {
+                        surprise.TriggerSurprise();
+                    }
                 }
                 break;
         }
