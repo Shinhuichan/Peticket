@@ -149,6 +149,4 @@ public abstract class ObjectInteraction : MonoBehaviour
     public virtual void HandleDirectExitEvent() { }
 
     public virtual void HandleRayExitEvent() { }
-
-    public virtual void UseObject() { }
 }

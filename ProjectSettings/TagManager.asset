@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - Stranger
   - Food
+  - Bowl
   layers:
   - Default
   - TransparentFX

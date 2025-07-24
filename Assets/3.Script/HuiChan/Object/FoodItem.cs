@@ -1,55 +1,58 @@
+
 using System.Collections;
 using UnityEngine;
 
 public class FoodItem : MonoBehaviour
 {
     [Header("Bowl Check Setting")]
-    [SerializeField] LayerMask bowlLayer;
-    [SerializeField] float destroyDelay = 3f;
+    [SerializeField] LayerMask bowlLayer; // 그릇의 레이어 (인스펙터에서 설정)
+    [SerializeField] float destroyDelay = 3f; // 그릇에 닿지 않았을 때 제거될 시간
 
     private bool hasReachedBowl = false;
     private Rigidbody rb;
 
     void Awake()
     {
-        if (!TryGetComponent(out rb)) Debug.LogWarning($"FoodItem | RigidBody가 Null입니다.");
+        rb = GetComponent<Rigidbody>();
     }
 
     void Start()
     {
+        // 3초 타이머 시작 (그릇에 닿지 않으면 제거)
         StartCoroutine(CheckBowlContactAndDestroy());
     }
 
+    // 콜라이더 또는 트리거 충돌 감지 (음식이 그릇에 떨어졌을 때)
     void OnTriggerEnter(Collider other) // 그릇에 Collider가 Is Trigger로 되어있다면 사용
     {
-        CheckForBowlContact(other.gameObject.layer);
+        CheckForBowlContact(other.gameObject); // GameObject 자체를 넘겨 태그 체크
     }
 
-    // void OnCollisionEnter(Collision collision) // 그릇에 Collider가 Is Trigger가 아니라면 사용
-    // {
-    //     CheckForBowlContact(collision.gameObject.layer);
-    // }
-
-    private void CheckForBowlContact(int otherLayer)
+    void OnCollisionEnter(Collision collision) // 그릇에 Collider가 Is Trigger가 아니라면 사용
     {
-        if (((1 << otherLayer) & bowlLayer) != 0)
+        CheckForBowlContact(collision.gameObject); // GameObject 자체를 넘겨 태그 체크
+    }
+
+    private void CheckForBowlContact(GameObject otherObject)
+    {
+        if (otherObject.CompareTag("Bowl")) // "Bowl" 태그 체크
         {
-            Debug.Log($"FoodItem: {gameObject.name}이(가) 그릇 레이어에 닿았다!");
-            hasReachedBowl = true;
+            Debug.Log($"FoodItem: {gameObject.name}이(가) 'Bowl' 태그에 닿았다! 즉시 제거!");
+            // 즉시 제거!
+            Destroy(gameObject);
         }
     }
 
     IEnumerator CheckBowlContactAndDestroy()
     {
-        // destroyDelay 초 만큼 기다려.
         yield return new WaitForSeconds(destroyDelay);
 
-        // 기다린 후에 그릇에 닿았는지 확인
         if (!hasReachedBowl)
         {
-            Debug.Log($"Food가 그릇에 닿지 않아서 자동으로 제거");
+            Debug.Log($"FoodItem: {gameObject.name}이(가) 그릇에 닿지 않아서 자동으로 제거됩니다.");
             Destroy(gameObject);
         }
-        else Debug.Log($"Food가 그릇에 무사히 안착하여 제거되지 않습니다.");
+        // else: 이미 'Bowl' 태그에 닿아서 즉시 제거되었을 수도 있고,
+        // hasReachedBowl=true 가 되었다면 제거되지 않음.
     }
 }

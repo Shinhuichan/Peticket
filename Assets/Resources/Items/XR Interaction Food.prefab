@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6838842187616921056}
@@ -303,8 +303,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dog: {fileID: 0}
   rayInteractor: {fileID: 0}
-  minBounds: {x: -20, y: 0, z: -20}
-  maxBounds: {x: 20, y: 20, z: 20}
+  rectXZ:
+    serializedVersion: 2
+    x: -5
+    y: -5
+    width: 10
+    height: 10
+  minY: 0
+  maxY: 5
   grabInteractable: {fileID: 0}
   targetLayer:
     serializedVersion: 2
@@ -312,6 +318,10 @@ MonoBehaviour:
   foodObj: {fileID: 5462299897257804746, guid: 834a6fff4fab232448ce35c3ee570ad9, type: 3}
   spawnTrans: {fileID: 2285365328689531657}
   limitXZRotation: 45
+  targetBowl: {fileID: 0}
+  requiredContinuousPourTime: 2
+  rayCheckInterval: 0.1
+  foodDropParticleInterval: 0.25
 --- !u!1 &7912872765633721561
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +351,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000026692542, y: 0.7071068, z: 0.000000026692542, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 60.00002, y: 30, z: 60.00002}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2285365328689531657}

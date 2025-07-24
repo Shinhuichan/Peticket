@@ -396,11 +396,7 @@ MonoBehaviour:
   minY: 0
   maxY: 5
   grabInteractable: {fileID: 0}
-  col: {fileID: 4166919633622188115}
   foodObj: {fileID: 1577447250952717273}
-  foodCount: 0
-  limitCount: 10
-  isFull: 0
 --- !u!65 &4166919633622188115
 BoxCollider:
   m_ObjectHideFlags: 0

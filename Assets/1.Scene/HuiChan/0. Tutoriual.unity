@@ -6039,6 +6039,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1577447250952717273, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577447250952717273, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+      propertyPath: m_TagString
+      value: Food
+      objectReference: {fileID: 0}
     - target: {fileID: 2984324108471619710, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7012,6 +7020,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: foodObj
+      value: 
+      objectReference: {fileID: 3088192467557424169, guid: 60bf30b49ac8af24d8d34197b7a37254, type: 3}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
       propertyPath: rectXZ.x
       value: -15
       objectReference: {fileID: 0}
@@ -7019,6 +7031,10 @@ PrefabInstance:
       propertyPath: rectXZ.y
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: targetBowl
+      value: 
+      objectReference: {fileID: 1940841036}
     - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
       propertyPath: rectXZ.width
       value: 30
@@ -7046,6 +7062,10 @@ PrefabInstance:
     - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
       propertyPath: movementArea.height
       value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964241265853742496, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+      propertyPath: foodDropParticleInterval
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
       propertyPath: m_Name
@@ -8939,6 +8959,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1940841036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 97066277345916557, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+  m_PrefabInstance: {fileID: 1182694662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1952959214
 GameObject:
   m_ObjectHideFlags: 0
