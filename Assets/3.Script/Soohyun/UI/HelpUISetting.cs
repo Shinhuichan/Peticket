@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class HelpUISetting : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class HelpUISetting : MonoBehaviour
     [Header("Input Actions")]
     public InputActionReference nextHelpAction;  // 오른손 트리거
     public InputActionReference prevHelpAction;  // 왼손 트리거
+
+    [Header("Voice Narration")]
+    public AudioSource audioSource;
+    public AudioClip[] voiceClips;
 
     private int currentIndex = 0;
 
@@ -93,5 +98,22 @@ public class HelpUISetting : MonoBehaviour
 
         if (textSetting != null && texts.Length > currentIndex)
             textSetting.text = texts[currentIndex];
+
+        // 🎯 특정 씬일 때만 재생
+        if (IsVoiceNarrationAllowed())
+        {
+            if (audioSource != null && voiceClips.Length > currentIndex && voiceClips[currentIndex] != null)
+            {
+                audioSource.Stop();
+                audioSource.clip = voiceClips[currentIndex];
+                audioSource.Play();
+            }
+        }
+    }
+
+    private bool IsVoiceNarrationAllowed()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        return currentSceneName == "0. Tutoriual 1";
     }
 }
