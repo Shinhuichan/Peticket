@@ -1444,6 +1444,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1763656839586893496, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763656839586893496, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763656839586893496, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: rectXZ.x
+      value: -6.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: rectXZ.y
+      value: -6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: rectXZ.width
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+      propertyPath: rectXZ.height
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2410920834087099972, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
       propertyPath: movementArea.x
       value: -6.5
@@ -4526,6 +4554,10 @@ MonoBehaviour:
   largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
   spawnPoint: {fileID: 1966500939}
   panelToClose: {fileID: 342544067}
+  unlockText: {fileID: 0}
+  midDogMessage: "\uC911\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  largeDogMessage: "\uB300\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  messageDisplayDuration: 2
 --- !u!224 &666761550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8600,6 +8632,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 814273456}
     - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: rectXZ.x
+      value: -6.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: rectXZ.y
+      value: -5.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: rectXZ.width
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+      propertyPath: rectXZ.height
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010942136594496072, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
       propertyPath: movementArea.x
       value: -6.5
       objectReference: {fileID: 0}
@@ -11171,6 +11219,18 @@ PrefabInstance:
     - target: {fileID: 1393808434567467600, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: rectXZ.x
+      value: -6.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: rectXZ.width
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+      propertyPath: rectXZ.height
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2410920834087099972, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
       propertyPath: movementArea.x

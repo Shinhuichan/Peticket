@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1.Scene/Suhyun/0.Test.unity
-    guid: 8edf2009f42a46346af4547550e09269
+    path: Assets/1.Scene/Main/0. Lobby.unity
+    guid: 0d220c68acd859a4a9e7048e92a9b860
   - enabled: 1
-    path: Assets/1.Scene/HuiChan/0. Tutoriual.unity
-    guid: 120822f98f5f7cd418e4612929773483
+    path: Assets/1.Scene/Main/1. Tutoriual.unity
+    guid: 31f672ff2ade59044886403d38449b25
   - enabled: 1
-    path: Assets/1.Scene/HuiChan/1. My Room.unity
-    guid: c68cfd30fe0314569a93fc344982880a
+    path: Assets/1.Scene/Main/2. My Room.unity
+    guid: 0c8b4ed678815b943bdf2d7d0fd1df33
   - enabled: 1
-    path: Assets/1.Scene/HuiChan/2. World (Cherin).unity
-    guid: da8ed9819fbbc2643a471839b5b1de33
+    path: Assets/1.Scene/Main/3. World (Cherin).unity
+    guid: c6b004f412e41734dbbdcf4ca1e19f4a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4dd285a5e5674024f8f84db7a94792bb, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 10c1966da5c1ced42a763c474416132f, type: 2}

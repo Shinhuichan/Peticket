@@ -16,7 +16,10 @@ public class PlayerCheck : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             Debug.Log("Player 진입");
-            if (checkItem.HasAllitem()) sceneChangeUI.SetActive(true);
+            if (checkItem == null)
+                sceneChangeUI.SetActive(true);
+            if (checkItem != null && checkItem.HasAllitem())
+                sceneChangeUI.SetActive(true);
         }
     }
     void OnTriggerExit(Collider other)
