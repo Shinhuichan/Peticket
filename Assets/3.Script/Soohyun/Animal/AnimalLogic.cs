@@ -321,12 +321,30 @@ public class AnimalLogic : MonoBehaviour
         }
     }
 
+    private Vector3 previousPlayerPos;
+    private float playerMoveThreshold = 0.01f;  // 플레이어가 거의 안 움직이는 기준
+
     private void UpdateLeashFollow()
     {
-        // 손 위치 기준으로 이동하도록 수정
         Transform leashTarget = leashTargetTransform != null ? leashTargetTransform : player;
-
         float distance = Vector3.Distance(transform.position, leashTarget.position);
+
+        float playerSpeed = (leashTarget.position - previousPlayerPos).magnitude / Time.deltaTime;
+        bool isPlayerMoving = playerSpeed > playerMoveThreshold;
+        previousPlayerPos = leashTarget.position;
+
+        if (distance <= leashFollowDistance && !isPlayerMoving)
+        {
+            nav.isStopped = true;
+            nav.ResetPath();
+            animationHandler.SetAnimation(PetAnimation.Idle);
+            return;
+        }
+
+        float baseSpeed = 2f;
+        float maxSpeed = 6f;
+        float speedMultiplier = Mathf.Clamp01((distance - leashFollowDistance) / leashFollowDistance);
+        nav.speed = Mathf.Lerp(baseSpeed, maxSpeed, speedMultiplier);
 
         if (distance > leashFollowDistance)
         {
@@ -337,6 +355,7 @@ public class AnimalLogic : MonoBehaviour
             {
                 nav.isStopped = false;
                 nav.SetDestination(hit.position);
+                animationHandler.SetAnimation(PetAnimation.Walk);
             }
         }
         else
@@ -347,13 +366,12 @@ public class AnimalLogic : MonoBehaviour
             {
                 if (leashWalkTimer >= checkInterval)
                 {
-                    MoveRandomPointInLeashArea(); // hand 기준
+                    MoveRandomPointInLeashArea();
                     leashWalkTimer = 0f;
                 }
             }
         }
     }
-
 
 
     private void WaitForPatting()
