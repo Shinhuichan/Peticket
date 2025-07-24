@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PetUIManager : MonoBehaviour
 {
@@ -17,12 +18,27 @@ public class PetUIManager : MonoBehaviour
     [Header("펫 생성 위치")]
     public Transform spawnPoint;
     [Header("확정 후 닫을 패널")]
-    public GameObject panelToClose; // ✅ 이 패널을 비활성화할 예정
+    public GameObject panelToClose;
 
+    [Header("해금 메시지 출력")]
+    public TextMeshProUGUI unlockText;
+    [TextArea] public string midDogMessage = "중형견 선택이 가능합니다!";
+    [TextArea] public string largeDogMessage = "대형견 선택이 가능합니다!";
+    public float messageDisplayDuration = 2f;
+
+    private Coroutine unlockTextCoroutine;
     private PetUI selectedUI;
     private static PetUIManager instance;
 
     private List<string> petIds = new List<string> { "small", "middle", "large" };
+
+    [ContextMenu("초기화: 텍스트 알림 리셋")]
+    public void ResetUnlockTextFlags()
+    {
+        PlayerPrefs.DeleteKey("ShowedMidDogUnlockText");
+        PlayerPrefs.DeleteKey("ShowedLargeDogUnlockText");
+        Debug.Log("🔄 PlayerPrefs 텍스트 알림 플래그 초기화 완료");
+    }
 
     private void Awake()
     {
@@ -38,12 +54,20 @@ public class PetUIManager : MonoBehaviour
 
     private void Start()
     {
+        unlockText?.gameObject.SetActive(false);
+
+        CheckAffinityUnlocks(); // 해금 조건 확인
+
         foreach (string id in petIds)
         {
             GameObject ui = Instantiate(petUIPrefab, uiParent);
+            ui.SetActive(false);
+
             PetUI uiScript = ui.GetComponent<PetUI>();
             uiScript.Initialize(id, GetPetNameFromId(id), OnPetSelected);
         }
+
+        EnablePetUI("small");
     }
 
     private string GetPetNameFromId(string id)
@@ -78,9 +102,24 @@ public class PetUIManager : MonoBehaviour
     {
         selectedUI = null;
 
+        float affinity = GameSaveManager.Instance?.currentSaveData?.playerProgress ?? 0f;
+
         foreach (var ui in GetComponentsInChildren<PetUI>(true))
         {
-            ui.ResetSelection();
+            string petId = ui.GetPetId();
+
+            bool canEnable = petId switch
+            {
+                "small" => true,
+                "middle" => affinity >= 50f,
+                "large" => affinity >= 100f,
+                _ => false
+            };
+
+            ui.gameObject.SetActive(canEnable);
+
+            if (canEnable)
+                ui.ResetSelection();
         }
 
         backButton?.SetActive(false);
@@ -97,20 +136,13 @@ public class PetUIManager : MonoBehaviour
             return;
         }
 
-        GameObject prefabToSpawn = null;
-
-        switch (selectedPetId)
+        GameObject prefabToSpawn = selectedPetId switch
         {
-            case "small":
-                prefabToSpawn = smallDogPrefab;
-                break;
-            case "middle":
-                prefabToSpawn = middleDogPrefab;
-                break;
-            case "large":
-                prefabToSpawn = largeDogPrefab;
-                break;
-        }
+            "small" => smallDogPrefab,
+            "middle" => middleDogPrefab,
+            "large" => largeDogPrefab,
+            _ => null
+        };
 
         if (prefabToSpawn != null && spawnPoint != null)
         {
@@ -122,15 +154,63 @@ public class PetUIManager : MonoBehaviour
             Debug.LogError("❌ 펫 생성 실패: 프리팹 또는 위치 누락");
         }
 
-        // ✅ 버튼 비활성화
         backButton?.SetActive(false);
         confirmButton?.SetActive(false);
-        // ✅ 지정된 패널 비활성화
-        if (panelToClose != null)
+        panelToClose?.SetActive(false);
+    }
+
+    private void CheckAffinityUnlocks()
+    {
+        float affinity = GameSaveManager.Instance?.currentSaveData?.playerProgress ?? 0f;
+
+        if (affinity >= 50f)
         {
-            panelToClose.SetActive(false);
-            Debug.Log($"📦 패널 비활성화됨: {panelToClose.name}");
+            EnablePetUI("middle");
+
+            if (!PlayerPrefs.HasKey("ShowedMidDogUnlockText"))
+            {
+                ShowUnlockMessage(midDogMessage);
+                PlayerPrefs.SetInt("ShowedMidDogUnlockText", 1);
+            }
+        }
+
+        if (affinity >= 100f)
+        {
+            EnablePetUI("large");
+
+            if (!PlayerPrefs.HasKey("ShowedLargeDogUnlockText"))
+            {
+                ShowUnlockMessage(largeDogMessage);
+                PlayerPrefs.SetInt("ShowedLargeDogUnlockText", 1);
+            }
         }
     }
-}
 
+    private void EnablePetUI(string petId)
+    {
+        foreach (var ui in GetComponentsInChildren<PetUI>(true))
+        {
+            if (ui.GetPetId() == petId)
+                ui.gameObject.SetActive(true);
+        }
+    }
+
+    private void ShowUnlockMessage(string message)
+    {
+        if (unlockText == null) return;
+
+        if (unlockTextCoroutine != null)
+            StopCoroutine(unlockTextCoroutine);
+
+        unlockTextCoroutine = StartCoroutine(ShowUnlockMessageRoutine(message));
+    }
+
+    private IEnumerator ShowUnlockMessageRoutine(string message)
+    {
+        unlockText.text = message;
+        unlockText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(messageDisplayDuration);
+        unlockText.gameObject.SetActive(false);
+        unlockTextCoroutine = null;
+    }
+}
