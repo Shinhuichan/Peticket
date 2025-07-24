@@ -56,7 +56,7 @@ public class PetUIManager : MonoBehaviour
     {
         unlockText?.gameObject.SetActive(false);
 
-        CheckAffinityUnlocks(); // 해금 조건 확인
+
 
         foreach (string id in petIds)
         {
@@ -68,6 +68,7 @@ public class PetUIManager : MonoBehaviour
         }
 
         EnablePetUI("small");
+        CheckAffinityUnlocks(); // 해금 조건 확인
     }
 
     private string GetPetNameFromId(string id)
