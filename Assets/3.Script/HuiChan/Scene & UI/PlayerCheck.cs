@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,9 +6,14 @@ public class PlayerCheck : MonoBehaviour
 {
     [SerializeField] GameObject sceneChangeUI;
     [SerializeField] CheckItem checkItem;
-    void Start()
+    IEnumerator Start()
     {
-        sceneChangeUI = FindAnyObjectByType<SceneChange>().gameObject;
+        yield return new WaitForSeconds(1f);
+        SceneChange[] sceneChange = Resources.FindObjectsOfTypeAll<SceneChange>();
+        if (sceneChange.Length > 0)
+        {
+            sceneChangeUI = sceneChange[0].gameObject;
+        }
         if (sceneChangeUI == null)
             Debug.Log($"PlayerCheck | sceneChangeUI가 Null입니다.");   
     }

@@ -5,18 +5,24 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     [SerializeField, ReadOnly] int goToSceneIndex = 0;
-    void Start()
-    {
-        goToSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;   
-    }
     public void SceneMove()
     {
-        SceneManager.LoadScene(goToSceneIndex);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
 
-        // Scene이 바뀌면서 Camera 설정 및 SceneIndex 설정
-        goToSceneIndex++;
-        InputManager.Instance.canvas.worldCamera = Camera.current;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log($"SceneMove | 현재: {currentSceneIndex}, 다음: {nextSceneIndex}");
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("SceneMove | 다음 씬이 Build Settings에 없습니다!");
+        }
+
+        GameManager.Instance.origin.transform.position = new Vector3(0f, 0.55f, 0f);
+        GameManager.Instance.mainCam.transform.position = Vector3.zero;
+        InputManager.Instance.canvas.worldCamera = Camera.main;
         InputManager.Instance.allDirects = null;
-        Debug.Log($"Current Scene : {goToSceneIndex}");
     }
 }

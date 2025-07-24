@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CustomInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
@@ -18,6 +19,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     [Header("Player Setting")]
     [ReadOnly] public Player player;
+    [ReadOnly] public CharacterController origin;
+    [ReadOnly] public Camera mainCam;
 
     void Start()
     {
@@ -27,5 +30,11 @@ public class GameManager : SingletonBehaviour<GameManager>
     void FindPlayer()
     {
         player = FindAnyObjectByType<Player>();
+        origin = FindAnyObjectByType<CharacterController>();
+        mainCam = Camera.main;
+    }
+    public int FindSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
     }
 }

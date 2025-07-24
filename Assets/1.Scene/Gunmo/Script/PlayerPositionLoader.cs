@@ -6,7 +6,6 @@ public class PlayerPositionLoader : MonoBehaviour
 
     void Start()
     {
-
         movingTargetTransform = GameManager.Instance.player.transform;
         if (movingTargetTransform == null)
         {
