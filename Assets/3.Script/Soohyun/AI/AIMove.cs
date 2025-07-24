@@ -41,7 +41,12 @@ public class AIMove : MonoBehaviour
 
     void Update()
     {
-        // ❗ 놀란 상태일 땐 아무것도 하지 않음
+        if (nav != null && anim != null)
+        {
+            bool isMoving = nav.velocity.sqrMagnitude > 0.05f;
+            anim.SetBool("IsWalking", isMoving);
+        }
+
         if (ai != null && ai.IsSurprised)
         {
             anim.SetBool("IsWalking", false);

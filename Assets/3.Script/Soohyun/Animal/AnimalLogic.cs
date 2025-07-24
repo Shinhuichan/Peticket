@@ -105,14 +105,12 @@ public class AnimalLogic : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            if (currentBarkTarget == null || currentBarkTarget != hits[0].transform)
-            {
-                currentBarkTarget = hits[0].transform;
-            }
+            Transform newTarget = hits[0].transform;
 
-            Vector3 lookPos = currentBarkTarget.position;
-            lookPos.y = transform.position.y;
-            transform.LookAt(lookPos);
+            if (currentBarkTarget == null || currentBarkTarget != newTarget)
+            {
+                currentBarkTarget = newTarget;
+            }
 
             if (currentState != AnimalState.Bark)
             {
@@ -128,21 +126,32 @@ public class AnimalLogic : MonoBehaviour
                 var surprise = currentBarkTarget.GetComponent<AISurpriseHandler>();
                 if (surprise != null)
                 {
-                    surprise.TriggerSurprise();
+                    surprise.TriggerSurprise(); // 상태 유지
                 }
             }
         }
         else
         {
-            if (currentState == AnimalState.Bark)
+            // 🎯 강아지가 정말 범위를 벗어났을 때만 해제
+            if (currentBarkTarget != null)
             {
+                var surprise = currentBarkTarget.GetComponent<AISurpriseHandler>();
+                if (surprise != null && surprise.IsSurprised)
+                {
+                    surprise.EndSurpriseImmediately(); // 🔥 여기서 너무 일찍 호출되면 Idle로 복귀함
+                }
+
                 currentBarkTarget = null;
-                ChangeState(AnimalState.FreeWalk);
             }
 
-            barkSoundTimer = 0f;
+            if (currentState == AnimalState.Bark)
+            {
+                ChangeState(AnimalState.FreeWalk);
+            }
         }
+
     }
+
 
 
     private void PlayBarkSound()
