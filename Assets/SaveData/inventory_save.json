@@ -1,6 +1,10 @@
 {
     "items": [
         {
+            "itemName": "XR Interaction Shovel",
+            "slotIndex": 0
+        },
+        {
             "itemName": "XR Interaction Collar",
             "slotIndex": 5
         }

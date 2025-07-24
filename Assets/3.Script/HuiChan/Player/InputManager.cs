@@ -121,42 +121,49 @@ public class InputManager : SingletonBehaviour<InputManager>
     }
     #endregion
     #region OpenInventory
-    private void ToggleInventory(InputAction.CallbackContext context)
+   private void ToggleInventory(InputAction.CallbackContext context)
+{
+    bool isActive = !inventoryPanel.activeSelf;
+    inventoryPanel.SetActive(isActive);
+
+    if (isActive)
     {
-        bool isActive = !inventoryPanel.activeSelf;
-        inventoryPanel.SetActive(isActive);
+        // 인벤토리 열림: 이동과 상호작용 모두 비활성화, 인벤토리만 활성화
+        leftInteractionActionMap?.Disable();
+        rightInteractionActionMap?.Disable();
+        leftLocomotionActionMap?.Disable();
+        rightLocomotionActionMap?.Disable();
+        inventoryActionMap?.Enable();
 
-        if (isActive)
-        {
-            // 인벤토리 열림: 이동과 상호작용 모두 비활성화, 인벤토리만 활성화
-            leftInteractionActionMap?.Disable();
-            rightInteractionActionMap?.Disable();
-            leftLocomotionActionMap?.Disable();
-            rightLocomotionActionMap?.Disable();
-            inventoryActionMap?.Enable();
+        // 이동 InputAction 자체를 Disable
+        leftHandMoveAction?.action.Disable();
+        if (moveProvider != null) moveProvider.enabled = false;
 
-            // 이동 InputAction 자체를 Disable
-            leftHandMoveAction?.action.Disable();
-            if (moveProvider != null) moveProvider.enabled = false;
+        // 🔊 인벤토리 열기 사운드 재생
+        AudioManager.Instance?.PlaySFXByKey("Inventory_open");
 
-            Debug.Log("인벤토리 열림: 이동/상호작용 비활성화, 인벤토리 액션맵 활성화");
-        }
-        else
-        {
-            // 인벤토리 닫힘: 다시 이동/상호작용 활성화
-            inventoryActionMap?.Disable();
-            leftInteractionActionMap?.Enable();
-            rightInteractionActionMap?.Enable();
-            leftLocomotionActionMap?.Enable();
-            rightLocomotionActionMap?.Enable();
-
-            // 이동 InputAction 자체를 Enable
-            leftHandMoveAction?.action.Enable();
-            if (moveProvider != null) moveProvider.enabled = true;
-
-            Debug.Log("인벤토리 닫힘: 인벤토리 액션맵 비활성화, 이동/상호작용 활성화");
-        }
+        Debug.Log("인벤토리 열림: 이동/상호작용 비활성화, 인벤토리 액션맵 활성화");
     }
+    else
+    {
+        // 인벤토리 닫힘: 다시 이동/상호작용 활성화
+        inventoryActionMap?.Disable();
+        leftInteractionActionMap?.Enable();
+        rightInteractionActionMap?.Enable();
+        leftLocomotionActionMap?.Enable();
+        rightLocomotionActionMap?.Enable();
+
+        // 이동 InputAction 자체를 Enable
+        leftHandMoveAction?.action.Enable();
+        if (moveProvider != null) moveProvider.enabled = true;
+
+        // 🔊 인벤토리 닫기 사운드 재생 (같은 소리 재사용)
+        AudioManager.Instance?.PlaySFXByKey("Inventory_open");
+
+        Debug.Log("인벤토리 닫힘: 인벤토리 액션맵 비활성화, 이동/상호작용 활성화");
+    }
+}
+
     #endregion
     #region GrabItem
     private void OnGrabStart(SelectEnterEventArgs args)

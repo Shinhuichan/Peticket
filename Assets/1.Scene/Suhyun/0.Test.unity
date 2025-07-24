@@ -2038,7 +2038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2924207902588849324, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Pivot.x
@@ -2122,7 +2122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3942082128343753399, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4450752434384610804, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Name
@@ -2130,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597705005393462283, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911915931571736914, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Camera
@@ -2142,11 +2142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7068184854826364742, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7927387429067575120, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8116220443468074008, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Name
@@ -5644,6 +5644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: -------------BGM
       objectReference: {fileID: 0}
+    - target: {fileID: 8847713993284265364, guid: 8e44acdabc9322e47ae4fa8f478bfb0a, type: 3}
+      propertyPath: bgmList.Array.data[0].bgmClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f7fc8bceadaec1f42b1534bc8f261fd4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

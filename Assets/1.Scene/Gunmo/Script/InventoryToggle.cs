@@ -10,14 +10,15 @@ public class InventoryToggle : MonoBehaviour
 
     public void ToggleInventory()
     {
-        // 🔧 실시간 상태 동기화
+        // 🔧 현재 상태 확인
         isOpen = inventoryPanel.activeSelf;
 
-        // 🔁 상태 반전 후 처리
+        // 🔁 상태 반전
         isOpen = !isOpen;
         inventoryPanel.SetActive(isOpen);
 
-        // 인벤토리 닫힐 때 warning 텍스트도 같이 끄기
+    
+        // 🔕 닫을 때 경고 텍스트 비활성화
         if (!isOpen && warningText != null)
         {
             warningText.gameObject.SetActive(false);

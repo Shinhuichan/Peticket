@@ -18,7 +18,7 @@ public class InventorySlot : MonoBehaviour
     public AudioClip errorSound;
     public TextMeshProUGUI warningText;
 
-    [SerializeField] private Color originalColor = Color.white; // ✅ 수동 설정
+    [SerializeField] private Color originalColor = Color.white;
     private bool isColorInitialized = false;
 
     public bool IsEmpty => currentItem == null;
@@ -92,58 +92,60 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void RemoveItemToHand()
-{
-    Debug.Log("📤 RemoveItemToHand 호출됨");
-
-    if (currentItem == null)
     {
-        Debug.LogWarning("❌ currentItem이 null입니다. 슬롯이 비어 있음");
-        return;
+        Debug.Log("📤 RemoveItemToHand 호출됨");
+
+        if (currentItem == null)
+        {
+            Debug.LogWarning("❌ currentItem이 null입니다. 슬롯이 비어 있음");
+            return;
+        }
+
+        if (!ItemUseZoneManager.Instance.IsInsideAnyZone(handTransform.position))
+        {
+            ShowSlotBlockedFeedback("이 영역에서는 아이템을 꺼낼 수 없습니다.");
+            return;
+        }
+
+        // ✅ 정상 아이템 꺼내기
+        string objName = currentItem.name.Replace("(Preview)", "").Trim();
+        GameManager.Instance.currentHasItem.Remove(objName);
+        Debug.Log($"currentHasItem : [{string.Join(", ", GameManager.Instance.currentHasItem)}]");
+
+        currentItem.SetActive(true);
+        currentItem.transform.position = handTransform.position;
+        currentItem.transform.rotation = handTransform.rotation;
+
+        currentItem = null;
+
+        if (currentPreview != null)
+        {
+            Destroy(currentPreview);
+            Debug.Log("[InventorySlot] 프리뷰 제거됨 (꺼내기 후)");
+        }
+
+        // ✅ 드롭 효과음 재생
+        AudioManager.Instance.PlaySFXByKey("Drop_item");
     }
-
-    // ✅ 위치 제한 검사
-    if (!ItemUseZoneManager.Instance.IsInsideAnyZone(handTransform.position))
-    {
-        ShowSlotBlockedFeedback("이 영역에서는 아이템을 꺼낼 수 없습니다.");
-        return;
-    }
-
-    // 정상 아이템 꺼내기 로직
-    string objName = currentItem.name.Replace("(Preview)", "").Trim();
-    GameManager.Instance.currentHasItem.Remove(objName);
-    Debug.Log($"currentHasItem : [{string.Join(", ", GameManager.Instance.currentHasItem)}]");
-
-    currentItem.SetActive(true);
-    currentItem.transform.position = handTransform.position;
-    currentItem.transform.rotation = handTransform.rotation;
-
-    currentItem = null;
-
-    if (currentPreview != null)
-    {
-        Destroy(currentPreview);
-        Debug.Log("[InventorySlot] 프리뷰 제거됨 (꺼내기 후)");
-    }
-}
 
     private bool isBlinking = false;
 
     private void ShowSlotBlockedFeedback(string message)
-{
-    if (!isBlinking) StartCoroutine(BlinkSlot());
-    PlayErrorSound();
-    ShowWarningMessage(message);
-
-    if (currentPreview != null)
     {
-        var shaker = currentPreview.GetComponent<ItemPreviewRotator>();
-        if (shaker != null)
+        if (!isBlinking) StartCoroutine(BlinkSlot());
+        PlayErrorSound();
+        ShowWarningMessage(message);
+
+        if (currentPreview != null)
         {
-            StartCoroutine(shaker.Shake());
-            Debug.Log("[InventorySlot] 프리뷰 흔들림 실행");
+            var shaker = currentPreview.GetComponent<ItemPreviewRotator>();
+            if (shaker != null)
+            {
+                StartCoroutine(shaker.Shake());
+                Debug.Log("[InventorySlot] 프리뷰 흔들림 실행");
+            }
         }
     }
-}
 
     private IEnumerator BlinkSlot()
     {

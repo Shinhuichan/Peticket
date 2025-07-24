@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitOrLoadVolumes(); // 초기화 또는 불러오기
+            InitOrLoadVolumes();
         }
         else
         {
@@ -74,19 +74,16 @@ public class AudioManager : MonoBehaviour
 
     private void InitOrLoadVolumes()
     {
-        // 최초 실행 여부 확인
         if (!PlayerPrefs.HasKey("HasInitializedAudio"))
         {
-            // 최초 실행 시 기본값 저장
             BgmVolume = 0.5f;
             SfxVolume = 0.5f;
             SaveVolumes();
-            PlayerPrefs.SetInt("HasInitializedAudio", 1); // 최초 실행 여부 저장
+            PlayerPrefs.SetInt("HasInitializedAudio", 1);
             PlayerPrefs.Save();
         }
         else
         {
-            // 저장된 값 불러오기
             BgmVolume = PlayerPrefs.GetFloat("BgmVolume", 0.5f);
             SfxVolume = PlayerPrefs.GetFloat("SfxVolume", 0.5f);
         }
@@ -130,6 +127,18 @@ public class AudioManager : MonoBehaviour
         sfxSources.Add(newSFX);
     }
 
+    public void PlaySFXByKey(string key)
+    {
+        var data = sfxList.Find(s => s.key == key);
+        if (data == null || data.clip == null)
+        {
+            Debug.LogWarning($"[AudioManager] '{key}' 키에 해당하는 효과음이 없습니다.");
+            return;
+        }
+
+        PlaySFX(data.clip);
+    }
+
     public void SaveVolumes()
     {
         PlayerPrefs.SetFloat("BgmVolume", BgmVolume);
@@ -141,9 +150,7 @@ public class AudioManager : MonoBehaviour
     public void ApplyVolumes()
     {
         if (bgmSource != null)
-        {
             bgmSource.volume = BgmVolume;
-        }
 
         foreach (var src in sfxSources)
         {
