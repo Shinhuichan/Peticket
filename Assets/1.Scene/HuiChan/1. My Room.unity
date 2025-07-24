@@ -2460,6 +2460,8 @@ MonoBehaviour:
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &342544070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,6 +4574,10 @@ MonoBehaviour:
   largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
   spawnPoint: {fileID: 1966500939}
   panelToClose: {fileID: 342544067}
+  unlockText: {fileID: 0}
+  midDogMessage: "\uC911\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  largeDogMessage: "\uB300\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  messageDisplayDuration: 2
 --- !u!224 &666761550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7954,6 +7960,8 @@ MonoBehaviour:
   leftDirect: {fileID: 41734343}
   rightDirect: {fileID: 41734342}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &1183990818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16439,6 +16447,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1828384070}
   - {fileID: 574682017}
   - {fileID: 715690338}
   - {fileID: 817069021}
@@ -16454,4 +16463,3 @@ SceneRoots:
   - {fileID: 1208823175}
   - {fileID: 1213479996}
   - {fileID: 1966500939}
-  - {fileID: 1828384070}

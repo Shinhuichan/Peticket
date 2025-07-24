@@ -29552,6 +29552,7 @@ MonoBehaviour:
     minY: 0.5
     maxY: 25
     gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+    allowedPrefabs: []
   - zoneName: Food
     rectXZ:
       serializedVersion: 2
@@ -29562,6 +29563,7 @@ MonoBehaviour:
     minY: 0.5
     maxY: 25
     gizmoColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    allowedPrefabs: []
   - zoneName: Bowl
     rectXZ:
       serializedVersion: 2
@@ -29572,6 +29574,7 @@ MonoBehaviour:
     minY: 0.5
     maxY: 25
     gizmoColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    allowedPrefabs: []
   - zoneName: Shovel
     rectXZ:
       serializedVersion: 2
@@ -29582,6 +29585,7 @@ MonoBehaviour:
     minY: 0.5
     maxY: 25
     gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+    allowedPrefabs: []
 --- !u!4 &1415590976
 Transform:
   m_ObjectHideFlags: 0
@@ -35425,6 +35429,8 @@ MonoBehaviour:
   leftDirect: {fileID: 0}
   rightDirect: {fileID: 0}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &1736978636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36122,6 +36128,8 @@ MonoBehaviour:
   leftDirect: {fileID: 292857487}
   rightDirect: {fileID: 292857488}
   moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
 --- !u!114 &1750613505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36371,6 +36379,10 @@ MonoBehaviour:
   largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
   spawnPoint: {fileID: 0}
   panelToClose: {fileID: 1736978633}
+  unlockText: {fileID: 0}
+  midDogMessage: "\uC911\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  largeDogMessage: "\uB300\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  messageDisplayDuration: 2
 --- !u!224 &1756914579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44560,6 +44572,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 93653571}
   - {fileID: 176492570}
   - {fileID: 342948605}
   - {fileID: 1745236604}
@@ -44569,4 +44582,3 @@ SceneRoots:
   - {fileID: 1086420626}
   - {fileID: 983071923}
   - {fileID: 1415590976}
-  - {fileID: 93653571}

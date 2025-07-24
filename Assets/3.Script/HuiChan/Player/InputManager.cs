@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -222,12 +221,20 @@ public class InputManager : SingletonBehaviour<InputManager>
         {
             if (direct.name == "Direct Interactor" && direct.transform.parent != null)
             {
+                
                 string parentName = direct.transform.parent.name;
 
                 if (parentName == "Left Controller")
+                {
+                    direct.transform.parent.tag = "Hand_Left";
                     leftDirect = direct;
+                }
                 else if (parentName == "Right Controller")
+                {
+                    direct.transform.parent.tag = "Hand_Right";
                     rightDirect = direct;
+                }
+                   
             }
         }
 

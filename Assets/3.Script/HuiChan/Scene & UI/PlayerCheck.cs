@@ -5,7 +5,12 @@ public class PlayerCheck : MonoBehaviour
 {
     [SerializeField] GameObject sceneChangeUI;
     [SerializeField] CheckItem checkItem;
-
+    void Start()
+    {
+        sceneChangeUI = FindAnyObjectByType<SceneChange>().gameObject;
+        if (sceneChangeUI == null)
+            Debug.Log($"PlayerCheck | sceneChangeUI가 Null입니다.");   
+    }
     void OnTriggerEnter(Collider other)
     {
         if (sceneChangeUI == null)
