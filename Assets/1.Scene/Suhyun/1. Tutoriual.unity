@@ -415,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2798,6 +2802,8 @@ GameObject:
   - component: {fileID: 1169415556734672290}
   - component: {fileID: 6136128014691524568}
   - component: {fileID: 706327746894854295}
+  - component: {fileID: 6136128014691524570}
+  - component: {fileID: 6136128014691524569}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -6107,6 +6113,32 @@ MonoBehaviour:
   waveFrequency: 5
   waveAmplitude: 0.05
   smoothing: 10
+--- !u!114 &6136128014691524569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745482849098093629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573ca7ec30717144b8853e68abbd1e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6136128014691524570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745482849098093629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9ef7a27cd0aac429b737aff63cefd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleLeashAction: {fileID: 1215471456696913459, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leashManager: {fileID: 6136128014691524569}
 --- !u!135 &6400459222335810197
 SphereCollider:
   m_ObjectHideFlags: 0

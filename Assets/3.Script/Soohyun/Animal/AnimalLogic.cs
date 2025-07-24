@@ -438,7 +438,7 @@ public class AnimalLogic : MonoBehaviour
     public void SetLeashed(bool on)
     {
         isLeashed = on;
-
+        Debug.Log($"[SetLeashed] 줄 상태 변경됨: {on}");
         if (on)
         {
             if (Vector3.Distance(transform.position, player.position) > leashFollowDistance)

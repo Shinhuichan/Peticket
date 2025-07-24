@@ -39,29 +39,26 @@ public class ElasticLeashLine : MonoBehaviour
 
         currentPoints = new Vector3[segmentCount];
 
-        yield return null; // ✅ XR 오브젝트 초기화를 기다림
-
-        // 강아지 자동 참조
+        // 🐶 Animal 자동 참조
         animal = FindObjectOfType<AnimalLogic>();
         if (animal != null && neckAnchor == null)
         {
             neckAnchor = animal.mouthPos != null ? animal.mouthPos : animal.transform;
         }
 
-        // 오른손 자동 탐색
-        if (handAnchor == null)
+        // 🕒 handAnchor 찾을 때까지 대기
+        while (handAnchor == null)
         {
             GameObject rightHandObj = GameObject.FindWithTag("Hand_Right");
             if (rightHandObj != null)
             {
                 handAnchor = rightHandObj.transform;
-                Debug.Log("[ElasticLeashLine] 오른손 컨트롤러 자동 연결됨");
+                Debug.Log("[ElasticLeashLine] 오른손 컨트롤러 자동 연결됨 ✅");
+                break;
             }
-            else
-            {
-                Debug.LogError("[ElasticLeashLine] 태그 'Hand_Right'를 가진 오브젝트를 찾을 수 없습니다.");
-                yield break;
-            }
+
+            Debug.Log("[ElasticLeashLine] Hand_Right 찾는 중...");
+            yield return new WaitForSeconds(0.1f); // 0.1초 간격으로 재시도
         }
 
         lastNeckPos = neckAnchor.position;
@@ -72,6 +69,7 @@ public class ElasticLeashLine : MonoBehaviour
         if (animal != null && handAnchor != null)
             animal.leashTargetTransform = handAnchor;
     }
+
 
     private void Update()
     {
