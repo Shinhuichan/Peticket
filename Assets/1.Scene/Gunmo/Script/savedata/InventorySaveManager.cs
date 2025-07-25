@@ -34,7 +34,7 @@ public class InventorySaveManager : MonoBehaviour
     {
         if (!File.Exists(SavePath))
         {
-            Debug.LogWarning("❗ 인벤토리 저장 파일이 존재하지 않습니다."+ SavePath);
+            Debug.LogWarning("❗ 인벤토리 저장 파일이 존재하지 않습니다." + SavePath);
             return;
         }
 
@@ -62,4 +62,20 @@ public class InventorySaveManager : MonoBehaviour
 
         Debug.Log("📥 인벤토리 불러오기 완료");
     }
+    public void ResetInventory()
+{
+    // 슬롯 UI 비우기
+    foreach (var slot in inventorySlots)
+    {
+        slot.ClearSlot();
+    }
+
+    // 빈 저장 데이터 작성
+    var emptyData = new SavedInventoryData(); // items 리스트 비어있음
+
+    string json = JsonUtility.ToJson(emptyData, true);
+    File.WriteAllText(SavePath, json);
+
+    Debug.Log("🗑 인벤토리 초기화 완료: 저장 데이터도 제거됨");
+}
 }
