@@ -11,11 +11,11 @@ public class GameManager : SingletonBehaviour<GameManager>
     bool _b0;
     [Header("HasItem Setting")]
     public List<CollectableData> needHasItem = new List<CollectableData>();
-    [ReadOnly] public List<string> currentHasItem = new List<string>();
+    public List<CollectableData> currentHasItem = new List<CollectableData>();
 
     [Header("Dog Setting")]
-    [ReadOnly] public bool isCollarEquip = false;
-    [ReadOnly] public bool isMuzzleEquip = false;
+    [SerializeField] public bool isCollarEquip = false;
+    [SerializeField] public bool isMuzzleEquip = false;
 
     [Header("Player Setting")]
     [ReadOnly] public Player player;

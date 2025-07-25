@@ -201,7 +201,7 @@ public class InputManager : SingletonBehaviour<InputManager>
     #region GetInventory
     private void GetItem(InputAction.CallbackContext context)
     {
-        if (!GameManager.Instance.currentHasItem.Contains(selectedItem.name)) GameManager.Instance.currentHasItem.Add(selectedItem.name);
+        GameManager.Instance.currentHasItem.Add(selectedItem.GetComponent<ObjectInteraction>().objType);
 
         string combinedString = string.Join(", ", GameManager.Instance.currentHasItem);
         Debug.Log($"currentHasItem : [{combinedString}]");
@@ -232,8 +232,7 @@ public class InputManager : SingletonBehaviour<InputManager>
                 {
                     direct.transform.parent.tag = "Hand_Right";
                     rightDirect = direct;
-                }
-                   
+                } 
             }
         }
 

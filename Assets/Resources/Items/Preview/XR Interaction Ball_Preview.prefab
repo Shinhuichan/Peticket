@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2684078002203959369}
   - component: {fileID: -1907380895041215476}
   - component: {fileID: 8937032018252053654}
+  - component: {fileID: 3059499032075061071}
   m_Layer: 0
   m_Name: XR Interaction Ball_Preview
   m_TagString: Untagged
@@ -250,3 +251,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00ca970a46f23b4abff14acb3daf63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3059499032075061071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062915661555544228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c8587f2ed384e46a03f1b117948c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 2
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  rectXZ:
+    serializedVersion: 2
+    x: -1000
+    y: -1000
+    width: 1000
+    height: 1000
+  minY: 0
+  maxY: 5
+  grabInteractable: {fileID: 0}

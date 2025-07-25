@@ -2145,7 +2145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &377084805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2180,7 +2180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeaea260f50315428c6692c6b7d0038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goToSceneIndex: 2
 --- !u!114 &377084807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5912,7 +5911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74854efe43128a4e9222ebc6e5ea65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChange: {fileID: 377084806}
 --- !u!114 &1209489972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8275,9 +8273,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   needHasItem: 01000000020000000300000004000000
-  currentHasItem: []
+  currentHasItem: 
   isCollarEquip: 0
   isMuzzleEquip: 0
+  player: {fileID: 0}
+  origin: {fileID: 0}
+  mainCam: {fileID: 0}
 --- !u!4 &1726025142
 Transform:
   m_ObjectHideFlags: 0

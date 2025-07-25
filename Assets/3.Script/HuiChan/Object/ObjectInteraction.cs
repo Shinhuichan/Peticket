@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public abstract class ObjectInteraction : MonoBehaviour
 {
-    CollectableData objType = CollectableData.None;
+    public CollectableData objType = CollectableData.None;
     [SerializeField, ReadOnly] protected AnimalLogic dog;
     [SerializeField, ReadOnly] protected XRRayInteractor rayInteractor;
 

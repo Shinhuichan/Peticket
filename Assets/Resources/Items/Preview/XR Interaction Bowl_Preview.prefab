@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1282595339937154047}
   - component: {fileID: 490894332112830065}
   - component: {fileID: 8601453390279710484}
+  - component: {fileID: -7914754784828021478}
   m_Layer: 0
   m_Name: XR Interaction Bowl_Preview
   m_TagString: Untagged
@@ -251,3 +252,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00ca970a46f23b4abff14acb3daf63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7914754784828021478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629519548675259387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 4
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  rectXZ:
+    serializedVersion: 2
+    x: -1000
+    y: -1000
+    width: 1000
+    height: 1000
+  minY: 0
+  maxY: 5
+  grabInteractable: {fileID: 0}
+  foodObj: {fileID: 0}

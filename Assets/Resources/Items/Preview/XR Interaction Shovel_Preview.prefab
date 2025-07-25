@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 4446090771796213948}
   - component: {fileID: 6416184304815576420}
   - component: {fileID: 2587594817277517186}
+  - component: {fileID: 7497381226507270088}
   m_Layer: 0
   m_Name: XR Interaction Shovel_Preview
   m_TagString: Untagged
@@ -304,3 +305,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00ca970a46f23b4abff14acb3daf63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7497381226507270088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261617845441272591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc17f35637ec6db43b56c9d1f51adee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 3
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  rectXZ:
+    serializedVersion: 2
+    x: -1000
+    y: -1000
+    width: 1000
+    height: 1000
+  minY: 0
+  maxY: 5
+  grabInteractable: {fileID: 0}

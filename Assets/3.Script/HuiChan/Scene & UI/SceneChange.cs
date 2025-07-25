@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    [SerializeField, ReadOnly] int goToSceneIndex = 0;
     public void SceneMove()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

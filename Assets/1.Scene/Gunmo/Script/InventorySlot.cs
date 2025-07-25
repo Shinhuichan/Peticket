@@ -123,7 +123,7 @@ public class InventorySlot : MonoBehaviour
 
     // ✅ 정상 아이템 꺼내기
     string objName = currentItem.name.Replace("(Preview)", "").Trim();
-    GameManager.Instance.currentHasItem.Remove(objName);
+    GameManager.Instance.currentHasItem.Remove(currentItem.GetComponent<ObjectInteraction>().objType);
     Debug.Log($"currentHasItem : [{string.Join(", ", GameManager.Instance.currentHasItem)}]");
 
     currentItem.SetActive(true);

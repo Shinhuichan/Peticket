@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5134794802168892339}
   - component: {fileID: 3604217603465842982}
   - component: {fileID: 43480480997576538}
+  - component: {fileID: 1597538514922810401}
   m_Layer: 0
   m_Name: XR Interaction Food_Preview
   m_TagString: Untagged
@@ -283,3 +284,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00ca970a46f23b4abff14acb3daf63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1597538514922810401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185094926329534531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8217198d3a8ed2468f0f1a92be3221f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 1
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  rectXZ:
+    serializedVersion: 2
+    x: -1000
+    y: -1000
+    width: 1000
+    height: 1000
+  minY: 0
+  maxY: 5
+  grabInteractable: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  foodObj: {fileID: 0}
+  spawnTrans: {fileID: 0}
+  limitXZRotation: 90
+  targetBowl: {fileID: 0}
+  requiredContinuousPourTime: 2
+  rayCheckInterval: 0.1
+  foodDropParticleInterval: 0.5

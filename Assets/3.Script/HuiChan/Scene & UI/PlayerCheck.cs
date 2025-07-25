@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,14 +5,10 @@ public class PlayerCheck : MonoBehaviour
 {
     [SerializeField] GameObject sceneChangeUI;
     [SerializeField] CheckItem checkItem;
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitForSeconds(1f);
-        SceneChange[] sceneChange = Resources.FindObjectsOfTypeAll<SceneChange>();
-        if (sceneChange.Length > 0)
-        {
-            sceneChangeUI = sceneChange[0].gameObject;
-        }
+        sceneChangeUI = FindAnyObjectByType<SceneChange>().gameObject;
+        sceneChangeUI.SetActive(false);
         if (sceneChangeUI == null)
             Debug.Log($"PlayerCheck | sceneChangeUI가 Null입니다.");   
     }
@@ -28,9 +23,15 @@ public class PlayerCheck : MonoBehaviour
         {
             Debug.Log("Player 진입");
             // Room Scene이면서 모든 Item
-            if (SceneManager.GetActiveScene().buildIndex == 2 && !checkItem.HasAllitem())
-                sceneChangeUI.SetActive(false);
-            else sceneChangeUI.SetActive(true);
+            bool isSceneIndex2 = SceneManager.GetActiveScene().buildIndex == 2;
+            if (checkItem == null)
+            {
+                sceneChangeUI.SetActive(true);
+                return;
+            }
+            bool hasAllItems = checkItem.HasAllitem();
+            Debug.Log($"Scene Index : {SceneManager.GetActiveScene().buildIndex} && 현재 상황 : {checkItem.HasAllitem()}  / {!(isSceneIndex2 && !hasAllItems)}");
+            sceneChangeUI.SetActive(!(isSceneIndex2 && !hasAllItems));
         }
     }
     void OnTriggerExit(Collider other)
