@@ -2,9 +2,9 @@
     "selectedPetId": "small",
     "playerProgress": 20.0,
     "roomScenePosition": {
-        "x": 0,
-        "y": 0,
-        "z": 0
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "parkScenePosition": {
         "x": 28.921056747436525,

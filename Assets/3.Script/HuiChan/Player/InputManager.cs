@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class InputManager : SingletonBehaviour<InputManager>
 {
-    protected override bool IsDontDestroy() => true;
+    protected override bool IsDontDestroy() => false;
     [Title("Input Setting", underlined: true, fontSize = 18, alignment = TextAlignment.Center)]
 
     public InputActionAsset playerInputActions;
