@@ -19,7 +19,9 @@ public class SceneChange : MonoBehaviour
         {
             Debug.LogWarning("SceneMove | 다음 씬이 Build Settings에 없습니다!");
         }
-
+        
+        GameManager.Instance.isCollarEquip = false;
+        GameManager.Instance.isMuzzleEquip = false;
         GameManager.Instance.origin.transform.position = new Vector3(0f, 0.55f, 0f);
         GameManager.Instance.mainCam.transform.position = Vector3.zero;
         InputManager.Instance.canvas.worldCamera = Camera.main;

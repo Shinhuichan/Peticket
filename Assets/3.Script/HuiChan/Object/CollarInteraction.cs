@@ -37,7 +37,7 @@ public class CollarInteraction : ObjectInteraction
     {
         if (col.CompareTag("Dog"))
         {
-            rb = GetComponent<Rigidbody>(); // 
+            rb = GetComponent<Rigidbody>();
             animal = col.GetComponentInParent<AnimalInteraction>();
 
             if (type == ObjectType.Collar)
