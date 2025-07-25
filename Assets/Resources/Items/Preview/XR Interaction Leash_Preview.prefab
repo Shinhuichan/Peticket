@@ -269,11 +269,11 @@ MonoBehaviour:
   rayInteractor: {fileID: 0}
   rectXZ:
     serializedVersion: 2
-    x: -1000
-    y: -1000
+    x: -500
+    y: -500
     width: 1000
     height: 1000
   minY: 0
-  maxY: 5
+  maxY: 34.01
   grabInteractable: {fileID: 0}
   type: 0

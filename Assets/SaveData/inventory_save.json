@@ -1,3 +1,12 @@
 {
-    "items": []
+    "items": [
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 0
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 1
+        }
+    ]
 }

@@ -42,15 +42,6 @@ public class PetUIManager : MonoBehaviour
 
     private void Awake()
 {
-    if (instance != null)
-    {
-        Destroy(gameObject);
-        return;
-    }
-
-    instance = this;
-    DontDestroyOnLoad(gameObject);
-
     // ✅ spawnPoint 자동 연결
     if (Player.Instance != null && Player.Instance.petPosition != null)
     {
