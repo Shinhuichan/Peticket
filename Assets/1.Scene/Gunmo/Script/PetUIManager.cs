@@ -41,16 +41,27 @@ public class PetUIManager : MonoBehaviour
     }
 
     private void Awake()
+{
+    if (instance != null)
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        Destroy(gameObject);
+        return;
     }
+
+    instance = this;
+    DontDestroyOnLoad(gameObject);
+
+    // ✅ spawnPoint 자동 연결
+    if (Player.Instance != null && Player.Instance.petPosition != null)
+    {
+        spawnPoint = Player.Instance.petPosition;
+        Debug.Log($"✅ spawnPoint 자동 연결 완료: {spawnPoint.name}");
+    }
+    else
+    {
+        Debug.LogError("❌ Player.Instance 또는 petPosition이 존재하지 않아 spawnPoint 연결 실패");
+    }
+}
 
     private void Start()
     {

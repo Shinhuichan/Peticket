@@ -17,6 +17,19 @@ public class SaveButtonHandler : MonoBehaviour
     [Header("파괴할 오브젝트 이름들")]
     public string[] objectsToDestroyOnReturnHome;
 
+
+    private void Awake()
+{
+    if (Player.Instance != null && Player.Instance.playerPosition != null)
+    {
+        movingTargetTransform = Player.Instance.playerPosition;
+        Debug.Log($"✅ movingTargetTransform 자동 연결됨: {movingTargetTransform.name}");
+    }
+    else
+    {
+        Debug.LogError("❌ Player.Instance 또는 playerPosition이 존재하지 않습니다.");
+    }
+}
     void Start()
     {
         movingTargetTransform = GameManager.Instance.player.playerPosition.transform;

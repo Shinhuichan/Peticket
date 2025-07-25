@@ -23,6 +23,19 @@ public class InventorySlot : MonoBehaviour
 
     public bool IsEmpty => currentItem == null;
 
+    private void Start()
+{
+    if (Player.Instance != null && Player.Instance.itemPosition != null)
+    {
+        handTransform = Player.Instance.itemPosition;
+        Debug.Log($"✅ handTransform을 Player.Instance.itemPosition으로 강제 연결: {handTransform.name}");
+    }
+    else
+    {
+        Debug.LogError("❌ Player.Instance 또는 itemPosition이 존재하지 않습니다. handTransform 연결 실패");
+    }
+}
+
     public void InitializeSlotColor()
     {
         if (!isColorInitialized && slotBackgroundImage != null)
