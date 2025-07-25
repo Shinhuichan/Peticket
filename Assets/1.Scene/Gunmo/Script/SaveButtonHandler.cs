@@ -30,10 +30,6 @@ public class SaveButtonHandler : MonoBehaviour
         Debug.LogError("❌ Player.Instance 또는 playerPosition이 존재하지 않습니다.");
     }
 }
-    void Start()
-    {
-        movingTargetTransform = GameManager.Instance.player.playerPosition.transform;
-    }
     public void OnClick_SaveManually()
     {
         if (GameSaveManager.Instance == null || movingTargetTransform == null)
