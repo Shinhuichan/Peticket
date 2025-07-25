@@ -370,14 +370,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338b6e11510939f4788078d226b1c854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objType: 6
   dog: {fileID: 0}
   rayInteractor: {fileID: 0}
   rectXZ:
     serializedVersion: 2
-    x: -5
+    x: -6.42
     y: -5
-    width: 10
-    height: 10
+    width: 20
+    height: 20
   minY: 0
   maxY: 5
   grabInteractable: {fileID: 0}

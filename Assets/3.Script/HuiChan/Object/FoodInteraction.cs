@@ -59,10 +59,18 @@ public class FoodInteraction : ObjectInteraction // ObjectInteraction 상속 유
     // 1. 사료 덩어리 연속 생성 코루틴 (오직 기울기가 충분할 때만 작동)
     IEnumerator ContinuousFoodDispensing()
     {
-        while (true) // 코루틴이 실행 중인 동안 무한 루프
+        while (true)
         {
-            Debug.DrawRay(spawnTrans.position, Vector3.down, Color.blue, 0.5f); // 사료 생성 지점 시각화 (파란색)
-            Instantiate(foodObj, spawnTrans.position, Quaternion.identity);
+            RaycastHit hit;
+            if (Physics.Raycast(spawnTrans.position, Vector3.down, out hit, 1f, targetLayer))
+            {
+                if (hit.collider != null)
+                {
+                    Debug.DrawRay(spawnTrans.position, Vector3.down, Color.blue, 0.5f);
+                    Instantiate(foodObj, spawnTrans.position, Quaternion.identity);
+                }
+            }
+
             yield return new WaitForSeconds(foodDropParticleInterval);
         }
     }
@@ -75,13 +83,6 @@ public class FoodInteraction : ObjectInteraction // ObjectInteraction 상속 유
             Debug.DrawRay(spawnTrans.position, Vector3.down, Color.red, rayCheckInterval);
 
             RaycastHit hit;
-            // 굳건희! 이제 LayerMask를 조절해서 특정 레이어(사료 덩어리)는 무시할 거야!
-            // Physics.Raycast(시작위치, 방향, out hit, 거리, 레이어마스크)
-            // (~ignoreRaycastLayer)는 ignoreRaycastLayer를 제외한 모든 레이어를 의미해.
-            // targetLayer가 그릇 레이어만을 포함하도록 명시적으로 설정한다면 더 정확해.
-            
-            // 방법 1: `targetLayer`가 그릇 레이어만 포함하도록 설정되어 있다고 가정하고,
-            //         `Physics.Raycast`가 오직 `targetLayer`에만 반응하도록 함.
             if (Physics.Raycast(spawnTrans.position, Vector3.down, out hit, 1f, targetLayer))
             {
                 // ... (기존 로직)

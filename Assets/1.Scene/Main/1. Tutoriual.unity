@@ -1369,9 +1369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightThumbstickAction: {fileID: -5913262927076077117, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   XROriginTransform: {fileID: 1032381881}
-  rotationAngle: 45
-  inputThreshold: 0.7
-  cooldown: 0.5
+  turnSpeed: 90
+  deadZone: 0.1
 --- !u!1 &411502976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,7 +4100,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4636489713556179687, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8262596607418896395, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6816,6 +6815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623460582}
+  - component: {fileID: 1623460583}
   m_Layer: 0
   m_Name: --- Inventory Setting
   m_TagString: Untagged
@@ -6836,11 +6836,43 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2130845973}
   - {fileID: 841690089}
   - {fileID: 1723221842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623460583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623460581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a0d2044ac94924182f26c441b5f2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 1060612428}
+  - {fileID: 612085107}
+  - {fileID: 716925004}
+  - {fileID: 1952959216}
+  - {fileID: 1377537770}
+  - {fileID: 1510597106}
+  - {fileID: 698878692}
+  - {fileID: 230221310}
+  - {fileID: 1122876110}
+  - {fileID: 865739605}
+  - {fileID: 338165178}
+  - {fileID: 2127448919}
+  - {fileID: 898159476}
+  - {fileID: 9753691}
+  - {fileID: 463097083}
+  - {fileID: 538199023}
+  - {fileID: 587665209}
+  - {fileID: 2136831247}
+  - {fileID: 1611363867}
+  - {fileID: 2085385733}
 --- !u!1 &1631448848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8933,71 +8965,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127448917}
   m_CullTransparentMesh: 1
---- !u!1 &2130845971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2130845973}
-  - component: {fileID: 2130845972}
-  m_Layer: 0
-  m_Name: InventoryManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2130845972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130845971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a0d2044ac94924182f26c441b5f2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 1060612428}
-  - {fileID: 612085107}
-  - {fileID: 716925004}
-  - {fileID: 1952959216}
-  - {fileID: 1377537770}
-  - {fileID: 1510597106}
-  - {fileID: 698878692}
-  - {fileID: 230221310}
-  - {fileID: 1122876110}
-  - {fileID: 865739605}
-  - {fileID: 338165178}
-  - {fileID: 2127448919}
-  - {fileID: 898159476}
-  - {fileID: 9753691}
-  - {fileID: 463097083}
-  - {fileID: 538199023}
-  - {fileID: 587665209}
-  - {fileID: 2136831247}
-  - {fileID: 1611363867}
-  - {fileID: 2085385733}
---- !u!4 &2130845973
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130845971}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1623460582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136831245
 GameObject:
   m_ObjectHideFlags: 0

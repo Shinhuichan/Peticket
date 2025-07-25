@@ -69,7 +69,9 @@ public class InputManager : SingletonBehaviour<InputManager>
         if (leftDirect == null || rightDirect == null)
         {
             FindDirectInteractorsByHierarchy();
+            InitialGrabEvents();
         }
+
         if (moveProvider == null)
             moveProvider = FindFirstObjectByType<DynamicMoveProvider>();
     }

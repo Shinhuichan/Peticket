@@ -301,21 +301,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8217198d3a8ed2468f0f1a92be3221f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objType: 1
   dog: {fileID: 0}
   rayInteractor: {fileID: 0}
   rectXZ:
     serializedVersion: 2
-    x: -5
-    y: -5
-    width: 10
-    height: 10
+    x: -500
+    y: -500
+    width: 1000
+    height: 1000
   minY: 0
-  maxY: 5
+  maxY: 25
   grabInteractable: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  foodObj: {fileID: 5462299897257804746, guid: 834a6fff4fab232448ce35c3ee570ad9, type: 3}
+  foodObj: {fileID: 3088192467557424169, guid: 60bf30b49ac8af24d8d34197b7a37254, type: 3}
   spawnTrans: {fileID: 2285365328689531657}
   limitXZRotation: 45
   targetBowl: {fileID: 0}

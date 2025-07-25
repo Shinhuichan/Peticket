@@ -369,15 +369,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338b6e11510939f4788078d226b1c854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  introduceUI: {fileID: 0}
+  objType: 5
   dog: {fileID: 0}
   rayInteractor: {fileID: 0}
-  input: {fileID: 0}
-  minBounds: {x: -20, y: 0.1, z: -20}
-  maxBounds: {x: 20, y: 20, z: 20}
+  rectXZ:
+    serializedVersion: 2
+    x: -6.51
+    y: -6.1
+    width: 20
+    height: 20
+  minY: 0
+  maxY: 5
+  grabInteractable: {fileID: 0}
   type: 1
-  isEquip: 0
 --- !u!114 &3129634986993177237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,5 +417,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}

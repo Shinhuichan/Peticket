@@ -7,6 +7,10 @@
         {
             "itemName": "XR Interaction Food",
             "slotIndex": 1
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 2
         }
     ]
 }
