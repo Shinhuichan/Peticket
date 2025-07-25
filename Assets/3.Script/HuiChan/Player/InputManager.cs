@@ -71,7 +71,6 @@ public class InputManager : SingletonBehaviour<InputManager>
             FindDirectInteractorsByHierarchy();
             InitialGrabEvents();
         }
-
         if (moveProvider == null)
             moveProvider = FindFirstObjectByType<DynamicMoveProvider>();
     }
