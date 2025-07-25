@@ -41,7 +41,7 @@ public class InputManager : SingletonBehaviour<InputManager>
     {
         /////
         // Canvas의 EventCamera 초기 Setting
-        canvas = GetComponent<Canvas>();
+        canvas = transform.GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
         /////
         leftInteractionActionMap = playerInputActions.FindActionMap("XRI LeftHand Interaction");
