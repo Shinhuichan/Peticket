@@ -28,10 +28,11 @@ public class CheckItem : MonoBehaviour
             itemNames.Add(item.ToString());
         
         // 필요한 모든 Item을 획득하였는가?
-        bool itemAllIncluded = itemNames.All(item => GameManager.Instance.currentHasItem.Contains(item)); 
+        bool itemAllIncluded = itemNames.All(item => GameManager.Instance.currentHasItem.Contains(item));
+        Debug.Log($"itemAllIncluded : {itemAllIncluded}");
         // 필요한 모든 Item을 장착시켜줬는가?
         bool itemAllEquiped = GameManager.Instance.isCollarEquip && GameManager.Instance.isMuzzleEquip;
-
+        Debug.Log($"itemAllEquiped : {itemAllEquiped}");
         bool allIncluded = itemAllIncluded && itemAllEquiped;
         return allIncluded;
     }
