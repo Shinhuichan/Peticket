@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7159671167674124738}
+  - component: {fileID: 531449858648124845}
   m_Layer: 0
   m_Name: -------------BGM
   m_TagString: Untagged
@@ -29,101 +30,48 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7235851801112637600}
   - {fileID: 7039938390258534943}
   - {fileID: 1747552469490034175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3271218379042561963
-PrefabInstance:
+--- !u!114 &531449858648124845
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7159671167674124738}
-    m_Modifications:
-    - target: {fileID: 75005878414014426, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_Name
-      value: AudioManagerPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmSource
-      value: 
-      objectReference: {fileID: 774614138354773117}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: sfxSourcePrefab
-      value: 
-      objectReference: {fileID: 3827490552297010101}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmList.Array.data[0].bgmClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f7fc8bceadaec1f42b1534bc8f261fd4, type: 3}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmList.Array.data[0].sceneName
-      value: 0. Lobby
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmList.Array.data[1].sceneName
-      value: 1. Tutoriual
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmList.Array.data[2].sceneName
-      value: 2. My Room
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317661009900845631, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-      propertyPath: bgmList.Array.data[3].sceneName
-      value: 3. World (Cherin)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
---- !u!4 &7235851801112637600 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5264526719011778315, guid: 9dd10478a9a6a2b49aaeaa1c8ae8cb04, type: 3}
-  m_PrefabInstance: {fileID: 3271218379042561963}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526452944365205838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399626ead43b48041ac7c904ff188238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSource: {fileID: 774614138354773117}
+  bgmList:
+  - sceneName: 0. Lobby
+    bgmClip: {fileID: 8300000, guid: f7fc8bceadaec1f42b1534bc8f261fd4, type: 3}
+  - sceneName: 1. Tutoriual
+    bgmClip: {fileID: 8300000, guid: b62b56a52e987ad46a121d1cd23e4ecd, type: 3}
+  - sceneName: 2. My Room
+    bgmClip: {fileID: 8300000, guid: d91dad991452ba24abc43115c0fe8108, type: 3}
+  - sceneName: 3. World (Cherin)
+    bgmClip: {fileID: 8300000, guid: 922494533d7c0d044aa5f17e20bea2d0, type: 3}
+  sfxSourcePrefab: {fileID: 3827490552297010101}
+  sfxList:
+  - key: Button Pop
+    clip: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
+  - key: Drop_item
+    clip: {fileID: 8300000, guid: 7562ad3dd7f955d4183a6e1314db240d, type: 3}
+  - key: Inventory_open
+    clip: {fileID: 8300000, guid: 555a91d1875bbbd4ab5622961e50d385, type: 3}
+  - key: Inventory_open2
+    clip: {fileID: 8300000, guid: 37baee31c2113da45b343b5d812a5509, type: 3}
+  - key: Inventory_open3
+    clip: {fileID: 8300000, guid: 934f8f49cd9d921499e36d1dbf6affb9, type: 3}
+  - key: Inventory_open4
+    clip: {fileID: 8300000, guid: 5a7f7b1827f3214499d25e8f9141d9a3, type: 3}
+  BgmVolume: 0.5
+  SfxVolume: 0.5
 --- !u!1001 &3424600402257063799
 PrefabInstance:
   m_ObjectHideFlags: 0

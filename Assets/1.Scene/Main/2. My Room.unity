@@ -1955,7 +1955,6 @@ GameObject:
   - component: {fileID: 342544072}
   - component: {fileID: 342544071}
   - component: {fileID: 342544070}
-  - component: {fileID: 342544069}
   m_Layer: 5
   m_Name: PetSelect
   m_TagString: Untagged
@@ -1975,7 +1974,6 @@ RectTransform:
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 666761550}
   - {fileID: 1695809536}
   - {fileID: 1340132626}
   - {fileID: 1452977132}
@@ -1988,32 +1986,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.02, y: 1.49}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &342544069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342544067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97abce2fb34125b47b41ead4bc87fabd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  inventoryPanel: {fileID: 0}
-  toggleInventoryAction: {fileID: -198247193352664509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectedItem: {fileID: 0}
-  baseMoveSpeed: 0
-  dashIncrease: 1.5
-  dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftDirect: {fileID: 0}
-  rightDirect: {fileID: 0}
-  moveProvider: {fileID: 0}
-  canvas: {fileID: 0}
-  allDirects: []
 --- !u!114 &342544070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,6 +3368,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 574682017}
+  - component: {fileID: 574682018}
+  - component: {fileID: 574682019}
   m_Layer: 0
   m_Name: ----- UI
   m_TagString: Untagged
@@ -3416,10 +3390,62 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1725285703}
   - {fileID: 1183990815}
   - {fileID: 789840377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574682018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574682016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97abce2fb34125b47b41ead4bc87fabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  inventoryPanel: {fileID: 1303627001}
+  toggleInventoryAction: {fileID: -198247193352664509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  selectedItem: {fileID: 0}
+  baseMoveSpeed: 0
+  dashIncrease: 2
+  dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftDirect: {fileID: 41734343}
+  rightDirect: {fileID: 41734342}
+  moveProvider: {fileID: 0}
+  canvas: {fileID: 0}
+  allDirects: []
+--- !u!114 &574682019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574682016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0934f75d7b6fc044abca2084af5dbfe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petUIPrefab: {fileID: 5355026506884716017, guid: d679ce98c21a92b4790e8f53f5316039, type: 3}
+  uiParent: {fileID: 1725285703}
+  backButton: {fileID: 1695809532}
+  confirmButton: {fileID: 1340132625}
+  smallDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  middleDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
+  spawnPoint: {fileID: 1966500939}
+  panelToClose: {fileID: 342544067}
+  unlockText: {fileID: 2034692339}
+  midDogMessage: "\uC911\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  largeDogMessage: "\uB300\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  messageDisplayDuration: 2
 --- !u!1 &604115942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,68 +3796,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 435498, guid: 3ee2ee0b593a44884b15c70b3e8c6d4e, type: 3}
   m_PrefabInstance: {fileID: 665131459}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &666761548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 666761550}
-  - component: {fileID: 666761549}
-  m_Layer: 5
-  m_Name: PetUIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &666761549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666761548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0934f75d7b6fc044abca2084af5dbfe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  petUIPrefab: {fileID: 5355026506884716017, guid: d679ce98c21a92b4790e8f53f5316039, type: 3}
-  uiParent: {fileID: 1725285703}
-  backButton: {fileID: 1695809532}
-  confirmButton: {fileID: 1340132625}
-  smallDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
-  middleDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
-  largeDogPrefab: {fileID: 2588240132929688759, guid: 75f35cb94af0a2e4fb86ea40ba379937, type: 3}
-  spawnPoint: {fileID: 1966500939}
-  panelToClose: {fileID: 342544067}
-  unlockText: {fileID: 2034692339}
-  midDogMessage: "\uC911\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
-  largeDogMessage: "\uB300\uD615\uACAC \uC120\uD0DD\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4!"
-  messageDisplayDuration: 2
---- !u!224 &666761550
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666761548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1725285703}
-  m_Father: {fileID: 342544068}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 580, y: -100}
-  m_SizeDelta: {x: 278, y: 294.84}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &669526500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5410,63 +5374,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 435498, guid: 3ee2ee0b593a44884b15c70b3e8c6d4e, type: 3}
   m_PrefabInstance: {fileID: 908594540}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &914358893
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 914358894}
-  - component: {fileID: 914358895}
-  m_Layer: 0
-  m_Name: GameSaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &914358894
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914358893}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1208823175}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &914358895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914358893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0afcbe375fba5d34089656cafcb33e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSaveData:
-    selectedPetId: 
-    playerProgress: 0
-    roomScenePosition:
-      x: 0
-      y: 0
-      z: 0
-    parkScenePosition:
-      x: 0
-      y: 0
-      z: 0
-  roomSceneName: 2. My Room
-  parkSceneName: 3. World (Cherin)
 --- !u!1 &927180774
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,7 +6933,6 @@ GameObject:
   - component: {fileID: 1183990820}
   - component: {fileID: 1183990819}
   - component: {fileID: 1183990818}
-  - component: {fileID: 1183990817}
   - component: {fileID: 1183990823}
   - component: {fileID: 1183990824}
   m_Layer: 5
@@ -7059,32 +6965,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.02, y: 1.9}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1183990817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183990814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97abce2fb34125b47b41ead4bc87fabd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  inventoryPanel: {fileID: 1303627001}
-  toggleInventoryAction: {fileID: -198247193352664509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectedItem: {fileID: 0}
-  baseMoveSpeed: 0
-  dashIncrease: 2
-  dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftDirect: {fileID: 41734343}
-  rightDirect: {fileID: 41734342}
-  moveProvider: {fileID: 0}
-  canvas: {fileID: 0}
-  allDirects: []
 --- !u!114 &1183990818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7440,6 +7320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1208823175}
+  - component: {fileID: 1208823176}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -7461,9 +7342,33 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1652581315}
-  - {fileID: 914358894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1208823176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208823174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afcbe375fba5d34089656cafcb33e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSaveData:
+    selectedPetId: 
+    playerProgress: 0
+    roomScenePosition:
+      x: 0
+      y: 0
+      z: 0
+    parkScenePosition:
+      x: 0
+      y: 0
+      z: 0
+  roomSceneName: 2. My Room
+  parkSceneName: 3. World (Cherin)
 --- !u!1 &1213479994
 GameObject:
   m_ObjectHideFlags: 0
@@ -8273,21 +8178,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 789840377}
     m_Modifications:
-    - target: {fileID: 1253366573322664811, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1312300461217914787, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Name
       value: --- UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312300461217914787, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2400704665767133268, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Pivot.x
@@ -8320,18 +8213,6 @@ PrefabInstance:
     - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8381,14 +8262,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3894364508216215795, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571379553867853391, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5911915931571736914, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
       propertyPath: m_Camera
       value: 
@@ -8397,58 +8270,14 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 334649086}
-    - target: {fileID: 6834410916412062103, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: fixedOffset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7769526404280361918, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1284013908}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClick_ClosePanels
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UIPanelCloser, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8314116553843666437, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4420991247386386128, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1284013908}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
 --- !u!224 &1284013905 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3866043175488196861, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
-  m_PrefabInstance: {fileID: 1284013904}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1284013906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4420991247386386128, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
   m_PrefabInstance: {fileID: 1284013904}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1284013907 stripped
@@ -8456,20 +8285,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1312300461217914787, guid: ca017b11a92109d4db241e6e5c9db9d0, type: 3}
   m_PrefabInstance: {fileID: 1284013904}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1284013908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284013906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a2613c516bb554e8afa62e7e7e6b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelsToClose:
-  - {fileID: 1284013907}
 --- !u!1 &1287135376
 GameObject:
   m_ObjectHideFlags: 0
@@ -8729,7 +8544,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 666761549}
+      - m_Target: {fileID: 574682019}
         m_TargetAssemblyTypeName: PetUIManager, Assembly-CSharp
         m_MethodName: OnClick_ConfirmSelection
         m_Mode: 1
@@ -11489,7 +11304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 666761549}
+      - m_Target: {fileID: 574682019}
         m_TargetAssemblyTypeName: PetUIManager, Assembly-CSharp
         m_MethodName: OnClick_BackToSelection
         m_Mode: 1
@@ -12007,15 +11822,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725285702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 6.79}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 666761550}
+  m_Father: {fileID: 574682017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 93.850006}
+  m_AnchoredPosition: {x: -0.36, y: 1.8764267}
   m_SizeDelta: {x: 0, y: 187.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1725285704
