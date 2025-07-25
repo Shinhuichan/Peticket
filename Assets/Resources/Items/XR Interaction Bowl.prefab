@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 310168016005192058}
   - component: {fileID: 3822546094175810055}
   - component: {fileID: -7981159645382478652}
-  - component: {fileID: 354256437700980854}
   - component: {fileID: -4585890079869121403}
-  m_Layer: 0
+  - component: {fileID: 7476382786484501472}
+  m_Layer: 3
   m_Name: XR Interaction Bowl
-  m_TagString: Untagged
+  m_TagString: Bowl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 10
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -102,34 +102,10 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5462299897257804746}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5462299897257804746}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -138,19 +114,7 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5462299897257804746}
-        m_TargetAssemblyTypeName: GrabEvent, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -264,11 +228,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379dd4f61feb94ea848c07fa4b9eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewModelPrefab: {fileID: 5462299897257804746, guid: c6349aac54629b4469ca96aee75d1651, type: 3}
+  previewModelPrefab: {fileID: 629519548675259387, guid: add5568cb30f69b4b8223869b47526e3, type: 3}
   previewScale: 50
   previewRotationEuler: {x: 25, y: -45, z: 0}
   previewOffset: {x: 0, y: 0, z: -30}
---- !u!65 &354256437700980854
+--- !u!114 &-4585890079869121403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462299897257804746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objType: 4
+  dog: {fileID: 0}
+  rayInteractor: {fileID: 0}
+  rectXZ:
+    serializedVersion: 2
+    x: -500
+    y: -500
+    width: 1000
+    height: 1000
+  minY: 0
+  maxY: 25
+  grabInteractable: {fileID: 0}
+  foodObj: {fileID: 3088192467557424169, guid: 60bf30b49ac8af24d8d34197b7a37254, type: 3}
+--- !u!65 &7476382786484501472
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,33 +276,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4585890079869121403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5462299897257804746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objType: 4
-  dog: {fileID: 0}
-  rayInteractor: {fileID: 0}
-  rectXZ:
-    serializedVersion: 2
-    x: -500
-    y: -500
-    width: 1000
-    height: 1000
-  minY: 0
-  maxY: 25
-  grabInteractable: {fileID: 0}
-  foodObj: {fileID: 0}
+  m_Size: {x: 0.7, y: 0.1, z: 0.7}
+  m_Center: {x: 0, y: 0.08, z: 0}
 --- !u!1 &5704146992594729114
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,11 +289,7 @@ GameObject:
   - component: {fileID: 663383414860627254}
   - component: {fileID: 9084617923391295726}
   - component: {fileID: 6666594593205340253}
-  - component: {fileID: 8872370308269631395}
-  - component: {fileID: 7268180197765264903}
-  - component: {fileID: 6873013176887259681}
-  - component: {fileID: 6502535500201513819}
-  - component: {fileID: 3825868940306152383}
+  - component: {fileID: 5563658901807523967}
   m_Layer: 3
   m_Name: Bowl_1_empty
   m_TagString: Bowl
@@ -346,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 5704146992594729114}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.61, y: 0.158, z: 4.68}
   m_LocalScale: {x: 6, y: 3, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -403,8 +363,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8872370308269631395
-BoxCollider:
+--- !u!64 &5563658901807523967
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -421,93 +381,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.19599785, y: 0.01, z: 0.19599788}
-  m_Center: {x: -0.000000059604645, y: 0.005, z: -0.00000028312206}
---- !u!65 &7268180197765264903
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704146992594729114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.048030313, z: 0.15}
-  m_Center: {x: -0.07, y: 0.024013454, z: 0}
---- !u!65 &6873013176887259681
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704146992594729114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.01, y: 0.048030313, z: 0.15}
-  m_Center: {x: 0.07, y: 0.024013454, z: 0}
---- !u!65 &6502535500201513819
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704146992594729114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.048030313, z: 0.01}
-  m_Center: {x: 0, y: 0.024013454, z: -0.07}
---- !u!65 &3825868940306152383
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704146992594729114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.048030313, z: 0.01}
-  m_Center: {x: 0, y: 0.024013454, z: 0.07}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3782590863285434248, guid: a76d20db3d5df44498ceed17248755e6, type: 3}
 --- !u!1 &6846590887797690515
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +396,7 @@ GameObject:
   - component: {fileID: 5281381682664230461}
   - component: {fileID: 5649465783556305253}
   - component: {fileID: 4550384133134287549}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Food
   m_TagString: Food
   m_Icon: {fileID: 0}

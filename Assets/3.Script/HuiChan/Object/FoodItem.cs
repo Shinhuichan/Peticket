@@ -52,7 +52,5 @@ public class FoodItem : MonoBehaviour
             Debug.Log($"FoodItem: {gameObject.name}이(가) 그릇에 닿지 않아서 자동으로 제거됩니다.");
             Destroy(gameObject);
         }
-        // else: 이미 'Bowl' 태그에 닿아서 즉시 제거되었을 수도 있고,
-        // hasReachedBowl=true 가 되었다면 제거되지 않음.
     }
 }

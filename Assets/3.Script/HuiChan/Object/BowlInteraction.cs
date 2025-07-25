@@ -21,14 +21,14 @@ public class BowlInteraction : ObjectInteraction
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        // "Food" 태그를 가진 오브젝트가 그릇의 트리거에 들어오면 파괴.
-        // 이 로직은 FoodItem.cs에서 이미 foodObj가 "Bowl" 태그에 닿으면 스스로 파괴되도록 했으니
-        if (other.CompareTag("Food"))
-        {
-            Debug.Log($"BowlInteraction: 'Food' 태그를 가진 오브젝트 ({other.name})가 그릇에 들어와 파괴됨.");
-            Destroy(other.gameObject);
-        }
-    }
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     // "Food" 태그를 가진 오브젝트가 그릇의 트리거에 들어오면 파괴.
+    //     // 이 로직은 FoodItem.cs에서 이미 foodObj가 "Bowl" 태그에 닿으면 스스로 파괴되도록 했으니
+    //     if (other.CompareTag("Food"))
+    //     {
+    //         Debug.Log($"BowlInteraction: 'Food' 태그를 가진 오브젝트 ({other.name})가 그릇에 들어와 파괴됨.");
+    //         Destroy(other.gameObject);
+    //     }
+    // }
 }

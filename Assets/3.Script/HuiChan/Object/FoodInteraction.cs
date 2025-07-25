@@ -85,15 +85,8 @@ public class FoodInteraction : ObjectInteraction // ObjectInteraction 상속 유
             RaycastHit hit;
             if (Physics.Raycast(spawnTrans.position, Vector3.down, out hit, 1f, targetLayer))
             {
-                // ... (기존 로직)
-                currentPourRayHitTime += rayCheckInterval;
-                Debug.Log($"FoodInteraction: Ray 그릇에 닿음! 시간 누적: {currentPourRayHitTime:F2}초");
-
-                if (currentPourRayHitTime >= requiredContinuousPourTime && targetBowl != null && targetBowl.foodObj != null && !targetBowl.foodObj.activeSelf)
-                {
-                    targetBowl.ActivateBowlFoodVisual();
-                    currentPourRayHitTime = 0f;
-                }
+                targetBowl = hit.transform.gameObject.GetComponentInParent<BowlInteraction>();
+                targetBowl.ActivateBowlFoodVisual();
             }
             else currentPourRayHitTime = 0f;
 
