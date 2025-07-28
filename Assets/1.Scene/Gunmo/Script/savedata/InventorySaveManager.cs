@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class InventorySaveManager : MonoBehaviour
 {
@@ -64,28 +63,19 @@ public class InventorySaveManager : MonoBehaviour
         Debug.Log("📥 인벤토리 불러오기 완료");
     }
     public void ResetInventory()
-    {
-        // 슬롯 UI 비우기
-        foreach (var slot in inventorySlots)
-        {
-            slot.ClearSlot();
-        }
-
-        // 빈 저장 데이터 작성
-        var emptyData = new SavedInventoryData(); // items 리스트 비어있음
-
-        string json = JsonUtility.ToJson(emptyData, true);
-        File.WriteAllText(SavePath, json);
-
-        Debug.Log("🗑 인벤토리 초기화 완료: 저장 데이터도 제거됨");
-    }
-public void ResetAndLoadScene(string sceneName)
 {
-    // 인벤토리 초기화
-    ResetInventory();
+    // 슬롯 UI 비우기
+    foreach (var slot in inventorySlots)
+    {
+        slot.ClearSlot();
+    }
 
-    // 씬 전환
-    Debug.Log("🚪 씬 전환 중: " + sceneName);
-    SceneManager.LoadScene(sceneName);
+    // 빈 저장 데이터 작성
+    var emptyData = new SavedInventoryData(); // items 리스트 비어있음
+
+    string json = JsonUtility.ToJson(emptyData, true);
+    File.WriteAllText(SavePath, json);
+
+    Debug.Log("🗑 인벤토리 초기화 완료: 저장 데이터도 제거됨");
 }
 }
