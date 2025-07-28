@@ -39,7 +39,7 @@ public class ItemUseZoneManager : MonoBehaviour
         }
         Instance = this;
 
-        if (areaUI != null) areaUI.transform.parent.gameObject.SetActive(false);
+        if (areaUI != null) areaUI.text = "산책 하기";
         else Debug.LogWarning("ItemUseZoneManager: 'UI To Display' GameObject가 할당되지 않았습니다.");
     }
 
@@ -52,10 +52,12 @@ public class ItemUseZoneManager : MonoBehaviour
 
         if (isPlayerNowInZone != isPlayerCurrentlyInZone)
         {
-            
+
             isPlayerCurrentlyInZone = isPlayerNowInZone;
 
-            Debug.Log($"ItemUseZoneManager: 플레이어가 영역 {(isPlayerNowInZone ? "안" : "밖")}에 있습니다.");
+            // Debug.Log($"ItemUseZoneManager: 플레이어가 영역 {(isPlayerNowInZone ? "안" : "밖")}에 있습니다.");
+            areaUI.transform.parent.gameObject.SetActive(true);
+            areaUI.text = "산책 하기";
         }
     }
 
@@ -98,8 +100,10 @@ public class ItemUseZoneManager : MonoBehaviour
                 return true; // 어떤 한 Zone이라도 만족하면 true 반환
             }
         }
-        areaUI.transform.parent.gameObject.SetActive(false);
-        Debug.Log($"ItemUseZoneManager: 플레이어가 영역 밖에 있습니다.");
+        // areaUI.transform.parent.gameObject.SetActive(false);
+        // Debug.Log($"ItemUseZoneManager: 플레이어가 영역 밖에 있습니다.");
+        areaUI.transform.parent.gameObject.SetActive(true);
+        areaUI.text = "산책 하기";
         return false; // 어떤 Zone에도 속하지 않으면 false 반환
     }
 

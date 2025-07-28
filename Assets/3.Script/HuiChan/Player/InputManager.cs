@@ -1,3 +1,4 @@
+using System.Collections;
 using CustomInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -116,8 +117,9 @@ public class InputManager : SingletonBehaviour<InputManager>
         dashAction.action.performed += Dash;
         dashAction.action.canceled += DashStop;
     }
-    void InitialGrabEvents()
+    IEnumerator InitialGrabEvents()
     {
+        yield return new WaitForEndOfFrame();
         leftDirect.selectEntered.AddListener(OnGrabStart); // 잡기 시작했을 때
         leftDirect.selectExited.AddListener(OnGrabEnd);   // 놓았을 때
 

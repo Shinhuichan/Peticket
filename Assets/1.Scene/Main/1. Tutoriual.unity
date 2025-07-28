@@ -2733,21 +2733,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_Name
       value: XR Interaction Bowl
       objectReference: {fileID: 0}
     - target: {fileID: 7026542543773016990, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7026542543773016990, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7026542543773016990, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 7026542543773016990, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5613,46 +5625,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3924337733137586234, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: maxY
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: rectXZ.x
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: rectXZ.y
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: rectXZ.width
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: rectXZ.height
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: movementArea.x
-      value: -12.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: movementArea.y
-      value: -6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: movementArea.width
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256645003808135427, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: movementArea.height
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 6926634891687312579, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -5693,16 +5665,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7511804806643596946, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9217983721362013079, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
       propertyPath: m_Name
       value: XR Interaction Shovel
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3483482362063159303, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

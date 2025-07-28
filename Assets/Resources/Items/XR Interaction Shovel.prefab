@@ -65,7 +65,6 @@ GameObject:
   - component: {fileID: 2886501892458288053}
   - component: {fileID: 134743311150551157}
   - component: {fileID: 251592747199203364}
-  - component: {fileID: 3483482362063159303}
   m_Layer: 0
   m_Name: Shovel
   m_TagString: Untagged
@@ -160,28 +159,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.006, y: 0.0045, z: 0.006}
   m_Center: {x: 0, y: 0.003, z: 0.006}
---- !u!64 &3483482362063159303
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4803805732404253996}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5668984478841134232, guid: f00e0f9b243d0fc4db075b91dca52d80, type: 3}
 --- !u!1 &9217983721362013079
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +216,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -384,8 +361,8 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 7285812228684276295}
-  m_SecondaryAttachTransform: {fileID: 7285812228684276295}
+  m_AttachTransform: {fileID: 3803566920061807512}
+  m_SecondaryAttachTransform: {fileID: 3803566920061807512}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
@@ -467,12 +444,12 @@ MonoBehaviour:
   rayInteractor: {fileID: 0}
   rectXZ:
     serializedVersion: 2
-    x: -5
-    y: -5
-    width: 10
-    height: 10
+    x: -15
+    y: -10
+    width: 30
+    height: 30
   minY: 0
-  maxY: 5
+  maxY: 12
   grabInteractable: {fileID: 0}
 --- !u!65 &7511804806643596946
 BoxCollider:
@@ -491,7 +468,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0.5, z: -0.5}
