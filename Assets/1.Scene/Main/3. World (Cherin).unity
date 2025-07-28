@@ -22382,10 +22382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnActivate
       objectReference: {fileID: 0}
-    - target: {fileID: 4047088830316580866, guid: 5d0f3af017d860248aa0f7bb085fd85f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
