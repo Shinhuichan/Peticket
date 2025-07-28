@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,30 +52,32 @@ public class AnimalFeedHandler : MonoBehaviour
     }
     private IEnumerator EatAnimationSequence()
     {
+        // 1. EatStart
         animal.AnimationHandler.SetAnimation(PetAnimation.EatStart);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // EatStart ±æÀÌ (¾Ö´Ï¸ÞÀÌ¼Ç Å¬¸³ ±æÀÌ¿¡ µû¶ó Á¶Àý)
 
-        animal.AnimationHandler.SetAnimation(PetAnimation.EatStart + 1);
-        float loopDuration = eatTimer - 2f;
+        // 2. EatLoop
+        animal.AnimationHandler.SetAnimation(PetAnimation.Idle); // ÀÏ´Ü Loop Àü¿ë Æ®¸®°Å ¾øÀ¸¸é Idle ´ëÃ¼
+        float loopDuration = eatTimer - 2f; // ÃÑ ½Ä»ç ½Ã°£¿¡¼­ Start/End »©°í Loop¿¡ ÇÒ´ç
         if (loopDuration < 0) loopDuration = 1f;
+
+        animal.AnimationHandler.SetAnimation(PetAnimation.EatStart + 1); // ÀÓ½Ã·Î EatLoop ºÐ±â Ã³¸® ½Ã
         yield return new WaitForSeconds(loopDuration);
 
+        // 3. EatEnd
         animal.AnimationHandler.SetAnimation(PetAnimation.EatEnd);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); // EatEnd ¾Ö´Ï¸ÞÀÌ¼Ç ½Ã°£
 
+        // À½½Ä Ã³¸® ¹× »óÅÂ º¹±Í
         if (targetFeed != null)
         {
-            targetFeed.SetActive(false);
+            targetFeed.SetActive(false); // Destroy ´ë½Å ºñÈ°¼ºÈ­
             targetFeed = null;
         }
-
-        if (!string.IsNullOrEmpty(animal.petId))
-            PetAffinityManager.Instance?.ChangeAffinityAndSave(animal.petId, 10f);
 
         isEating = false;
         animal.SetState(AnimalState.Idle);
     }
-
 
     public void UpdateFeed()
     {
@@ -94,7 +96,7 @@ public class AnimalFeedHandler : MonoBehaviour
             {
                 if (targetFeed != null)
                 {
-                    targetFeed.SetActive(false); // Destroy â†’ SetActive
+                    targetFeed.SetActive(false); // Destroy ¡æ SetActive
                     targetFeed = null;
                 }
 

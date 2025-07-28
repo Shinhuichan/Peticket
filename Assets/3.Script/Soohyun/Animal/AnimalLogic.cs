@@ -9,9 +9,6 @@ public enum PetAnimation { Idle, Walk, EatStart, EatEnd, SitStart, SitEnd, Fetch
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class AnimalLogic : MonoBehaviour
 {
-    [Header("고유 식별자")]
-    public string petId;
-
     [Header("Animal Type & CurrentState")]
     public AnimalType type = AnimalType.Small;
     public AnimalState currentState = AnimalState.Idle;

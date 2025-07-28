@@ -17,23 +17,11 @@ public class AllPetData
 
 public class PetAffinityManager : MonoBehaviour
 {
-    public static PetAffinityManager Instance;
-
     private string filePath;
     private AllPetData currentData;
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-
         filePath = Path.Combine(Application.dataPath, "SaveData/pet_affinity.json");
         LoadAffinity();
     }
