@@ -86,7 +86,6 @@ public class AnimalFetchHandler
         isGoingToBall = false;
         isReturning = true;
 
-        // ✅ 카메라(시야) 기준 복귀 위치 계산
         Transform cam = animal.Player;
         Vector3 returnPoint = cam.position + cam.forward * 1.2f;
         returnPoint.y = animal.transform.position.y; // y는 강아지와 같은 높이
@@ -105,7 +104,6 @@ public class AnimalFetchHandler
 
         targetBall.transform.SetParent(null);
 
-        // ✅ 카메라 시야 앞에 공 내려놓기
         Transform cam = animal.Player;
         Vector3 drop = cam.position + cam.forward * 0.9f;
         drop.y = animal.transform.position.y + 0.05f;
@@ -125,6 +123,9 @@ public class AnimalFetchHandler
         isReturning = false;
         hasBall = false;
         targetBall = null;
+
+        if (!string.IsNullOrEmpty(animal.petId))
+            PetAffinityManager.Instance?.ChangeAffinityAndSave(animal.petId, 10f);
 
         Debug.Log("[DropBall] SitSatisfied 상태로 전환합니다");
         animal.ChangeState(AnimalState.SitSatisfied);
