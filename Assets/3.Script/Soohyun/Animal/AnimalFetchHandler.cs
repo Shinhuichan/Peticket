@@ -124,6 +124,9 @@ public class AnimalFetchHandler
         hasBall = false;
         targetBall = null;
 
+        if (!string.IsNullOrEmpty(animal.petId))
+            PetAffinityManager.Instance?.ChangeAffinityAndSave(animal.petId, 1f);
+
         Debug.Log("[DropBall] SitSatisfied 상태로 전환합니다");
         animal.ChangeState(AnimalState.SitSatisfied);
     }
