@@ -52,28 +52,25 @@ public class AnimalFeedHandler : MonoBehaviour
     }
     private IEnumerator EatAnimationSequence()
     {
-        // 1. EatStart
         animal.AnimationHandler.SetAnimation(PetAnimation.EatStart);
-        yield return new WaitForSeconds(1f); // EatStart 길이 (애니메이션 클립 길이에 따라 조절)
+        yield return new WaitForSeconds(1f);
 
-        // 2. EatLoop
-        animal.AnimationHandler.SetAnimation(PetAnimation.Idle); // 일단 Loop 전용 트리거 없으면 Idle 대체
-        float loopDuration = eatTimer - 2f; // 총 식사 시간에서 Start/End 빼고 Loop에 할당
+        animal.AnimationHandler.SetAnimation(PetAnimation.EatStart + 1);
+        float loopDuration = eatTimer - 2f;
         if (loopDuration < 0) loopDuration = 1f;
-
-        animal.AnimationHandler.SetAnimation(PetAnimation.EatStart + 1); // 임시로 EatLoop 분기 처리 시
         yield return new WaitForSeconds(loopDuration);
 
-        // 3. EatEnd
         animal.AnimationHandler.SetAnimation(PetAnimation.EatEnd);
-        yield return new WaitForSeconds(1f); // EatEnd 애니메이션 시간
+        yield return new WaitForSeconds(1f);
 
-        // 음식 처리 및 상태 복귀
         if (targetFeed != null)
         {
-            targetFeed.SetActive(false); // Destroy 대신 비활성화
+            targetFeed.SetActive(false);
             targetFeed = null;
         }
+
+        if (!string.IsNullOrEmpty(animal.petId))
+            PetAffinityManager.Instance?.ChangeAffinityAndSave(animal.petId, 1f);
 
         isEating = false;
         animal.SetState(AnimalState.Idle);
