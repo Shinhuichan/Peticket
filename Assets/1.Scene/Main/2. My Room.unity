@@ -565,17 +565,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6306269798328623334, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
   m_PrefabInstance: {fileID: 41734341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &41734345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7911547756959537312, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
-  m_PrefabInstance: {fileID: 41734341}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &41734346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4622621101128238845, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
@@ -1204,7 +1193,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 266648539}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 200860040}
   audioSource: {fileID: 0}
@@ -1728,21 +1717,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4585890079869121403, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: foodObj
-      value: 
-      objectReference: {fileID: 675331011}
-    - target: {fileID: -4585890079869121403, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3822546094175810055, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 41734345}
+      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_Name
       value: XR Interaction Bowl
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704146992594729114, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7026542543773016990, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1881,7 +1866,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1974898556}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 300247948}
   audioSource: {fileID: 0}
@@ -2415,7 +2400,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1932250552}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 417303836}
   audioSource: {fileID: 0}
@@ -3037,7 +3022,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 133653479}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 516115317}
   audioSource: {fileID: 0}
@@ -3361,19 +3346,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  leftHandMoveAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   inventoryPanel: {fileID: 1303627001}
   toggleInventoryAction: {fileID: -198247193352664509, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   getItemAction: {fileID: -6393434055045085863, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   selectedItem: {fileID: 0}
-  baseMoveSpeed: 0
   dashIncrease: 2
+  baseMoveSpeed: 0
   dashAction: {fileID: 610900388140248167, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftDirect: {fileID: 41734343}
   rightDirect: {fileID: 41734342}
   moveProvider: {fileID: 0}
-  canvas: {fileID: 0}
-  allDirects: []
+--- !u!4 &575959893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5906306924000778174, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+  m_PrefabInstance: {fileID: 41734341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604115942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,7 +3618,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2064681321}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 648971644}
   audioSource: {fileID: 0}
@@ -3757,11 +3744,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 477770, guid: bde78f1bf0c6944a4bdc532a4b44a83e, type: 3}
   m_PrefabInstance: {fileID: 968683143}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &675331011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6846590887797690515, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-  m_PrefabInstance: {fileID: 297685830}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &707355155
 PrefabInstance:
@@ -4350,7 +4332,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1441698500}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 772203904}
   audioSource: {fileID: 0}
@@ -5062,7 +5044,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1634191883}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 858789387}
   audioSource: {fileID: 0}
@@ -5422,7 +5404,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1089745182}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 927180776}
   audioSource: {fileID: 0}
@@ -6132,7 +6114,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 135920459}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1036795214}
   audioSource: {fileID: 0}
@@ -6231,7 +6213,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 394750846}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1037144830}
   audioSource: {fileID: 0}
@@ -6631,7 +6613,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1930742525}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1113841682}
   audioSource: {fileID: 0}
@@ -7128,7 +7110,7 @@ MonoBehaviour:
   targetCam: {fileID: 334649086}
   baseDistance: 3
   minSafeDistance: 1.5
-  followSpeed: 2.5
+  followSpeed: 15
   positionOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1183990826
 Rigidbody:
@@ -7270,7 +7252,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2093002970}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1187200498}
   audioSource: {fileID: 0}
@@ -9097,7 +9079,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1287135377}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1398216987}
   audioSource: {fileID: 0}
@@ -9932,7 +9914,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1889353500}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1490925476}
   audioSource: {fileID: 0}
@@ -10598,7 +10580,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 29838794}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1564292834}
   audioSource: {fileID: 0}
@@ -10949,7 +10931,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 2136803568}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1600429808}
   audioSource: {fileID: 0}
@@ -13567,7 +13549,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1080243610}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1960673605}
   audioSource: {fileID: 0}
@@ -13806,7 +13788,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1859490667}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 1989857388}
   audioSource: {fileID: 0}
@@ -14424,7 +14406,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 604115943}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2079430189}
   audioSource: {fileID: 0}
@@ -14692,7 +14674,7 @@ MonoBehaviour:
   currentItem: {fileID: 0}
   previewRoot: {fileID: 1555469186}
   currentPreview: {fileID: 0}
-  handTransform: {fileID: 0}
+  handTransform: {fileID: 575959893}
   checkRadius: 0.2
   slotBackgroundImage: {fileID: 2115685958}
   audioSource: {fileID: 0}

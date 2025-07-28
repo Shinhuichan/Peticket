@@ -11,6 +11,18 @@
         {
             "itemName": "XR Interaction Food",
             "slotIndex": 2
+        },
+        {
+            "itemName": "XR Interaction Food",
+            "slotIndex": 3
+        },
+        {
+            "itemName": "XR Interaction Bowl",
+            "slotIndex": 4
+        },
+        {
+            "itemName": "XR Interaction Bowl",
+            "slotIndex": 5
         }
     ]
 }

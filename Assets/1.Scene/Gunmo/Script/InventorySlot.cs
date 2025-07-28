@@ -24,18 +24,22 @@ public class InventorySlot : MonoBehaviour
     public bool IsEmpty => currentItem == null;
 
     private void Start()
-{
-    if (Player.Instance != null && Player.Instance.itemPosition != null)
     {
-        handTransform = Player.Instance.itemPosition;
-        Debug.Log($"✅ handTransform을 Player.Instance.itemPosition으로 강제 연결: {handTransform.name}");
+        InitializeHandTransform(); // handTransform 초기화 로직을 분리
+        InitializeSlotColor(); // 색상 초기화 호출 (어떤 경우엔 누락될 수 있으므로 Start/Awake에서 호출)
     }
-    else
+    private void InitializeHandTransform()
     {
-        Debug.LogError("❌ Player.Instance 또는 itemPosition이 존재하지 않습니다. handTransform 연결 실패");
-    }
-}
+        // 굳건희! 이미 handTransform이 할당되어 있다면 다시 찾지 않아.
+        if (handTransform != null) return;
 
+        if (Player.Instance != null && Player.Instance.itemPosition != null)
+        {
+            handTransform = Player.Instance.itemPosition;
+            Debug.Log($"handTransform을 Player.Instance.itemPosition으로 강제 연결: {handTransform.name}");
+        }
+        else Debug.LogError("❌ Player.Instance 또는 itemPosition이 존재하지 않습니다. handTransform 연결 실패. (InitializeHandTransform)");
+    }
     public void InitializeSlotColor()
     {
         if (!isColorInitialized && slotBackgroundImage != null)
@@ -113,13 +117,23 @@ public class InventorySlot : MonoBehaviour
         Debug.LogWarning("❌ currentItem이 null입니다. 슬롯이 비어 있음");
         return;
     }
-
+    if (handTransform == null)
+        {
+            InitializeHandTransform(); // 다시 초기화를 시도
+            if (handTransform == null) // 초기화 시도 후에도 null이면 오류 처리
+            {
+                Debug.LogError("❌ handTransform이 여전히 null입니다. 아이템을 손으로 꺼낼 수 없습니다!");
+                ShowSlotBlockedFeedback("아이템을 꺼낼 손 위치를 찾을 수 없습니다."); // 오류 피드백 추가
+                return;
+            }
+        }
+        Debug.Log(currentItem);
     // ✅ 프리팹 허용 여부 검사 (null 처리 전에)
-    if (!ItemUseZoneManager.Instance.IsPrefabAllowedInZone(handTransform.position, currentItem))
-    {
-        ShowSlotBlockedFeedback("이 위치에서는 이 아이템을 꺼낼 수 없습니다.");
-        return;
-    }
+        if (!ItemUseZoneManager.Instance.IsPrefabAllowedInZone(handTransform.position, currentItem))
+        {
+            ShowSlotBlockedFeedback("이 위치에서는 이 아이템을 꺼낼 수 없습니다.");
+            return;
+        }
 
     // ✅ 정상 아이템 꺼내기
     string objName = currentItem.name.Replace("(Preview)", "").Trim();

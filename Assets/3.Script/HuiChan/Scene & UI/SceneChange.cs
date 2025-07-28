@@ -23,7 +23,5 @@ public class SceneChange : MonoBehaviour
         GameManager.Instance.isMuzzleEquip = false;
         GameManager.Instance.origin.transform.position = new Vector3(0f, 0.55f, 0f);
         GameManager.Instance.mainCam.transform.position = Vector3.zero;
-        InputManager.Instance.canvas.worldCamera = Camera.main;
-        InputManager.Instance.allDirects = null;
     }
 }

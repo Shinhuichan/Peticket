@@ -2733,18 +2733,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 663383414860627254, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5462299897257804746, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_Name
       value: XR Interaction Bowl
@@ -2983,7 +2971,7 @@ MonoBehaviour:
   leftDirect: {fileID: 1032381878}
   rightDirect: {fileID: 1032381879}
   moveProvider: {fileID: 0}
-  canvas: {fileID: 0}
+  canvas: {fileID: 747917054}
   allDirects: []
 --- !u!54 &747917059
 Rigidbody:
