@@ -298,7 +298,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &245448084650132958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,6 +965,8 @@ MonoBehaviour:
   textSetting: {fileID: 2526014836579958668}
   nextHelpAction: {fileID: -8208866524993944158, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   prevHelpAction: {fileID: -6279115912842116714, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  audioSource: {fileID: 0}
+  voiceClips: []
 --- !u!65 &6437543345759159010
 BoxCollider:
   m_ObjectHideFlags: 0
