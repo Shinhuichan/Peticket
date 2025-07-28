@@ -414,12 +414,12 @@ MonoBehaviour:
   rayInteractor: {fileID: 0}
   rectXZ:
     serializedVersion: 2
-    x: -6.34
-    y: -5.92
-    width: 15
-    height: 15
+    x: -15
+    y: -10
+    width: 30
+    height: 30
   minY: 0
-  maxY: 5
+  maxY: 12
   grabInteractable: {fileID: 0}
 --- !u!82 &5353933816343776822
 AudioSource:

@@ -82,7 +82,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 10
+    m_Bits: 8
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
-  m_SecondaryAttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 7026542543773016990}
+  m_SecondaryAttachTransform: {fileID: 7026542543773016990}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5462299897257804746}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe74f3f95f263f4ebda4af8ebc71acb, type: 3}
   m_Name: 
@@ -256,7 +256,7 @@ MonoBehaviour:
   minY: 0
   maxY: 25
   grabInteractable: {fileID: 0}
-  foodObj: {fileID: 3088192467557424169, guid: 60bf30b49ac8af24d8d34197b7a37254, type: 3}
+  foodObj: {fileID: 6846590887797690515}
 --- !u!65 &7476382786484501472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 9084617923391295726}
   - component: {fileID: 6666594593205340253}
   - component: {fileID: 5563658901807523967}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bowl_1_empty
   m_TagString: Bowl
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 5704146992594729114}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.61, y: 0.158, z: 4.68}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 3, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:

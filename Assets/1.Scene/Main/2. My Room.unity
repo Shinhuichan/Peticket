@@ -489,6 +489,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2390254000153401369, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257799814873967961, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8262596607418896395, guid: c83ffb8543e863c44860e8f9bd863455, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.24
@@ -1728,14 +1736,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4585890079869121403, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: foodObj
-      value: 
-      objectReference: {fileID: 675331011}
-    - target: {fileID: -4585890079869121403, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3822546094175810055, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -3757,11 +3757,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 477770, guid: bde78f1bf0c6944a4bdc532a4b44a83e, type: 3}
   m_PrefabInstance: {fileID: 968683143}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &675331011 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6846590887797690515, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
-  m_PrefabInstance: {fileID: 297685830}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &707355155
 PrefabInstance:
@@ -15221,9 +15216,9 @@ SceneRoots:
   - {fileID: 232693742}
   - {fileID: 1535195523}
   - {fileID: 1229166923}
+  - {fileID: 1029521728}
+  - {fileID: 297685830}
   - {fileID: 1208823175}
   - {fileID: 1213479996}
   - {fileID: 1966500939}
   - {fileID: 1417891845}
-  - {fileID: 1029521728}
-  - {fileID: 297685830}

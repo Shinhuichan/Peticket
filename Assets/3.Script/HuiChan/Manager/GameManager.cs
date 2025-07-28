@@ -33,8 +33,4 @@ public class GameManager : SingletonBehaviour<GameManager>
         origin = FindAnyObjectByType<CharacterController>();
         mainCam = Camera.main;
     }
-    public int FindSceneIndex()
-    {
-        return SceneManager.GetActiveScene().buildIndex;
-    }
 }

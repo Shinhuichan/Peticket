@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2906147931419161975}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 0.0066, z: 0}
+  m_LocalPosition: {x: 0, y: 0.00817, z: -0.00241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 3484808050198809497}
   - component: {fileID: 5806996056852400133}
   - component: {fileID: 5256645003808135427}
-  - component: {fileID: 7511804806643596946}
   m_Layer: 0
   m_Name: XR Interaction Shovel
   m_TagString: Untagged
@@ -384,8 +383,8 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 7285812228684276295}
-  m_SecondaryAttachTransform: {fileID: 7285812228684276295}
+  m_AttachTransform: {fileID: 3803566920061807512}
+  m_SecondaryAttachTransform: {fileID: 3803566920061807512}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
@@ -474,24 +473,3 @@ MonoBehaviour:
   minY: 0
   maxY: 5
   grabInteractable: {fileID: 0}
---- !u!65 &7511804806643596946
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9217983721362013079}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0.5, z: -0.5}
