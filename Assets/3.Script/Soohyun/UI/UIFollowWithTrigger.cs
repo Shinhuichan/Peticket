@@ -72,7 +72,7 @@ public class UIFollowWithTrigger : MonoBehaviour
         Vector3 worldCenter = checkPos + transform.rotation * box.center;
         Vector3 worldSize = Vector3.Scale(box.size, transform.lossyScale) * 0.5f; // 반 크기 (OverlapBox 기준)
 
-        Collider[] hits = Physics.OverlapBox(worldCenter, worldSize, transform.rotation, LayerMask.GetMask("Obstacle"));
+        Collider[] hits = Physics.OverlapBox(worldCenter, worldSize, transform.rotation, LayerMask.GetMask("Wall"));
         return hits.Length > 0;
     }
 }
