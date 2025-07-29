@@ -973,6 +973,70 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &153021746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153021748}
+  - component: {fileID: 153021747}
+  m_Layer: 0
+  m_Name: EventZoneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &153021747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153021746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db746a9bcfa1c3a488fff9da1fc0fcc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  areaUI: {fileID: 0}
+  zones:
+  - zoneName: Ball
+    rectXZ:
+      serializedVersion: 2
+      x: -500
+      y: -500
+      width: 1000
+      height: 1000
+    minY: 0.5
+    maxY: 25
+    gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+    allowedPrefabs:
+    - {fileID: 5462299897257804746, guid: 513d123fc1c312f4b9ec1e10a15e4c5a, type: 3}
+    - {fileID: 5462299897257804746, guid: 8fdcc427321b91243b964e6a6295f74f, type: 3}
+    - {fileID: 5462299897257804746, guid: 7018389934f9af441a192a8d4c5e3050, type: 3}
+    - {fileID: 5462299897257804746, guid: acb74fbed6b04e944b542077da5f90ae, type: 3}
+    - {fileID: 5462299897257804746, guid: 0339ea3c1d2d2334996f41d858825f92, type: 3}
+    - {fileID: 9217983721362013079, guid: 55c1774e880226a47920f7ccc218974f, type: 3}
+--- !u!4 &153021748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153021746}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &177911085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2553,7 +2617,7 @@ MonoBehaviour:
   - {fileID: 25950236}
   - {fileID: 1709513238}
   moveAction: {fileID: 8382613824112554544, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  moveCooldown: 0.5
+  moveCooldown: 0.1
 --- !u!1001 &458150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15237,3 +15301,4 @@ SceneRoots:
   - {fileID: 1417891845}
   - {fileID: 1029521728}
   - {fileID: 297685830}
+  - {fileID: 153021748}

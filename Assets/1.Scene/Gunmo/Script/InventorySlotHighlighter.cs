@@ -21,6 +21,8 @@ public class InventorySlotHighlighter : MonoBehaviour
     private bool canMoveRight = true;
     private bool canMoveLeft = true;
 
+
+    
     private void OnEnable()
     {
         if (moveAction != null) moveAction.action.Enable();
@@ -32,37 +34,40 @@ public class InventorySlotHighlighter : MonoBehaviour
     }
 
     private void Start()
+{
+    defaultButtonColors = new Color[buttons.Length];
+
+    // 👉 슬롯 색 먼저 초기화
+    foreach (var slot in slots)
     {
-        // null 체크 추가
-        if (buttons == null || buttons.Length == 0)
+        if (slot != null)
         {
-            Debug.LogWarning("⚠ buttons 배열이 비어 있습니다.");
-            return;
+            slot.InitializeSlotColor(); // originalColor 초기화
+            slot.SetHighlight(false);   // 흰색으로 시작하지 않도록
         }
-
-        defaultButtonColors = new Color[buttons.Length];
-
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            if (buttons[i] == null)
-            {
-                Debug.LogError($"❌ 버튼 {i}이 null입니다.");
-                continue;
-            }
-
-            Image img = buttons[i].GetComponent<Image>();
-            if (img == null)
-            {
-                Debug.LogError($"❌ 버튼 {i}에 Image 컴포넌트가 없습니다.");
-                continue;
-            }
-
-            defaultButtonColors[i] = img.color;
-        }
-
-        UpdateHighlight();
     }
 
+    for (int i = 0; i < buttons.Length; i++)
+    {
+        if (buttons[i] == null)
+        {
+            Debug.LogError($"❌ 버튼 {i}이 null입니다.");
+            continue;
+        }
+
+        Image img = buttons[i].GetComponent<Image>();
+        if (img == null)
+        {
+            Debug.LogError($"❌ 버튼 {i}에 Image 컴포넌트가 없습니다.");
+            continue;
+        }
+
+        defaultButtonColors[i] = img.color;
+    }
+
+    // 👉 하이라이트는 마지막에
+    UpdateHighlight();
+}
 
     private void Update()
     {
@@ -113,25 +118,30 @@ public class InventorySlotHighlighter : MonoBehaviour
     }
 
     private void UpdateHighlight()
+{
+    for (int i = 0; i < slots.Length; i++)
     {
-        for (int i = 0; i < slots.Length; i++)
+        if (slots[i] != null)
         {
-            if (slots[i] != null)
-                slots[i].SetHighlight(i == currentIndex);
-        }
-
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            if (buttons[i] == null) continue;
-
-            Image img = buttons[i].GetComponent<Image>();
-            if (img == null) continue;
-
-            bool isHighlighted = (slots.Length + i == currentIndex);
-            if (defaultButtonColors != null && i < defaultButtonColors.Length)
-                img.color = isHighlighted ? Color.white : defaultButtonColors[i];
+            bool isHighlighted = (i == currentIndex);
+            slots[i].SetHighlight(isHighlighted);
         }
     }
+
+    for (int i = 0; i < buttons.Length; i++)
+    {
+        if (buttons[i] == null) continue;
+
+        Image img = buttons[i].GetComponent<Image>();
+        if (img == null) continue;
+
+        bool isHighlighted = (slots.Length + i == currentIndex);
+        if (defaultButtonColors != null && i < defaultButtonColors.Length)
+        {
+            img.color = isHighlighted ? Color.white : defaultButtonColors[i];
+        }
+    }
+}
 
     public void SelectCurrent()
     {
