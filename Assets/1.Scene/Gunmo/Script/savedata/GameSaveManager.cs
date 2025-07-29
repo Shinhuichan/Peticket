@@ -87,16 +87,16 @@ public class GameSaveManager : MonoBehaviour
     }
 
     public void SetPlayerProgress(float delta)
-{
-    currentSaveData.playerProgress = Mathf.Clamp(
-        currentSaveData.playerProgress + delta,
-        0f, 100f
-    );
+    {
+        currentSaveData.playerProgress = Mathf.Clamp(
+            currentSaveData.playerProgress + delta,
+            0f, 100f
+        );
 
-    SaveGame(GetPlayerPosition());
+        SaveGame(GetPlayerPosition());
 
-    Debug.Log($"📈 진행도 저장됨: {currentSaveData.playerProgress}%");
+        Debug.Log($"📈 진행도 저장됨: {currentSaveData.playerProgress}%");
 
-    OnProgressChanged?.Invoke(currentSaveData.playerProgress); // 🔔 이벤트 발생
-}
-}
+        OnProgressChanged?.Invoke(currentSaveData.playerProgress); // 🔔 이벤트 발생
+    }
+    }

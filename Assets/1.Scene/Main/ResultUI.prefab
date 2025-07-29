@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: -12.5}
   m_SizeDelta: {x: -20, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5292692530394303233
@@ -665,10 +665,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1135469943085797301}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: InventorySaveManager, Assembly-CSharp
+        m_MethodName: ResetAndLoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 2. My Room
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6482836748330766711
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +960,7 @@ GameObject:
   - component: {fileID: 4405849266169642629}
   - component: {fileID: 328139901792979849}
   - component: {fileID: 1438972929212974701}
+  - component: {fileID: 3593208836717962746}
   m_Layer: 5
   m_Name: ResultUI
   m_TagString: Untagged
@@ -964,7 +977,7 @@ RectTransform:
   m_GameObject: {fileID: 6896161417888825560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8928291134457466756}
@@ -1016,6 +1029,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3593208836717962746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896161417888825560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ca803d989116444ac0d6ec5f0a96fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petIDUI: {fileID: 6610182397812703415}
+  progressUI: {fileID: 5351370253554958414}
+  petId: 
+  progress: 0
 --- !u!1 &7041633740993878955
 GameObject:
   m_ObjectHideFlags: 0

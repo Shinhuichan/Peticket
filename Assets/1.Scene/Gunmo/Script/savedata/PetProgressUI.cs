@@ -9,6 +9,7 @@ public class PetProgressUI : MonoBehaviour
     [Header("진행도 UI")]
     public Slider progressSlider;
     public TextMeshProUGUI progressText;
+    public float savedProgress;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class PetProgressUI : MonoBehaviour
     private void Start()
     {
         // 저장된 진행도 불러와 UI 초기화
-        float savedProgress = GameSaveManager.Instance?.currentSaveData?.playerProgress ?? 0f;
+        savedProgress = GameSaveManager.Instance?.currentSaveData?.playerProgress ?? 0f;
         UpdateProgressUI(savedProgress);
 
         // 진행도 변화 이벤트 연결
